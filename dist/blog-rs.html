@@ -26,66 +26,21 @@
   </head>
   <!-- Body-->
   <body>
-    <!-- Leave a Review-->
-    <form class="needs-validation modal fade" id="leaveReview" tabindex="-1" novalidate>
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Leave a review</h4>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-name">Your name</label>
-                  <input class="form-control" type="text" id="review-name" required>
-                  <div class="invalid-feedback">Please enter your name!</div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-email">Your email</label>
-                  <input class="form-control" type="email" id="review-email" required>
-                  <div class="invalid-feedback">Please enter your email!</div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-subject">Subject</label>
-                  <input class="form-control" type="text" id="review-subject" required>
-                  <div class="invalid-feedback">Please enter review subject!</div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-rating">Rating</label>
-                  <select class="form-control custom-select" id="review-rating" required>
-                    <option value>Choose rating...</option>
-                    <option value="5">5 Stars</option>
-                    <option value="4">4 Stars</option>
-                    <option value="3">3 Stars</option>
-                    <option value="2">2 Stars</option>
-                    <option value="1">1 Star</option>
-                  </select>
-                  <div class="invalid-feedback">Please choose from 1 to 5!</div>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="review-message">Review</label>
-              <textarea class="form-control" id="review-message" rows="8" required></textarea>
-              <div class="invalid-feedback">Please enter review message!</div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" type="submit">Submit review</button>
-          </div>
+    <!-- Off-canvas search-->
+    <div class="offcanvas offcanvas-reverse" id="offcanvas-search">
+      <div class="offcanvas-header d-flex justify-content-between align-items-center">
+        <h3 class="offcanvas-title">Search site</h3>
+        <button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="offcanvas-body-inner">
+          <div class="input-group pt-3">
+            <div class="input-group-prepend"><span class="input-group-text" id="search-icon"><i data-feather="search"></i></span></div>
+            <input class="form-control" type="text" id="site-search" placeholder="Search site" aria-label="Search site" aria-describedby="search-icon">
+          </div><small class="form-text pt-1">Type A or C to see suggestions. Powered by Easy autocomplete plugin via separate JSON file.</small>
         </div>
       </div>
-    </form>
+    </div>
     <!-- Off-canvas account-->
     <div class="offcanvas offcanvas-reverse" id="offcanvas-account">
       <div class="offcanvas-header d-flex justify-content-between align-items-center">
@@ -205,60 +160,17 @@
         </div>
       </div>
     </div>
-    <!-- Navbar Multilevel-->
-    <!-- First line: Topbar-->
-    <div class="navbar bg-dark py-2 px-0">
-      <div class="container px-3">
-        <!-- contact info-->
-        <ul class="list-inline mb-0 d-none d-lg-inline-block">
-          <li class="list-inline-item opacity-75 mr-2"><i class="text-light mr-2" data-feather="phone" style="width: 13px; height: 13px;"></i><a class="text-light font-size-sm py-1 pl-0 pr-2" href="tel:00331697720">00 33 169 7720</a></li>
-          <li class="list-inline-item opacity-75 mr-2"><i class="text-light mr-2" data-feather="mail" style="width: 13px; height: 13px;"></i><a class="text-light font-size-sm py-1 pl-0 pr-2" href="mailto:info@example.com">info@example.com</a></li>
-        </ul>
-        <!-- links collapsed (moblie)-->
-        <div class="dropdown d-inline-block d-lg-none"><a class="dropdown-toggle text-light opacity-75 font-size-sm py-1" href="#" data-toggle="dropdown">Useful links</a>
-          <div class="dropdown-menu"><a class="dropdown-item" href="#">About us</a><a class="dropdown-item" href="#">Help center</a><a class="dropdown-item" href="#">Delivery info</a>
-            <div class="dropdown-divider"></div><a class="dropdown-item" href="tel:00331697720"><i class="mr-2" data-feather="phone" style="width: 13px; height: 13px;"></i>00 33 169 7720</a><a class="dropdown-item" href="mailto:info@example.com"><i class="mr-2" data-feather="mail" style="width: 13px; height: 13px;"></i>info@example.com</a>
-          </div>
-        </div>
-        <div class="d-flex">
-          <!-- topbar menu-->
-          <ul class="list-inline mb-0 d-none d-lg-block">
-            <li class="list-inline-item mr-2"><a class="text-light font-size-sm opacity-75 py-1 pl-0 pr-2 border-right border-light" href="#">About us</a></li>
-            <li class="list-inline-item mr-2"><a class="text-light font-size-sm opacity-75 py-1 pl-0 pr-2 border-right border-light" href="#">Help center</a></li>
-            <li class="list-inline-item mr-2"><a class="text-light font-size-sm opacity-75 py-1 pl-0 pr-2" href="#">Delivery info</a></li>
-          </ul>
-          <!-- social bar  -->
-          <div class="d-flex flex-nowrap"><a class="social-btn sb-facebook sb-light sb-sm ml-2" href="#"><i class="flaticon-facebook"></i><span class="sr-only">Facebook</span></a><a class="social-btn sb-twitter sb-light sb-sm ml-2" href="#"><i class="flaticon-twitter"></i><span class="sr-only">Twitter</span></a><a class="social-btn sb-instagram sb-light sb-sm ml-2" href="#"><i class="flaticon-instagram"></i><span class="sr-only">Instagram</span></a><a class="social-btn sb-pinterest sb-light sb-sm ml-2" href="#"><i class="flaticon-pinterest"></i><span class="sr-only">Pinterest</span></a></div>
-        </div>
-      </div>
-    </div>
-    <!-- Second line-->
-    <header class="navbar navbar-expand-lg navbar-light bg-light px-0">
-      <div class="container flex-sm-nowrap px-3">
-        <!-- navbar brand--><a class="navbar-brand mr-0 mr-sm-4" style="min-width: 100px;" href="index.html"><img width="100" src="img/logo-dark.png" alt="MStore"/></a>
-        <!-- navbar buttons-->
-        <div class="navbar-btns d-flex position-relative order-sm-3">
-          <div class="navbar-toggler navbar-btn collapsed bg-0 border-left-0 my-3" data-toggle="collapse" data-target="#menu"><i class="mx-auto mb-2" data-feather="menu"></i>Menu</div><a class="navbar-btn bg-0 my-3 border-left-0 navbar-collapse-hidden" href="product-comparison.html"><span class="d-block position-relative"><span class="navbar-btn-badge bg-secondary border">3</span><i class="mx-auto mb-1" data-feather="repeat"></i>Compare</span></a><a class="navbar-btn bg-0 my-3" href="#offcanvas-account" data-toggle="offcanvas"><i class="mx-auto mb-1" data-feather="log-in"></i>Sign In/Up</a><a class="navbar-btn bg-0 my-3" href="#offcanvas-cart" data-toggle="offcanvas"><span class="d-block position-relative"><span class="navbar-btn-badge bg-primary text-light">4</span><i class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
-        </div>
-        <!-- search-box-->
-        <div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
-          <div class="input-group flex-nowrap">
-            <div class="input-group-prepend"><span class="input-group-text rounded-left" id="search-icon"><i data-feather="search"></i></span></div>
-            <input class="form-control rounded-right" type="text" id="site-search" placeholder="Search site" aria-label="Search site" aria-describedby="search-icon">
-          </div>
-        </div>
-      </div>
-    </header>
-    <!-- Third line: Navigation-->
-    <div class="navbar navbar-expand-lg navbar-light bg-light px-0">
-      <div class="container px-3">
+    <!-- Navbar Light-->
+    <header class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+      <div class="container-fluid navbar-inner">
+        <!-- navbar brand--><a class="navbar-brand" style="min-width: 100px;" href="index.html"><img width="100" src="img/logo-dark.png" alt="MStore"/></a>
         <!-- navbar collapse area-->
         <div class="collapse navbar-collapse" id="menu">
           <!-- language/currency switcher-->
           <div class="navbar-lang-switcher dropdown pr-2">
             <div class="dropdown-toggle" data-toggle="dropdown"><img width="20" src="img/flags/en.png" alt="English"/><span>USD</span>
             </div>
-            <ul class="dropdown-menu dropdown-menu-left">
+            <ul class="dropdown-menu">
               <li class="dropdown-item">
                 <select class="custom-select custom-select-sm">
                   <option value="usd">$ USD</option>
@@ -337,7 +249,7 @@
                     <div class="text-center font-weight-semibold text-dark">Home Electronics Store</div></a></div>
               </div>
             </li>
-            <li class="nav-item dropdown mega-dropdown active"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
+            <li class="nav-item dropdown mega-dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
               <div class="dropdown-menu">
                 <div class="dropdown-inner">
                   <div class="dropdown-column">
@@ -376,27 +288,6 @@
             </li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Pages</a>
               <ul class="dropdown-menu">
-                <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">User Account</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="account-orders.html">Orders History</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-profile.html">Profile Settings</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-address.html">Account Addresses</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-payment.html">Payment Methods</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-wishlist.html">Wishlist</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-tickets.html">My Tickets</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-single-ticket.html">Single Ticket</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-signin.html">Sign In / Sign Up Page</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="account-password-recovery.html">Password Recovery</a></li>
-                  </ul>
-                </li>
                 <li class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="about.html">About Us</a></li>
                 <li class="dropdown-divider"></li>
@@ -419,7 +310,7 @@
                 <li><a class="dropdown-item" href="404.html">404 Not Found</a></li>
               </ul>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Blog</a>
+            <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Blog</a>
               <ul class="dropdown-menu">
                 <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Blog Layout</a>
                   <ul class="dropdown-menu">
@@ -467,8 +358,14 @@
             </li>
           </ul>
         </div>
+        <!-- navbar buttons-->
+        <div class="navbar-btns">
+          <div class="navbar-btns-inner">
+            <div class="navbar-toggler navbar-btn collapsed" data-toggle="collapse" data-target="#menu"><i class="mx-auto mb-1" data-feather="menu"></i>Menu</div><a class="navbar-btn" href="#offcanvas-search" data-toggle="offcanvas"><i class="mx-auto mb-1" data-feather="search"></i>Search</a><a class="navbar-btn navbar-collapse-hidden" href="#offcanvas-account" data-toggle="offcanvas"><i class="mx-auto mb-1" data-feather="log-in"></i>Sign In/Up</a><a class="navbar-btn" href="#offcanvas-cart" data-toggle="offcanvas"><span class="d-block position-relative"><span class="navbar-btn-badge bg-primary text-light">4</span><i class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
+          </div>
+        </div>
       </div>
-    </div>
+    </header>
     <!-- Page Title-->
     <div class="page-title-wrapper" aria-label="Page title">
       <div class="container">
@@ -477,349 +374,153 @@
             <li class="mt-n1 mr-1"><i data-feather="home"></i></li>
             <li class="breadcrumb-item"><a href="index.html">Home</a>
             </li>
-            <li class="breadcrumb-item"><a href="#">Electronics</a>
-            </li>
-            <li class="breadcrumb-item"><a href="#">Action cameras</a>
+            <li class="breadcrumb-item"><a href="#">Blog</a>
             </li>
           </ol>
         </nav>
-        <h1 class="page-title">Samsung Gear 360 Real 360° 4K VR Camera</h1><span class="d-block mt-2 text-muted"></span>
+        <h1 class="page-title">Blog right sidebar</h1><span class="d-block mt-2 text-muted"></span>
         <hr class="mt-4">
       </div>
     </div>
     <!-- Page Content-->
-    <!-- Toast notifications-->
-    <div class="toast-container toast-bottom-center">
-      <div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to cart!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">This item was added to your cart.</div>
-      </div>
-      <div class="toast mb-3" id="compare-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-info text-white"><i class="mr-2" data-feather="info" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to comparison!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">This item was added to comparison table.</div>
-      </div>
-      <div class="toast mb-3" id="wishlist-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-info text-white"><i class="mr-2" data-feather="info" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to wishlist!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">This item was added to your wishlist.</div>
-      </div>
-      <div class="toast mb-3" id="profile-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Updated!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">Your profile info updated successfuly.</div>
-      </div>
-      <div class="toast mb-3" id="address-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Updated!</span>
-          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="toast-body">Your addresses info updated successfuly.</div>
-      </div>
-    </div>
-    <div class="container pb-4">
+    <div class="container pb-5 mb-4">
       <div class="row">
-        <div class="col-lg-7">
-          <!-- Product gallery-->
-          <div class="product-gallery"><span class="badge badge-danger">Sale -30%</span>
-            <ul class="product-thumbnails">
-              <li class="active"><a href="#one"><img src="img/shop/electronics/single/th01.jpg" alt="Product thumb"></a></li>
-              <li><a href="#two"><img src="img/shop/electronics/single/th02.jpg" alt="Product thumb"></a></li>
-              <li><a href="#three"><img src="img/shop/electronics/single/th03.jpg" alt="Product thumb"></a></li>
-              <li><a href="#four"><img src="img/shop/electronics/single/th04.jpg" alt="Product thumb"></a></li>
-              <li class="video-thumbnail"><a href="#five"><span class="thumb-caption">Video</span><img src="img/shop/electronics/single/th05.jpg" alt="Product thumb"></a></li>
+        <div class="col-lg-9">
+          <!-- Post-->
+          <div class="row pb-5">
+            <div class="col-md-4">
+              <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
+                <div class="mr-2">by&nbsp;<a href="#">Olivia Reyes</a><span class="meta-divider"></span><a href="#">Apr 20</a></div><a href="#"><i class="mr-1" data-feather="message-square"></i>13</a>
+              </div>
+              <h3 class="h4 mb-4"><a class="post-title" href="blog-single-rs.html">Must have clothing on your next trip</a></h3>
+            </div>
+            <div class="col-md-8"><a class="d-block mb-3" href="blog-single-rs.html"><img class="d-block" src="img/blog/01.jpg" alt="Post thumb"></a>
+              <p class="font-size-sm">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni...</p>
+              <div class="post-meta">
+                <div>
+                   in&nbsp;<a href="#">Fashion, &nbsp;</a><a href="#">Travelling</a><span class="meta-divider"></span><a href="#">#apparel</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="pb-5">
+          <!-- Post-->
+          <div class="row pb-5">
+            <div class="col-md-4">
+              <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
+                <div class="mr-2">by&nbsp;<a href="#">Paul Goodrich</a><span class="meta-divider"></span><a href="#">Mar 16</a></div><a href="#"><i class="mr-1" data-feather="message-square"></i>24</a>
+              </div>
+              <h3 class="h4 mb-4"><a class="post-title" href="blog-single-rs.html">Smart homes become even more smart</a></h3>
+            </div>
+            <div class="col-md-8"><a class="d-block position-relative mb-3" href="https://player.vimeo.com/video/203972818?title=0&amp;byline=0&amp;portrait=0" data-fancybox data-width="1000" data-height="563">
+                <div class="video-player-btn position-absolute" style="top: 50%; left: 50%; margin-top: -2.25rem; margin-left: -2.25rem;"><i data-feather="play"></i></div><img class="d-block" src="img/blog/02.jpg" alt="Post thumb"></a>
+              <p class="font-size-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+              <div class="post-meta">
+                <div>
+                   in&nbsp;<a href="#">Consumer electronics</a><span class="meta-divider"></span><a href="#">#IoT</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="pb-5">
+          <!-- Post-->
+          <div class="row pb-5">
+            <div class="col-md-4">
+              <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
+                <div class="mr-2">by&nbsp;<a href="#">Cynthia Gomez</a><span class="meta-divider"></span><a href="#">Feb 19</a></div><a href="#"><i class="mr-1" data-feather="message-square"></i>8</a>
+              </div>
+              <h3 class="h4 mb-4"><a class="post-title" href="blog-single-rs.html">Global travel and vacations on a tight budget</a></h3>
+            </div>
+            <div class="col-md-8">
+              <p class="font-size-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. Aliquid id nobis, amet dolorum earum maxime. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo...</p>
+              <div class="post-meta">
+                <div>
+                   in&nbsp;<a href="#">Travelling, &nbsp;</a><a href="#">Vacations,</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="pb-5">
+          <!-- Post-->
+          <div class="row pb-5">
+            <div class="col-md-4">
+              <div class="post-meta d-flex flex-wrap justify-content-between pb-3">
+                <div class="mr-2">by&nbsp;<a href="#">Logan Coleman</a><span class="meta-divider"></span><a href="#">Jan 27</a></div><a href="#"><i class="mr-1" data-feather="message-square"></i>31</a>
+              </div>
+              <h3 class="h4 mb-4"><a class="post-title" href="blog-single-rs.html">How To Make Professional Video With Drones</a></h3>
+            </div>
+            <div class="col-md-8"><a class="d-block mb-3" href="blog-single-rs.html"><img class="d-block" src="img/blog/03.jpg" alt="Post thumb"></a>
+              <p class="font-size-sm">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni...</p>
+              <div class="post-meta">
+                <div>
+                   in&nbsp;<a href="#">Consumer electronics</a><span class="meta-divider"></span><a href="#">#drones</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="pb-4 mb-2">
+          <!-- Pagination-->
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center justify-content-sm-start mb-0">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item d-sm-none"><span class="page-link page-link-static">2 / 5</span></li>
+              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">1</a></li>
+              <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">2<span class="sr-only">(current)</span></span></li>
+              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">3</a></li>
+              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">4</a></li>
+              <li class="page-item d-none d-sm-block">...</li>
+              <li class="page-item d-none d-sm-block"><a class="page-link" href="#">10</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
             </ul>
-            <div class="product-carousel owl-carousel"><a href="img/shop/electronics/single/01.jpg" data-fancybox="prod-gallery" data-hash="one"><img src="img/shop/electronics/single/01.jpg" alt="Product"></a><a href="img/shop/electronics/single/02.jpg" data-fancybox="prod-gallery" data-hash="two"><img src="img/shop/electronics/single/02.jpg" alt="Product"></a><a href="img/shop/electronics/single/03.jpg" data-fancybox="prod-gallery" data-hash="three"><img src="img/shop/electronics/single/03.jpg" alt="Product"></a><a href="img/shop/electronics/single/04.jpg" data-fancybox="prod-gallery" data-hash="four"><img src="img/shop/electronics/single/04.jpg" alt="Product"></a>
-              <div class="pt-sm-5 mt-sm-5" data-hash="five">
-                <div class="embed-responsive embed-responsive-16by9">
-                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Ml14W2K0Few" allowfullscreen></iframe>
-                </div>
-              </div>
-            </div>
-          </div>
+          </nav>
         </div>
-        <!-- Product details    -->
-        <div class="col-lg-5 pt-4 pt-lg-0">
-          <div class="pb-4"><a class="d-inline-block scroll-to" href="#reviews">
-              <div class="star-rating"><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star" data-feather="star"></i>
-              </div><span class="d-inline-block align-middle font-size-sm mt-1 ml-1 text-body">295 reviews</span></a>
-            <h2 class="h1 font-weight-light pt-3 pb-2">
-              <del class="lead text-muted mr-2">$175.00</del><span class="text-primary">$123.00</span>
-            </h2>
-            <div class="d-flex align-items-center pt-2">
-              <input class="px-2 form-control mr-2" type="number" name="quantity" style="width: 3.2rem;" value="1" required>
-              <button class="btn btn-primary btn-block" type="button" data-toggle="toast" data-target="#cart-toast"><i class="mr-2" data-feather="shopping-cart"></i>Add to cart</button>
-            </div>
-            <div class="d-flex flex-wrap align-items-center pt-3"><a class="btn box-shadow-0 nav-link-inline px-4 border-right" href="#" data-toggle="toast" data-target="#compare-toast"><i class="align-middle mr-1" data-feather="repeat" style="width: 1.1rem; height: 1.1rem;"></i>Compare</a><a class="btn box-shadow-0 nav-link-inline px-4" href="#" data-toggle="toast" data-target="#wishlist-toast"><i class="align-middle mr-1" data-feather="heart" style="width: 1.1rem; height: 1.1rem;"></i>Add to wishlist</a></div>
-          </div>
-          <!-- Product panels-->
-          <div class="accordion" id="productPanels">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="accordion-heading"><a href="#productInfo" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="productInfo"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="info" style="width: 1.1rem; height: 1.1rem;"></i></span>Product information<span class="accordion-indicator"><i data-feather="chevron-up"></i></span></a></h3>
-              </div>
-              <div class="collapse show" id="productInfo" data-parent="#productPanels">
-                <div class="card-body">
-                  <ul class="mb-0">
-                    <li>Tell the whole story with the 360° camera that captures every angle in 4K brilliance and share instantly</li>
-                    <li>Capture life as it happens in stunning 4K video and 15MP photos thanks to dual 180° lenses</li>
-                    <li><a class="scroll-to font-weight-semibold" href="#product-details">More info</a></li>
+        <div class="col-lg-3">
+          <!-- Blog sidebar-->
+          <div class="offcanvas-sidebar">
+            <div class="offcanvas-sidebar-toggle"><span class="toggle-knob"><i data-feather="chevrons-right"></i>Sidebar</span></div>
+            <div class="offcanvas-sidebar-body">
+              <div class="offcanvas-sidebar-body-inner">
+                <!-- Categories-->
+                <div class="widget widget-categories mb-4 py-1">
+                  <h3 class="widget-title">Top categories</h3>
+                  <ul>
+                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>Editor's choise<span class="badge text-muted ml-1">(25)</span></a></li>
+                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>Online shopping<span class="badge text-muted ml-1">(13)</span></a></li>
+                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>Clothing design<span class="badge text-muted ml-1">(9)</span></a></li>
+                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>Electronics<span class="badge text-muted ml-1">(34)</span></a></li>
+                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>Smart gadgets<span class="badge text-muted ml-1">(28)</span></a></li>
+                    <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i>Lifestyle<span class="badge text-muted ml-1">(16)</span></a></li>
                   </ul>
                 </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h3 class="accordion-heading"><a class="collapsed" href="#shippingOptions" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="shippingOptions"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="truck" style="width: 1.1rem; height: 1.1rem;"></i></span>Shipping options<span class="accordion-indicator"><i data-feather="chevron-up"></i></span></a></h3>
-              </div>
-              <div class="collapse" id="shippingOptions" data-parent="#productPanels">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between border-bottom pb-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">Courier</div>
-                      <div class="font-size-sm text-muted">2 - 4 days</div>
+                <!-- Featured posts-->
+                <div class="widget widget-featured-entries mb-4 pb-2">
+                  <h3 class="widget-title">Featured posts</h3>
+                  <div class="media"><a class="featured-entry-thumb" href="#"><img src="img/blog/widget/01.jpg" width="64" alt="Post thumb"></a>
+                    <div class="media-body">
+                      <h6 class="featured-entry-title"><a href="#">Retro cameras are trending. Why so popular?</a></h6>
+                      <p class="featured-entry-meta text-muted">by Andy Williams</p>
                     </div>
-                    <div>$26.50</div>
                   </div>
-                  <div class="d-flex justify-content-between border-bottom py-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">Local shipping</div>
-                      <div class="font-size-sm text-muted">up to one week</div>
+                  <div class="media"><a class="featured-entry-thumb" href="#"><img src="img/blog/widget/02.jpg" width="64" alt="Post thumb"></a>
+                    <div class="media-body">
+                      <h6 class="featured-entry-title"><a href="#">New trends in suburban fashion</a></h6>
+                      <p class="featured-entry-meta text-muted">by Susan Mayer</p>
                     </div>
-                    <div>$10.00</div>
                   </div>
-                  <div class="d-flex justify-content-between border-bottom py-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">Flat rate</div>
-                      <div class="font-size-sm text-muted">5 - 7 days</div>
+                  <div class="media"><a class="featured-entry-thumb" href="#"><img src="img/blog/widget/03.jpg" width="64" alt="Post thumb"></a>
+                    <div class="media-body">
+                      <h6 class="featured-entry-title"><a href="#">Augmented reality - game changing technology</a></h6>
+                      <p class="featured-entry-meta text-muted">by John Doe</p>
                     </div>
-                    <div>$33.85</div>
-                  </div>
-                  <div class="d-flex justify-content-between border-bottom py-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">UPS ground shipping</div>
-                      <div class="font-size-sm text-muted">4 - 6 days</div>
-                    </div>
-                    <div>$18.00</div>
-                  </div>
-                  <div class="d-flex justify-content-between pt-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">Local pickup from store</div>
-                      <div class="font-size-sm text-muted">&mdash;</div>
-                    </div>
-                    <div>$0.00</div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h3 class="accordion-heading"><a class="collapsed" href="#tagCloud" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="tagCloud"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="tag" style="width: 1.1rem; height: 1.1rem;"></i></span>Tag cloud<span class="accordion-indicator"><i data-feather="chevron-up"></i></span></a></h3>
-              </div>
-              <div class="collapse" id="tagCloud" data-parent="#productPanels">
-                <div class="card-body"><a class="tag-link mr-2 mb-2" href="#">#action camera</a><a class="tag-link mr-2 mb-2" href="#">#360° camera</a><a class="tag-link mr-2 mb-2" href="#">#samsung</a><a class="tag-link mr-2 mb-2" href="#">#4K video</a><a class="tag-link mr-2 mb-2" href="#">#gear 360</a><a class="tag-link mr-2 mb-2" href="#">#VR</a><a class="tag-link mr-2 mb-2" href="#">#electronics</a></div>
-              </div>
-            </div>
-          </div>
-          <!-- Share product-->
-          <div class="py-4"><span class="d-inline-block align-middle font-size-sm mr-3 mb-2">Share product:</span><a class="social-btn sb-instagram mr-2 mb-2" href="#"><i class="flaticon-instagram"></i></a><a class="social-btn sb-facebook mr-2 mb-2" href="#"><i class="flaticon-facebook"></i></a><a class="social-btn sb-twitter mr-2 mb-2" href="#"><i class="flaticon-twitter"></i></a><a class="social-btn sb-pinterest mr-2 mb-2" href="#"><i class="flaticon-pinterest"></i></a></div>
-        </div>
-      </div>
-    </div>
-    <!-- Product info-->
-    <div class="bg-secondary pt-5 pb-4" id="product-details" data-offset-top="-5">
-      <div class="container pt-sm-3 pb-sm-3">
-        <div class="row">
-          <div class="col-md-6">
-            <h3 class="h5 mb-3">Details</h3>
-            <p class="mb-4 pb-2">The Gear 360 has evolved to let you record in 4K or broadcast live, and then make it your own with the Samsung Gear 360 app. And with the Gear 360's smaller size and redesigned, easy-to-grip body, memories aren't the only thing you'll want to hold onto.</p>
-            <h3 class="h5 mb-3">Features</h3>
-            <ul class="ml-n3 mb-4 pb-2">
-              <li>Tell the whole story with the 360° camera that captures every angle in 4K brilliance and share instantly</li>
-              <li>Capture life as it happens in stunning 4K video and 15MP photos thanks to dual 180° lenses</li>
-              <li>Gear 360 is easy to hold and take with you, and has an IP53 water-resistant rating</li>
-              <li>Preview and edit your videos with an easy-to-use app, or share them straight to social or Samsung VR with your Galaxy S8 or S8+</li>
-              <li>Upload your photos or videos to Samsung VR to experience your moments in virtual reality</li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <h3 class="h5 mb-3">Specifications</h3>
-            <ul class="list-unstyled mb-4 pb-2">
-              <li class="d-block pb-2 border-bottom"><strong>Color:</strong> White</li>
-              <li class="d-block py-2 border-bottom"><strong>Dimensions:</strong> 100.6 x 46.3 x 45.1mm</li>
-              <li class="d-block py-2 border-bottom"><strong>Weight:</strong> 130 g</li>
-              <li class="d-block py-2 border-bottom"><strong>Camera:</strong> CMOS 8.4MP x2 / F2.2 lens (Default output pixel count - 15MP)</li>
-              <li class="d-block py-2 border-bottom"><strong>Video:</strong> 360˚ Dual Lens: up to 4096 x 2048 (24fps)</li>
-              <li class="d-block py-2 border-bottom"><strong>Battery:</strong> 1,160mAh</li>
-              <li class="d-block py-2 border-bottom"><strong>External Memory:</strong> MicroSD card (up to 256GB)</li>
-              <li class="d-block py-2 border-bottom"><strong>OS Convergence:</strong> Android, iOS - Mobile App / Windows, Mac - PC Software</li>
-              <li class="d-block py-2 border-bottom"><strong>Connectivity:</strong> Wi-Fi 802.11 (2.4/5GHz), Bluetooth v4.1, USB 2.0 (Type-C)</li>
-              <li class="d-block py-2 border-bottom"><strong>Sensor:</strong> Gyro, Accelerometer</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Reviews-->
-    <div class="container pt-5 pb-1 pb-md-4" id="reviews" data-offset-top="-5">
-      <div class="row pt-sm-3">
-        <div class="col-md-4 pb-5">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex justify-content-center align-items-end pt-2 pb-4">
-                <div class="display-4 mr-2">4.3</div>
-                <div>
-                  <div class="text-muted font-size-xs mb-n1">based on 295 reviews</div>
-                  <div class="star-rating"><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star" data-feather="star"></i>
-                  </div>
+                <!-- Tags      -->
+                <div class="widget mb-4 pb-1">
+                  <h3 class="widget-title">Popular tags</h3><a class="tag-link mr-2 mb-2" href="#">#accessories</a><a class="tag-link mr-2 mb-2" href="#">#smart devices</a><a class="tag-link mr-2 mb-2" href="#">#apparel</a><a class="tag-link mr-2 mb-2" href="#">#handbags</a><a class="tag-link mb-2" href="#">#IoT</a>
                 </div>
-              </div>
-              <div class="font-size-sm font-weight-semibold mb-2">5 stars - <span class="text-muted">177</span></div>
-              <div class="progress mb-3" style="height: 2px;">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div class="font-size-sm font-weight-semibold mb-2">4 stars - <span class="text-muted">88</span></div>
-              <div class="progress mb-3" style="height: 2px;">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div class="font-size-sm font-weight-semibold mb-2">3 stars - <span class="text-muted">20</span></div>
-              <div class="progress mb-3" style="height: 2px;">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 8%" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div class="font-size-sm font-weight-semibold mb-2">2 stars - <span class="text-muted">9</span></div>
-              <div class="progress mb-3" style="height: 2px;">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 3%" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div class="font-size-sm font-weight-semibold mb-2">1 star - <span class="text-muted">0</span></div>
-              <div class="progress mb-3" style="height: 2px;">
-                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div class="py-2"><a class="btn btn-warning btn-block" href="#leaveReview" data-toggle="modal">Leave a review</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-8 pb-5">
-          <h2 class="h3">Latest reviews</h2>
-          <!-- Review-->
-          <div class="blockquote comment border-top-0 border-left-0 border-right-0 px-0 pt-0">
-            <div class="d-sm-flex align-items-center pb-2">
-              <h6 class="mb-0">Awesome quality for the price</h6><span class="d-none d-sm-inline mx-2 text-muted opacity-50">|</span>
-              <div class="star-rating"><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i>
+                <!-- Promo banner--><a class="d-block position-relative text-decoration-0 bg-size-cover bg-position-center py-3" href="#" style="background-image: url(img/blog/promo-bg.jpg);"><span class="bg-overlay"></span>
+                  <div class="bg-overlay-content text-center py-5 px-3">
+                    <h5 class="text-white"><span class='d-block font-weight-normal'>New 2019</span>Sunglasses Collection</h5>
+                    <div class="btn btn-primary btn-pill btn-sm">Shop now</div>
+                  </div></a>
               </div>
             </div>
-            <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est...</p>
-            <div class="media align-items-center mb-2"><img class="mr-3" src="img/testimonials/01.jpg" width="50" alt="Author ava">
-              <div class="media-body">
-                <h6 class="font-size-sm mb-0">Jonathan Smith</h6><span class="d-block font-size-sm text-muted">May 30, 2019</span>
-              </div>
-            </div>
-          </div>
-          <!-- Review-->
-          <div class="blockquote comment border-top-0 border-left-0 border-right-0 px-0 pt-0">
-            <div class="d-sm-flex align-items-center pb-2">
-              <h6 class="mb-0">My husband love his new toy</h6><span class="d-none d-sm-inline mx-2 text-muted opacity-50">|</span>
-              <div class="star-rating"><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star" data-feather="star"></i>
-              </div>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse...</p>
-            <div class="media align-items-center mb-2"><img class="mr-3" src="img/testimonials/03.jpg" width="50" alt="Author ava">
-              <div class="media-body">
-                <h6 class="font-size-sm mb-0">Barbara Palson</h6><span class="d-block font-size-sm text-muted">May 17, 2019</span>
-              </div>
-            </div>
-          </div>
-          <!-- Review-->
-          <div class="blockquote comment border-top-0 border-left-0 border-right-0 px-0 pt-0">
-            <div class="d-sm-flex align-items-center pb-2">
-              <h6 class="mb-0">Great quality and fast delivery</h6><span class="d-none d-sm-inline mx-2 text-muted opacity-50">|</span>
-              <div class="star-rating"><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i>
-              </div>
-            </div>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur...</p>
-            <div class="media align-items-center mb-2"><img class="mr-3" src="img/testimonials/02.jpg" width="50" alt="Author ava">
-              <div class="media-body">
-                <h6 class="font-size-sm mb-0">Deniel Adams</h6><span class="d-block font-size-sm text-muted">April 13, 2019</span>
-              </div>
-            </div>
-          </div>
-          <div class="pt-2">
-            <!-- Pagination-->
-            <nav aria-label="Page navigation">
-              <ul class="pagination justify-content-center justify-content-sm-start mb-0">
-                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                <li class="page-item d-sm-none"><span class="page-link page-link-static">2 / 5</span></li>
-                <li class="page-item d-none d-sm-block"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">2<span class="sr-only">(current)</span></span></li>
-                <li class="page-item d-none d-sm-block"><a class="page-link" href="#">3</a></li>
-                <li class="page-item d-none d-sm-block"><a class="page-link" href="#">4</a></li>
-                <li class="page-item d-none d-sm-block">...</li>
-                <li class="page-item d-none d-sm-block"><a class="page-link" href="#">10</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Related products-->
-    <div class="container pb-5">
-      <h2 class="h3 pb-4">You may also like</h2>
-      <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;margin&quot;: 15, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;360&quot;:{&quot;items&quot;:2}, &quot;630&quot;:{&quot;items&quot;:3}, &quot;850&quot;:{&quot;items&quot;:4}, &quot;1200&quot;:{&quot;items&quot;:5}} }">
-        <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/electronics/01.jpg" alt="Product"></div>
-          <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Headphones</a>
-              <div class="star-rating"><span class="sr-label mr-1">4.7</span><i class="sr-star active" data-feather="star"></i></div>
-            </div>
-            <h3 class="product-card-title"><a href="#">Sony WH-CH700N Wireless Noise Canceling Headphones, Black</a></h3><span class="text-primary">$198.00</span>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/electronics/02.jpg" alt="Product"></div>
-          <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Computers</a>
-              <div class="star-rating"><span class="sr-label mr-1">3.9</span><i class="sr-star active" data-feather="star"></i></div>
-            </div>
-            <h3 class="product-card-title"><a href="#">Apple AirPort Extreme Base Station ME918LL (Refurbished)</a></h3><span class="text-primary">$129.00</span>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="badge badge-danger rounded-0">Sale -40%</span><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/electronics/04.jpg" alt="Product"></div>
-          <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Smart home</a>
-              <div class="star-rating"><span class="sr-label mr-1">4.2</span><i class="sr-star active" data-feather="star"></i></div>
-            </div>
-            <h3 class="product-card-title"><a href="#">All-new Echo Dot (3rd Gen) - Smart speaker with Alexa - Charcoal</a></h3><span class="text-primary">
-              <del class="text-muted mr-1">$49.99</del>$29.99</span>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/electronics/05.jpg" alt="Product"></div>
-          <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Wearable electronics</a>
-              <div class="star-rating"><span class="sr-label mr-1">3.6</span><i class="sr-star active" data-feather="star"></i></div>
-            </div>
-            <h3 class="product-card-title"><a href="#">Fitbit Ionic GPS Smart Watch, Charcoal/Smoke Gray, One Size</a></h3><span class="text-primary">$317.40</span>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/electronics/06.jpg" alt="Product"></div>
-          <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Smartphones</a>
-              <div class="star-rating"><span class="sr-label mr-1">4.5</span><i class="sr-star active" data-feather="star"></i></div>
-            </div>
-            <h3 class="product-card-title"><a href="#">Apple - iPhone XS 128GB - Space Gray</a></h3><span class="text-primary">$1,049.99</span>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><span class="product-wishlist-btn" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i data-feather="heart"></i></span><img src="img/shop/electronics/08.jpg" alt="Product"></div>
-          <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Computers</a></div>
-            <h3 class="product-card-title"><a href="#">Acer R11 11.6" Convertible 2-in-1 HD Touchscreen (2019)</a></h3><span class="text-primary">$339.00</span>
           </div>
         </div>
       </div>
