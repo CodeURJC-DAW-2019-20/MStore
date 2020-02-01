@@ -239,30 +239,175 @@
             </li>
           </ul>
           <!-- Rounded nav pills -->
+
         </div>
       </div>
     </div>
+    <!-- Page Title-->
+    <div class="page-title-wrapper" aria-label="Page title">
+      <div class="container">
+        <h2 class="page-title">Sell your product</h2><span class="d-block mt-2 text-muted"></span>
+      </div>
+    </div>
     <!-- Page Content-->
-    <div class="container pb-5 mb-sm-4">
-      <div class="row justify-content-center pt-5">
-        <div class="col-lg-8 col-md-10 mt-sm-3">
-          <h2 class="h3 mb-4">Forgot your password?</h2>
-          <p>Change your password in three easy steps. This helps to keep your new password secure.</p>
-          <ol class="list-unstyled">
-            <li><span class="font-weight-semibold text-primary mr-2">1.</span>Fill in your email address below.</li>
-            <li><span class="font-weight-semibold text-primary mr-2">2.</span>We'll email you a temporary code.</li>
-            <li><span class="font-weight-semibold text-primary mr-2">3.</span>Use the code to change your password on our secure website.</li>
-          </ol>
-          <div class="card py-2 mt-4">
-            <form class="card-body needs-validation" novalidate>
-              <div class="form-group">
-                <label for="recover-email">Enter your email address</label>
-                <input class="form-control" type="email" id="recover-email" required>
-                <div class="invalid-feedback">Please provide valid email address.</div>
-              </div>
-              <button class="btn btn-primary" type="submit">Get new password</button>
-            </form>
+    <div class="container pb-5">
+      <div class="row pt-1">
+        <!-- Sidebar-->
+        <div class="col-xl-3 col-lg-4">
+          <!-- Customer picture--><img src="img/account/customer-lg.jpg" alt="Daniel Adams">
+		  <div class="d-flex flex-wrap justify-content-between pb-2">
+            <div class="pt-3 mr-3">
+              <h3 class="mb-0">Daniel Adams</h3>
+			  <span class="font-size-sm text-warning">d.adams@example.com <i data-feather="mail"></i></span>
+			  <p class="font-size-sm text-info">+7 (805) 348 95 72 <i data-feather="phone"></i></p>
+            </div>
           </div>
+		  <div class="pb-5"><a class="btn btn-primary btn-block" href="account-profile.html"><i data-feather="settings"></i> Change Account Info</a></div>
+          <!-- Promo banner--><a class="d-block text-decoration-0 mt-4 mx-auto pt-2" href="#" style="max-width: 277px;">
+            <div class="bg-white">
+              <div class="px-5 text-center">
+                <h4 class="font-size-sm font-weight-normal pt-1 mb-2">2019 Winter / Spring</h4>
+                <h4 class="h5 pb-2">Headphones Collection</h4>
+                <div class="btn btn-warning btn-sm">Shop now</div>
+              </div><img src="img/Hardware/Headphones/MQUF2_AV4.jpg" alt="Promo banner">
+            </div></a>
+        </div>
+        <!-- Main content-->
+        <div class="col-lg-8 mx-5">
+          <!-- Pickup address-->
+		  <h5 class="mb-4">1. Pickup address</h5>
+          <form class="needs-validation">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="account-company">Company</label>
+						<input class="form-control" type="text" placeholder="Bets Company Ltd." id="account-company" required>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="account-country">Country</label>
+						<select class="form-control custom-select" id="account-country" required>
+							<option>Choose country</option>
+							<option>Australia</option>
+							<option>Canada</option>
+							<option>France</option>
+							<option>Germany</option>
+							<option>Spain</option>
+							<option>Switzerland</option>
+							<option>United States</option>
+						</select>
+					</div>
+				</div>
+            </div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="account-city">City</label>
+						<select class="form-control custom-select" id="account-city" required>
+							<option>Choose city</option>
+							<option>Amsterdam</option>
+							<option>Berlin</option>
+							<option>Geneve</option>
+							<option>Madrid</option>
+							<option>New York</option>
+							<option>Paris</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="account-zip">ZIP Code</label>
+						<input class="form-control" type="text" placeholder="1005" id="account-zip" required>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="account-address1">Address 1</label>
+						<input class="form-control" type="text" placeholder="396 Lillian Blvd, Holbrook" id="account-address1" required>
+						<small class="form-text text-muted">Street address, P.O. box, c/o</small>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="account-address2">Address 2</label>
+						<input class="form-control" type="text" id="account-address2" placeholder="4º A">
+						<small class="form-text text-muted">Apartment, suite, unit, building, floor, etc.</small>
+					</div>
+				</div>
+			</div>
+			<hr class="mt-2 pb-2">
+			<!-- Shipping address-->
+			<h5 class="mb-4 pt-sm-3">2. Product information</h5>
+			<div class="form-group">
+				<label for="select-input">Select the product to sell</label>
+				<select class="form-control custom-select" id="select-input" required>
+					<option>Choose a component</option>
+					<option>Motherboards</option>
+					<option>Storage Devices</option>
+					<option>CPU / Processors</option>
+					<option>Video Cards & Video Devices</option>
+					<option>Speakers</option>
+					<option>Headphones</option>
+					<option>Computer Mice</option>
+					<option>Monitors</option>
+					<option>Ink Printer</option>
+					<option>Laser Printer</option>
+					<option>3D Printer</option>
+					<option>Printer Supplies</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="select-input">Select the brand</label>
+				<select class="form-control custom-select" id="select-input" required>
+					<option>Choose a brand</option>
+					<option>Intel</option>
+					<option>AMD</option>
+					<option>NVIDIA</option>
+					<option>ASUS</option>
+					<option>Corsair</option>
+					<option>Seagate</option>
+					<option>Gigabyte</option>
+					<option>Logitech</option>
+					<option>Pioneer</option>
+					<option>WD</option>
+					<option>HP</option>
+					<option>Other</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="tags-input">Tags</label><br>
+				<input type="text" id="tags-input" data-role="tagsinput" />
+			</div>
+			<div class="form-group">
+				<label for="file-input">Upload you photos</label>
+				<div class="file-upload-wrapper">
+					<input type="file" lang="en" id="input-file-now" class="file-upload" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="number-input">Price to sell ($)</label>
+				<div class="input-group">
+					<input class="form-control" placeholder="Amount" type="number" min="0" id="number-input" required>
+					<div class="input-group-append">
+						<span class="input-group-text">.00$</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="textarea-input">Details</label>
+				<textarea class="form-control" id="textarea-input" placeholder="Tell us about the product" rows="7" required></textarea>
+			</div>
+			<div class="form-group">
+				<label for="textarea-input">Features (Optional)</label>
+				<textarea class="form-control" id="textarea-input" placeholder="e.g. Play a great variety of newly released games at 1080p 60fps" rows="7"></textarea>
+			</div>
+			<div class="text-sm-right">
+				<button class="btn btn-primary" type="submit">Sell product</button>
+			</div>
+          </form>
         </div>
       </div>
     </div>
