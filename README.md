@@ -1,12 +1,14 @@
-# practicaWEB
+## Web Application Development Practice 📄
 
 # MSTORE ⌨️
 
 _MSTORE is a website created with the objective that customers can sell or buy technological devices._
 
-## Comenzando 🚀
+## Starting 🚀
 
 _We are the group number 10 of the subject **Web Application Development.** The team consists of 5 members:_
+
+### Members ✒️
 
 |   NAME        | EMAIL         | Github User  |
 | ------------- |:-------------:| -----:          |
@@ -15,3 +17,6 @@ _We are the group number 10 of the subject **Web Application Development.** The 
 | Jose Luis Sierra Benito | jl.sierra.2017@alumnos.urjc.es      |    Jos3lu |
 | Noelia Martínez Sánchez | n.martinezs.2017@alumnos.urjc.es      |    nmartinezs2017 |
 | Diego Montoto Ramos | d.montoto.2017@alumnos.urjc.es      |    Dimonra13 |
+
+## Video Presentation 📷
+[![](http://img.youtube.com/vi/DXHCQfdYcrY/0.jpg)](http://www.youtube.com/watch?v=DXHCQfdYcrY "Presentation")
