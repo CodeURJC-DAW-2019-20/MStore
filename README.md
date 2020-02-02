@@ -192,3 +192,8 @@ When the session is closed, this window appears so that the web page visitor can
 <p align="justify">
   The <b>Checkout</b> section will consist of five stages: <b>Shopping cart, Your details, Shipping, Payment, Final review</b>. In each stage you have to fill in some mandatory <b>fields or select different options</b>. At the top it will indicate the stages that have been completed and the stages that are still to be completed. If necessary, you can go from one stage to another to modify inserted data. The total amount of money to pay and the opportunity to enter a promotion code will appear on the right side. Once the purchase is successful, a new window will appear with an informative message with the order ID and also to be able to see the status and tracking of the order.
   </p>
+  
+  ## Navigation Diagram 📈🚢
+ ![Imagen 22][22]
+ 
+ [22]: https://fotos.subefotos.com/5c66063fd1d2d409c8e2576a390775e0o.jpg
