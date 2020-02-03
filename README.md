@@ -21,6 +21,34 @@ _We are the group number 10 of the subject **Web Application Development.** The 
 ## Video Presentation 📹
 [![](http://img.youtube.com/vi/DXHCQfdYcrY/0.jpg)](http://www.youtube.com/watch?v=DXHCQfdYcrY "Presentation")
 
+## Entities 💡 
+- Products
+- Clients
+- Business
+
+## Type of Users 😃
+- Visitors
+- Registered Users
+- Administrators
+
+## User permissions 🔒
+_Registered users will have more permissions and functionalities than visiting users. Only registered users can access their profile information and make purchases. Administrators can configure web page options._
+
+## Images 🎨
+
+- User profile picture
+- Products image
+- Brands image
+
+## Graphs 📊
+_There are bar charts in the product sales ratings of the selling users._
+
+## Complementary technology 💻
+_Sending mail to users._
+
+## Advanced algorithm 📌
+_A system of personalized offers and recommendations is implemented based on the products that the user has purchased._
+
 ## Screenshots 📷
 
 ### 1. HOME
@@ -62,7 +90,7 @@ This window shows the available items. Each product is represented with an image
 
  #### Description
  <p align="justify">
-  When the item is selected in the <b>Shop</b> section, the <b>images, details, features, specifications are shown in detail </b>. In addition, the <b>valuation of the product</b> is shown next to the name of the seller. You can select the quantity you want to buy and then add them to the <b>shopping cart</b>. The options for shipping and a brief description appear next to the <b>price</b>. At the bottom, <b>recommendations of articles</b> similar to the selected one will be displayed.
+  When the item is selected in the <b>Shop</b> section, the <b>images, details, features, specifications are shown in detail </b>. In addition, the <b>rating of the product</b> is shown next to the name of the seller. You can select the quantity you want to buy and then add them to the <b>shopping cart</b>. At the bottom, <b>recommendations of articles</b> similar to the selected one will be displayed.
   </p>
   
   ### 5. SELL PRODUCT
