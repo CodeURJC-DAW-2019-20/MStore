@@ -24,7 +24,7 @@ _We are the group number 10 of the subject **Web Application Development.** The 
 ## Entities 💡 
 - Products
 - Clients
-- Business
+- Brand
 
 ## Type of Users 😃
 - Visitors
