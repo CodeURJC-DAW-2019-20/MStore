@@ -22,7 +22,7 @@ _We are the group number 10 of the subject **Web Application Development.** The 
 [![](http://img.youtube.com/vi/DXHCQfdYcrY/0.jpg)](http://www.youtube.com/watch?v=DXHCQfdYcrY "Presentation")
 
 ## Entities 💡 
-- Products
+- Posts
 - Clients
 - Brand
 
