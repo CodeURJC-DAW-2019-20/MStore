@@ -17,11 +17,13 @@ public class Brand {
 	Long id;
 
 	private String name;
-	
+
 	@OneToMany
 	private List<Post> posts;
-	
-	protected Brand() {posts= new LinkedList();}
+
+	protected Brand() {
+		posts = new LinkedList();
+	}
 
 	public Brand(String name) {
 		this();

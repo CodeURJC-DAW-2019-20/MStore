@@ -29,12 +29,11 @@ public class User {
 	private String phone;
 	private String passwordHash;
 
-	
 	private String userAddress;
 
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Post> posts;
 
@@ -50,7 +49,7 @@ public class User {
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
-		//this.passwordHash = new BCryptPasswordEncoder().encode(password);
+		// this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 		this.userAddress = userAddress;
 	}
@@ -110,7 +109,6 @@ public class User {
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}
-	
 
 	public Long getId() {
 		return id;

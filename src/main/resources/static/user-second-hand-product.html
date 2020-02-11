@@ -278,7 +278,7 @@
         <div class="col-lg-8 mx-5">
           <!-- Pickup address-->
 		  <h5 class="mb-4">1. Pickup address</h5>
-          <form class="needs-validation">
+          <form class="needs-validation" action="/sell" method="post"  enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
@@ -386,7 +386,7 @@
 			<div class="form-group">
 				<label for="file-input">Upload you photos</label>
 				<div class="file-upload-wrapper">
-					<input type="file" lang="en" id="input-file-now" class="file-upload" />
+					<input type="file" name="imagenFile" lang="en" id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
 				</div>
 			</div>
 			<div class="form-group">
