@@ -22,8 +22,9 @@ public class Post {
 	private Long id;
 	
 	private int nImg = 0;
-
-	private int component; // Motherboard, Storage device,..
+	private String name;
+	private String component;
+	private int componentTag; // Motherboard, Storage device,..
 	@ElementCollection
 	private List<String> tags;
 	private int price;
@@ -42,9 +43,11 @@ public class Post {
 		tags=new LinkedList<String>();
 	}
 
-	public Post(int component, int nImg, int price, String details, String features, Brand brand,
+	public Post(String name, int componentTag, int nImg, int price, String details, String features, Brand brand,
 			String postAddress , String... tags) {
-		this.component = component;
+		this.name=name;
+		this.component=category(componentTag);
+		this.componentTag = componentTag;
 		this.setnImg(nImg);
 		this.tags = new ArrayList<>(Arrays.asList(tags));
 		this.price = price;
@@ -63,11 +66,11 @@ public class Post {
 	}
 
 	public int getComponent() {
-		return component;
+		return componentTag;
 	}
 
-	public void setComponent(int component) {
-		this.component = component;
+	public void setComponent(int componentTag) {
+		this.componentTag = componentTag;
 	}
 
 	public List<String> getTags() {
@@ -139,6 +142,25 @@ public class Post {
 
 	public void setnImg(int nImg) {
 		this.nImg = nImg;
+	}
+	
+	private String category(int i) {
+		
+		switch(i) {
+			case 0: return "Motherboards";
+			case 1: return "Storage Devices";
+			case 2: return "CPU |Processors";
+			case 3: return "Video Cards & Video Devices";
+			case 4: return "Speakers";
+			case 5: return "Headphones";
+			case 6: return "Computer Mice";
+			case 7: return "Monitors";
+			case 8: return "Ink Printers";
+			case 9: return "Laser Priter";
+			case 10: return "3D Printer";
+			case 11: return "Printer Supplies";
+			default: return "No category";
+		}
 	}
 
 }
