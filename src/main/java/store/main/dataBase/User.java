@@ -14,27 +14,39 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 public class User {
+	
+	public interface BasicInfo{};
+	public interface PostsInfo{};
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(BasicInfo.class)
 	private Long id;
 
+	@JsonView(BasicInfo.class)
 	private String firstName;
+	@JsonView(BasicInfo.class)
 	private String lastName;
+	@JsonView(BasicInfo.class)
 	private String email;
+	@JsonView(BasicInfo.class)
 	private String phone;
+	@JsonView(BasicInfo.class)
 	private String passwordHash;
-
+	@JsonView(BasicInfo.class)
 	private String userAddress;
-
+	@JsonView(BasicInfo.class)
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 
 	@OneToMany(cascade = CascadeType.ALL)
+	@JsonView(PostsInfo.class)
 	private List<Post> posts;
 
 	public User() {
@@ -49,7 +61,7 @@ public class User {
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
-		// this.passwordHash = new BCryptPasswordEncoder().encode(password);
+		//this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 		this.userAddress = userAddress;
 	}

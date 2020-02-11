@@ -1,24 +1,10 @@
 package store.main.controller;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.imageio.ImageIO;
-
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.apache.tomcat.util.http.fileupload.util.FileItemHeadersImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 import store.main.dataBase.*;
-import store.main.service.ImageService;
 
 @Controller
 public class DataInsert implements CommandLineRunner {
@@ -28,47 +14,26 @@ public class DataInsert implements CommandLineRunner {
 
 	@Autowired
 	PostRepository postRepository;
-
+	
 	@Autowired
 	UserRepository userRepository;
 
-	@Autowired
-	ImageService imageService;
-
 	@Override
 	public void run(String... args) throws Exception {
-
-		User user = new User("Diego", "Montoto", "dm@gmail.com", "686665758", "pass", "Plaza de los limones 27");
+		
+		User user = new User("Diego","Montoto","dm@gmail.com","686665758","pass","Plaza de los limones 12");
 		Brand b1 = new Brand("HP");
 		Brand b2 = new Brand("MSI");
 		brandRepository.save(b1);
 		brandRepository.save(b2);
-
-		Post p1 = new Post("HP Printer", 1, 1, 10, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
-
-		Post p2 = new Post("HP Scanner", 1, 1, 720, "barato", "...", b1, "company UK London 111 street1 street2",
-				"tags1", "tag2");
-		Post p3 = new Post("PC MSI", 1, 1, 120, "caro", "...", b1, "company Germany Berlin 111 street1 street2",
-				"tags1", "tag2");
-		Post p4 = new Post("MSI Printer", 1, 1, 1290, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
-		Post p5 = new Post("MSI Printer", 1, 1, 820, "vende rapido", "...", b1,
-				"company Spain Madrid 111 street1 street2", "tags1", "tag2");
-		Post p6 = new Post("MSI GTX", 1, 1, 120, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
-		Post p7 = new Post("HP PrinterRXW", 1, 1, 520, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
-		Post p8 = new Post("HP Printer", 1, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
-		p1.setUser(user);
-		p3.setUser(user);
-		p5.setUser(user);
-		p7.setUser(user);
-		p2.setUser(user);
-		p4.setUser(user);
-		p6.setUser(user);
-		p8.setUser(user);
+		Post p1 = new Post("HP Printer",1,1,10,"barato","...",b1,"company Spain Madrid 111 street1 street2","tags1","tag2");
+		Post p2 = new Post("HP Scanner",1,1,720,"barato","...",b1,"company UK London 111 street1 street2","tags1","tag2");
+		Post p3 = new Post("PC MSI",1,1,120,"caro","...",b1,"company Germany Berlin 111 street1 street2","tags1","tag2");
+		Post p4 = new Post("MSI Printer",1,1,1290,"barato","...",b1,"company Spain Madrid 111 street1 street2","tags1","tag2");
+		Post p5 = new Post("MSI Printer",1,1,820,"vende rapido","...",b1,"company Spain Madrid 111 street1 street2","tags1","tag2");
+		Post p6 = new Post("MSI GTX",1,1,120,"barato","...",b1,"company Spain Madrid 111 street1 street2","tags1","tag2");
+		Post p7 = new Post("HP PrinterRXW",1,1,520,"barato","...",b1,"company Spain Madrid 111 street1 street2","tags1","tag2");
+		Post p8 = new Post("HP Printer",1,1,160,"barato","...",b1,"company Spain Madrid 111 street1 street2","tags1","tag2");
 		user.getPosts().add(p1);
 		user.getPosts().add(p2);
 		user.getPosts().add(p3);
@@ -77,22 +42,16 @@ public class DataInsert implements CommandLineRunner {
 		user.getPosts().add(p6);
 		user.getPosts().add(p7);
 		user.getPosts().add(p8);
+		p1.setUser(user);p3.setUser(user);p5.setUser(user);p7.setUser(user);
+		p2.setUser(user);p4.setUser(user);p6.setUser(user);p8.setUser(user);
 		userRepository.save(user);
-		p1.setBrand(b1);
-		p2.setBrand(b1);
-		p3.setBrand(b2);
-		p4.setBrand(b2);
-		p5.setBrand(b2);
-		p6.setBrand(b2);
-		p7.setBrand(b1);
-		p8.setBrand(b1);
 		b1.getPosts().add(p1);
 		b1.getPosts().add(p2);
 		b1.getPosts().add(p3);
-
+		p1.setBrand(b1);p2.setBrand(b1);p3.setBrand(b2);p4.setBrand(b2);p5.setBrand(b2);p6.setBrand(b2);p7.setBrand(b1);p8.setBrand(b1);
 		brandRepository.save(b1);
 		brandRepository.save(b2);
-
+		
 		postRepository.save(p1);
 		postRepository.save(p2);
 		postRepository.save(p3);
@@ -100,8 +59,8 @@ public class DataInsert implements CommandLineRunner {
 		postRepository.save(p5);
 		postRepository.save(p6);
 		postRepository.save(p7);
-		postRepository.save(p8);
-
+		postRepository.save(p8);	
+		
 	}
 
 }

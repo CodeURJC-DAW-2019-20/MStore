@@ -11,17 +11,17 @@
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
+    <link rel="mask-icon" color="#111" href="/safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#111">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" href="css/vendor.min.css">
+    <link rel="stylesheet" media="screen" href="/css/vendor.min.css">
     <!-- Main Theme Styles + Bootstrap-->
-    <link rel="stylesheet" media="screen" id="main-styles" href="css/theme.min.css">
+    <link rel="stylesheet" media="screen" id="main-styles" href="/css/theme.min.css">
     <!-- Customizer styles and scripts-->
   </head>
   <!-- Body-->
@@ -256,87 +256,27 @@
       <div class="row pt-1">
         <!-- Sidebar-->
         <div class="col-xl-3 col-lg-4">
-          <!-- Customer picture--><img src="img/account/customer-lg.jpg" alt="Daniel Adams">
+          <!-- Customer picture-->
+          <img src="img/account/customer-lg.jpg" alt="Daniel Adams">
 		  <div class="d-flex flex-wrap justify-content-between pb-2">
             <div class="pt-3 mr-3">
-              <h3 class="mb-0">Daniel Adams</h3>
-			  <span class="font-size-sm text-warning">d.adams@example.com <i data-feather="mail"></i></span>
-			  <p class="font-size-sm text-info">+7 (805) 348 95 72 <i data-feather="phone"></i></p>
+              <h3 class="mb-0">{{user.firstName}}</h3>
+			  <span class="font-size-sm text-warning">{{user.email}} <i data-feather="mail"></i></span>
+			  <p class="font-size-sm text-info">{{user.phone}}<i data-feather="phone"></i></p>
             </div>
           </div>
 		  <div class="pb-5"><a class="btn btn-primary btn-block" href="account-profile.html"><i data-feather="settings"></i> Change Account Info</a></div>
-          <!-- Promo banner--><a class="d-block text-decoration-0 mt-4 mx-auto pt-2" href="#" style="max-width: 277px;">
-            <div class="bg-white">
-              <div class="px-5 text-center">
-                <h4 class="font-size-sm font-weight-normal pt-1 mb-2">2019 Winter / Spring</h4>
-                <h4 class="h5 pb-2">Headphones Collection</h4>
-                <div class="btn btn-warning btn-sm">Shop now</div>
-              </div><img src="img/Hardware/Headphones/MQUF2_AV4.jpg" alt="Promo banner">
-            </div></a>
         </div>
         <!-- Main content-->
         <div class="col-lg-8 mx-5">
           <!-- Pickup address-->
 		  <h5 class="mb-4">1. Pickup address</h5>
-          <form class="needs-validation" action="/sell" method="post"  enctype="multipart/form-data">
+          <form class="needs-validation" action="/sell_product/added_product">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
-						<label for="account-company">Company</label>
-						<input class="form-control" type="text" placeholder="Bets Company Ltd." id="account-company" required>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-country">Country</label>
-						<select class="form-control custom-select" id="account-country" required>
-							<option>Choose country</option>
-							<option>Australia</option>
-							<option>Canada</option>
-							<option>France</option>
-							<option>Germany</option>
-							<option>Spain</option>
-							<option>Switzerland</option>
-							<option>United States</option>
-						</select>
-					</div>
-				</div>
-            </div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-city">City</label>
-						<select class="form-control custom-select" id="account-city" required>
-							<option>Choose city</option>
-							<option>Amsterdam</option>
-							<option>Berlin</option>
-							<option>Geneve</option>
-							<option>Madrid</option>
-							<option>New York</option>
-							<option>Paris</option>
-						</select>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-zip">ZIP Code</label>
-						<input class="form-control" type="text" placeholder="1005" id="account-zip" required>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-address1">Address 1</label>
-						<input class="form-control" type="text" placeholder="396 Lillian Blvd, Holbrook" id="account-address1" required>
-						<small class="form-text text-muted">Street address, P.O. box, c/o</small>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-address2">Address 2</label>
-						<input class="form-control" type="text" id="account-address2" placeholder="4º A">
-						<small class="form-text text-muted">Apartment, suite, unit, building, floor, etc.</small>
+						<label for="account-company">Address</label>
+						<input class="form-control" type="text" placeholder="{{user.userAddress}}" id="address" required>
 					</div>
 				</div>
 			</div>
@@ -386,7 +326,7 @@
 			<div class="form-group">
 				<label for="file-input">Upload you photos</label>
 				<div class="file-upload-wrapper">
-					<input type="file" name="imagenFile" lang="en" id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
+					<input type="file" lang="en" id="input-file-now" class="file-upload" />
 				</div>
 			</div>
 			<div class="form-group">

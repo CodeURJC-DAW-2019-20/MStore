@@ -6,24 +6,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import store.main.dataBase.Post.BasicInfo;
+
 import java.util.LinkedList;
 import java.util.List;
 
 @Entity
 public class Brand {
-
+	
+	public interface BasicInfo{};
+	public interface PostsInfo{};
+	
+	@JsonView(BasicInfo.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	Long id;
 
+	@JsonView(BasicInfo.class)
 	private String name;
-
+	
+	@JsonView(PostsInfo.class)
 	@OneToMany
 	private List<Post> posts;
-
-	protected Brand() {
-		posts = new LinkedList();
-	}
+	
+	protected Brand() {posts= new LinkedList();}
 
 	public Brand(String name) {
 		this();
