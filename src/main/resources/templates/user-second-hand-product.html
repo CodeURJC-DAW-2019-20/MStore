@@ -271,12 +271,12 @@
         <div class="col-lg-8 mx-5">
           <!-- Pickup address-->
 		  <h5 class="mb-4">1. Pickup address</h5>
-          <form class="needs-validation" action="/sell_product/added_product">
+          <form class="needs-validation" action="/sell_product/added_product" method="post" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="account-company">Address</label>
-						<input class="form-control" type="text" placeholder="{{user.userAddress}}" id="address" required>
+						<input class="form-control" type="text" name="postAddress" placeholder="{{user.userAddress}}" id="address" required>
 					</div>
 				</div>
 			</div>
@@ -285,12 +285,12 @@
 			<h5 class="mb-4 pt-sm-3">2. Product information</h5>
 			<div class="form-group">
 				<label for="select-input">Select the product to sell</label>
-				<select class="form-control custom-select" id="select-input" required>
+				<select class="form-control custom-select" name="component" id="select-input" required>
 					<option>Choose a component</option>
 					<option>Motherboards</option>
 					<option>Storage Devices</option>
 					<option>CPU / Processors</option>
-					<option>Video Cards & Video Devices</option>
+					<option>Video Cards &amp; Video Devices</option>
 					<option>Speakers</option>
 					<option>Headphones</option>
 					<option>Computer Mice</option>
@@ -303,7 +303,7 @@
 			</div>
 			<div class="form-group">
 				<label for="select-input">Select the brand</label>
-				<select class="form-control custom-select" id="select-input" required>
+				<select class="form-control custom-select" name="bname" id="select-input" required>
 					<option>Choose a brand</option>
 					<option>Intel</option>
 					<option>AMD</option>
@@ -321,30 +321,30 @@
 			</div>
 			<div class="form-group">
 				<label for="tags-input">Tags</label><br>
-				<input type="text" id="tags-input" data-role="tagsinput" />
+				<input type="text" name="tags" id="tags-input" data-role="tagsinput" />
 			</div>
 			<div class="form-group">
 				<label for="file-input">Upload you photos</label>
 				<div class="file-upload-wrapper">
-					<input type="file" lang="en" id="input-file-now" class="file-upload" />
+					<input type="file" name="imagenFile" lang="en" id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="number-input">Price to sell ($)</label>
 				<div class="input-group">
-					<input class="form-control" placeholder="Amount" type="number" min="0" id="number-input" required>
+					<input class="form-control" name="price" placeholder="Amount" type="number" min="0" id="number-input" required>
 					<div class="input-group-append">
-						<span class="input-group-text">.00$</span>
+						<span class="input-group-text">$</span>
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="textarea-input">Details</label>
-				<textarea class="form-control" id="textarea-input" placeholder="Tell us about the product" rows="7" required></textarea>
+				<textarea class="form-control" name="details" id="textarea-input" placeholder="Tell us about the product" rows="7" required></textarea>
 			</div>
 			<div class="form-group">
 				<label for="textarea-input">Features (Optional)</label>
-				<textarea class="form-control" id="textarea-input" placeholder="e.g. Play a great variety of newly released games at 1080p 60fps" rows="7"></textarea>
+				<textarea class="form-control" name="features" id="textarea-input" placeholder="e.g. Play a great variety of newly released games at 1080p 60fps" rows="7"></textarea>
 			</div>
 			<div class="text-sm-right">
 				<button class="btn btn-primary" type="submit">Sell product</button>
@@ -425,7 +425,7 @@
     </footer>
     <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="js/vendor.min.js"></script>
-    <script src="js/theme.min.js"></script>
+    <script src="/js/vendor.min.js"></script>
+    <script src="/js/theme.min.js"></script>
   </body>
 </html>
