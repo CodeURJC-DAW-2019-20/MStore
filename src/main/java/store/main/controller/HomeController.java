@@ -1,6 +1,10 @@
 package store.main.controller;
 
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,5 +34,28 @@ public class HomeController {
 		}
 		return "index";
 	}
+	
+
+    @GetMapping("/login")
+    public String login(Model model) {
+    	model.addAttribute("error", false);
+    	return "login";
+    }
+    
+    @GetMapping("/loginerror")
+    public String loginerror(Model model) {
+    	
+    	model.addAttribute("error", true);
+    	
+    	return "login";
+    }
+    
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+    	session.invalidate();
+    	
+    	return "index";
+    }
+    
 
 }

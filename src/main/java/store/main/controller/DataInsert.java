@@ -22,6 +22,7 @@ public class DataInsert implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		User user = new User("Diego", "Montoto", "dm@gmail.com", "686665758", "pass", "Plaza de los limones 12");
+		user.getRoles().add("ROLE_USER");
 		Brand b1 = new Brand("HP");
 		Brand b2 = new Brand("MSI");
 		brandRepository.save(b1);

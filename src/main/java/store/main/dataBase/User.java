@@ -13,19 +13,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 public class User {
-
-	public interface BasicInfo {
-	};
-
-	public interface PostsInfo {
-	};
+	
+	public interface BasicInfo{};
+	public interface PostsInfo{};
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,7 +39,7 @@ public class User {
 	@JsonView(BasicInfo.class)
 	private String phone;
 	@JsonView(BasicInfo.class)
-	private String passwordHash;
+	private String password;
 	@JsonView(BasicInfo.class)
 	private String userAddress;
 	@JsonView(BasicInfo.class)
@@ -57,14 +55,14 @@ public class User {
 		posts = new LinkedList<Post>();
 	}
 
-	public User(String firstName, String lastName, String email, String phone, String password, String userAddress,
-			String... roles) {
+	public User(String firstName, String lastName, String email, String phone, String password,
+			String userAddress, String... roles) {
 		this();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
-		// this.passwordHash = new BCryptPasswordEncoder().encode(password);
+		this.password = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 		this.userAddress = userAddress;
 	}
@@ -101,12 +99,12 @@ public class User {
 		this.phone = phone;
 	}
 
-	public String getPasswordHash() {
-		return passwordHash;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPasswordHash(String passwordHash) {
-		this.passwordHash = passwordHash;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public List<String> getRoles() {
@@ -152,7 +150,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", phone=" + phone + ", passwordHash=" + passwordHash + ", userAddress=" + userAddress + ", roles="
+				+ ", phone=" + phone + ", password=" + password + ", userAddress=" + userAddress + ", roles=" 
 				+ roles + ", posts=" + posts + "]";
 	}
 

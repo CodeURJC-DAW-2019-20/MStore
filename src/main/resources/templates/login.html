@@ -258,17 +258,19 @@
               </div>
               <hr>
               <h3 class="h6 font-weight-semibold opacity-70 pt-4 pb-2">Or using form below</h3>
-              <form class="needs-validation" novalidate>
+              <form action="/login" method="post" class="needs-validation" novalidate>
                 <div class="input-group form-group">
                   <div class="input-group-prepend"><span class="input-group-text"><i data-feather="mail"></i></span></div>
-                  <input class="form-control" type="email" placeholder="Email" required>
-                  <div class="invalid-feedback">Please enter valid email address!</div>
+                  <input class="form-control" type="email" placeholder="Email" name="username" required>
                 </div>
                 <div class="input-group form-group">
                   <div class="input-group-prepend"><span class="input-group-text"><i data-feather="lock"></i></span></div>
-                  <input class="form-control" type="password" placeholder="Password" required>
-                  <div class="invalid-feedback">Please enter valid password!</div>
+                  <input class="form-control" type="password" placeholder="Password" name="password" required>
                 </div>
+                  {{#error}}
+                  	<div style="color:red">Please enter valid password or email!</div>
+                  	<br>
+                  {{/error}}
                 <div class="d-flex flex-wrap justify-content-between">
                   <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" type="checkbox" checked id="remember_me">
