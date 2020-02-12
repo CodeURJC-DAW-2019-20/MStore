@@ -23,46 +23,51 @@ import store.main.service.ImageService;
 
 @Controller
 public class SellProductController {
-	
-	private interface BrandPostsInfo extends Brand.BasicInfo, Brand.PostsInfo, Post.BasicInfo{};
-	private interface UserPostsInfo extends User.BasicInfo, User.PostsInfo, Post.BasicInfo{};
+
+	private interface BrandPostsInfo extends Brand.BasicInfo, Brand.PostsInfo, Post.BasicInfo {
+	};
+
+	private interface UserPostsInfo extends User.BasicInfo, User.PostsInfo, Post.BasicInfo {
+	};
+
 	@Autowired
 	UserRepository userRepository;
 
 	@Autowired
 	private PostRepository postRepository;
-	
+
 	@Autowired
 	private BrandRepository brandRepository;
 
 	@Autowired
 	private ImageService imgService;
-	
+
 	@JsonView(UserPostsInfo.class)
 	private User getUserInfo() {
 		return userRepository.findAll().get(0);
 	}
-	
+
 	@JsonView(BrandPostsInfo.class)
 	private Brand getBrand(String name) {
 		Brand b = brandRepository.findFirstByNameIgnoreCase(name);
-		if(b == null) {
+		if (b == null) {
 			b = new Brand(name);
 			brandRepository.save(b);
 		}
 		return b;
 	}
-	
+
 	@GetMapping("/sell_product/")
 	public String loadSellProduct(Model model) {
 		User u = getUserInfo();
-		model.addAttribute("user",u);
+		model.addAttribute("user", u);
 		return "user-second-hand-product";
 	}
-	
+
 	@PostMapping("/sell_product/added_product")
-	public String nuevoAnuncio(Model model, Post post, @RequestParam String bname, @RequestParam MultipartFile imagenFile) throws IOException {
-		
+	public String nuevoAnuncio(Model model, Post post, @RequestParam String bname,
+			@RequestParam MultipartFile imagenFile) throws IOException {
+
 		Brand b = getBrand(bname);
 		post.setBrand(b);
 		User u = getUserInfo();
@@ -72,8 +77,6 @@ public class SellProductController {
 		userRepository.save(u);
 		b.getPosts().add(post);
 		brandRepository.save(b);
-		
-
 
 		imgService.saveImage("posts", post.getId(), imagenFile);
 		model.addAttribute("extra", post.getId());
@@ -81,6 +84,5 @@ public class SellProductController {
 		return "index";
 
 	}
-
 
 }

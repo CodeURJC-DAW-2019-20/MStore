@@ -13,10 +13,13 @@ import java.util.List;
 
 @Entity
 public class Brand {
-	
-	public interface BasicInfo{};
-	public interface PostsInfo{};
-	
+
+	public interface BasicInfo {
+	};
+
+	public interface PostsInfo {
+	};
+
 	@JsonView(BasicInfo.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,13 +27,13 @@ public class Brand {
 
 	@JsonView(BasicInfo.class)
 	private String name;
-	
+
 	@JsonView(PostsInfo.class)
 	@OneToMany
 	private List<Post> posts;
-	
+
 	protected Brand() {
-		posts= new LinkedList<Post>();
+		posts = new LinkedList<Post>();
 	}
 
 	public Brand(String name) {

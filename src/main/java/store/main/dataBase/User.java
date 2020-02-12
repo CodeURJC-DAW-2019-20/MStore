@@ -20,9 +20,12 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class User {
-	
-	public interface BasicInfo{};
-	public interface PostsInfo{};
+
+	public interface BasicInfo {
+	};
+
+	public interface PostsInfo {
+	};
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -61,7 +64,7 @@ public class User {
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
-		//this.passwordHash = new BCryptPasswordEncoder().encode(password);
+		// this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 		this.userAddress = userAddress;
 	}
