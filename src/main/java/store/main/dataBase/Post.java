@@ -82,14 +82,6 @@ public class Post {
 		this.id = id;
 	}
 
-	public int getComponent() {
-		return componentTag;
-	}
-
-	public void setComponent(int componentTag) {
-		this.componentTag = componentTag;
-	}
-
 	public List<String> getTags() {
 		return tags;
 	}
@@ -179,5 +171,30 @@ public class Post {
 			default: return "No category";
 		}
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setComponent(String component) {
+		this.component = component;
+	}
+
+	public int getComponentTag() {
+		return componentTag;
+	}
+
+	public void setComponentTag(int componentTag) {
+		this.componentTag = componentTag;
+	}
+
+	public String getComponent() {
+		return component;
+	}
+
 
 }

@@ -29,7 +29,7 @@ public class DataInsert implements CommandLineRunner {
 		Post p1 = new Post("HP Printer",1,1,10,"barato","...",b1,"company Spain Madrid 111 street1 street2","tags1","tag2");
 		Post p2 = new Post("HP Scanner",1,1,720,"barato","...",b1,"company UK London 111 street1 street2","tags1","tag2");
 		Post p3 = new Post("PC MSI",1,1,120,"caro","...",b1,"company Germany Berlin 111 street1 street2","tags1","tag2");
-		Post p4 = new Post("MSI Printer",1,1,1290,"barato","...",b1,"company Spain Madrid 111 street1 street2","tags1","tag2");
+		Post p4 = new Post("MSI Printer",0,1,1290,"barato","...",b1,"company Spain Madrid 111 street1 street2","tags1","tag2");
 		Post p5 = new Post("MSI Printer",1,1,820,"vende rapido","...",b1,"company Spain Madrid 111 street1 street2","tags1","tag2");
 		Post p6 = new Post("MSI GTX",1,1,120,"barato","...",b1,"company Spain Madrid 111 street1 street2","tags1","tag2");
 		Post p7 = new Post("HP PrinterRXW",1,1,520,"barato","...",b1,"company Spain Madrid 111 street1 street2","tags1","tag2");

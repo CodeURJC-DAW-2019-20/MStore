@@ -8,8 +8,6 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import store.main.dataBase.Post.BasicInfo;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,7 +29,9 @@ public class Brand {
 	@OneToMany
 	private List<Post> posts;
 	
-	protected Brand() {posts= new LinkedList();}
+	protected Brand() {
+		posts= new LinkedList<Post>();
+	}
 
 	public Brand(String name) {
 		this();
