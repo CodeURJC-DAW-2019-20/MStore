@@ -262,10 +262,12 @@
                 <div class="input-group form-group">
                   <div class="input-group-prepend"><span class="input-group-text"><i data-feather="mail"></i></span></div>
                   <input class="form-control" type="email" placeholder="Email" name="username" required>
+                  <div class="invalid-feedback">Please enter valid email!</div>
                 </div>
                 <div class="input-group form-group">
                   <div class="input-group-prepend"><span class="input-group-text"><i data-feather="lock"></i></span></div>
                   <input class="form-control" type="password" placeholder="Password" name="password" required>
+                  <div class="invalid-feedback">Please enter valid password!</div>
                 </div>
                   {{#error}}
                   	<div style="color:red">Please enter valid password or email!</div>
