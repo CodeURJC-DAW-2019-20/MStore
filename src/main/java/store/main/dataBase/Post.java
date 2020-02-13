@@ -262,5 +262,13 @@ public class Post {
 	public String getComponent() {
 		return component;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Post) {
+			return ((Post) obj).getId()==this.getId();
+		}
+		return false;
+	}
 
 }
