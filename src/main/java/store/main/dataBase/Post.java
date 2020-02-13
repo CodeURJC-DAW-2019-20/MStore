@@ -164,7 +164,7 @@ public class Post {
 		case 1:
 			return "Storage Devices";
 		case 2:
-			return "CPU |Processors";
+			return "CPU / Processors";
 		case 3:
 			return "Video Cards & Video Devices";
 		case 4:
@@ -206,6 +206,57 @@ public class Post {
 
 	public void setComponentTag(int componentTag) {
 		this.componentTag = componentTag;
+	}
+
+	public void setComponentTag(String s) {
+		switch (s) {
+		case "Motherboards": {
+			this.componentTag = 0;
+			break;
+		}
+		case "Storage Devices": {
+			this.componentTag = 1;
+			break;
+		}
+		case "CPU / Processors": {
+			this.componentTag = 2;
+			break;
+		}
+		case "Video Cards & Video Devices": {
+			this.componentTag = 3;
+			break;
+		}
+		case "Speakers": {
+			this.componentTag = 4;
+			break;
+		}
+		case "Headphones": {
+			this.componentTag = 5;
+			break;
+		}
+		case "Computer Mice": {
+			this.componentTag = 6;
+			break;
+		}
+		case "Monitors": {
+			this.componentTag = 7;
+			break;
+		}
+		case "Ink Printers": {
+			this.componentTag = 8;
+			break;
+		}
+		case "Laser Priter": {
+			this.componentTag = 9;
+			break;
+		}
+		case "3D Printer": {
+			this.componentTag = 10;
+			break;
+		}
+		case "Printer Supplies":
+			this.componentTag = 11;
+		}
 	}
 
 	public String getComponent() {

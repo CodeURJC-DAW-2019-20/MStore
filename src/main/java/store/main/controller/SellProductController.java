@@ -1,7 +1,8 @@
 package store.main.controller;
 
 import java.io.IOException;
-import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import store.main.dataBase.Post;
 import store.main.dataBase.PostRepository;
 import store.main.dataBase.User;
 import store.main.dataBase.UserRepository;
+import store.main.service.HomeLoader;
 import store.main.service.ImageService;
 
 @Controller
@@ -31,7 +33,7 @@ public class SellProductController {
 	};
 
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 
 	@Autowired
 	private PostRepository postRepository;
@@ -41,10 +43,13 @@ public class SellProductController {
 
 	@Autowired
 	private ImageService imgService;
+	
+	@Autowired
+	private HomeLoader hLoader;
 
 	@JsonView(UserPostsInfo.class)
-	private User getUserInfo() {
-		return userRepository.findAll().get(0);
+	private User getUserInfo(HttpServletRequest request) {
+		return userRepository.findByEmail(request.getUserPrincipal().getName());
 	}
 
 	@JsonView(BrandPostsInfo.class)
@@ -58,28 +63,30 @@ public class SellProductController {
 	}
 
 	@GetMapping("/sell_product/")
-	public String loadSellProduct(Model model) {
-		User u = getUserInfo();
+	public String loadSellProduct(Model model, HttpServletRequest request) {
+		User u = getUserInfo(request);
 		model.addAttribute("user", u);
 		return "user-second-hand-product";
 	}
 
 	@PostMapping("/sell_product/added_product")
 	public String nuevoAnuncio(Model model, Post post, @RequestParam String bname,
-			@RequestParam MultipartFile imagenFile) throws IOException {
+			@RequestParam MultipartFile imagenFile, HttpServletRequest request) throws IOException {
 
 		Brand b = getBrand(bname);
 		post.setBrand(b);
-		User u = getUserInfo();
+		post.setnImg(1);
+		post.setComponentTag(post.getComponent());
+		User u = getUserInfo(request);
 		u.getPosts().add(post);
 		post.setUser(u);
 		postRepository.save(post);
 		userRepository.save(u);
 		b.getPosts().add(post);
 		brandRepository.save(b);
-
+		
 		imgService.saveImage("posts", post.getId(), imagenFile);
-		model.addAttribute("extra", post.getId());
+		model = hLoader.modelLoader(model);
 
 		return "index";
 
