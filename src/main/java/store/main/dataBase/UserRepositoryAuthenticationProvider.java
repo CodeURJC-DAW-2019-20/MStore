@@ -19,10 +19,10 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		
+
 		User user = userRepository.findByEmail(authentication.getName());
 
 		if (user == null) {
@@ -38,7 +38,7 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 		for (String role : user.getRoles()) {
 			roles.add(new SimpleGrantedAuthority(role));
 		}
-		
+
 		return new UsernamePasswordAuthenticationToken(user.getEmail(), password, roles);
 	}
 
@@ -46,5 +46,5 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 	public boolean supports(Class<?> authentication) {
 		return authentication.equals(UsernamePasswordAuthenticationToken.class);
 	}
-	
+
 }

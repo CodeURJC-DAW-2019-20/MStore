@@ -17,29 +17,36 @@ import store.main.dataBase.Post;
 public class Cart {
 
 	public void addToCart(Post post, HttpSession session) {
-		if (session.getAttribute("cart")==null) {
+
+		if (session.getAttribute("cart") == null) {
 			session.setAttribute("cart", new LinkedList<Post>());
 		}
+
 		List<Post> list = (List<Post>) session.getAttribute("cart");
-		long total=(long) session.getAttribute("total");
+		long total = (long) session.getAttribute("total");
+
 		if (!list.contains(post)) {
-			total+=post.getPrice();
+			total += post.getPrice();
 			list.add(post);
 		}
+
 		session.setAttribute("total", total);
 		session.setAttribute("cart", list);
 		session.setAttribute("empty", list.isEmpty());
 	}
-	
+
 	public void removeFromCart(Post post, HttpSession session) {
-		if (session.getAttribute("cart")==null) {
+
+		if (session.getAttribute("cart") == null) {
 			session.setAttribute("cart", new LinkedList<Post>());
 		}
+
 		List<Post> list = (List<Post>) session.getAttribute("cart");
-		long total=(long) session.getAttribute("total");
+		long total = (long) session.getAttribute("total");
+
 		if (list.contains(post)) {
-		list.remove(post);
-		total-=post.getPrice();
+			list.remove(post);
+			total -= post.getPrice();
 		}
 		session.setAttribute("total", total);
 		session.setAttribute("cart", list);
@@ -47,7 +54,8 @@ public class Cart {
 	}
 
 	public void cartInit(HttpSession session) {
-		if (session.getAttribute("cart")==null) {
+
+		if (session.getAttribute("cart") == null) {
 			List<Post> list = new ArrayList<Post>();
 			long total = 0;
 			boolean empty = true;

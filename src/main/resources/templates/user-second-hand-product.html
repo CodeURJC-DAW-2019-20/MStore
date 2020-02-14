@@ -276,7 +276,8 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="address">Address</label>
-						<input class="form-control" type="text" name="postAddress" placeholder="{{user.userAddress}}" id="address" required>
+						<input class="form-control" type="text" name="postAddress" placeholder="Plaza de los limones 12" id="address" required>
+						<small class="form-text text-muted">Street address & Number of Apartment, suite, building, etc.</small>
 					</div>
 				</div>
 			</div>
@@ -285,7 +286,9 @@
 			<h5 class="mb-4 pt-sm-3">2. Product information</h5>
 			<div class="form-group">
 				<label for="component-name">Component Name</label>
-				<input class="form-control" type="text" name="name" id="component-name" required>
+				<input class="form-control" type="text" name="name" placeholder="MSI Printer" id="component-name" required>
+			</div>
+			<div class="form-group">
 				<label for="select-input">Select the product to sell</label>
 				<select class="form-control custom-select" name="component" id="select-input" required>
 					<option>Choose a component</option>

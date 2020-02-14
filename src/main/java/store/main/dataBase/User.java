@@ -21,9 +21,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 public class User {
-	
-	public interface BasicInfo{};
-	public interface PostsInfo{};
+
+	public interface BasicInfo {
+	};
+
+	public interface PostsInfo {
+	};
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,16 +35,22 @@ public class User {
 
 	@JsonView(BasicInfo.class)
 	private String firstName;
+
 	@JsonView(BasicInfo.class)
 	private String lastName;
+
 	@JsonView(BasicInfo.class)
 	private String email;
+
 	@JsonView(BasicInfo.class)
 	private String phone;
+
 	@JsonView(BasicInfo.class)
 	private String password;
+
 	@JsonView(BasicInfo.class)
 	private String userAddress;
+
 	@JsonView(BasicInfo.class)
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
@@ -55,8 +64,8 @@ public class User {
 		posts = new LinkedList<Post>();
 	}
 
-	public User(String firstName, String lastName, String email, String phone, String password,
-			String userAddress, String... roles) {
+	public User(String firstName, String lastName, String email, String phone, String password, String userAddress,
+			String... roles) {
 		this();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -150,8 +159,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", phone=" + phone + ", password=" + password + ", userAddress=" + userAddress + ", roles=" 
-				+ roles + ", posts=" + posts + "]";
+				+ ", phone=" + phone + ", password=" + password + ", userAddress=" + userAddress + ", roles=" + roles
+				+ ", posts=" + posts + "]";
 	}
 
 }

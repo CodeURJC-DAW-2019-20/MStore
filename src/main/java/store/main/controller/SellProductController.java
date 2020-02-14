@@ -43,7 +43,7 @@ public class SellProductController {
 
 	@Autowired
 	private ImageService imgService;
-	
+
 	@Autowired
 	private HomeLoader hLoader;
 
@@ -84,11 +84,12 @@ public class SellProductController {
 		userRepository.save(u);
 		b.getPosts().add(post);
 		brandRepository.save(b);
-		
-		imgService.saveImage("posts", post.getId(), imagenFile);
-		model = hLoader.modelLoader(model);
 
-		return "index";
+		imgService.saveImage("posts", post.getId(), imagenFile);
+		//model = hLoader.modelLoader(model);
+
+		//return "index";
+		return "redirect:/";
 
 	}
 

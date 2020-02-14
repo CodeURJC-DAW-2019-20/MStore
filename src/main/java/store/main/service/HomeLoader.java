@@ -14,9 +14,10 @@ public class HomeLoader {
 
 	@Autowired
 	private PostRepository postRepository; // repository of posts
-	
+
 	/**
 	 * Loads the Home Page
+	 * 
 	 * @param model
 	 * @return model with attributes
 	 */

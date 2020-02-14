@@ -63,7 +63,7 @@ public class DataInsert implements CommandLineRunner {
 		user.getPosts().add(p10);
 		user.getPosts().add(p11);
 		user.getPosts().add(p12);
-		
+
 		p1.setUser(user);
 		p3.setUser(user);
 		p5.setUser(user);
@@ -107,7 +107,6 @@ public class DataInsert implements CommandLineRunner {
 		postRepository.save(p10);
 		postRepository.save(p11);
 		postRepository.save(p12);
-		
 
 	}
 
