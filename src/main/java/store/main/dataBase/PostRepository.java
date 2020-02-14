@@ -19,5 +19,4 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 	List<Post> OrderByPriceDesc();
 	
 	List<Post> OrderByPriceAsc();
-
 }

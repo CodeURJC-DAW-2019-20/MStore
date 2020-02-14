@@ -41,7 +41,7 @@ public class HomeLoader {
 			model.addAttribute("item" + i, postListPriceAsc.get(i));
 		}
 		// load newly arrived products
-		for (int i = 0; i < 12; i++) {
+		for (int i = 11; i > -1; i--) {
 			model.addAttribute("arrival" + i, postList.get(i));
 		}
 		return model;
