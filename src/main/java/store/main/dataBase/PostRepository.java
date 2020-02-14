@@ -14,5 +14,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 	List<Post> findByComponentTagOrderByNameAsc(Integer tag);
 
 	List<Post> findByComponentTagOrderByNameDesc(Integer tag);
+	
+	List<Post> OrderByPriceDesc();
+	
+	List<Post> OrderByPriceAsc();
 
 }

@@ -29,19 +29,27 @@ public class DataInsert implements CommandLineRunner {
 		brandRepository.save(b2);
 		Post p1 = new Post("HP Printer", 1, 1, 10, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
 				"tags1", "tag2");
-		Post p2 = new Post("HP Scanner", 1, 1, 720, "barato", "...", b1, "company UK London 111 street1 street2",
+		Post p2 = new Post("HP Scanner", 2, 1, 720, "barato", "...", b1, "company UK London 111 street1 street2",
 				"tags1", "tag2");
-		Post p3 = new Post("PC MSI", 1, 1, 120, "caro", "...", b1, "company Germany Berlin 111 street1 street2",
+		Post p3 = new Post("PC MSI", 3, 1, 120, "caro", "...", b1, "company Germany Berlin 111 street1 street2",
 				"tags1", "tag2");
 		Post p4 = new Post("MSI Printer", 0, 1, 1290, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
 				"tags1", "tag2");
-		Post p5 = new Post("MSI Printer", 1, 1, 820, "vende rapido", "...", b1,
+		Post p5 = new Post("ENVY Printer", 4, 1, 820, "vende rapido", "...", b1,
 				"company Spain Madrid 111 street1 street2", "tags1", "tag2");
 		Post p6 = new Post("MSI GTX", 1, 1, 120, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
 				"tags1", "tag2");
-		Post p7 = new Post("HP PrinterRXW", 1, 1, 520, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
+		Post p7 = new Post("HP PrinterRXW", 5, 1, 520, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
 				"tags1", "tag2");
-		Post p8 = new Post("HP Printer", 1, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
+		Post p8 = new Post("Windows", 6, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
+				"tags1", "tag2");
+		Post p9 = new Post("iPhone", 6, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
+				"tags1", "tag2");
+		Post p10 = new Post("Keyboard HS", 6, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
+				"tags1", "tag2");
+		Post p11 = new Post("HP Mouse", 6, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
+				"tags1", "tag2");
+		Post p12 = new Post("OMEN Computer", 6, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
 				"tags1", "tag2");
 		user.getPosts().add(p1);
 		user.getPosts().add(p2);
@@ -51,6 +59,11 @@ public class DataInsert implements CommandLineRunner {
 		user.getPosts().add(p6);
 		user.getPosts().add(p7);
 		user.getPosts().add(p8);
+		user.getPosts().add(p9);
+		user.getPosts().add(p10);
+		user.getPosts().add(p11);
+		user.getPosts().add(p12);
+		
 		p1.setUser(user);
 		p3.setUser(user);
 		p5.setUser(user);
@@ -59,6 +72,10 @@ public class DataInsert implements CommandLineRunner {
 		p4.setUser(user);
 		p6.setUser(user);
 		p8.setUser(user);
+		p9.setUser(user);
+		p10.setUser(user);
+		p11.setUser(user);
+		p12.setUser(user);
 		userRepository.save(user);
 		b1.getPosts().add(p1);
 		b1.getPosts().add(p2);
@@ -71,6 +88,10 @@ public class DataInsert implements CommandLineRunner {
 		p6.setBrand(b2);
 		p7.setBrand(b1);
 		p8.setBrand(b1);
+		p9.setBrand(b1);
+		p10.setBrand(b1);
+		p11.setBrand(b1);
+		p12.setBrand(b1);
 		brandRepository.save(b1);
 		brandRepository.save(b2);
 
@@ -82,6 +103,11 @@ public class DataInsert implements CommandLineRunner {
 		postRepository.save(p6);
 		postRepository.save(p7);
 		postRepository.save(p8);
+		postRepository.save(p9);
+		postRepository.save(p10);
+		postRepository.save(p11);
+		postRepository.save(p12);
+		
 
 	}
 
