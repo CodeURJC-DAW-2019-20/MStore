@@ -33,17 +33,25 @@ public class ImageService implements WebMvcConfigurer {
 	private Path createFilePath(long id, Path folder) {
 		return folder.resolve("image-" + id + ".jpg");
 	}
+	
+	private Path createFilePath(long id, Path folder,int nImg) {
+		return folder.resolve("image-" + id + "-" + nImg + ".jpg");
+	}
 
-	public void saveImage(String folderName, long id, MultipartFile image) throws IOException {
+	public void saveImage(String folderName, long id, MultipartFile image, Integer nImg) throws IOException {
 
 		Path folder = FILES_FOLDER.resolve(folderName);
 
 		if (!Files.exists(folder)) {
 			Files.createDirectories(folder);
 		}
-
-		Path newFile = createFilePath(id, folder);
-
+		
+		Path newFile;
+		
+		if(nImg==null)
+			newFile = createFilePath(id, folder);
+		else 
+			newFile = createFilePath(id, folder, nImg);
 		image.transferTo(newFile);
 	}
 
