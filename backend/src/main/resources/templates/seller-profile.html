@@ -292,7 +292,6 @@
             <div class="pt-3 mr-3">
               <h3 class="mb-0">{{user.firstName}} {{user.lastName}}</h3><span class="font-size-sm text-warning">{{user.email}}</span>
             </div>
-            <div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="/logout"><i class="mr-1" data-feather="log-out"></i>Log out</a></div>
           </div>
           <ul class="list-unstyled border p-3 mb-4">
             <li class="pb-1"><span class="opacity-80">&ndash; First name:</span><span class="font-weight-semibold ml-1">{{user.firstName}}</span></li>
@@ -307,7 +306,7 @@
                 type: 'bar',
                 data:{
                 datasets: [{
-                    data: [60,18,10, 8, 4],
+                    data: [{{stars5}},{{stars4}},{{stars3}},{{stars2}},{{stars1}},{{stars0}}],
                     backgroundColor: ['#42a5f5', 'red', 'green','blue','violet','yellow'],
                     label: 'Seller rating'}],
                     labels: ['5 Stars','4 Stars','3 Stars','2 Stars','1 Star', '0 Stars']},

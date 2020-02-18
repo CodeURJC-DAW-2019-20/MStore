@@ -17,6 +17,9 @@ public class DataInsert implements CommandLineRunner {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	RatingRepository ratingRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -107,7 +110,27 @@ public class DataInsert implements CommandLineRunner {
 		postRepository.save(p10);
 		postRepository.save(p11);
 		postRepository.save(p12);
-
+		Rating r1 = new Rating(1);
+		Rating r2 = new Rating(2);
+		Rating r3 = new Rating(3);
+		Rating r4 = new Rating(4);
+		Rating r5 = new Rating(5);
+		Rating r6 = new Rating(1);
+		r1.setSeller(user);
+		r2.setSeller(user);
+		r3.setSeller(user);
+		r4.setSeller(user);
+		r5.setSeller(user);
+		r6.setSeller(user);
+		ratingRepository.save(r1);
+		ratingRepository.save(r2);
+		ratingRepository.save(r3);
+		ratingRepository.save(r4);
+		ratingRepository.save(r5);
+		ratingRepository.save(r6);
+		
+		
+		
 	}
 
 }

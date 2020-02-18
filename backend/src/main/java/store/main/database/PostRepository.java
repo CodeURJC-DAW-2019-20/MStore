@@ -19,4 +19,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 	List<Post> OrderByPriceDesc();
 	
 	List<Post> OrderByPriceAsc();
+	
+	List<Post> findFirst8ByUserEmail(String email);
 }

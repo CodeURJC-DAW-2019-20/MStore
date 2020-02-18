@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import store.main.database.Brand;
-import store.main.database.BrandRepository;
-import store.main.database.Post;
 import store.main.database.PostRepository;
+import store.main.database.RatingRepository;
 import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.ImageService;
@@ -27,15 +25,24 @@ public class UserProfileController {
 	private UserRepository userRepository;
 
 	@Autowired
+	private RatingRepository ratingRepository;
+	
+	@Autowired
+	private PostRepository postRepository;
+
+	@Autowired
 	private ImageService imgService;
 
 	private User getUserInfo(HttpServletRequest request) {
 		return userRepository.findByEmail(request.getUserPrincipal().getName());
 	}
 	
+	
 	@GetMapping("/public_profile")
 	public String loadPublicProfile(Model model, HttpServletRequest request) {
 		User u = getUserInfo(request);
+		for(int i=0;i<6;i++)
+			model.addAttribute("stars"+i,ratingRepository.findBySellerEmailIgnoreCaseAndStars(u.getEmail(), i).size());
 		model.addAttribute("user", u);
 		return "seller-profile";
 	}
