@@ -134,7 +134,7 @@ Post p10 = new Post("MSI GTX 1070 8GB", 3, 1, 420, "GTX 1070 6GB video memory, t
 Post p11 = new Post("MSI GTX 1060 6GB", 3, 1, 235, "MSI GTX 1060 6GB video memory, two fans of air cooling, gaming ready with Pascal architecture, NVidia shadowplay compatible", "MSI GTX 1060 6GB video ram ideal for gaming", b2, "Plaza Urquinaona, Barcelona, Spain",
 "GTX1060", "GPU", "Gaming");
 Post p12 = new Post("Printer cartridges", 11, 1, 20, "new cartridges for ink printer, 3-pack, red, blue and green for rgb printers", "3 new ink printer cartridges", b1, "Avenida Santiago Bernabeu, Madrid, Spain",
-"Ink printer", "Cartridges");
+"Ink printer", "cartridge");
 Post p13 = new Post("GTX 1050Ti", 3, 3, 100, "GTX 1050Ti 4GB video RAM ideal for gaming, for budget computer builds, NVidia shadowplay compatible", "GTX 1050Ti 4GB gaming ready", b2, "Rue de l'oeuf 23, Paris, France",
 "Gaming", "1050Ti");
 Post p14 = new Post("3D Printer cartridge", 11, 1, 30, "3D printer cartridges, golden color, new", "3D pritner golden cartridges", b1, "Rue de l'oeuf 23, Paris, France",

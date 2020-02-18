@@ -20,6 +20,10 @@ import store.main.database.*;
 @Controller
 public class ComponentController {
 
+	private List<Post> postList1 = new LinkedList<Post>();// store posts with user tag1
+	private List<Post> postList2 = new LinkedList<Post>();// store posts with user tag2
+	private List<Post> postList3 = new LinkedList<Post>();// store posts with user tag3
+
 	@Autowired
 	private UserRepository userRepository;
 
@@ -48,9 +52,10 @@ public class ComponentController {
 		model.addAttribute("alreadyOn", alreadyOn);
 		model.addAttribute("post", post);
 
-		List<Post> postList1 = new LinkedList<Post>();// store posts with user tag1
-		List<Post> postList2 = new LinkedList<Post>();// store posts with user tag2
-		List<Post> postList3 = new LinkedList<Post>();// store posts with user tag3
+		//reset lists
+		this.postList1 = new LinkedList<>();
+		this.postList2 = new LinkedList<>();
+		this.postList3 = new LinkedList<>();
 
 		if (request.isUserInRole("USER")) {
 			loadRecommendationsIntoBD(postList1, postList2, postList3, request, post);// private method that loads the
@@ -65,6 +70,9 @@ public class ComponentController {
 		model.addAttribute("list1", postList1);
 		model.addAttribute("list2", postList2);
 		model.addAttribute("list3", postList3);
+		model.addAttribute("recomend", (postList1.size() + postList2.size() + postList3.size()) != 0); // there are
+																										// recommended
+																										// posts
 
 		return "shop-single-electronics";
 	}
@@ -86,6 +94,13 @@ public class ComponentController {
 		model.addAttribute("total", total);
 		model.addAttribute("empty", empty);
 
+		model.addAttribute("list1", postList1);
+		model.addAttribute("list2", postList2);
+		model.addAttribute("list3", postList3);
+		model.addAttribute("recomend", (postList1.size() + postList2.size() + postList3.size()) != 0); // there are
+																										// recommended
+																										// posts
+
 		return "shop-single-electronics";
 	}
 
@@ -105,6 +120,13 @@ public class ComponentController {
 		model.addAttribute("cart", cartAux);
 		model.addAttribute("total", total);
 		model.addAttribute("empty", empty);
+
+		model.addAttribute("list1", postList1);
+		model.addAttribute("list2", postList2);
+		model.addAttribute("list3", postList3);
+		model.addAttribute("recomend", (postList1.size() + postList2.size() + postList3.size()) != 0); // there are
+																										// recommended
+																										// posts
 
 		return "shop-single-electronics";
 	}
