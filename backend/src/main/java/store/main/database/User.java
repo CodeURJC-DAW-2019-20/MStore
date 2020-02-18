@@ -50,6 +50,10 @@ public class User {
 
 	@JsonView(BasicInfo.class)
 	private String userAddress;
+	
+	@JsonView(BasicInfo.class)
+	@ElementCollection
+	private List<String> tags;
 
 	@JsonView(BasicInfo.class)
 	@ElementCollection(fetch = FetchType.EAGER)
@@ -62,6 +66,7 @@ public class User {
 	public User() {
 		roles = new LinkedList<String>();
 		posts = new LinkedList<Post>();
+		tags= new LinkedList<String>();
 	}
 
 	public User(String firstName, String lastName, String email, String phone, String password, String userAddress,
@@ -158,6 +163,16 @@ public class User {
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
+	}
+	
+	
+
+	public List<String> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<String> tags) {
+		this.tags = tags;
 	}
 
 	@Override

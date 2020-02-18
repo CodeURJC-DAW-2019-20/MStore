@@ -31,29 +31,29 @@ public class DataInsert implements CommandLineRunner {
 		brandRepository.save(b1);
 		brandRepository.save(b2);
 		Post p1 = new Post("HP Printer", 1, 1, 10, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
-		Post p2 = new Post("HP Scanner", 2, 1, 720, "barato", "...", b1, "company UK London 111 street1 street2",
-				"tags1", "tag2");
-		Post p3 = new Post("PC MSI", 3, 1, 120, "caro", "...", b1, "company Germany Berlin 111 street1 street2",
-				"tags1", "tag2");
-		Post p4 = new Post("MSI Printer", 0, 1, 1290, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
+				"printer", "HP");
+		Post p2 = new Post("Printer ASUS", 2, 1, 720, "barato", "...", b1, "company UK London 111 street1 street2",
+				"printer", "ASUS");
+		Post p3 = new Post("Keyboard MSI", 3, 1, 120, "caro", "...", b1, "company Germany Berlin 111 street1 street2",
+				"MSI", "keyboard");
+		Post p4 = new Post("keyboard HP", 0, 1, 1290, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
+				"keyboard");
 		Post p5 = new Post("ENVY Printer", 4, 1, 820, "vende rapido", "...", b1,
-				"company Spain Madrid 111 street1 street2", "tags1", "tag2");
-		Post p6 = new Post("MSI GTX", 1, 1, 120, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
+				"company Spain Madrid 111 street1 street2", "printer", "ENVY");
+		Post p6 = new Post("MSI GTX keyboard", 1, 1, 120, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
+				"MSI", "keyboard");
 		Post p7 = new Post("HP PrinterRXW", 5, 1, 520, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
-		Post p8 = new Post("Windows", 6, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
+				"printer");
+		Post p8 = new Post("Apple Mc", 6, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
+				"apple");
 		Post p9 = new Post("iPhone", 6, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
+				"apple", "iphone");
 		Post p10 = new Post("Keyboard HS", 6, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
-		Post p11 = new Post("HP Mouse", 6, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
-		Post p12 = new Post("OMEN Computer", 6, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
-				"tags1", "tag2");
+				"cheap", "keyboard");
+		Post p11 = new Post("ASUS Mouse", 6, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
+				"cheap", "mouse","ASUS");
+		Post p12 = new Post("OMEN Mouse", 6, 1, 160, "barato", "...", b1, "company Spain Madrid 111 street1 street2",
+				"mouse");
 		user.getPosts().add(p1);
 		user.getPosts().add(p2);
 		user.getPosts().add(p3);

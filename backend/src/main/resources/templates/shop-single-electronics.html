@@ -366,62 +366,46 @@
      
     <!-- Related products-->
     <div class="container pb-5">
+    
+    
       <h2 class="h3 pb-4">You may also like</h2>
-      <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;margin&quot;: 15, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;360&quot;:{&quot;items&quot;:2}, &quot;630&quot;:{&quot;items&quot;:3}, &quot;850&quot;:{&quot;items&quot;:4}, &quot;1200&quot;:{&quot;items&quot;:5}} }">
+      
+      <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;margin&quot;: 15, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;360&quot;:{&quot;items&quot;:2}} }">
+        
+        {{#list2}}
         <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><img src="/img/Hardware/GPU/asus-dual-gtx-1060-oc-6gb-gddr5_2_1.jpg" alt="asus-dual-gtx-1060-oc-6gb-gddr5_2_1"></div>
+          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="/post/{{id}}"></a><img src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}-0.jpg"></div>
           <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Video cards</a>
-              <div class="star-rating"><span class="sr-label mr-1">4.7</span><i class="sr-star active" data-feather="star"></i></div>
+            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">{{component}}</a>
             </div>
-            <h3 class="product-card-title"><a href="#">asus dual gtx 1060 oc 6gb gddr5</a></h3><span class="text-primary">$198.00</span>
+            <h3 class="product-card-title"><a href="/post/{{id}}">{{name}}</a></h3><span class="text-primary">${{price}}</span>
           </div>
         </div>
+        {{/list2}}
+        
+         {{#list1}}
         <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><img src="/img/Hardware/GPU/EVGA - GeForce RTX 2080 XC - 8 GB DDR6.jpg" alt="EVGA - GeForce RTX 2080 XC - 8 GB DDR6"></div>
+          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="/post/{{id}}"></a><img src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}-0.jpg"></div>
           <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Video cards</a>
-              <div class="star-rating"><span class="sr-label mr-1">3.9</span><i class="sr-star active" data-feather="star"></i></div>
+            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">{{component}}</a>
             </div>
-            <h3 class="product-card-title"><a href="#">EVGA - GeForce RTX 2080 XC - 8 GB DDR6</a></h3><span class="text-primary">$1100.00</span>
+            <h3 class="product-card-title"><a href="/post/{{id}}">{{name}}</a></h3><span class="text-primary">${{price}}</span>
           </div>
         </div>
+         {{/list1}}
+         
+         {{#list3}}
         <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><img src="/img/Hardware/GPU/MSI RTX 2080TI Gaming Trio.jpg" alt="MSI RTX 2080TI Gaming Trio.jpg"></div>
+          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="/post/{{id}}"></a><img src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}-0.jpg"></div>
           <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Video cards</a>
-              <div class="star-rating"><span class="sr-label mr-1">4.2</span><i class="sr-star active" data-feather="star"></i></div>
+            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">{{component}}</a>
             </div>
-            <h3 class="product-card-title"><a href="#">MSI RTX 2080TI Gaming Trio</a></h3><span class="text-primary">
-              <del class="text-muted mr-1">$49.99</del>$1229.99</span>
+            <h3 class="product-card-title"><a href="/post/{{id}}">{{name}}</a></h3><span class="text-primary">${{price}}</span>
           </div>
         </div>
-        <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><img src="/img/Hardware/GPU/XFX tarjeta de vídeo DDR5 de 4GB y DDR5 AMD GPU RX 580.jpg" alt="XFX tarjeta de vídeo DDR5 de 4GB y DDR5 AMD GPU RX 580"></div>
-          <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Video cards</a>
-              <div class="star-rating"><span class="sr-label mr-1">3.6</span><i class="sr-star active" data-feather="star"></i></div>
-            </div>
-            <h3 class="product-card-title"><a href="#">AMD RX 580 4GB XFX DDR5</a></h3><span class="text-primary">$217.40</span>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><img src="/img/Hardware/GPU/AMD FirePro Radeon S7000 Sky500 4GB 256-bit GDDR5 GPU.jpg" alt="AMD FirePro Radeon S7000 Sky500 4GB 256-bit GDDR5 GPU"></div>
-          <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Video cards</a>
-              <div class="star-rating"><span class="sr-label mr-1">4.5</span><i class="sr-star active" data-feather="star"></i></div>
-            </div>
-            <h3 class="product-card-title"><a href="#">AMD FirePro Radeon S7000 Sky500 4GB 256-bit GDDR5 GPU</a></h3><span class="text-primary">$179.99</span>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="#"></a><img src="/img/Hardware/GPU/Gigabyte GV-RX580GAMING-8GD - Tarjeta Gráfica, RX 580 Gaming, 8 phases poder,  8GB, Negro.jpg" alt="Gigabyte GV-RX580GAMING-8GD - Tarjeta Gráfica, RX 580 Gaming, 8 phases poder,  8GB, Negro"></div>
-          <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Video cards</a></div>
-            <h3 class="product-card-title"><a href="#">Gigabyte GV RX580 GAMING 8GD</a></h3><span class="text-primary">$219.00</span>
-          </div>
-        </div>
+        {{/list3}}
       </div>
+      
     </div>
     <!-- Footer-->
     <footer class="page-footer bg-dark">
