@@ -283,7 +283,7 @@
       <div class="row pt-5">
         <!-- Sidebar-->
         <div class="col-xl-3 col-lg-4">
-        <!-- Customer picture--><a class="gallery-item mb-grid-gutter mx-auto" style="max-width: 18.75rem;"><img src="img/account/customer-lg.jpg" alt="{{user.firstName}}"></a>
+        <!-- Customer picture--><a class="gallery-item mb-grid-gutter mx-auto" style="max-width: 18.75rem;"><img src="/images/users/image-{{user.id}}.jpg" alt="{{user.firstName}}"></a>
         </div>
         <!-- Main content-->
         <div class="col-lg-8 offset-xl-1">
@@ -326,116 +326,32 @@
             <h2 class="h3 mb-3">Sellers products</h2><a class="btn btn-outline-primary btn-sm border-0 mb-3" href="/shop/">More products<i class="ml-1 mr-n2" data-feather="chevron-right"></i></a>
           </div>
           <div class="row no-gutters">
+          {{#itemList}}
           <!-- Product-->
-          <div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-            <div class="product-card">
-              <div class="product-thumb"><a class="product-thumb-link" href="shop-single-electronics.html"></a><img src="img/Hardware/Headphones/JBL Tune 500BT Powerful Bass Wireless On-Ear Headphones , Blue, Rs.2507.jpg" alt="JBL Tune 500BT Powerful Bass Wireless On-Ear Headphones , Blue, Rs.2507"></div>
-              <div class="product-card-body">
-                <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Headphones</a>
-                </div>
-                <h3 class="product-card-title"><a href="shop-single-electronics.html">JBL Tune 500BT Powerful Bass Wireless On-Ear Headphones , Blue, Rs.2507</a></h3><span class="text-primary">$25.00</span>
-              </div>
-              <div class="product-card-body body-hidden pt-2">
-                <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button>
-              </div>
-            </div>
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-            <div class="product-card">
-              <div class="product-thumb"><a class="product-thumb-link" href="shop-single-electronics.html"></a><img src="img/Hardware/Mobo/ASUS EX-A320M AMD AM4 Socket Gaming Motherboard.jpg" alt="ASUS EX-A320M AMD AM4 Socket Gaming Motherboard"></div>
-              <div class="product-card-body">
-                <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Motherboards</a>
-                </div>
-                <h3 class="product-card-title"><a href="shop-single-electronics.html">ASUS EX-A320M AMD AM4 Socket Gaming Motherboard</a></h3><span class="text-primary">$129.00</span>
-              </div>
-              <div class="product-card-body body-hidden pt-2">
-                <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button>
-              </div>
-            </div>
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-            <div class="product-card">
-              <div class="product-thumb"><a class="product-thumb-link" href="shop-single-electronics.html"></a><img src="img/Hardware/Mice/[New Version] Zelotes Gaming Mouse,Wired Mouse, Computer Mouse,7200 DPI 7 Buttons LED Optical USB.jpg" alt="[New Version] Zelotes Gaming Mouse,Wired Mouse, Computer Mouse,7200 DPI 7 Buttons LED Optical USB"></div>
-              <div class="product-card-body">
-                <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Computer Mice</a></div>
-                <h3 class="product-card-title"><a href="shop-single-electronics.html">Zelotes Gaming Mouse,Wired Mouse, Computer Mouse,7200 DPI 7 Buttons LED Optical USB</a></h3><span class="text-primary">$21.95</span>
-              </div>
-              <div class="product-card-body body-hidden pt-2">
-                <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button>
-              </div>
-            </div>
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-            <div class="product-card">
-              <div class="product-thumb"><a class="product-thumb-link" href="shop-single-electronics.html"></a><img src="img/Hardware/Speakers/Creative T30 Wireless.jpg" alt="Creative T30 Wireless"></div>
-              <div class="product-card-body">
-                <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Speakers</a>
-                </div>
-                <h3 class="product-card-title"><a href="shop-single-electronics.html">Creative T30 Wireless Speakers Black</a></h3><span class="text-primary">
-                  <del class="text-muted mr-1">$49.99</del>$29.99</span>
-              </div>
-              <div class="product-card-body body-hidden pt-2">
-                <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button>
-              </div>
-            </div>
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-            <div class="product-card">
-              <div class="product-thumb"><a class="product-thumb-link" href="shop-single-electronics.html"></a><img src="img/Hardware/Laser printer/HP Color LaserJet Pro M281fdw All-in-One Laser Printer.jpg" alt="HP Color LaserJet Pro M281fdw All-in-One Laser Printer"></div>
-              <div class="product-card-body">
-                <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Laser Printer</a>
-                </div>
-                <h3 class="product-card-title"><a href="shop-single-electronics.html">HP Color LaserJet Pro M281fdw All-in-One Laser Printer</a></h3><span class="text-primary">$517.40</span>
-              </div>
-              <div class="product-card-body body-hidden pt-2">
-                <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button>
-              </div>
-            </div>
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-            <div class="product-card">
-              <div class="product-thumb"><a class="product-thumb-link" href="shop-single-electronics.html"></a><img src="img/Hardware/Storage/500GB SATA Disco Duro Disco Duro Interno Pc Computadora De Escritorio CCTV DVR.jpg" alt="500GB SATA Disco Duro Disco Duro Interno Pc Computadora De Escritorio CCTV DVR"></div>
-              <div class="product-card-body">
-                <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Storage</a>
-                </div>
-                <h3 class="product-card-title"><a href="shop-single-electronics.html">500GB SATA Disco Duro Disco Duro Interno Pc Computadora De Escritorio CCTV DVR</a></h3><span class="text-primary">$29.99</span>
-              </div>
-              <div class="product-card-body body-hidden pt-2">
-                <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button>
-              </div>
-            </div>
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-            <div class="product-card">
-              <div class="product-thumb"><a class="product-thumb-link" href="shop-single-electronics.html"></a><img src="img/Hardware/Printer supplies/SUNLU 3D Filament 1.75, Shiny Silk PLA Filament 1.75mm, 1KG PLA Filament 0.02mm for 3D Printer 3D Pens, Brass.jpg" alt="SUNLU 3D Filament 1.75, Shiny Silk PLA Filament 1.75mm, 1KG PLA Filament 0.02mm for 3D Printer 3D Pens, Brass"></div>
-              <div class="product-card-body">
-                <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Printer Supplies</a>
-                </div>
-                <h3 class="product-card-title"><a href="shop-single-electronics.html">SUNLU 3D Filament 1.75, Shiny Silk PLA Filament 1.75mm, 1KG PLA Filament 0.02mm for 3D Printer 3D Pens, Brass</a></h3><span class="text-primary">$24.99</span>
-              </div>
-              <div class="product-card-body body-hidden pt-2">
-                <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button>
-              </div>
-            </div>
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-            <div class="product-card">
-              <div class="product-thumb"><a class="product-thumb-link" href="shop-single-electronics.html"></a><img src="img/Hardware/Monitors/Dell SE2417HG Black 23.6” Gaming LCD Monitor, 2ms Fast Response Time, Dual HDMI ports.jpg" alt="Dell SE2417HG Black 23.6” Gaming LCD Monitor, 2ms Fast Response Time, Dual HDMI ports"></div>
-              <div class="product-card-body">
-                <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">Monitors</a></div>
-                <h3 class="product-card-title"><a href="shop-single-electronics.html">Dell SE2417HG Black 23.6” Gaming LCD Monitor, 2ms Fast Response Time, Dual HDMI ports</a></h3><span class="text-primary">$339.00</span>
-              </div>
-              <div class="product-card-body body-hidden pt-2">
-                <button class="btn btn-primary btn-sm btn-block" type="button" data-toggle="toast" data-target="#cart-toast">Add to cart</button>
-              </div>
-            </div>
+			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
+				<div class="product-card">
+					<div class="product-thumb">
+						<a class="product-thumb-link" href="/post/{{id}}"></a><img
+							src="/images/posts/image-{{id}}-0.jpg"
+							alt="image-{{id}}.jpg">
+					</div>
+					<div class="product-card-body">
+						<div class="d-flex flex-wrap justify-content-between pb-1">
+							<a class="product-meta" href="#">{{component}}</a>
+						</div>
+						<h3 class="product-card-title">
+							<a href="/post/{{id}}">{{name}}</a>
+						</h3>
+						<span class="text-primary">${{price}}</span>
+					</div>
+					<div class="product-card-body body-hidden pt-2">
+						<button class="btn btn-primary btn-sm btn-block" type="button"
+							data-toggle="toast" data-target="#cart-toast">Add to
+							cart</button>
+					</div>
+				</div>
+			</div>
+			{{/itemList}}
           </div>
       </section>
       </div>
