@@ -25,6 +25,9 @@ public class User {
 
 	public interface PostsInfo {
 	};
+	
+	public interface SellersInfo {
+	};
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -61,6 +64,10 @@ public class User {
 	@JsonView(PostsInfo.class)
 	private List<Post> posts;
 
+	@OneToMany
+	@JsonView(SellersInfo.class)
+	private List<User> sellers;
+	
 	public User() {
 		roles = new LinkedList<String>();
 		posts = new LinkedList<Post>();
@@ -172,6 +179,16 @@ public class User {
 	public void setTags(List<String> tags) {
 		this.tags = tags;
 	}
+	
+	
+
+	public List<User> getSellers() {
+		return sellers;
+	}
+
+	public void setSellers(List<User> sellers) {
+		this.sellers = sellers;
+	}
 
 	@Override
 	public String toString() {
@@ -179,5 +196,4 @@ public class User {
 				+ ", phone=" + phone + ", password=" + password + ", userAddress=" + userAddress + ", roles=" + roles
 				+ ", posts=" + posts + "]";
 	}
-
 }
