@@ -333,82 +333,84 @@
                   </ul>
                 </div>
                 <!-- Brand filter    -->
-                <div class="widget widget-categories">
-                  <h3 class="widget-title">Shop by brand</h3>
-                  <ul id="shopCategories">
-                    <li>
-                      <a href="/shop/brand/Intel">
-                        <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                        Intel
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/shop/brand/AMD">
-                        <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                        AMD
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/shop/brand/NVIDIA">
-                        <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                        NVIDIA
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/shop/brand/ASUS">
-                        <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                        ASUS
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/shop/brand/Corsair">
-                        <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                        Corsair
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/shop/brand/Seagate">
-                        <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                        Seagate
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/shop/brand/Gigabyte">
-                        <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                        Gigabyte
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/shop/brand/Logitech">
-                        <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                        Logitech
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/shop/brand/Pioneer">
-                        <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                        Pioneer
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/shop/brand/WD">
-                        <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                        WD
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/shop/brand/HP">
-                        <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                        HP
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                <!-- Links widget -->
+<div class="widget widget-categories">
+    <h3 class="widget-title">Shop by brand</h3>
+    <ul id="shopCategories">
+      <li>
+        <a href="/shop/brand/Intel">
+          <i class="widget-categories-indicator" data-feather="chevron-right"></i>
+          Intel
+        </a>
+      </li>
+      <li>
+        <a href="/shop/brand/AMD">
+          <i class="widget-categories-indicator" data-feather="chevron-right"></i>
+          AMD
+        </a>
+      </li>
+      <li>
+        <a href="/shop/brand/NVIDIA">
+          <i class="widget-categories-indicator" data-feather="chevron-right"></i>
+          NVIDIA
+        </a>
+      </li>
+      <li>
+        <a href="/shop/brand/ASUS">
+          <i class="widget-categories-indicator" data-feather="chevron-right"></i>
+          ASUS
+        </a>
+      </li>
+      <li>
+        <a href="/shop/brand/Corsair">
+          <i class="widget-categories-indicator" data-feather="chevron-right"></i>
+          Corsair
+        </a>
+      </li>
+      <li>
+        <a href="/shop/brand/Seagate">
+          <i class="widget-categories-indicator" data-feather="chevron-right"></i>
+          Seagate
+        </a>
+      </li>
+      <li>
+        <a href="/shop/brand/Gigabyte">
+          <i class="widget-categories-indicator" data-feather="chevron-right"></i>
+          Gigabyte
+        </a>
+      </li>
+      <li>
+        <a href="/shop/brand/Logitech">
+          <i class="widget-categories-indicator" data-feather="chevron-right"></i>
+          Logitech
+        </a>
+      </li>
+      <li>
+        <a href="/shop/brand/Pioneer">
+          <i class="widget-categories-indicator" data-feather="chevron-right"></i>
+          Pioneer
+        </a>
+      </li>
+      <li>
+        <a href="/shop/brand/WD">
+          <i class="widget-categories-indicator" data-feather="chevron-right"></i>
+          WD
+        </a>
+      </li>
+      <li>
+        <a href="/shop/brand/HP">
+          <i class="widget-categories-indicator" data-feather="chevron-right"></i>
+          HP
+        </a>
+      </li>
+    </ul>
+  </div>
               </div>
             </div>
           </div>
         </div>
         <div class="col-lg-9">
+            <h1 class="display-4">Products of {{nameBrand}}</h1>
           <!-- Toolbar-->
           
           <div class="d-flex flex-wrap justify-content-center justify-content-sm-between pb-3">
@@ -418,11 +420,11 @@
                   Sort by: {{sortBy}}
                 </button>
                 <div class="dropdown-menu">
-                  <a href="/shop/?pageNo=0&pageSize={{pageSize}}&sortBy=price&ord=asc"  class="dropdown-item">Low - Hight Price</a>
-                  <a href="/shop/?pageNo=0&pageSize={{pageSize}}&sortBy=price&ord=desc"  class="dropdown-item">Hight - Low Price</a>
+                  <a href="/shop/brand/{{nameBrand}}?pageNo=0&pageSize={{pageSize}}&sortBy=price&ord=asc"  class="dropdown-item">Low - Hight Price</a>
+                  <a href="/shop/brand/{{nameBrand}}?pageNo=0&pageSize={{pageSize}}&sortBy=price&ord=desc"  class="dropdown-item">Hight - Low Price</a>
                   <div class="dropdown-divider"></div>
-                  <a href="/shop/?pageNo=0&pageSize={{pageSize}}&sortBy=name&ord=asc"  class="dropdown-item">A - Z Name Order</a>
-                  <a href="/shop/?pageNo=0&pageSize={{pageSize}}&sortBy=name&ord=desc"  class="dropdown-item">Z - A Name Order</a>
+                  <a href="/shop/brand/{{nameBrand}}?pageNo=0&pageSize={{pageSize}}&sortBy=name&ord=asc"  class="dropdown-item">A - Z Name Order</a>
+                  <a href="/shop/brand/{{nameBrand}}?pageNo=0&pageSize={{pageSize}}&sortBy=name&ord=desc"  class="dropdown-item">Z - A Name Order</a>
                 </div>
               </div>
               <a>&MediumSpace;</a>
@@ -443,19 +445,19 @@
           <br >
           <!-- Products grid-->
           <div class="row no-gutters">
-            <!-- Product-->
             {{#zeroPost}}
             <h2>
               No posts found&nbsp;
               <small class="text-muted font-size-lg">Try again</small>
             </h2>
             {{/zeroPost}}
+            <!-- Product-->
             {{#posts}}
             <div class="col-xl-3 col-sm-4 col-6 border border-collapse">
               <div class="product-card">
                 <div class="product-thumb"><a class="product-thumb-link" href="/post/{{id}}"></a><img src="img/Hardware/Headphones/JBL Tune 500BT Powerful Bass Wireless On-Ear Headphones , Blue, Rs.2507.jpg" alt="ALT"></div>
                 <div class="product-card-body">
-                  <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="/shop/{{componentTag}}">{{component}}</a>
+                  <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">{{component}}</a>
                   </div>
                   <h3 class="product-card-title"><a href="/post/{{id}}">{{name}}</a></h3><span class="text-primary">${{price}}</span>
                 </div>

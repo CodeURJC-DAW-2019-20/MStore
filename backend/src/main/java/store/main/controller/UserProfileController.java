@@ -1,8 +1,6 @@
 package store.main.controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import store.main.database.PostRepository;
 import store.main.database.RatingRepository;
 import store.main.database.User;
 import store.main.database.UserRepository;
@@ -26,9 +23,6 @@ public class UserProfileController {
 
 	@Autowired
 	private RatingRepository ratingRepository;
-	
-	@Autowired
-	private PostRepository postRepository;
 
 	@Autowired
 	private ImageService imgService;

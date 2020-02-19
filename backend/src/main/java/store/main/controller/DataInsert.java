@@ -1,19 +1,12 @@
 package store.main.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import store.main.database.Brand;
 import store.main.database.BrandRepository;
 import store.main.database.Post;
@@ -102,10 +95,13 @@ Post("nombre", enterotag, nimagenes, precio, "detalles", "descripcion", brand, "
 "tags1", "tag2");*/
 
 Path path = Paths.get("/path/to/the/file.txt");
+/** 
 String name = "file.txt";
 String originalFileName = "file.txt";
 String contentType = "text/plain";
+*/
 byte[] content = null;
+
 try {
     content = Files.readAllBytes(path);
 } catch (final IOException e) {

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import store.main.database.Brand;
+import store.main.database.BrandRepository;
 import store.main.database.Post;
 import store.main.database.PostRepository;
 
@@ -22,6 +24,9 @@ public class ShopController {
 
 	@Autowired
 	PostRepository repository;
+
+	@Autowired
+	private BrandRepository brandRepository;
 
 	@GetMapping("/shop/")
 	public String shop(Model model, @RequestParam(defaultValue = "0") Integer pageNo,
@@ -48,7 +53,6 @@ public class ShopController {
 
 		return "shop-style2-ls";
 	}
-
 	@GetMapping("/shop/{tag}")
 	public String shopByTag(Model model, @PathVariable("tag") Integer tag,
 			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
@@ -75,6 +79,7 @@ public class ShopController {
 		}
 
 		Integer nPost = p.size();
+		boolean zeroPost = nPost == 0;
 
 		model.addAttribute("posts", p);
 		model.addAttribute("nPosts", nPost);
@@ -83,8 +88,50 @@ public class ShopController {
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("sortBy", sortBy);
 		model.addAttribute("ord", ord);
+		model.addAttribute("zeroPost", zeroPost);
 
 		return "shop-style2-ls";
+	}
+
+
+	@GetMapping("/shop/brand/{name}")
+	public String shopByBrand(Model model, @PathVariable("name") String name,
+			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
+			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord) {
+
+		Brand b = brandRepository.findFirstByNameIgnoreCase(name);
+		List<Post> posts = new LinkedList<>();
+
+
+		if (sortBy.equalsIgnoreCase("price")) {
+			if (ord.equalsIgnoreCase("asc")) {
+				posts = repository.findByBrandOrderByPriceAsc(b);
+			} else if (ord.equalsIgnoreCase("desc")) {
+				posts = repository.findByBrandOrderByPriceDesc(b);
+			}
+		} else if (sortBy.equalsIgnoreCase("name")) {
+			if (ord.equalsIgnoreCase("asc")) {
+				posts = repository.findByBrandOrderByNameAsc(b);
+			} else if (ord.equalsIgnoreCase("desc")) {
+				posts = repository.findByBrandOrderByNameDesc(b);
+			}
+		} else {
+			posts = b.getPosts();
+		}
+
+		Integer nPost = posts.size();
+		boolean zeroPost = nPost == 0;
+
+		model.addAttribute("posts", posts);
+		model.addAttribute("nPosts", nPost);
+		model.addAttribute("nameBrand", name);
+		model.addAttribute("pageNo", pageNo);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("sortBy", sortBy);
+		model.addAttribute("ord", ord);
+		model.addAttribute("zeroPost", zeroPost);
+
+		return "shop-brand";
 	}
 
 }

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
-import javassist.expr.Instanceof;
 import store.main.database.Post;
 
 @Component
