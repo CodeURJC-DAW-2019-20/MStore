@@ -12,21 +12,18 @@
 <!-- Viewport-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon and Touch Icons-->
-<link rel="apple-touch-icon" sizes="180x180"
-	href="/apple-touch-icon.png">
-<link rel="icon" type="/image/png" sizes="32x32"
-	href="/favicon-32x32.png">
-<link rel="icon" type="/image/png" sizes="16x16"
-	href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" color="#111" href="/safari-pinned-tab.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
 <meta name="msapplication-TileColor" content="#111">
 <meta name="theme-color" content="#ffffff">
 <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-<link rel="stylesheet" media="screen" href="/css/vendor.min.css">
+<link rel="stylesheet" media="screen" href="css/vendor.min.css">
 <!-- Main Theme Styles + Bootstrap-->
 <link rel="stylesheet" media="screen" id="main-styles"
-	href="/css/theme.min.css">
+	href="css/theme.min.css">
 <!-- Customizer styles and scripts-->
 </head>
 <!-- Body-->
@@ -157,48 +154,97 @@
 		</div>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
+				<div class="text-right">
+					<a class="text-danger btn-sm pr-0" href="#"><i class="mr-1"
+						data-feather="x" style="width: .85rem; height: .85rem;"></i>Clear
+						cart</a>
+				</div>
 				<div class="widget widget-featured-entries pt-3">
-					{{#empty}} <span class='text-muted'>The cart is empty</span>
-					{{/empty}} {{^empty}} {{#cart}}
 					<div class="media">
 						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="/images/posts/image-{{id}}.jpg"
-								alt="image-{{id}}.jpg" width="64"></a>
-							<form action="/cart/removeItem-{{id}}">
-								<button type="submit"
-									style="height: 0px; width: 0px; background: transparent; border: none !important;">
-									<span class="item-remove-btn"><i data-feather="x"></i></span>
-								</button>
-							</form>
+							<a href="#"><img src="img/shop/widget/07.jpg" width="64"
+								alt="Product thumb"></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
 						</div>
 						<div class="media-body">
 							<h6 class="featured-entry-title">
-								<a href="#">{{name}}</a>
+								<a href="#">Calvin Klein Jeans Keds</a>
 							</h6>
-							<p class="featured-entry-meta">${{price}}</p>
+							<p class="featured-entry-meta">
+								1 <span class='text-muted'>x</span> $125.00
+							</p>
 						</div>
 					</div>
-					{{/cart}} {{/empty}}
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/08.jpg" width="64"
+								alt="Product thumb"></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">The North Face Hoodie</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class='text-muted'>x</span> $134.00
+							</p>
+						</div>
+					</div>
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/09.jpg" width="64"
+								alt="Product thumb"></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Medicine Chameleon Sunglasses</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class='text-muted'>x</span> $47.00
+							</p>
+						</div>
+					</div>
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/10.jpg" width="64"
+								alt="Product thumb"></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Adidas Performance Hat</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class='text-muted'>x</span> $19.00
+							</p>
+						</div>
+					</div>
 					<hr>
 					<div class="d-flex justify-content-between align-items-center py-3">
 						<div class="font-size-sm">
 							<span class="mr-2">Subtotal:</span><span
-								class="font-weight-semibold text-dark">${{total}}</span>
+								class="font-weight-semibold text-dark">$325.00</span>
 						</div>
+						<a class="btn btn-outline-secondary btn-sm" href="cart.html">Expand
+							cart<i class="mr-n2" data-feather="chevron-right"></i>
+						</a>
 					</div>
-					<a class="btn btn-primary btn-sm btn-block" href="/cart"><i
-						class="mr-1" data-feather="credit-card"></i>Checkout</a>
+					<a class="btn btn-primary btn-sm btn-block"
+						href="checkout-details.html"><i class="mr-1"
+						data-feather="credit-card"></i>Checkout</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Navbar Multilevel-->
+
 	<!-- Second line-->
 	<header class="navbar navbar-expand-lg navbar-light bg-light px-0">
 		<div class="container flex-sm-nowrap px-3">
 			<!-- navbar brand-->
 			<a class="navbar-brand mr-0 mr-sm-4" style="min-width: 100px;"
-				href="/"><img width="100" src="/img/logo-dark.png" alt="MStore" /></a>
+				href="/"><img width="100" src="img/logo-dark.png" alt="MStore" /></a>
 			<!-- navbar buttons-->
 			<div class="navbar-btns d-flex position-relative order-sm-3">
 				<div
@@ -206,15 +252,14 @@
 					data-toggle="collapse" data-target="#menu">
 					<i class="mx-auto mb-2" data-feather="menu"></i>Menu
 				</div>
-				<a class="navbar-btn bg-0 my-3" href="#offcanvas-account"
-					data-toggle="offcanvas"><span class="d-block position-relative">
-						<i class="mx-auto mb-1" data-feather="log-in"></i>Sign In/Up
-				</span></a><a class="navbar-btn bg-0 my-3" href="#offcanvas-cart"
-					data-toggle="offcanvas"> <span
-					class="d-block position-relative">{{^empty}}<span
-						class="navbar-btn-badge bg-primary text-light">{{cart.size}}</span>{{/empty}}<i
-						class="mx-auto mb-1" data-feather="shopping-cart"> </i>${{total}}
-				</span></a>
+				<span class="d-block position-relative"><a
+					class="navbar-btn bg-0 my-3" href="#offcanvas-account"
+					data-toggle="offcanvas"><i class="mx-auto mb-1"
+						data-feather="log-in"></i>Sign In/Up</a><a
+					class="navbar-btn bg-0 my-3" href="#offcanvas-cart"
+					data-toggle="offcanvas"><span class="d-block position-relative"><span
+							class="navbar-btn-badge bg-primary text-light">4</span><i
+							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
 			</div>
 			<!-- search-box-->
 			<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
@@ -358,60 +403,119 @@
 				<ol class="breadcrumb">
 					<li class="mt-n1 mr-1"><i data-feather="home"></i></li>
 					<li class="breadcrumb-item"><a href="/">Home</a></li>
-					<li class="breadcrumb-item"><a href="/shop/">Shop</a></li>
+					<li class="breadcrumb-item"><a href="#">Shop</a></li>
 				</ol>
 			</nav>
-			<h1 class="page-title">Your cart</h1>
+			<h1 class="page-title">Checkout</h1>
 			<span class="d-block mt-2 text-muted"></span>
 		</div>
 	</div>
 	<!-- Page Content-->
-	<div class="container pb-5 mt-n2 mt-md-n3">
-		<div class="row">
-			<div class="w-100 p-3">
-				<h2
-					class="w-100 p-3 d-flex flex-wrap justify-content-between align-items-center bg-secondary">
-					<span>Products</span><a class="font-size-sm"
-						href="shop-style1-ls.html"><i data-feather="chevron-left"
-						style="width: 1rem; height: 1rem;"></i>Continue shopping</a>
-				</h2>
+	<div class="container pb-5 mb-sm-4 mt-n2 mt-md-n3">
+		<!-- Steps (wizard)-->
+		<div class="steps">
+			<div class="steps-body">
+				<a class="step step-completed" href="cart.html"><span
+					class="step-indicator"><i data-feather="check"></i></span><span
+					class="step-icon"><i data-feather="shopping-cart"></i></span>1.
+					Shopping cart</a><a class="step step-completed"
+					href="checkout-details.html"><span class="step-indicator"><i
+						data-feather="check"></i></span><span class="step-icon"><i
+						data-feather="user"></i></span>2. Your details</a><a
+					class="step step-completed" href="checkout-shipping.html"><span
+					class="step-indicator"><i data-feather="check"></i></span><span
+					class="step-icon"><i data-feather="truck"></i></span>3. Shipping</a><a
+					class="step step-completed" href="checkout-payment.html"><span
+					class="step-indicator"><i data-feather="check"></i></span><span
+					class="step-icon"><i data-feather="credit-card"></i></span>4.
+					Payment</a><a class="step step-active" href="checkout-review.html"><span
+					class="step-icon"><i data-feather="check-circle"></i></span>5.
+					Final review</a>
+			</div>
+		</div>
+		<div class="row pt-4 mt-2">
+			<!-- Content-->
+			<div class="col-xl-9 col-md-8">
+				<h2 class="h6 px-4 py-3 bg-secondary mb-4">Review your order</h2>
 				<!-- Item-->
-				{{#empty}}
-				<h2 class="w-100 p-3 text-center">
-					<span class='text-muted'>The cart is empty</span>
-				</h2>
-				{{/empty}} {{^empty}} {{#cart}}
+
+				{{#cart}}
+				<!-- Item-->
 				<div
 					class="d-sm-flex justify-content-between my-4 pb-4 border-bottom">
 					<div class="media d-block d-sm-flex text-center text-sm-left">
 						<a class="cart-item-thumb mx-auto mr-sm-4"
 							href="shop-single-apparel.html"><img
-							src="/images/posts/image-{{id}}.jpg" alt="image-{{id}}.jpg"></a>
+							src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}-0.jpg"></a>
 						<div class="media-body pt-3">
 							<h3 class="product-card-title font-weight-semibold border-0 pb-0">
 								<a href="shop-single-apparel.html">{{name}}</a>
 							</h3>
+							<div class="font-size-sm">
+								<span class="text-muted mr-2">Brand: </span>{{brand.name}}
+							</div>
+							<div class="font-size-sm">
+								<span class="text-muted mr-2">Category: </span>{{component}}
+							</div>
 							<div class="font-size-lg text-primary pt-2">${{price}}</div>
-							<br>
-							<form action="/cart/removeItem-{{id}}">
-								<button class="btn btn-outline-danger btn-sm btn-block mb-2"
-									type="submit">
-									<i class="mr-1" data-feather="trash-2"></i>Remove
-								</button>
-							</form>
+						</div>
+					</div>
+					<div class="pt-2 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-left"
+						style="max-width: 10rem;">
+						<div class="font-size-sm mb-3">
+							<span class="text-muted mr-2">Quantity:</span><span
+								class="font-weight-semibold">1</span>
 						</div>
 					</div>
 				</div>
-				{{/cart}} {{/empty}}
+				{{/cart}}
+
+				<!-- Client details-->
+				<div class="bg-secondary px-4 pt-4 pb-2">
+					<div class="row">
+						<div class="col-sm-6">
+							<h4 class="h6">Shipping to:</h4>
+							<ul class="list-unstyled">
+								<li><span class="text-muted">Client:&nbsp;</span>{{firstname}}
+									{{lastname}}
+								<li><span class="text-muted">Email:&nbsp;</span>{{email}}</li>
+								<li><span class="text-muted">Phone:&nbsp;</span>{{phone}}</li>
+							</ul>
+						</div>
+						<div class="col-sm-6">
+							<h4 class="h6">Payment method:</h4>
+							<ul class="list-unstyled">
+								<li><span class="text-muted">Credit Card:&nbsp;</span>****
+									**** **** {{creditcard}}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Navigation-->
+				<div class="d-flex pt-4">
+					<div class="w-50 pr-3">
+						<a class="btn btn-outline-secondary btn-block"
+							href="checkout-payment.html"><i class="mr-1"
+							data-feather="chevron-left"></i>Back</a>
+					</div>
+					<div class="w-50 pl-2">
+						<a class="btn btn-primary btn-block" href="/complete"><span
+							class="d-none d-sm-inline">Complete order</span><span
+							class="d-inline d-sm-none">Complete</span><i class="ml-1"
+							data-feather="chevron-right"></i></a>
+					</div>
+				</div>
 			</div>
 			<!-- Sidebar-->
-			<div class="w-100 p-3">
-				<h2 class="w-100 p-3 bg-secondary text-center">Subtotal</h2>
+			<div class="col-xl-3 col-md-4 pt-4 mt-3 pt-md-0 mt-md-0">
+				<h2 class="h6 px-4 py-3 bg-secondary text-center">Order summary</h2>
+				<div class="font-size-sm border-bottom pt-2 pb-3">
+					<div class="d-flex justify-content-between mb-2">
+						<span>Subtotal:</span><span>${{total}}</span>
+					</div>
+				</div>
 				<div class="h3 font-weight-semibold text-center py-3">${{total}}</div>
-				<hr>
 			</div>
-			<a class="btn btn-primary btn-block" href="checkout-details.html"><i
-				class="mr-2" data-feather="credit-card"></i>Proceed to Checkout</a>
 		</div>
 	</div>
 	<!-- Footer-->
@@ -565,6 +669,7 @@
 
 			</div>
 		</div>
+		</div>
 		<div class="py-3" style="background-color: #1a1a1a;">
 			<div class="container font-size-xs text-center"
 				aria-label="Copyright">
@@ -578,7 +683,7 @@
 	<a class="scroll-to-top-btn" href="#"><i
 		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-	<script src="/js/vendor.min.js"></script>
-	<script src="/js/theme.min.js"></script>
+	<script src="js/vendor.min.js"></script>
+	<script src="js/theme.min.js"></script>
 </body>
 </html>

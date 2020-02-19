@@ -12,21 +12,18 @@
 <!-- Viewport-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon and Touch Icons-->
-<link rel="apple-touch-icon" sizes="180x180"
-	href="/apple-touch-icon.png">
-<link rel="icon" type="/image/png" sizes="32x32"
-	href="/favicon-32x32.png">
-<link rel="icon" type="/image/png" sizes="16x16"
-	href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" color="#111" href="/safari-pinned-tab.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
 <meta name="msapplication-TileColor" content="#111">
 <meta name="theme-color" content="#ffffff">
 <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-<link rel="stylesheet" media="screen" href="/css/vendor.min.css">
+<link rel="stylesheet" media="screen" href="css/vendor.min.css">
 <!-- Main Theme Styles + Bootstrap-->
 <link rel="stylesheet" media="screen" id="main-styles"
-	href="/css/theme.min.css">
+	href="css/theme.min.css">
 <!-- Customizer styles and scripts-->
 </head>
 <!-- Body-->
@@ -157,48 +154,97 @@
 		</div>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
+				<div class="text-right">
+					<a class="text-danger btn-sm pr-0" href="#"><i class="mr-1"
+						data-feather="x" style="width: .85rem; height: .85rem;"></i>Clear
+						cart</a>
+				</div>
 				<div class="widget widget-featured-entries pt-3">
-					{{#empty}} <span class='text-muted'>The cart is empty</span>
-					{{/empty}} {{^empty}} {{#cart}}
 					<div class="media">
 						<div class="featured-entry-thumb mr-3">
-							<a href="#"><img src="/images/posts/image-{{id}}.jpg"
-								alt="image-{{id}}.jpg" width="64"></a>
-							<form action="/cart/removeItem-{{id}}">
-								<button type="submit"
-									style="height: 0px; width: 0px; background: transparent; border: none !important;">
-									<span class="item-remove-btn"><i data-feather="x"></i></span>
-								</button>
-							</form>
+							<a href="#"><img src="img/shop/widget/07.jpg" width="64"
+								alt="Product thumb"></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
 						</div>
 						<div class="media-body">
 							<h6 class="featured-entry-title">
-								<a href="#">{{name}}</a>
+								<a href="#">Calvin Klein Jeans Keds</a>
 							</h6>
-							<p class="featured-entry-meta">${{price}}</p>
+							<p class="featured-entry-meta">
+								1 <span class='text-muted'>x</span> $125.00
+							</p>
 						</div>
 					</div>
-					{{/cart}} {{/empty}}
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/08.jpg" width="64"
+								alt="Product thumb"></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">The North Face Hoodie</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class='text-muted'>x</span> $134.00
+							</p>
+						</div>
+					</div>
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/09.jpg" width="64"
+								alt="Product thumb"></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Medicine Chameleon Sunglasses</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class='text-muted'>x</span> $47.00
+							</p>
+						</div>
+					</div>
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/10.jpg" width="64"
+								alt="Product thumb"></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Adidas Performance Hat</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class='text-muted'>x</span> $19.00
+							</p>
+						</div>
+					</div>
 					<hr>
 					<div class="d-flex justify-content-between align-items-center py-3">
 						<div class="font-size-sm">
 							<span class="mr-2">Subtotal:</span><span
-								class="font-weight-semibold text-dark">${{total}}</span>
+								class="font-weight-semibold text-dark">$325.00</span>
 						</div>
+						<a class="btn btn-outline-secondary btn-sm" href="cart.html">Expand
+							cart<i class="mr-n2" data-feather="chevron-right"></i>
+						</a>
 					</div>
-					<a class="btn btn-primary btn-sm btn-block" href="/cart"><i
-						class="mr-1" data-feather="credit-card"></i>Checkout</a>
+					<a class="btn btn-primary btn-sm btn-block"
+						href="checkout-details.html"><i class="mr-1"
+						data-feather="credit-card"></i>Checkout</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Navbar Multilevel-->
+
 	<!-- Second line-->
 	<header class="navbar navbar-expand-lg navbar-light bg-light px-0">
 		<div class="container flex-sm-nowrap px-3">
 			<!-- navbar brand-->
 			<a class="navbar-brand mr-0 mr-sm-4" style="min-width: 100px;"
-				href="/"><img width="100" src="/img/logo-dark.png" alt="MStore" /></a>
+				href="/"><img width="100" src="img/logo-dark.png" alt="MStore" /></a>
 			<!-- navbar buttons-->
 			<div class="navbar-btns d-flex position-relative order-sm-3">
 				<div
@@ -206,15 +252,14 @@
 					data-toggle="collapse" data-target="#menu">
 					<i class="mx-auto mb-2" data-feather="menu"></i>Menu
 				</div>
-				<a class="navbar-btn bg-0 my-3" href="#offcanvas-account"
-					data-toggle="offcanvas"><span class="d-block position-relative">
-						<i class="mx-auto mb-1" data-feather="log-in"></i>Sign In/Up
-				</span></a><a class="navbar-btn bg-0 my-3" href="#offcanvas-cart"
-					data-toggle="offcanvas"> <span
-					class="d-block position-relative">{{^empty}}<span
-						class="navbar-btn-badge bg-primary text-light">{{cart.size}}</span>{{/empty}}<i
-						class="mx-auto mb-1" data-feather="shopping-cart"> </i>${{total}}
-				</span></a>
+				<span class="d-block position-relative"><a
+					class="navbar-btn bg-0 my-3" href="#offcanvas-account"
+					data-toggle="offcanvas"><i class="mx-auto mb-1"
+						data-feather="log-in"></i>Sign In/Up</a><a
+					class="navbar-btn bg-0 my-3" href="#offcanvas-cart"
+					data-toggle="offcanvas"><span class="d-block position-relative"><span
+							class="navbar-btn-badge bg-primary text-light">4</span><i
+							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
 			</div>
 			<!-- search-box-->
 			<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
@@ -351,67 +396,25 @@
 			</div>
 		</div>
 	</div>
-	<!-- Page Title-->
-	<div class="page-title-wrapper" aria-label="Page title">
-		<div class="container">
-			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb">
-					<li class="mt-n1 mr-1"><i data-feather="home"></i></li>
-					<li class="breadcrumb-item"><a href="/">Home</a></li>
-					<li class="breadcrumb-item"><a href="/shop/">Shop</a></li>
-				</ol>
-			</nav>
-			<h1 class="page-title">Your cart</h1>
-			<span class="d-block mt-2 text-muted"></span>
-		</div>
-	</div>
 	<!-- Page Content-->
-	<div class="container pb-5 mt-n2 mt-md-n3">
-		<div class="row">
-			<div class="w-100 p-3">
-				<h2
-					class="w-100 p-3 d-flex flex-wrap justify-content-between align-items-center bg-secondary">
-					<span>Products</span><a class="font-size-sm"
-						href="shop-style1-ls.html"><i data-feather="chevron-left"
-						style="width: 1rem; height: 1rem;"></i>Continue shopping</a>
-				</h2>
-				<!-- Item-->
-				{{#empty}}
-				<h2 class="w-100 p-3 text-center">
-					<span class='text-muted'>The cart is empty</span>
-				</h2>
-				{{/empty}} {{^empty}} {{#cart}}
-				<div
-					class="d-sm-flex justify-content-between my-4 pb-4 border-bottom">
-					<div class="media d-block d-sm-flex text-center text-sm-left">
-						<a class="cart-item-thumb mx-auto mr-sm-4"
-							href="shop-single-apparel.html"><img
-							src="/images/posts/image-{{id}}.jpg" alt="image-{{id}}.jpg"></a>
-						<div class="media-body pt-3">
-							<h3 class="product-card-title font-weight-semibold border-0 pb-0">
-								<a href="shop-single-apparel.html">{{name}}</a>
-							</h3>
-							<div class="font-size-lg text-primary pt-2">${{price}}</div>
-							<br>
-							<form action="/cart/removeItem-{{id}}">
-								<button class="btn btn-outline-danger btn-sm btn-block mb-2"
-									type="submit">
-									<i class="mr-1" data-feather="trash-2"></i>Remove
-								</button>
-							</form>
-						</div>
-					</div>
+	<div class="container pb-5 mb-sm-4">
+		<div class="pt-5">
+			<div class="card py-3 mt-sm-3">
+				<div class="card-body text-center">
+					<h3 class="h4 pb-3">Thank you {{name}} for your order!</h3>
+					<p class="mb-2">Your order has been placed and will be
+						processed as soon as possible.</p>
+					<p class="mb-2">
+						Make sure you make note of your order number, which is <strong>34VB5540K83.</strong>
+					</p>
+					<p>
+						Subscribe to us to receive offers! <u>You can now:</u>
+					</p>
+					<a class="btn btn-secondary mt-3 mr-3" href="/shop/">Go
+						back shopping</a><a class="btn btn-primary mt-3"
+						href="/"><i data-feather="map-pin"></i>&nbsp;Home</a>
 				</div>
-				{{/cart}} {{/empty}}
 			</div>
-			<!-- Sidebar-->
-			<div class="w-100 p-3">
-				<h2 class="w-100 p-3 bg-secondary text-center">Subtotal</h2>
-				<div class="h3 font-weight-semibold text-center py-3">${{total}}</div>
-				<hr>
-			</div>
-			<a class="btn btn-primary btn-block" href="checkout-details.html"><i
-				class="mr-2" data-feather="credit-card"></i>Proceed to Checkout</a>
 		</div>
 	</div>
 	<!-- Footer-->
@@ -425,48 +428,48 @@
 							<h3 class="widget-title text-white border-light">Shop
 								departments</h3>
 							<ul>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/0"><i class="widget-categories-indicator"
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Motherboards</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/1"><i class="widget-categories-indicator"
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Storage
 											Devices</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/2"><i class="widget-categories-indicator"
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">CPU
 											/ Processors</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/3"><i class="widget-categories-indicator"
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Video
 											Cards &amp; Video Devices</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/4"><i class="widget-categories-indicator"
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Speakers</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/5"><i class="widget-categories-indicator"
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Monitors</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/6"><i class="widget-categories-indicator"
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Computer
 											Mice</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/7"><i class="widget-categories-indicator"
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/8"><i class="widget-categories-indicator"
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Ink
 											Printer</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/9"><i class="widget-categories-indicator"
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Laser
 											Printer</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/10"><i class="widget-categories-indicator"
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">3D
 											Printers</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/11"><i class="widget-categories-indicator"
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
+										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Printer
 											Supplies</span></a></li>
 							</ul>
@@ -476,48 +479,37 @@
 						<div class="widget widget-links pb-4">
 							<h3 class="widget-title text-white border-light">Our brands</h3>
 							<ul>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/Intel"><i
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Intel</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/AMD"><i
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">AMD</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/NVIDIA"><i
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">NVIDIA</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/ASUS"><i
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">ASUS</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/Corsair"><i
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Corsair</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/Seagate"><i
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Seagate</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/Gigabyte"><i
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Gigabyte</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/Logitech"><i
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Logitech</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/Pioneer"><i
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">Pioneer</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/WD"><i
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">WD</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/HP"><i
+								<li><a class="nav-link-inline nav-link-light" href="#"><i
 										class="widget-categories-indicator"
 										data-feather="chevron-right"></i><span class="font-size-sm">HP</span></a></li>
 							</ul>
@@ -528,11 +520,10 @@
 							<!-- Subscription form (MailChimp)-->
 							<h3 class="widget-title text-white border-light">Stay
 								informed</h3>
-							<form
-								action="https://urjc.us4.list-manage.com/subscribe/post?u=7816e91fc0e80c209c0a7750e&amp;id=a3e1cc1eb7"
-								method="post" id="mc-embedded-subscribe-form"
-								name="mc-embedded-subscribe-form" class="validate"
-								target="_blank" novalidate>
+							<form class="validate pb-4"
+								action="https://studio.us12.list-manage.com/subscribe/post-json?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126&amp;c=?"
+								method="get" name="mc-embedded-subscribe-form"
+								id="mc-embedded-subscribe-form">
 								<div class="input-group mb-2">
 									<div class="input-group-prepend">
 										<span class="input-group-text"
@@ -559,10 +550,7 @@
 							</form>
 						</div>
 					</div>
-
-					<!--End mc_embed_signup-->
 				</div>
-
 			</div>
 		</div>
 		<div class="py-3" style="background-color: #1a1a1a;">

@@ -62,7 +62,7 @@ public class ComponentController {
 																						// recommendations of a
 																						// registered user
 		} else {
-			loadRecommendationsIntoSesion(postList1, postList2, postList3, session, post);// private method that loads
+			loadRecommendationsIntoSession(postList1, postList2, postList3, session, post);// private method that loads
 																							// the recommendations of a
 																							// visiting user
 		}
@@ -140,7 +140,7 @@ public class ComponentController {
 		userRepository.save(user); // update user tag list
 	}
 
-	private void loadRecommendationsIntoSesion(List<Post> postList1, List<Post> postList2, List<Post> postList3,
+	private void loadRecommendationsIntoSession(List<Post> postList1, List<Post> postList2, List<Post> postList3,
 			HttpSession session, Post post) {
 		List<String> userTags = (List<String>) session.getAttribute("tags");
 		List<String> list = loadList(userTags, post, postList1, postList2, postList3);

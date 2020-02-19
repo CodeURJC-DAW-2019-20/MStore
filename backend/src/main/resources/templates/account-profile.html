@@ -1,446 +1,752 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>MStore | Online Computer & Technology Store
-    </title>
-    <!-- SEO Meta Tags-->
-    <meta name="description" content="MStore - Online Computer & Technology Store">
-    <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
-    <meta name="author" content="Createx Studio">
-    <!-- Viewport-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon and Touch Icons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
-    <meta name="msapplication-TileColor" content="#111">
-    <meta name="theme-color" content="#ffffff">
-    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" href="/css/vendor.min.css">
-    <!-- Main Theme Styles + Bootstrap-->
-    <link rel="stylesheet" media="screen" id="main-styles" href="/css/theme.min.css">
-    <!-- Customizer styles and scripts-->
-  </head>
-  <!-- Body-->
-  <body>
-    <!-- Off-canvas account-->
-    <div class="offcanvas offcanvas-reverse" id="offcanvas-account">
-      <div class="offcanvas-header d-flex justify-content-between align-items-center">
-        <h3 class="offcanvas-title">Sign in / Create account</h3>
-        <button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="offcanvas-body">
-        <div class="offcanvas-body-inner">
-          <ul class="nav nav-tabs nav-justified" role="tablist">
-            <li class="nav-item"><a class="nav-link active" href="#signin" data-toggle="tab" role="tab"><i data-feather="log-in"></i>&nbsp;Sign In</a></li>
-            <li class="nav-item"><a class="nav-link" href="#signup" data-toggle="tab" role="tab"><i data-feather="user"></i>&nbsp;Sign Up</a></li>
-          </ul>
-          <div class="tab-content pt-1">
-            <div class="tab-pane fade show active" id="signin" role="tabpanel">
-              <form class="needs-validation" novalidate>
-                <div class="form-group">
-                  <label class="sr-only" for="signin-email">Email</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text" id="signin-email-icon"><i data-feather="mail"></i></span></div>
-                    <input class="form-control" type="email" id="signin-email" placeholder="Email" aria-label="Email" aria-describedby="signin-email-icon" required>
-                    <div class="invalid-feedback">Please provide email address.</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="signin-password">Password</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text" id="signin-password-icon"><i data-feather="lock"></i></span></div>
-                    <input class="form-control" type="password" id="signin-password" placeholder="Password" aria-label="Password" aria-describedby="signin-password-icon" required>
-                    <div class="invalid-feedback">Please enter a password.</div>
-                  </div>
-                </div>
-                <div class="custom-control custom-checkbox mb-3">
-                  <input class="custom-control-input" type="checkbox" id="remember-me" checked>
-                  <label class="custom-control-label" for="remember-me">Remember me</label>
-                </div>
-                <button class="btn btn-primary btn-block" type="submit">Sign In</button>
-              </form>
-            </div>
-            <div class="tab-pane fade" id="signup" role="tabpanel">
-              <form class="needs-validation" novalidate>
-                <div class="form-group">
-                  <label class="sr-only" for="signup-name">Full name</label>
-                  <input class="form-control" type="text" id="signup-name" placeholder="Full name" aria-label="Full name" required>
-                  <div class="invalid-feedback">Please enter your full name.</div>
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="signup-email">Email address</label>
-                  <input class="form-control" type="email" id="signup-email" placeholder="Email address" aria-label="Email address" required>
-                  <div class="invalid-feedback">Please provide a valid email address.</div>
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="signup-password">Password</label>
-                  <input class="form-control" type="password" id="signup-password" placeholder="Password" aria-label="Password" required>
-                  <div class="invalid-feedback">Please enter a password.</div>
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="signup-password-confirm">Confirm password</label>
-                  <input class="form-control" type="password" id="signup-password-confirm" placeholder="Confirm password" aria-label="Confirm password" required>
-                  <div class="invalid-feedback">Please confirm password.</div>
-                </div>
-                <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
-              </form>
-            </div>
-          </div>
-          <div class="d-flex align-items-center pt-5">
-            <hr class="w-100">
-            <div class="px-3 w-100 text-nowrap font-weight-semibold">Or sign in via</div>
-            <hr class="w-100">
-          </div>
-          <div class="text-center pt-4"><a class="social-btn sb-facebook mx-2 mb-3" href="#" data-toggle="tooltip" title="Facebook"><i class="flaticon-facebook"></i></a><a class="social-btn sb-google-plus mx-2 mb-3" href="#" data-toggle="tooltip" title="Google"><i class="flaticon-google-plus"></i></a><a class="social-btn sb-twitter mx-2 mb-3" href="#" data-toggle="tooltip" title="Twitter"><i class="flaticon-twitter"></i></a></div>
-        </div>
-      </div>
-    </div>
-    <!-- Off-canvas cart-->
-    <div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
-      <div class="offcanvas-header d-flex justify-content-between align-items-center">
-        <h3 class="offcanvas-title">Your cart</h3>
-        <button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="offcanvas-body">
-        <div class="offcanvas-body-inner">
-          <div class="text-right"><a class="text-danger btn-sm pr-0" href="#"><i class="mr-1" data-feather="x" style="width: .85rem; height: .85rem;"></i>Clear cart</a></div>
-          <div class="widget widget-featured-entries pt-3">
-            <div class="media">
-              <div class="featured-entry-thumb mr-3"><a href="#"><img src="img/shop/widget/07.jpg" width="64" alt="Product thumb"></a><span class="item-remove-btn"><i data-feather="x"></i></span></div>
-              <div class="media-body">
-                <h6 class="featured-entry-title"><a href="#">Calvin Klein Jeans Keds</a></h6>
-                <p class="featured-entry-meta">1 <span class='text-muted'>x</span> $125.00</p>
-              </div>
-            </div>
-            <div class="media">
-              <div class="featured-entry-thumb mr-3"><a href="#"><img src="img/shop/widget/08.jpg" width="64" alt="Product thumb"></a><span class="item-remove-btn"><i data-feather="x"></i></span></div>
-              <div class="media-body">
-                <h6 class="featured-entry-title"><a href="#">The North Face Hoodie</a></h6>
-                <p class="featured-entry-meta">1 <span class='text-muted'>x</span> $134.00</p>
-              </div>
-            </div>
-            <div class="media">
-              <div class="featured-entry-thumb mr-3"><a href="#"><img src="img/shop/widget/09.jpg" width="64" alt="Product thumb"></a><span class="item-remove-btn"><i data-feather="x"></i></span></div>
-              <div class="media-body">
-                <h6 class="featured-entry-title"><a href="#">Medicine Chameleon Sunglasses</a></h6>
-                <p class="featured-entry-meta">1 <span class='text-muted'>x</span> $47.00</p>
-              </div>
-            </div>
-            <div class="media">
-              <div class="featured-entry-thumb mr-3"><a href="#"><img src="img/shop/widget/10.jpg" width="64" alt="Product thumb"></a><span class="item-remove-btn"><i data-feather="x"></i></span></div>
-              <div class="media-body">
-                <h6 class="featured-entry-title"><a href="#">Adidas Performance Hat</a></h6>
-                <p class="featured-entry-meta">1 <span class='text-muted'>x</span> $19.00</p>
-              </div>
-            </div>
-            <hr>
-            <div class="d-flex justify-content-between align-items-center py-3">
-              <div class="font-size-sm"> <span class="mr-2">Subtotal:</span><span class="font-weight-semibold text-dark">$325.00</span></div><a class="btn btn-outline-secondary btn-sm" href="cart.html">Expand cart<i class="mr-n2" data-feather="chevron-right"></i></a>
-            </div><a class="btn btn-primary btn-sm btn-block" href="checkout-details.html"><i class="mr-1" data-feather="credit-card"></i>Checkout</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Navbar Multilevel-->
-   
-    <!-- Second line-->
-    <header class="navbar navbar-expand-lg navbar-light bg-light px-0">
-      <div class="container flex-sm-nowrap px-3">
-        <!-- navbar brand--><a class="navbar-brand mr-0 mr-sm-4" style="min-width: 100px;" href="/"><img width="100" src="img/logo-dark.png" alt="MStore"/></a>
-        <!-- navbar buttons-->
-        <div class="navbar-btns d-flex position-relative order-sm-3">
-          <div class="navbar-toggler navbar-btn collapsed bg-0 border-left-0 my-3" data-toggle="collapse" data-target="#menu"><i class="mx-auto mb-2" data-feather="menu"></i>Menu</div><span class="d-block position-relative"><a class="navbar-btn bg-0 my-3" href="#offcanvas-account" data-toggle="offcanvas"><i class="mx-auto mb-1" data-feather="log-in"></i>Sign In/Up</a><a class="navbar-btn bg-0 my-3" href="#offcanvas-cart" data-toggle="offcanvas"><span class="d-block position-relative"><span class="navbar-btn-badge bg-primary text-light">4</span><i class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
-        </div>
-        <!-- search-box-->
-        <div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
-          <div class="input-group flex-nowrap">
-            <div class="input-group-prepend"><span class="input-group-text rounded-left" id="search-icon"><i data-feather="search"></i></span></div>
-            <input class="form-control rounded-right" type="text" id="site-search" placeholder="Search site" aria-label="Search site" aria-describedby="search-icon">
-          </div>
-        </div>
-      </div>
-    </header>
-    <!-- Third line: Navigation-->
-    <div class="navbar navbar-expand-lg navbar-light bg-light px-0">
-      <div class="container px-3">
-        <!-- navbar collapse area-->
-        <div class="collapse navbar-collapse" id="menu">
-          <!-- Site menu-->
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown mega-dropdown dropdown-more"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Categories<i data-feather="more-horizontal"></i></a>
-              <div class="dropdown-menu">
-                <div class="dropdown-inner">
-                  <div class="dropdown-column">
-                    <div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3" style="background-image: url(img/megamenu/computerHardware.jpg);">
-                      <h3 class="h5 text-white text-shadow my-3">Computer Hardware</h3>
-                    </div>
-                    <div class="widget widget-links">
-                      <ul>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Motherboards</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Storage Devices</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">CPU / Processors</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Video Cards &amp; Video Devices</span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="dropdown-column">
-                    <div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3" style="background-image: url(img/megamenu/comp-accessories.png);">
-                      <h3 class="h5 text-white text-shadow my-3">Computer Accessories</h3>
-                    </div>
-                    <div class="widget widget-links">
-                      <ul>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Speakers </span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Headphones </span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Computer Mice</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Monitors</span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="dropdown-column">
-                    <div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3" style="background-image: url(img/megamenu/printer.png);">
-                      <h3 class="h5 text-white text-shadow my-3">Printers</h3>
-                    </div>
-                    <div class="widget widget-links">
-                      <ul>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Ink Printer</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Laser Printer</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">3D Printer</span></a></li>
-                        <li><a href="#"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Printer Supplies</span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-          <ul class="nav nav-pills">
-            <li class="nav-item">
-              <a href="/" class="nav-link rounded">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="/shop/" class="nav-link rounded">Shop</a>
-            </li>
-            <li class="nav-item">
-              <a href="/sell_product/" class="nav-link rounded">Sell product</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">User Account</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="account-orders.html">Orders History</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="account-profile.html">Profile Settings</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="account-address.html">Account Addresses</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="account-payment.html">Payment Methods</a></li>
-              </ul>
-            </li>
-          </ul>
-          <!-- Rounded nav pills -->
-        </div>
-      </div>
-    </div>
-    <!-- Page Content-->
-    <div class="container pt-lg-3 pb-5 mb-sm-3">
-      <!-- Toast notifications-->
-      <div class="toast-container toast-bottom-center">
-        <div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to cart!</span>
-            <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="toast-body">This item was added to your cart.</div>
-        </div>
-        <div class="toast mb-3" id="compare-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-header bg-info text-white"><i class="mr-2" data-feather="info" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to comparison!</span>
-            <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="toast-body">This item was added to comparison table.</div>
-        </div>
-        <div class="toast mb-3" id="profile-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Updated!</span>
-            <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="toast-body">Your profile info updated successfuly.</div>
-        </div>
-        <div class="toast mb-3" id="address-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-header bg-success text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Updated!</span>
-            <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="toast-body">Your addresses info updated successfully.</div>
-        </div>
-      </div>
-      <div class="row pt-5">
-        <!-- Sidebar-->
-        <div class="col-xl-3 col-lg-4">
-          <!-- Customer picture--><a class="gallery-item mb-grid-gutter mx-auto" style="max-width: 18.75rem;"><img src="/images/users/image-{{user.id}}.jpg" alt="{{user.firstName}}"></a>
-        </div>
-        <!-- Main content-->
-        <div class="col-lg-8 offset-xl-1">
-          <!-- Customer details-->
-          <div class="d-flex flex-wrap justify-content-between pb-4">
-            <div class="pt-3 mr-3">
-              <h3 class="mb-0">{{user.firstName}} {{user.lastName}}</h3><span class="font-size-sm text-warning">{{user.email}}</span>
-            </div>
-            <div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="/logout"><i class="mr-1" data-feather="log-out"></i>Log out</a></div>
-          </div>
-          <!-- Profile info-->
-          <h5 class="mb-4 pt-sm-3">Profile info</h5>
-          <form class="row" action="/profile/updated" method="post" enctype="multipart/form-data">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="account-fn">First Name</label>
-                <input class="form-control" type="text" id="account-fn" name="firstName" value="{{user.firstName}}" required>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="account-ln">Last Name</label>
-                <input class="form-control" type="text" id="account-ln" name="lastName" value="{{user.lastName}}" required>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="account-email">Email Address</label>
-                <input class="form-control" type="email" id="account-email" name="email" value="{{user.email}}" disabled>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="account-phone">Phone Number</label>
-                <input class="form-control" type="text" id="account-phone" name="phone" value="{{user.phone}}" required>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="account-pass">New Password</label>
-                <input class="form-control" type="password" name="password" id="account-pass">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="account-confirm-pass">Confirm Password</label>
-                <input class="form-control" type="password" id="account-confirm-pass">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="account-address">Address</label>
-                <input class="form-control" type="text" id="account-address" name="userAddress">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="credit-card">Credit card number</label>
-                <input class="form-control" type="number" id="credit-card" name="creditCard">
-              </div>
-            </div>
-            
-              <div class="form-group mx-auto">
-				<label for="file-input">Upload you profile photo</label>
-				<div class="file-upload-wrapper">
-					<input type="file" name="imagenFile" lang="en" id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
+<head>
+<meta charset="utf-8">
+<title>MStore | Online Computer & Technology Store</title>
+<!-- SEO Meta Tags-->
+<meta name="description"
+	content="MStore - Online Computer & Technology Store">
+<meta name="keywords"
+	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
+<meta name="author" content="Createx Studio">
+<!-- Viewport-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Favicon and Touch Icons-->
+<link rel="apple-touch-icon" sizes="180x180"
+	href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+	href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="/favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
+<meta name="msapplication-TileColor" content="#111">
+<meta name="theme-color" content="#ffffff">
+<!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+<link rel="stylesheet" media="screen" href="/css/vendor.min.css">
+<!-- Main Theme Styles + Bootstrap-->
+<link rel="stylesheet" media="screen" id="main-styles"
+	href="/css/theme.min.css">
+<!-- Customizer styles and scripts-->
+</head>
+<!-- Body-->
+<body>
+	<!-- Off-canvas account-->
+	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
+		<div
+			class="offcanvas-header d-flex justify-content-between align-items-center">
+			<h3 class="offcanvas-title">Sign in / Create account</h3>
+			<button class="close" type="button" data-dismiss="offcanvas"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="offcanvas-body-inner">
+				<ul class="nav nav-tabs nav-justified" role="tablist">
+					<li class="nav-item"><a class="nav-link active" href="#signin"
+						data-toggle="tab" role="tab"><i data-feather="log-in"></i>&nbsp;Sign
+							In</a></li>
+					<li class="nav-item"><a class="nav-link" href="#signup"
+						data-toggle="tab" role="tab"><i data-feather="user"></i>&nbsp;Sign
+							Up</a></li>
+				</ul>
+				<div class="tab-content pt-1">
+					<div class="tab-pane fade show active" id="signin" role="tabpanel">
+						<form class="needs-validation" novalidate>
+							<div class="form-group">
+								<label class="sr-only" for="signin-email">Email</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="signin-email-icon"><i
+											data-feather="mail"></i></span>
+									</div>
+									<input class="form-control" type="email" id="signin-email"
+										placeholder="Email" aria-label="Email"
+										aria-describedby="signin-email-icon" required>
+									<div class="invalid-feedback">Please provide email
+										address.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signin-password">Password</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="signin-password-icon"><i
+											data-feather="lock"></i></span>
+									</div>
+									<input class="form-control" type="password"
+										id="signin-password" placeholder="Password"
+										aria-label="Password" aria-describedby="signin-password-icon"
+										required>
+									<div class="invalid-feedback">Please enter a password.</div>
+								</div>
+							</div>
+							<div class="custom-control custom-checkbox mb-3">
+								<input class="custom-control-input" type="checkbox"
+									id="remember-me" checked> <label
+									class="custom-control-label" for="remember-me">Remember
+									me</label>
+							</div>
+							<button class="btn btn-primary btn-block" type="submit">Sign
+								In</button>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="signup" role="tabpanel">
+						<form class="needs-validation" novalidate>
+							<div class="form-group">
+								<label class="sr-only" for="signup-name">Full name</label> <input
+									class="form-control" type="text" id="signup-name"
+									placeholder="Full name" aria-label="Full name" required>
+								<div class="invalid-feedback">Please enter your full name.</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-email">Email address</label>
+								<input class="form-control" type="email" id="signup-email"
+									placeholder="Email address" aria-label="Email address" required>
+								<div class="invalid-feedback">Please provide a valid email
+									address.</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-password">Password</label> <input
+									class="form-control" type="password" id="signup-password"
+									placeholder="Password" aria-label="Password" required>
+								<div class="invalid-feedback">Please enter a password.</div>
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="signup-password-confirm">Confirm
+									password</label> <input class="form-control" type="password"
+									id="signup-password-confirm" placeholder="Confirm password"
+									aria-label="Confirm password" required>
+								<div class="invalid-feedback">Please confirm password.</div>
+							</div>
+							<button class="btn btn-primary btn-block" type="submit">Sign
+								Up</button>
+						</form>
+					</div>
 				</div>
-			  </div>
-				<br>
-				
-            <div class="col-12">
-                <button class="btn btn-primary mt-3 mt-sm-0" type="submit" data-toggle="toast" data-target="#profile-toast">Update profile</button>
-              </div>
-          </form>
-          <!-- Technical support + Tickets (visible Mobile)-->
-          <div class="d-lg-none bg-secondary px-3 py-4 mt-5">
-            <h6 class="font-size-sm mb-3 pb-2 border-bottom">Technical support</h6>
-            <ul class="list-unstyled">
-              <li class="font-size-sm mb-2"><i class="text-muted mr-2" data-feather="mail" style="width: .875rem; height: .875rem;"></i><a class="nav-link-inline" href="mailto:support@example.com">support@example.com</a></li>
-              <li class="font-size-sm mb-2"><i class="text-muted mr-2" data-feather="phone" style="width: .875rem; height: .875rem;"></i><a class="nav-link-inline" href="tel:+100331697720">+1 00 33 169 7720</a></li>
-              <li class="font-size-sm mb-2"><i class="text-muted mr-2" data-feather="clock" style="width: .875rem; height: .875rem;"></i>1-2 business days</li>
-            </ul>
-            <div class="pt-2"><a class="btn btn-outline-secondary btn-sm btn-block" href="account-tickets.html"><i class="mr-1" data-feather="tag"></i>My tickets (1)</a><a class="btn btn-success btn-sm btn-block" href="account-tickets.html" data-toggle="modal" data-target="#open-ticket">Submit new ticket</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Footer-->
-    <footer class="page-footer bg-dark">
-      <!-- first row-->
-      <div class="pt-5 pb-0 pb-md-4">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4 col-sm-6">
-              <div class="widget widget-links pb-4">
-                <h3 class="widget-title text-white border-light">Shop departments</h3>
-                <ul>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/0"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Motherboards</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/1"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Storage Devices</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/2"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">CPU / Processors</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/3"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Video Cards &amp; Video Devices</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/4"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Speakers</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/5"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Monitors</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/6"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Computer Mice</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/7"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/8"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Ink Printer</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/9"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Laser Printer</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/10"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">3D Printers</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/11"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Printer Supplies</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-              <div class="widget widget-links pb-4">
-                <h3 class="widget-title text-white border-light">Our brands</h3>
-                <ul>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/brand/Intel"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Intel</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/brand/AMD"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">AMD</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/brand/NVIDIA"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">NVIDIA</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/brand/ASUS"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">ASUS</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/brand/Corsair"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Corsair</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/brand/Seagate"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Seagate</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/brand/Gigabyte"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Gigabyte</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/brand/Logitech"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Logitech</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/brand/Pioneer"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Pioneer</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/brand/WD"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">WD</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/brand/HP"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">HP</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xl-4 offset-xl-1 col-md-5">
-              <div class="widget">
-                <!-- Subscription form (MailChimp)-->
-                <h3 class="widget-title text-white border-light">Stay informed</h3>
-                <form action="https://urjc.us4.list-manage.com/subscribe/post?u=7816e91fc0e80c209c0a7750e&amp;id=a3e1cc1eb7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                  <div class="input-group mb-2">
-                    <div class="input-group-prepend"><span class="input-group-text" style="background-color: #e8e8e8;"><i data-feather="mail"></i></span></div>
-                    <input class="form-control border-0 box-shadow-0 bg-secondary" type="email" name="EMAIL" id="mce-EMAIL" value="" placeholder="Your email" required>
-                  </div>
-                  <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                    <input type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
-                  </div>
-                  <button class="btn btn-primary btn-block" type="submit" name="subscribe" id="mc-embedded-subscribe">Subscribe*</button>
-                  <p class="font-size-xs text-white opacity-60 pt-2 mb-2" id="mc-helper">*Subscribe to our newsletter to receive early discount offers, updates and new products info.</p>
-                  <!-- Subscription status-->
-                  <div class="subscribe-status"></div>
-                </form>
-              </div>
-            </div>
-            
-  <!--End mc_embed_signup-->
-            </div>
-            
-          </div>
-        </div>
-      <div class="py-3" style="background-color: #1a1a1a;">
-        <div class="container font-size-xs text-center" aria-label="Copyright"><span class="text-white opacity-60 mr-1">© All rights reserved. Made by</span><a class="nav-link-inline nav-link-light" href="https://createx.studio/" target="_blank">Createx Studio</a></div>
-      </div>
-    </footer>
-    <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
-    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="/js/vendor.min.js"></script>
-    <script src="/js/theme.min.js"></script>
-  </body>
+				<div class="d-flex align-items-center pt-5">
+					<hr class="w-100">
+					<div class="px-3 w-100 text-nowrap font-weight-semibold">Or
+						sign in via</div>
+					<hr class="w-100">
+				</div>
+				<div class="text-center pt-4">
+					<a class="social-btn sb-facebook mx-2 mb-3" href="#"
+						data-toggle="tooltip" title="Facebook"><i
+						class="flaticon-facebook"></i></a><a
+						class="social-btn sb-google-plus mx-2 mb-3" href="#"
+						data-toggle="tooltip" title="Google"><i
+						class="flaticon-google-plus"></i></a><a
+						class="social-btn sb-twitter mx-2 mb-3" href="#"
+						data-toggle="tooltip" title="Twitter"><i
+						class="flaticon-twitter"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Off-canvas cart-->
+	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
+		<div
+			class="offcanvas-header d-flex justify-content-between align-items-center">
+			<h3 class="offcanvas-title">Your cart</h3>
+			<button class="close" type="button" data-dismiss="offcanvas"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="offcanvas-body-inner">
+				<div class="text-right">
+					<a class="text-danger btn-sm pr-0" href="#"><i class="mr-1"
+						data-feather="x" style="width: .85rem; height: .85rem;"></i>Clear
+						cart</a>
+				</div>
+				<div class="widget widget-featured-entries pt-3">
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/07.jpg" width="64"
+								alt="Product thumb"></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Calvin Klein Jeans Keds</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class='text-muted'>x</span> $125.00
+							</p>
+						</div>
+					</div>
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/08.jpg" width="64"
+								alt="Product thumb"></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">The North Face Hoodie</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class='text-muted'>x</span> $134.00
+							</p>
+						</div>
+					</div>
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/09.jpg" width="64"
+								alt="Product thumb"></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Medicine Chameleon Sunglasses</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class='text-muted'>x</span> $47.00
+							</p>
+						</div>
+					</div>
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="img/shop/widget/10.jpg" width="64"
+								alt="Product thumb"></a><span class="item-remove-btn"><i
+								data-feather="x"></i></span>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">Adidas Performance Hat</a>
+							</h6>
+							<p class="featured-entry-meta">
+								1 <span class='text-muted'>x</span> $19.00
+							</p>
+						</div>
+					</div>
+					<hr>
+					<div class="d-flex justify-content-between align-items-center py-3">
+						<div class="font-size-sm">
+							<span class="mr-2">Subtotal:</span><span
+								class="font-weight-semibold text-dark">$325.00</span>
+						</div>
+						<a class="btn btn-outline-secondary btn-sm" href="cart.html">Expand
+							cart<i class="mr-n2" data-feather="chevron-right"></i>
+						</a>
+					</div>
+					<a class="btn btn-primary btn-sm btn-block"
+						href="checkout-details.html"><i class="mr-1"
+						data-feather="credit-card"></i>Checkout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Navbar Multilevel-->
+
+	<!-- Second line-->
+	<header class="navbar navbar-expand-lg navbar-light bg-light px-0">
+		<div class="container flex-sm-nowrap px-3">
+			<!-- navbar brand-->
+			<a class="navbar-brand mr-0 mr-sm-4" style="min-width: 100px;"
+				href="/"><img width="100" src="img/logo-dark.png" alt="MStore" /></a>
+			<!-- navbar buttons-->
+			<div class="navbar-btns d-flex position-relative order-sm-3">
+				<div
+					class="navbar-toggler navbar-btn collapsed bg-0 border-left-0 my-3"
+					data-toggle="collapse" data-target="#menu">
+					<i class="mx-auto mb-2" data-feather="menu"></i>Menu
+				</div>
+				<span class="d-block position-relative"><a
+					class="navbar-btn bg-0 my-3" href="#offcanvas-account"
+					data-toggle="offcanvas"><i class="mx-auto mb-1"
+						data-feather="log-in"></i>Sign In/Up</a><a
+					class="navbar-btn bg-0 my-3" href="#offcanvas-cart"
+					data-toggle="offcanvas"><span class="d-block position-relative"><span
+							class="navbar-btn-badge bg-primary text-light">4</span><i
+							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
+			</div>
+			<!-- search-box-->
+			<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
+				<div class="input-group flex-nowrap">
+					<div class="input-group-prepend">
+						<span class="input-group-text rounded-left" id="search-icon"><i
+							data-feather="search"></i></span>
+					</div>
+					<input class="form-control rounded-right" type="text"
+						id="site-search" placeholder="Search site"
+						aria-label="Search site" aria-describedby="search-icon">
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- Third line: Navigation-->
+	<div class="navbar navbar-expand-lg navbar-light bg-light px-0">
+		<div class="container px-3">
+			<!-- navbar collapse area-->
+			<div class="collapse navbar-collapse" id="menu">
+				<!-- Site menu-->
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown mega-dropdown dropdown-more"><a
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Categories<i
+							data-feather="more-horizontal"></i></a>
+						<div class="dropdown-menu">
+							<div class="dropdown-inner">
+								<div class="dropdown-column">
+									<div
+										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+										style="background-image: url(img/megamenu/computerHardware.jpg);">
+										<h3 class="h5 text-white text-shadow my-3">Computer
+											Hardware</h3>
+									</div>
+									<div class="widget widget-links">
+										<ul>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Motherboards</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Storage
+														Devices</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">CPU
+														/ Processors</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Video
+														Cards &amp; Video Devices</span></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="dropdown-column">
+									<div
+										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+										style="background-image: url(img/megamenu/comp-accessories.png);">
+										<h3 class="h5 text-white text-shadow my-3">Computer
+											Accessories</h3>
+									</div>
+									<div class="widget widget-links">
+										<ul>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Speakers
+												</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Headphones
+												</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Computer
+														Mice</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Monitors</span></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="dropdown-column">
+									<div
+										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+										style="background-image: url(img/megamenu/printer.png);">
+										<h3 class="h5 text-white text-shadow my-3">Printers</h3>
+									</div>
+									<div class="widget widget-links">
+										<ul>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Ink
+														Printer</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Laser
+														Printer</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">3D
+														Printer</span></a></li>
+											<li><a href="#"><i
+													class="widget-categories-indicator"
+													data-feather="chevron-right"></i><span class="font-size-sm">Printer
+														Supplies</span></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div></li>
+				</ul>
+				<ul class="nav nav-pills">
+					<li class="nav-item"><a href="/" class="nav-link rounded">Home</a>
+					</li>
+					<li class="nav-item"><a href="/shop/" class="nav-link rounded">Shop</a>
+					</li>
+					<li class="nav-item"><a href="/sell_product/"
+						class="nav-link rounded">Sell product</a></li>
+				</ul>
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown active"><a
+						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">User
+							Account</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="/account_settings">Profile
+									Settings</a></li>
+							<li class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="/public_profile">Public
+									profile</a></li>
+							<li class="dropdown-divider"></li>
+						</ul></li>
+				</ul>
+				<!-- Rounded nav pills -->
+			</div>
+		</div>
+	</div>
+	<!-- Page Content-->
+	<div class="container pt-lg-3 pb-5 mb-sm-3">
+		<!-- Toast notifications-->
+		<div class="toast-container toast-bottom-center">
+			<div class="toast mb-3" id="cart-toast" data-delay="5000"
+				role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header bg-success text-white">
+					<i class="mr-2" data-feather="check-circle"
+						style="width: 1.25rem; height: 1.25rem;"></i><span
+						class="font-weight-semibold mr-auto">Added to cart!</span>
+					<button class="close text-white ml-2 mb-1" type="button"
+						data-dismiss="toast" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="toast-body">This item was added to your cart.</div>
+			</div>
+			<div class="toast mb-3" id="compare-toast" data-delay="5000"
+				role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header bg-info text-white">
+					<i class="mr-2" data-feather="info"
+						style="width: 1.25rem; height: 1.25rem;"></i><span
+						class="font-weight-semibold mr-auto">Added to comparison!</span>
+					<button class="close text-white ml-2 mb-1" type="button"
+						data-dismiss="toast" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="toast-body">This item was added to comparison
+					table.</div>
+			</div>
+			<div class="toast mb-3" id="profile-toast" data-delay="5000"
+				role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header bg-success text-white">
+					<i class="mr-2" data-feather="check-circle"
+						style="width: 1.25rem; height: 1.25rem;"></i><span
+						class="font-weight-semibold mr-auto">Updated!</span>
+					<button class="close text-white ml-2 mb-1" type="button"
+						data-dismiss="toast" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="toast-body">Your profile info updated successfuly.</div>
+			</div>
+			<div class="toast mb-3" id="address-toast" data-delay="5000"
+				role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header bg-success text-white">
+					<i class="mr-2" data-feather="check-circle"
+						style="width: 1.25rem; height: 1.25rem;"></i><span
+						class="font-weight-semibold mr-auto">Updated!</span>
+					<button class="close text-white ml-2 mb-1" type="button"
+						data-dismiss="toast" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="toast-body">Your addresses info updated
+					successfully.</div>
+			</div>
+		</div>
+		<div class="row pt-5">
+			<!-- Sidebar-->
+			<div class="col-xl-3 col-lg-4">
+				<!-- Customer picture-->
+				<a class="gallery-item mb-grid-gutter mx-auto"
+					style="max-width: 18.75rem;"><img
+					src="/images/users/image-{{user.id}}.jpg" alt="{{user.firstName}}"></a>
+			</div>
+			<!-- Main content-->
+			<div class="col-lg-8 offset-xl-1">
+				<!-- Customer details-->
+				<div class="d-flex flex-wrap justify-content-between pb-4">
+					<div class="pt-3 mr-3">
+						<h3 class="mb-0">{{user.firstName}} {{user.lastName}}</h3>
+						<span class="font-size-sm text-warning">{{user.email}}</span>
+					</div>
+					<div class="pt-3">
+						<a class="btn btn-outline-primary btn-sm" href="/logout"><i
+							class="mr-1" data-feather="log-out"></i>Log out</a>
+					</div>
+				</div>
+				<!-- Profile info-->
+				<h5 class="mb-4 pt-sm-3">Profile info</h5>
+				<form class="row" action="/profile/updated" method="post"
+					enctype="multipart/form-data">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-fn">First Name</label> <input
+								class="form-control" type="text" id="account-fn"
+								name="firstName" value="{{user.firstName}}" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-ln">Last Name</label> <input
+								class="form-control" type="text" id="account-ln" name="lastName"
+								value="{{user.lastName}}" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-email">Email Address</label> <input
+								class="form-control" type="email" id="account-email"
+								name="email" value="{{user.email}}" disabled>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-phone">Phone Number</label> <input
+								class="form-control" type="text" id="account-phone" name="phone"
+								value="{{user.phone}}" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-pass">New Password</label> <input
+								class="form-control" type="password" name="password"
+								id="account-pass">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-confirm-pass">Confirm Password</label> <input
+								class="form-control" type="password" id="account-confirm-pass">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-address">Address</label> <input
+								class="form-control" type="text" id="account-address"
+								name="userAddress">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="credit-card">Credit card number</label> <input
+								class="form-control" type="number" id="credit-card"
+								name="creditCard">
+						</div>
+					</div>
+
+					<div class="form-group mx-auto">
+						<label for="file-input">Upload you profile photo</label>
+						<div class="file-upload-wrapper">
+							<input type="file" name="imagenFile" lang="en"
+								id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
+						</div>
+					</div>
+					<br>
+
+					<div class="col-12">
+						<button class="btn btn-primary mt-3 mt-sm-0" type="submit"
+							data-toggle="toast" data-target="#profile-toast">Update
+							profile</button>
+					</div>
+				</form>
+				<!-- Technical support + Tickets (visible Mobile)-->
+				<div class="d-lg-none bg-secondary px-3 py-4 mt-5">
+					<h6 class="font-size-sm mb-3 pb-2 border-bottom">Technical
+						support</h6>
+					<ul class="list-unstyled">
+						<li class="font-size-sm mb-2"><i class="text-muted mr-2"
+							data-feather="mail" style="width: .875rem; height: .875rem;"></i><a
+							class="nav-link-inline" href="mailto:support@example.com">support@example.com</a></li>
+						<li class="font-size-sm mb-2"><i class="text-muted mr-2"
+							data-feather="phone" style="width: .875rem; height: .875rem;"></i><a
+							class="nav-link-inline" href="tel:+100331697720">+1 00 33 169
+								7720</a></li>
+						<li class="font-size-sm mb-2"><i class="text-muted mr-2"
+							data-feather="clock" style="width: .875rem; height: .875rem;"></i>1-2
+							business days</li>
+					</ul>
+					<div class="pt-2">
+						<a class="btn btn-outline-secondary btn-sm btn-block"
+							href="account-tickets.html"><i class="mr-1"
+							data-feather="tag"></i>My tickets (1)</a><a
+							class="btn btn-success btn-sm btn-block"
+							href="account-tickets.html" data-toggle="modal"
+							data-target="#open-ticket">Submit new ticket</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer-->
+	<footer class="page-footer bg-dark">
+		<!-- first row-->
+		<div class="pt-5 pb-0 pb-md-4">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-sm-6">
+						<div class="widget widget-links pb-4">
+							<h3 class="widget-title text-white border-light">Shop
+								departments</h3>
+							<ul>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/0"><i class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Motherboards</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/1"><i class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Storage
+											Devices</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/2"><i class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">CPU
+											/ Processors</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/3"><i class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Video
+											Cards &amp; Video Devices</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/4"><i class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Speakers</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/5"><i class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Monitors</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/6"><i class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Computer
+											Mice</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/7"><i class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/8"><i class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Ink
+											Printer</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/9"><i class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Laser
+											Printer</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/10"><i class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">3D
+											Printers</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/11"><i class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Printer
+											Supplies</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<div class="widget widget-links pb-4">
+							<h3 class="widget-title text-white border-light">Our brands</h3>
+							<ul>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/brand/Intel"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Intel</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/brand/AMD"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">AMD</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/brand/NVIDIA"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">NVIDIA</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/brand/ASUS"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">ASUS</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/brand/Corsair"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Corsair</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/brand/Seagate"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Seagate</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/brand/Gigabyte"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Gigabyte</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/brand/Logitech"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Logitech</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/brand/Pioneer"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">Pioneer</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/brand/WD"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">WD</span></a></li>
+								<li><a class="nav-link-inline nav-link-light"
+									href="/shop/brand/HP"><i
+										class="widget-categories-indicator"
+										data-feather="chevron-right"></i><span class="font-size-sm">HP</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-xl-4 offset-xl-1 col-md-5">
+						<div class="widget">
+							<!-- Subscription form (MailChimp)-->
+							<h3 class="widget-title text-white border-light">Stay
+								informed</h3>
+							<form
+								action="https://urjc.us4.list-manage.com/subscribe/post?u=7816e91fc0e80c209c0a7750e&amp;id=a3e1cc1eb7"
+								method="post" id="mc-embedded-subscribe-form"
+								name="mc-embedded-subscribe-form" class="validate"
+								target="_blank" novalidate>
+								<div class="input-group mb-2">
+									<div class="input-group-prepend">
+										<span class="input-group-text"
+											style="background-color: #e8e8e8;"><i
+											data-feather="mail"></i></span>
+									</div>
+									<input class="form-control border-0 box-shadow-0 bg-secondary"
+										type="email" name="EMAIL" id="mce-EMAIL" value=""
+										placeholder="Your email" required>
+								</div>
+								<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+								<div style="position: absolute; left: -5000px;"
+									aria-hidden="true">
+									<input type="text"
+										name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
+								</div>
+								<button class="btn btn-primary btn-block" type="submit"
+									name="subscribe" id="mc-embedded-subscribe">Subscribe*</button>
+								<p class="font-size-xs text-white opacity-60 pt-2 mb-2"
+									id="mc-helper">*Subscribe to our newsletter to receive
+									early discount offers, updates and new products info.</p>
+								<!-- Subscription status-->
+								<div class="subscribe-status"></div>
+							</form>
+						</div>
+					</div>
+
+					<!--End mc_embed_signup-->
+				</div>
+
+			</div>
+		</div>
+		<div class="py-3" style="background-color: #1a1a1a;">
+			<div class="container font-size-xs text-center"
+				aria-label="Copyright">
+				<span class="text-white opacity-60 mr-1">© All rights
+					reserved. Made by</span><a class="nav-link-inline nav-link-light"
+					href="https://createx.studio/" target="_blank">Createx Studio</a>
+			</div>
+		</div>
+	</footer>
+	<!-- Back To Top Button-->
+	<a class="scroll-to-top-btn" href="#"><i
+		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
+	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+	<script src="/js/vendor.min.js"></script>
+	<script src="/js/theme.min.js"></script>
+</body>
 </html>
