@@ -86,12 +86,12 @@ public class User {
 		this.userAddress = userAddress;
 	}
 
-	public String getfirstName() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setfirstName(String name) {
-		this.firstName = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
@@ -154,14 +154,6 @@ public class User {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
 	public List<Post> getPosts() {
 		return posts;
 	}
@@ -169,8 +161,6 @@ public class User {
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
-	
-	
 
 	public List<String> getTags() {
 		return tags;

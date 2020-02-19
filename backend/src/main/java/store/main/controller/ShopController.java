@@ -53,6 +53,7 @@ public class ShopController {
 
 		return "shop-style2-ls";
 	}
+	
 	@GetMapping("/shop/{tag}")
 	public String shopByTag(Model model, @PathVariable("tag") Integer tag,
 			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,

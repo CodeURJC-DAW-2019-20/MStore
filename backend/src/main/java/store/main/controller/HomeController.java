@@ -26,7 +26,7 @@ public class HomeController {
 		
 		model = hLoader.modelLoader(model);
 		
-		if (request.getUserPrincipal() != null) {
+		if (request.isUserInRole("USER")) {
 			
 			User user = userRepository.findByEmail(request.getUserPrincipal().getName());
 			

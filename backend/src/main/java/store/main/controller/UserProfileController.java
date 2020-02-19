@@ -63,7 +63,7 @@ public class UserProfileController {
 			@RequestParam MultipartFile imagenFile, HttpServletRequest request) throws IOException {
 		
 		User u = getUserInfo(request);
-		u.setFirstName(user.getfirstName());
+		u.setFirstName(user.getFirstName());
 		u.setLastName(user.getLastName());
 		u.setBCryptPassword(user.getPassword());
 		u.setPhone(user.getPhone());

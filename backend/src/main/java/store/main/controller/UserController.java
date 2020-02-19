@@ -18,18 +18,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
-import store.main.database.Post;
 import store.main.database.User;
 import store.main.database.UserRepository;
 
 @Controller
 public class UserController {
 	
-	private interface UserPostsInfo extends User.BasicInfo, User.PostsInfo, Post.BasicInfo {
-	};
-
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -74,7 +68,6 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	@JsonView(UserPostsInfo.class)
     private void autoLogin(User user, HttpServletRequest request) {
     	
 		List<GrantedAuthority> roles = new ArrayList<>();

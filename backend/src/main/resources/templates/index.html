@@ -266,6 +266,9 @@
 							<i data-feather="user"></i>
 							Hello {{user.firstName}}
 						</div>
+						<div class="row d-block text-center text-primary mx-auto mb-1 font-size-sm pr-3 my-auto">
+							<a class="btn btn-outline-primary btn-sm" href="/logout"><i class="mr-1" data-feather="log-out"></i>Log out</a>
+						</div>
 					{{/logged}}
 					{{^logged}}
 						<a class="navbar-btn bg-0 my-3" href="#offcanvas-account"
@@ -1061,7 +1064,6 @@
 			  
 			</div>
 		  </div>
-		</div>
 		<div class="py-3" style="background-color: #1a1a1a;">
 		  <div class="container font-size-xs text-center" aria-label="Copyright"><span class="text-white opacity-60 mr-1">© All rights reserved. Made by</span><a class="nav-link-inline nav-link-light" href="https://createx.studio/" target="_blank">Createx Studio</a></div>
 		</div>

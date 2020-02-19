@@ -300,10 +300,11 @@
         <!-- Product details    -->
         <div class="col-lg-5 pt-4 pt-lg-0">
           <div class="pb-4">
-          <div class="pb-4"><a class="text-warning d-inline-block" href="seller-profile.html">	          <div class="pb-4">
+          <div class="pb-4">
+          	  <a class="text-warning d-inline-block" href="seller-profile.html"><div class="pb-4">
               <div class="star-rating"><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star" data-feather="star"></i>	
               </div><span class="d-inline-block align-middle font-size-sm mt-1 ml-1 text-body">100 ratings</span>	
-			  <span class="d-block align-middle font-size-xs mt-1 ml-1 text-body"><p class="text-warning">sold by Daniel Adams</p></span></a>
+			  <span class="d-block align-middle font-size-xs mt-1 ml-1 text-body"><p class="text-warning">sold by Daniel Adams</p></span></div></a>
             <h2 class="h1 font-weight-light pt-3 pb-2">
              <span class="text-primary">${{post.price}}</span>
             </h2>
@@ -314,7 +315,7 @@
               <i class="mr-2" data-feather="shopping-cart"></i>Add to cart</button>
               {{/alreadyOn}}
               {{^alreadyOn}}
-              <button class="btn btn-primary btn-block" type="submit" action="/post/{{post.id}}/itemAdded" data-toggle="toast" data-target="#cart-toast">
+              <button class="btn btn-primary btn-block" type="submit" data-toggle="toast" data-target="#cart-toast">
               <i class="mr-2" data-feather="shopping-cart"></i>Add to cart</button>
               {{/alreadyOn}}
               </form>       
@@ -471,10 +472,6 @@
                 </form>
               </div>
             </div>
-            
-  <!--End mc_embed_signup-->
-            </div>
-            
           </div>
         </div>
       </div>
