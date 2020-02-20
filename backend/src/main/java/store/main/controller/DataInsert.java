@@ -34,7 +34,7 @@ public class DataInsert implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		saveExamples();
+		//saveExamples();
 
 	}
 
