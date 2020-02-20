@@ -59,7 +59,7 @@ public class CartController {
 		return "cart";
 	}
 
-	@RequestMapping("/finalreview")
+	@RequestMapping("/final_review")
 	public String finalReview(Model model, HttpSession session, HttpServletRequest request) {
 		// get user
 		User user = userRepository.findByEmail(request.getUserPrincipal().getName());

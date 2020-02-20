@@ -71,8 +71,8 @@ public class User {
 	public User() {
 		roles = new LinkedList<String>();
 		posts = new LinkedList<Post>();
-		tags= new LinkedList<String>();
-		sellers=new LinkedList<User>();
+		tags = new LinkedList<String>();
+		sellers = new LinkedList<User>();
 	}
 
 	public User(String firstName, String lastName, String email, String phone, String password, String userAddress,
