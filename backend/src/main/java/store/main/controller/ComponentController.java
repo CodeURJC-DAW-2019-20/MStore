@@ -23,6 +23,7 @@ public class ComponentController {
 	private List<Post> postList1 = new LinkedList<Post>();// store posts with user tag1
 	private List<Post> postList2 = new LinkedList<Post>();// store posts with user tag2
 	private List<Post> postList3 = new LinkedList<Post>();// store posts with user tag3
+	private List<Post> finalList= new LinkedList<>();
 
 	@Autowired
 	private UserRepository userRepository;
@@ -52,7 +53,7 @@ public class ComponentController {
 		model.addAttribute("alreadyOn", alreadyOn);
 		model.addAttribute("post", post);
 
-		//reset lists
+		// reset lists
 		this.postList1 = new LinkedList<>();
 		this.postList2 = new LinkedList<>();
 		this.postList3 = new LinkedList<>();
@@ -66,14 +67,10 @@ public class ComponentController {
 																							// the recommendations of a
 																							// visiting user
 		}
-
-		model.addAttribute("list1", postList1);
-		model.addAttribute("list2", postList2);
-		model.addAttribute("list3", postList3);
-		model.addAttribute("recomend", (postList1.size() + postList2.size() + postList3.size()) != 0); // there are
-																										// recommended
-																										// posts
-
+		finalList=new LinkedList<>();
+		
+		addToRecomendedList(postList1,postList2,postList3,finalList,model);
+		
 		return "shop-single-electronics";
 	}
 
@@ -94,12 +91,7 @@ public class ComponentController {
 		model.addAttribute("total", total);
 		model.addAttribute("empty", empty);
 
-		model.addAttribute("list1", postList1);
-		model.addAttribute("list2", postList2);
-		model.addAttribute("list3", postList3);
-		model.addAttribute("recomend", (postList1.size() + postList2.size() + postList3.size()) != 0); // there are
-																										// recommended
-																										// posts
+		addToRecomendedList(postList1,postList2,postList3,finalList,model);
 
 		return "shop-single-electronics";
 	}
@@ -120,13 +112,9 @@ public class ComponentController {
 		model.addAttribute("cart", cartAux);
 		model.addAttribute("total", total);
 		model.addAttribute("empty", empty);
-
-		model.addAttribute("list1", postList1);
-		model.addAttribute("list2", postList2);
-		model.addAttribute("list3", postList3);
-		model.addAttribute("recomend", (postList1.size() + postList2.size() + postList3.size()) != 0); // there are
-																										// recommended
-																										// posts
+		
+		
+		addToRecomendedList(postList1,postList2,postList3,finalList,model);
 
 		return "shop-single-electronics";
 	}
@@ -219,6 +207,16 @@ public class ComponentController {
 			}
 		}
 		return userTags;
-
 	}
+	
+	private void addToRecomendedList(List<Post> postList12, List<Post> postList22, List<Post> postList32,
+			List<Post> finalList2,Model model) {
+		finalList.addAll(postList2);
+		finalList.addAll(postList1);
+		finalList.addAll(postList3);
+		model.addAttribute("recomend", !finalList.isEmpty()); // there are recommended posts
+		model.addAttribute("list", finalList);
+	}
+	
+	
 }

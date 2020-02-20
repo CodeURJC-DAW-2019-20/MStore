@@ -34,7 +34,7 @@ public class DataInsert implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		//saveExamples();
+		saveExamples();
 
 	}
 
@@ -126,7 +126,7 @@ public class DataInsert implements CommandLineRunner {
 				"Bridges Street 10, Washington USA", "GPU", "RTX", "Gaming");
 		Post p7 = new Post("3D Printer", 9, 1, 520,
 				"3D printer comes with golden plastic for the 3D models, cheap but durable and reliable, semi-new",
-				"semi-new 3D printer", b1, "Palace Street, Moscow, Russia", "Printer", "3D");
+				"semi-new 3D printer", b1, "Palace Street, Moscow, Russia", "Printer", "3D","semi-new");
 		Post p8 = new Post("INTEL CPU", 2, 1, 460, "Intel seventh gen 7700 CPU for gaming and high end computing",
 				"Intel i7 7770 CPU", b12, "Palace Street, Moscow, Russia", "CPU", "i7");
 		Post p9 = new Post("MSI GTX 1050 4GB", 3, 1, 130,

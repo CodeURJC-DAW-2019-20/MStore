@@ -24,6 +24,8 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
 	List<Post> findByBrandOrderByNameDesc(Brand brand);
 	
+	List<Post> OrderByIdDesc();
+	
 	List<Post> OrderByPriceDesc();
 	
 	List<Post> OrderByPriceAsc();

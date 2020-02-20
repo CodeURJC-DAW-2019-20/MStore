@@ -501,60 +501,26 @@
 						style="background-image: url(img/home/electronics/hero-main-bg.jpg);">
 						<div class="owl-carousel trigger-carousel"
 							data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;autoHeight&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 5500 }">
+							{{#list1}}
 							<div class="row align-items-center py-5">
 								<div class="col-md-5">
 									<div
 										class="pl-3 pr-3 pl-md-5 pr-md-0 pt-4 pt-lg-5 pb-5 text-center text-md-left">
-										<h3 class="mb-1">{{post0.name}}</h3>
+										<h3 class="mb-1">{{name}}</h3>
 										<h4 class="font-weight-light opacity-70 pb-3">starting at
-											${{post0.price}}</h4>
-										<a class="btn btn-primary" href="/post/{{post0.id}}">Shop
+											${{price}}</h4>
+										<a class="btn btn-primary" href="/post/{{id}}">Shop
 											now<i class="ml-2" data-feather="arrow-right"></i>
 										</a>
 									</div>
 								</div>
 								<div class="col-md-7">
 									<img class="d-block mx-auto"
-										src="/images/posts/image-{{post0.id}}.jpg"
-										alt="image-{{post0.id}}.jpg">
+										src="/images/posts/image-{{id}}-0.jpg"
+										alt="image-{{id}}-0.jpg">
 								</div>
 							</div>
-							<div class="row align-items-center py-5">
-								<div class="col-md-5">
-									<div
-										class="pl-3 pr-3 pl-md-5 pr-md-0 pt-4 pt-lg-5 pb-5 text-center text-md-left">
-										<h3 class="mb-1">{{post1.name}}</h3>
-										<h4 class="font-weight-light opacity-70 pb-3">for only
-											${{post1.price}}</h4>
-										<a class="btn btn-primary" href="/post/{{post1.id}}">Shop
-											now<i class="ml-2" data-feather="arrow-right"></i>
-										</a>
-									</div>
-								</div>
-								<div class="col-md-7">
-									<img class="d-block mx-auto"
-										src="/images/posts/image-{{post1.id}}.jpg"
-										alt="image-{{post1.id}}.jpg">
-								</div>
-							</div>
-							<div class="row align-items-center py-5">
-								<div class="col-md-5">
-									<div
-										class="pl-3 pr-3 pl-md-5 pr-md-0 pt-4 pt-lg-5 pb-5 text-center text-md-left">
-										<h3 class="mb-1">{{post2.name}}</h3>
-										<h4 class="font-weight-light opacity-70 pb-3">starting at
-											${{post2.price}}</h4>
-										<a class="btn btn-primary" href="/post/{{post2.id}}">Shop
-											now<i class="ml-2" data-feather="arrow-right"></i>
-										</a>
-									</div>
-								</div>
-								<div class="col-md-7">
-									<img class="d-block mx-auto"
-										src="/images/posts/image-{{post2.id}}.jpg"
-										alt="image-{{post2.id}}.jpg">
-								</div>
-							</div>
+							{{/list1}}
 						</div>
 					</div>
 				</div>
@@ -572,22 +538,23 @@
 			</a>
 		</div>
 		<div class="row no-gutters">
+			{{#list2}}
 			<!-- Product-->
 			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
 				<div class="product-card">
 					<div class="product-thumb">
-						<a class="product-thumb-link" href="/post/{{item0.id}}"></a><img
-							src="/images/posts/image-{{item0.id}}.jpg"
-							alt="image-{{item0.id}}.jpg">
+						<a class="product-thumb-link" href="/post/{{id}}"></a><img
+							src="/images/posts/image-{{id}}-0.jpg"
+							alt="image-{{id}}-0.jpg">
 					</div>
 					<div class="product-card-body">
 						<div class="d-flex flex-wrap justify-content-between pb-1">
-							<a class="product-meta" href="#">{{item0.component}}</a>
+							<a class="product-meta" href="#">{{component}}</a>
 						</div>
 						<h3 class="product-card-title">
-							<a href="/post/{{item0.id}}">{{item0.name}}</a>
+							<a href="/post/{{id}}">{{name}}</a>
 						</h3>
-						<span class="text-primary">${{item0.price}}</span>
+						<span class="text-primary">${{price}}</span>
 					</div>
 					<div class="product-card-body body-hidden pt-2">
 						<button class="btn btn-primary btn-sm btn-block" type="button"
@@ -597,330 +564,48 @@
 				</div>
 			</div>
 			<!-- Product-->
-			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-				<div class="product-card">
-					<div class="product-thumb">
-						<a class="product-thumb-link" href="/post/{{item1.id}}"></a><img
-							src="/images/posts/image-{{item1.id}}.jpg"
-							alt="image-{{item1.id}}.jpg">
-					</div>
-					<div class="product-card-body">
-						<div class="d-flex flex-wrap justify-content-between pb-1">
-							<a class="product-meta" href="#">{{item1.component}}</a>
-						</div>
-						<h3 class="product-card-title">
-							<a href="/post/{{item1.id}}">{{item1.name}}</a>
-						</h3>
-						<span class="text-primary">${{item1.price}}</span>
-					</div>
-					<div class="product-card-body body-hidden pt-2">
-						<button class="btn btn-primary btn-sm btn-block" type="button"
-							data-toggle="toast" data-target="#cart-toast">Add to
-							cart</button>
-					</div>
-				</div>
-			</div>
-			<!-- Product-->
-			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-				<div class="product-card">
-					<div class="product-thumb">
-						<a class="product-thumb-link" href="/post/{{item2.id}}"></a><img
-							src="/images/posts/image-{{item2.id}}.jpg"
-							alt="image-{{item2.id}}.jpg">
-					</div>
-					<div class="product-card-body">
-						<div class="d-flex flex-wrap justify-content-between pb-1">
-							<a class="product-meta" href="#">{{item2.component}}</a>
-						</div>
-						<h3 class="product-card-title">
-							<a href="/post/{{item2.id}}">{{item2.name}}</a>
-						</h3>
-						<span class="text-primary">${{item2.price}}</span>
-					</div>
-					<div class="product-card-body body-hidden pt-2">
-						<button class="btn btn-primary btn-sm btn-block" type="button"
-							data-toggle="toast" data-target="#cart-toast">Add to
-							cart</button>
-					</div>
-				</div>
-			</div>
-			<!-- Product-->
-			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-				<div class="product-card">
-					<div class="product-thumb">
-						<a class="product-thumb-link" href="/post/{{item3.id}}"></a><img
-							src="/images/posts/image-{{item3.id}}.jpg"
-							alt="image-{{item3.id}}.jpg">
-					</div>
-					<div class="product-card-body">
-						<div class="d-flex flex-wrap justify-content-between pb-1">
-							<a class="product-meta" href="#">{{item3.component}}</a>
-						</div>
-						<h3 class="product-card-title">
-							<a href="/post/{{item3.id}}">{{item3.name}}</a>
-						</h3>
-						<span class="text-primary"> <del class="text-muted mr-1">$1355</del>${{item3.price}}
-						</span>
-					</div>
-					<div class="product-card-body body-hidden pt-2">
-						<button class="btn btn-primary btn-sm btn-block" type="button"
-							data-toggle="toast" data-target="#cart-toast">Add to
-							cart</button>
-					</div>
-				</div>
-			</div>
-			<!-- Product-->
-			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-				<div class="product-card">
-					<div class="product-thumb">
-						<a class="product-thumb-link" href="/post/{{item4.id}}"></a><img
-							src="/images/posts/image-{{item4.id}}.jpg"
-							alt="image-{{item4.id}}.jpg">
-					</div>
-					<div class="product-card-body">
-						<div class="d-flex flex-wrap justify-content-between pb-1">
-							<a class="product-meta" href="#">{{item4.component}}</a>
-						</div>
-						<h3 class="product-card-title">
-							<a href="/post/{{item4.id}}">{{item4.name}}</a>
-						</h3>
-						<span class="text-primary">${{item4.price}}</span>
-					</div>
-					<div class="product-card-body body-hidden pt-2">
-						<button class="btn btn-primary btn-sm btn-block" type="button"
-							data-toggle="toast" data-target="#cart-toast">Add to
-							cart</button>
-					</div>
-				</div>
-			</div>
-			<!-- Product-->
-			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-				<div class="product-card">
-					<div class="product-thumb">
-						<a class="product-thumb-link" href="/post/{{item5.id}}"></a><img
-							src="/images/posts/image-{{item5.id}}.jpg"
-							alt="image-{{item5.id}}.jpg">
-					</div>
-					<div class="product-card-body">
-						<div class="d-flex flex-wrap justify-content-between pb-1">
-							<a class="product-meta" href="#">{{item5.component}}</a>
-						</div>
-						<h3 class="product-card-title">
-							<a href="/post/{{item5.id}}">{{item5.name}}</a>
-						</h3>
-						<span class="text-primary">${{item5.price}}</span>
-					</div>
-					<div class="product-card-body body-hidden pt-2">
-						<button class="btn btn-primary btn-sm btn-block" type="button"
-							data-toggle="toast" data-target="#cart-toast">Add to
-							cart</button>
-					</div>
-				</div>
-			</div>
-
-
-			<!-- Product-->
-			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-				<div class="product-card">
-					<div class="product-thumb">
-						<a class="product-thumb-link" href="/post/{{item6.id}}"></a><img
-							src="/images/posts/image-{{item6.id}}.jpg"
-							alt="image-{{item6.id}}.jpg">
-					</div>
-					<div class="product-card-body">
-						<div class="d-flex flex-wrap justify-content-between pb-1">
-							<a class="product-meta" href="#">{{item6.component}}</a>
-						</div>
-						<h3 class="product-card-title">
-							<a href="/post/{{item6.id}}">{{item6.name}}</a>
-						</h3>
-						<span class="text-primary">${{item6.price}}</span>
-					</div>
-					<div class="product-card-body body-hidden pt-2">
-						<button class="btn btn-primary btn-sm btn-block" type="button"
-							data-toggle="toast" data-target="#cart-toast">Add to
-							cart</button>
-					</div>
-				</div>
-			</div>
-			<!-- Product-->
-			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-				<div class="product-card">
-					<div class="product-thumb">
-						<a class="product-thumb-link" href="/post/{{item7.id}}"></a><img
-							src="/images/posts/image-{{item7.id}}.jpg"
-							alt="image-{{item7.id}}.jpg" />
-					</div>
-					<div class="product-card-body">
-						<div class="d-flex flex-wrap justify-content-between pb-1">
-							<a class="product-meta" href="#">{{item7.component}}</a>
-						</div>
-						<h3 class="product-card-title">
-							<a href="/post/{{item7.id}}">{{item7.name}}</a>
-						</h3>
-						<span class="text-primary">${{item7.price}}</span>
-					</div>
-					<div class="product-card-body body-hidden pt-2">
-						<button class="btn btn-primary btn-sm btn-block" type="button"
-							data-toggle="toast" data-target="#cart-toast">Add to
-							cart</button>
-					</div>
-				</div>
-			</div>
+			{{/list2}}
 		</div>
 	</section>
 	<br>
 	<!-- Product widgets-->
-	<section class="container px-3 pt-2 pb-4 mb-md-2">
-		<div class="row">
-			<div class="col-md-4 col-sm-6 mb-2 py-3">
-				<div class="widget widget-featured-entries">
-					<h3 class="widget-title font-size-lg">New Arrivals</h3>
-					<div class="media">
-						<a class="featured-entry-thumb" href="/post/{{arrival11.id}}"><img
-							src="/images/posts/image-{{arrival11.id}}.jpg" width="64"
-							alt="image-{{arrival11.id}}.jpg"></a>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="/post/{{arrival11.id}}">{{arrival11.name}}</a>
-							</h6>
-							<p class="featured-entry-meta">${{arrival11.price}}</p>
-						</div>
+	
+	<section class="container px-3 pt-4 mt-3">
+		<div
+			class="d-flex flex-wrap justify-content-between align-items-center pb-2">
+			<h2 class="widget-title font-size-lg">New Arrivals</h2>
+			<a class="btn btn-outline-primary btn-sm border-0 mb-3" href="/shop/">More
+				products<i class="ml-1 mr-n2" data-feather="chevron-right"></i>
+			</a>
+		</div>
+		<div class="row no-gutters">
+			{{#list3}}
+			<!-- Product-->
+			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
+				<div class="product-card">
+					<div class="product-thumb">
+						<a class="product-thumb-link" href="/post/{{id}}"></a><img
+							src="/images/posts/image-{{id}}-0.jpg"
+							alt="image-{{id}}-0.jpg">
 					</div>
-					<div class="media">
-						<a class="featured-entry-thumb" href="/post/{{arrival10.id}}"><img
-							src="/images/posts/image-{{arrival10.id}}.jpg" width="64"
-							alt="image-{{arrival10.id}}.jpg"></a>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="/post/{{arrival10.id}}">{{arrival10.name}}</a>
-							</h6>
-							<p class="featured-entry-meta">${{arrival10.price}}</p>
+					<div class="product-card-body">
+						<div class="d-flex flex-wrap justify-content-between pb-1">
+							<a class="product-meta" href="#">{{component}}</a>
 						</div>
+						<h3 class="product-card-title">
+							<a href="/post/{{id}}">{{name}}</a>
+						</h3>
+						<span class="text-primary">${{price}}</span>
 					</div>
-					<div class="media">
-						<a class="featured-entry-thumb" href="/post/{{arrival9.id}}"><img
-							src="/images/posts/image-{{arrival9.id}}.jpg" width="64"
-							alt="image-{{arrival9.id}}.jpg"></a>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="/post/{{arrival9.id}}">{{arrival9.name}}</a>
-							</h6>
-							<p class="featured-entry-meta">${{arrival9.price}}</p>
-						</div>
-					</div>
-					<div class="media">
-						<a class="featured-entry-thumb" href="/post/{{arrival8.id}}"><img
-							src="/images/posts/image-{{arrival8.id}}.jpg" width="64"
-							alt="image-{{arrival8.id}}.jpg"></a>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="/post/{{arrival8.id}}">{{arrival8.name}}</a>
-							</h6>
-							<p class="featured-entry-meta">${{arrival8.price}}</p>
-						</div>
+					<div class="product-card-body body-hidden pt-2">
+						<button class="btn btn-primary btn-sm btn-block" type="button"
+							data-toggle="toast" data-target="#cart-toast">Add to
+							cart</button>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-6 mb-2 py-3">
-				<div class="widget widget-featured-entries">
-					<br> <br>
-					<div class="media">
-						<a class="featured-entry-thumb" href="/post/{{arrival7.id}}"><img
-							src="/images/posts/image-{{arrival7.id}}.jpg" width="64"
-							alt="image-{{arrival7.id}}.jpg"></a>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="/post/{{arrival7.id}}">{{arrival7.name}}</a>
-							</h6>
-							<p class="featured-entry-meta">${{arrival7.price}}</p>
-						</div>
-					</div>
-					<div class="media">
-						<a class="featured-entry-thumb" href="/post/{{arrival6.id}}"><img
-							src="/images/posts/image-{{arrival6.id}}.jpg" width="64"
-							alt="image-{{arrival6.id}}.jpg"></a>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="/post/{{arrival6.id}}">{{arrival6.name}}</a>
-							</h6>
-							<p class="featured-entry-meta">${{arrival6.price}}</p>
-						</div>
-					</div>
-					<div class="media">
-						<a class="featured-entry-thumb" href="/post/{{arrival5.id}}"><img
-							src="/images/posts/image-{{arrival5.id}}.jpg" width="64"
-							alt="image-{{arrival5.id}}.jpg"></a>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="/post/{{arrival5.id}}">{{arrival5.name}}</a>
-							</h6>
-							<p class="featured-entry-meta">${{arrival5.price}}</p>
-						</div>
-					</div>
-					<div class="media">
-						<a class="featured-entry-thumb" href="/post/{{arrival4.id}}"><img
-							src="/images/posts/image-{{arrival4.id}}.jpg" width="64"
-							alt="image-{{arrival4.id}}.jpg"></a>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="/post/{{arrival4.id}}">{{arrival4.name}}</a>
-							</h6>
-							<p class="featured-entry-meta">${{arrival4.price}}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-4 col-sm-6 mb-2 py-3">
-				<div class="widget widget-featured-entries">
-					<br> <br>
-					<div class="media">
-						<a class="featured-entry-thumb" href="/post/{{arrival3.id}}"><img
-							src="/images/posts/image-{{arrival3.id}}.jpg" width="64"
-							alt="image-{{arrival3.id}}.jpg"></a>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="/post/{{arrival3.id}}">{{arrival3.name}}</a>
-							</h6>
-							<p class="featured-entry-meta">${{arrival3.price}}</p>
-						</div>
-					</div>
-					<div class="media">
-						<a class="featured-entry-thumb" href="/post/{{arrival2.id}}"><img
-							src="/images/posts/image-{{arrival2.id}}.jpg" width="64"
-							alt="image-{{arrival2.id}}.jpg"></a>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="/post/{{arrival2.id}}">{{arrival2.name}}</a>
-							</h6>
-							<p class="featured-entry-meta">${{arrival2.price}}</p>
-						</div>
-					</div>
-					<div class="media">
-						<a class="featured-entry-thumb" href="/post/{{arrival1.id}}"><img
-							src="/images/posts/image-{{arrival1.id}}.jpg" width="64"
-							alt="image-{{arrival1.id}}.jpg"></a>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="/post/{{arrival1.id}}">{{arrival1.name}}</a>
-							</h6>
-							<p class="featured-entry-meta">${{arrival1.price}}</p>
-						</div>
-					</div>
-					<div class="media">
-						<a class="featured-entry-thumb" href="/post/{{arrival0.id}}"><img
-							src="/images/posts/image-{{arrival0.id}}.jpg" width="64"
-							alt="image-{{arrival0.id}}.jpg"></a>
-						<div class="media-body">
-							<h6 class="featured-entry-title">
-								<a href="/post/{{arrival0.id}}">{{arrival0.name}}</a>
-							</h6>
-							<p class="featured-entry-meta">${{arrival0.price}}</p>
-						</div>
-					</div>
-				</div>
-			</div>
+			<!-- Product-->
+			{{/list3}}
 		</div>
 	</section>
 
@@ -932,19 +617,19 @@
 					<span class="badge badge-danger ml-5">Limited offer</span>
 					<div class="pt-4 pl-4 pl-sm-5">
 						<h3 class="font-family-body font-weight-light mb-2">All new</h3>
-						<h2 class="mb-2 pb-1">{{post0.name}}</h2>
+						<h2 class="mb-2 pb-1">{{post.name}}</h2>
 						<h5 class="font-family-body font-weight-light mb-3">at
 							discounted price. Hurry up!</h5>
 						<div class="countdown h4 mb-4" data-date-time="10/10/2020 12:00"
 							data-labels="{&quot;label-day&quot;: &quot;d&quot;, &quot;label-hour&quot;: &quot;h&quot;, &quot;label-minute&quot;: &quot;m&quot;, &quot;label-second&quot;: &quot;s&quot;}"></div>
-						<a class="btn btn-primary" href="/post/{{post0.id}}">Shop Now!<i
+						<a class="btn btn-primary" href="/post/{{post.id}}">Shop Now!<i
 							class="ml-2" data-feather="arrow-right"></i>
 						</a>
 					</div>
 				</div>
 				<div class="col-md-7">
-					<img class="mx-auto" src="/images/posts/image-{{post0.id}}.jpg"
-						alt="image-{{post0.id}}.jpg">
+					<img class="mx-auto" src="/images/posts/image-{{post.id}}-0.jpg"
+						alt="image-{{post.id}}-0.jpg">
 				</div>
 			</div>
 		</div>

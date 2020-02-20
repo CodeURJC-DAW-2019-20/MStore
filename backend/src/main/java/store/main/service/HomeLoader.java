@@ -1,5 +1,6 @@
 package store.main.service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,6 @@ public class HomeLoader {
 	 * @return model with attributes
 	 */
 	public Model modelLoader(Model model) {
-		// list with all products
-		List<Post> postList = postRepository.findAll();
 
 		// list with all product order by descending price
 		List<Post> postListPriceDesc = postRepository.OrderByPriceDesc();
@@ -31,19 +30,38 @@ public class HomeLoader {
 		// list with all product order by ascending price
 		List<Post> postListPriceAsc = postRepository.OrderByPriceAsc();
 
-		// load the three most expensive products
-		for (int i = 0; i < 3; i++) {
-			model.addAttribute("post" + i, postListPriceDesc.get(i));
-		}
+		// list order by new arrivals
+		List<Post> postListIdDesc = postRepository.OrderByIdDesc();
 
-		// load the eight cheapest products
-		for (int i = 0; i < 8; i++) {
-			model.addAttribute("item" + i, postListPriceAsc.get(i));
-		}
+		// load the three most expensive products
+		loadPosts(model, postListPriceDesc,"1",3);
+		
+		// load cheapest products
+		loadPosts(model, postListPriceAsc,"2",8);
+
 		// load newly arrived products
-		for (int i = 11; i > -1; i--) {
-			model.addAttribute("arrival" + i, postList.get(i));
-		}
+		loadPosts(model, postListIdDesc,"3",8);
+		
+		model.addAttribute("post",postListIdDesc.get(0)); //The most expensive product
 		return model;
+	}
+	
+	/**
+	 * @param model
+	 * @param list
+	 * @param tag mustache list
+	 * @param n first products to show
+	 */
+	private void loadPosts(Model model,List<Post> list,String tag,int n) {
+	
+		if (list.size() > n) {
+			List<Post> auxList = new LinkedList<Post>();
+			for (int i = 0; i < n; i++) {
+				auxList.add(list.get(i));
+			}
+			model.addAttribute("list"+tag, auxList);
+		} else {
+			model.addAttribute("list"+tag, list);
+		}	
 	}
 }
