@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import store.main.database.User;
 import store.main.database.UserRepository;
+import store.main.service.CartService;
 
 @Controller
 public class UserController {
@@ -27,9 +28,12 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private CartService cService;
+	
 	@GetMapping("/login")
-	public String login(Model model) {
-
+	public String login(Model model, HttpSession session) {
+		cService.LoadNotProduct(model, session);
 		model.addAttribute("error", false);
 		return "login";
 	}
@@ -41,6 +45,7 @@ public class UserController {
 		return "login";
 	}
 
+	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 
@@ -49,10 +54,10 @@ public class UserController {
 	}
 
 	@PostMapping("/register")
-	public String register(Model model, User user, HttpServletRequest request) {
+	public String register(Model model, User user, HttpServletRequest request, HttpSession session) {
 
 		User registeredUser = userRepository.findByEmail(user.getEmail());
-
+		cService.LoadNotProduct(model, session);
 		if (registeredUser != null) {
 			model.addAttribute("registered", true);
 			return "login";

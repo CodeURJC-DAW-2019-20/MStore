@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import store.main.database.Rating;
 import store.main.database.RatingRepository;
 import store.main.database.User;
 import store.main.database.UserRepository;
+import store.main.service.CartService;
 import store.main.service.ImageService;
 
 @Controller
@@ -32,6 +34,9 @@ public class SellerProfileController {
 	private RatingRepository ratingRepository;
 	
 	@Autowired
+	private CartService cService;
+	
+	@Autowired
 	private PostRepository postRepository;
 
 	private User getUserInfo(HttpServletRequest request) {
@@ -41,7 +46,13 @@ public class SellerProfileController {
 	
 	@GetMapping("/public_profile/{id}")
 	public String loadPublicProfile(Model model, HttpServletRequest request, 
-			@PathVariable("id") long id) {
+			@PathVariable("id") long id, HttpSession session) {
+		loadPublicProfile(model, request, id);
+		cService.Load(model, session, id);
+		return "seller-public-profile";
+	}
+	
+	private void loadPublicProfile(Model model, HttpServletRequest request, long id) {
 		Optional<User> u = userRepository.findById(id);
 		
 		for(int i=0;i<6;i++)
@@ -58,13 +69,17 @@ public class SellerProfileController {
 		}else {
 			model.addAttribute("hasSold",false);
 		}
-		
-		return "seller-public-profile";
 	}
 	
 	@PostMapping("/public_profile/{idSeller}/{idBuyer}")
 	public String saveRating(Model model, @RequestParam String stars,
-			@PathVariable("idSeller") long idSeller, @PathVariable("idBuyer") long idBuyer) {
+			@PathVariable("idSeller") long idSeller, @PathVariable("idBuyer") long idBuyer, HttpSession session) {
+		saveRating(model, stars, idSeller, idBuyer);
+		cService.LoadNotProduct(model, session);
+		return ("redirect:/public_profile/"+idSeller);
+	}
+	
+	private void saveRating(Model model, String stars, long idSeller, long idBuyer) {
 		Optional<User> us = userRepository.findById(idSeller);
 		Optional<User> ub = userRepository.findById(idBuyer);
 		
@@ -75,7 +90,5 @@ public class SellerProfileController {
 		
 		ub.get().getSellers().remove(us.get());
 		userRepository.save(ub.get());
-		
-		return ("redirect:/public_profile/"+idSeller);
 	}
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import store.main.database.*;
+import store.main.service.CartService;
 
 @Controller
 public class ComponentController {
@@ -34,27 +35,17 @@ public class ComponentController {
 
 	@Autowired
 	private Cart cart;
+	
+	@Autowired
+	private CartService cService;
 
 	@RequestMapping("/post/{id}-{img}")
 	public String mapPost(Model model, @PathVariable Long id, @PathVariable int img, HttpSession session, HttpServletRequest request) {
 
-		cart.cartInit(session);
-
-		boolean empty = (boolean) session.getAttribute("empty");
-		long total = (long) session.getAttribute("total");
-		List<Post> cartAux = (List<Post>) session.getAttribute("cart");
-
-		model.addAttribute("cart", cartAux);
-		model.addAttribute("total", total);
-		model.addAttribute("empty", empty);
-
 		Post post = postRepository.findById(id).get();
-		boolean alreadyOn = cartAux.contains(post);
-		post.getnImg();
-
-		model.addAttribute("alreadyOn", alreadyOn);
 		model.addAttribute("post", post);
-
+		cService.Load(model, session, id);
+		
 		//reset lists
 		this.postList1 = new LinkedList<>();
 		this.postList2 = new LinkedList<>();
@@ -95,65 +86,13 @@ public class ComponentController {
 		return "shop-single-electronics";
 	}
 
-	@RequestMapping("/post/{id}-{img}/removeItem-{idRemove}")
-	public String mapPost(Model model, @PathVariable Long id, @PathVariable int img, @PathVariable Long idRemove, HttpSession session) {
-
-		Post post = postRepository.findById(id).get();
-		model.addAttribute("post", post);
-		cart.removeFromCart(postRepository.findById(idRemove).get(), session);
-
-		long total = (long) session.getAttribute("total");
-		List<Post> cartAux = (List<Post>) session.getAttribute("cart");
-		boolean empty = (boolean) session.getAttribute("empty");
-		boolean alreadyOn = cartAux.contains(post);
-
-		model.addAttribute("alreadyOn", alreadyOn);
-		model.addAttribute("cart", cartAux);
-		model.addAttribute("total", total);
-		model.addAttribute("empty", empty);
-
-		LinkedList<Integer> images = new LinkedList<>();
-		for (int i=0; i<post.getnImg(); i++) {
-			images.add(i);
-		}
-		int totalr=0;
-		String seller = post.getUser().getFirstName()+" "+post.getUser().getLastName();
-		model.addAttribute("emptyfeatures", post.getFeatures().matches(".*[a-zA-Z]+.*"));
-		model.addAttribute("userid", post.getUser().getId());
-		model.addAttribute("tag", post.getComponentTag());
-		model.addAttribute("tagname", post.getComponent());
-		model.addAttribute("seller", seller);
-		model.addAttribute("stars", getratings(post, totalr));
-		model.addAttribute("totalrates", countratings(post));
-		model.addAttribute("bname", post.getBrand().getName());
-		model.addAttribute("images", images);
-		model.addAttribute("image", img);
-		model.addAttribute("list1", postList1);
-		model.addAttribute("list2", postList2);
-		model.addAttribute("list3", postList3);
-		model.addAttribute("recomend", (postList1.size() + postList2.size() + postList3.size()) != 0); // there are
-																										// recommended
-																										// posts
-
-		return "shop-single-electronics";
-	}
-
 	@RequestMapping("/post/{id}-{img}/itemAdded")
 	public String mapPostCart(Model model, @PathVariable Long id, @PathVariable int img, HttpSession session) {
+		
+		cService.AddComponent(model, session, id);
 
 		Post post = postRepository.findById(id).get();
 		model.addAttribute("post", post);
-		cart.addToCart(post, session);
-
-		long total = (long) session.getAttribute("total");
-		List<Post> cartAux = (List<Post>) session.getAttribute("cart");
-		boolean empty = (boolean) session.getAttribute("empty");
-		boolean alreadyOn = cartAux.contains(post);
-
-		model.addAttribute("alreadyOn", alreadyOn);
-		model.addAttribute("cart", cartAux);
-		model.addAttribute("total", total);
-		model.addAttribute("empty", empty);
 		
 		LinkedList<Integer> images = new LinkedList<>();
 		for (int i=0; i<post.getnImg(); i++) {

@@ -3,6 +3,8 @@ package store.main.controller;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,6 +20,7 @@ import store.main.database.Brand;
 import store.main.database.BrandRepository;
 import store.main.database.Post;
 import store.main.database.PostRepository;
+import store.main.service.CartService;
 
 @Controller
 public class ShopController {
@@ -27,9 +30,20 @@ public class ShopController {
 
 	@Autowired
 	private BrandRepository brandRepository;
+	
+	@Autowired
+	private CartService cService;
 
 	@GetMapping("/shop/")
 	public String shop(Model model, @RequestParam(defaultValue = "0") Integer pageNo,
+			@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "id") String sortBy,
+			@RequestParam(defaultValue = "asc") String ord, HttpSession session) {
+			shopCall(model, pageNo, pageSize, sortBy, ord);
+			cService.LoadNotProduct(model, session);
+		return "shop-style2-ls";
+	}
+	
+	public void shopCall(Model model, @RequestParam(defaultValue = "0") Integer pageNo,
 			@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "id") String sortBy,
 			@RequestParam(defaultValue = "asc") String ord) {
 		Pageable paging;
@@ -50,15 +64,20 @@ public class ShopController {
 		model.addAttribute("ord", ord);
 		model.addAttribute("posts", p);
 		model.addAttribute("nPosts", nPost);
-
-		return "shop-style2-ls";
 	}
 	
 	@GetMapping("/shop/{tag}")
 	public String shopByTag(Model model, @PathVariable("tag") Integer tag,
 			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
-			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord) {
+			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord, HttpSession session) {
+		shopByTagCall(model, tag, pageNo, pageSize, sortBy, ord);
+		cService.LoadNotProduct(model, session);
+		return "shop-style2-ls";
+	}
 
+	public void shopByTagCall(Model model, @PathVariable("tag") Integer tag,
+			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
+			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord) {
 		List<Post> p = new LinkedList<>();
 
 		if (sortBy.equalsIgnoreCase("price")) {
@@ -90,16 +109,21 @@ public class ShopController {
 		model.addAttribute("sortBy", sortBy);
 		model.addAttribute("ord", ord);
 		model.addAttribute("zeroPost", zeroPost);
-
-		return "shop-style2-ls";
 	}
-
-
+	
 	@GetMapping("/shop/brand/{name}")
 	public String shopByBrand(Model model, @PathVariable("name") String name,
 			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
-			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord) {
+			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord, HttpSession session) {
+		shopByBrandCall(model, name, pageNo, pageSize, sortBy, ord);
+		cService.LoadNotProduct(model, session);
 
+		return "shop-brand";
+	}
+	
+	public void shopByBrandCall(Model model, @PathVariable("name") String name,
+			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
+			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord) {
 		Brand b = brandRepository.findFirstByNameIgnoreCase(name);
 		List<Post> posts = new LinkedList<>();
 
@@ -131,8 +155,6 @@ public class ShopController {
 		model.addAttribute("sortBy", sortBy);
 		model.addAttribute("ord", ord);
 		model.addAttribute("zeroPost", zeroPost);
-
-		return "shop-brand";
 	}
 
 }

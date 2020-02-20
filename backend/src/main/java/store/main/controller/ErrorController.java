@@ -2,10 +2,14 @@ package store.main.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import store.main.service.CartService;
 
 @Controller
 public class ErrorController implements org.springframework.boot.web.servlet.error.ErrorController {
@@ -13,13 +17,17 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
 	private static final String PATH = "/error";
 
 	@RequestMapping(PATH)
-	public String handle(Model model, HttpServletRequest request) {
+	public String handle(Model model, HttpServletRequest request, HttpSession session) {
+		cService.LoadNotProduct(model, session);
 		int httpErrorCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
 		loadErrorOnPage(model, httpErrorCode);
 		return "Error";
 	}
+	@Autowired
+	CartService cService;
 
 	public void loadErrorOnPage(Model model, int httpErrorCode) {
+	
 		switch (httpErrorCode) {
 		case 404: {
 			loadErrors(model, httpErrorCode, "It seems we can’t find the page you are looking for.", "Page not found");

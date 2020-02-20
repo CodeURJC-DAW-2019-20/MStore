@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import store.main.database.PostRepository;
 import store.main.database.RatingRepository;
 import store.main.database.User;
 import store.main.database.UserRepository;
+import store.main.service.CartService;
 import store.main.service.ImageService;
 
 @Controller
@@ -30,6 +32,9 @@ public class UserProfileController {
 	
 	@Autowired
 	private PostRepository postRepository;
+	
+	@Autowired
+	private CartService cService;
 
 	@Autowired
 	private ImageService imgService;
@@ -40,7 +45,7 @@ public class UserProfileController {
 	
 	
 	@GetMapping("/public_profile")
-	public String loadPublicProfile(Model model, HttpServletRequest request) {
+	public String loadPublicProfile(Model model, HttpServletRequest request, HttpSession session) {
 		User u = getUserInfo(request);
 		for(int i=0;i<6;i++)
 			model.addAttribute("stars"+i,ratingRepository.findBySellerEmailIgnoreCaseAndStars(u.getEmail(), i).size());
@@ -48,19 +53,21 @@ public class UserProfileController {
 		List<Post> lp = postRepository.findFirst8ByUserEmail(u.getEmail());
 		model.addAttribute("user", u);
 		model.addAttribute("itemList",lp);
+		cService.LoadNotProduct(model, session);
 		return "seller-profile";
 	}
 	
 	@GetMapping("/account_settings")
-	public String loadAcountSettings(Model model, HttpServletRequest request) {
+	public String loadAcountSettings(Model model, HttpServletRequest request, HttpSession session) {
 		User u = getUserInfo(request);
 		model.addAttribute("user", u);
+		cService.LoadNotProduct(model, session);
 		return "account-profile";
 	}
 
 	@PostMapping("/profile/updated")
 	public String nuevoAnuncio(Model model, User user,
-			@RequestParam MultipartFile imagenFile, HttpServletRequest request) throws IOException {
+			@RequestParam MultipartFile imagenFile, HttpServletRequest request, HttpSession session) throws IOException {
 		
 		User u = getUserInfo(request);
 		u.setFirstName(user.getFirstName());
@@ -69,7 +76,7 @@ public class UserProfileController {
 		u.setPhone(user.getPhone());
 		u.setUserAddress(u.getUserAddress());
 		userRepository.save(u);
-		
+		cService.LoadNotProduct(model, session);
 		if(!imagenFile.getOriginalFilename().equals("")) 
 				imgService.saveImage("users", u.getId(), imagenFile, null);
 				
