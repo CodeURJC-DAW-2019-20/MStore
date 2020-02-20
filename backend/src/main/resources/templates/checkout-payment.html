@@ -183,20 +183,8 @@
 				href="/"><img width="100" src="img/logo-dark.png" alt="MStore" /></a>
 			<!-- navbar buttons-->
 			<div class="navbar-btns d-flex position-relative order-sm-3">
-				<div
-					class="navbar-toggler navbar-btn collapsed bg-0 border-left-0 my-3"
-					data-toggle="collapse" data-target="#menu">
-					<i class="mx-auto mb-2" data-feather="menu"></i>Menu
-				</div>
-				<span class="d-block position-relative"><a
-					class="navbar-btn bg-0 my-3" href="#offcanvas-account"
-					data-toggle="offcanvas"><i class="mx-auto mb-1"
-						data-feather="log-in"></i>Sign In/Up</a><a
-					class="navbar-btn bg-0 my-3" href="#offcanvas-cart"
-					data-toggle="offcanvas"><span class="d-block position-relative"><span
-							class="navbar-btn-badge bg-primary text-light">4</span><i
-							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
-			</div>
+          <div class="navbar-toggler navbar-btn collapsed bg-0 border-left-0 my-3" data-toggle="collapse" data-target="#menu"><i class="mx-auto mb-2" data-feather="menu"></i>Menu</div><span class="d-block position-relative"><a class="navbar-btn bg-0 my-3" href="#offcanvas-account" data-toggle="offcanvas"><i class="mx-auto mb-1" data-feather="log-in"></i>Sign In/Up</a><a class="navbar-btn bg-0 my-3" href="#offcanvas-cart" data-toggle="offcanvas"><span class="d-block position-relative">{{^empty}}<span class="navbar-btn-badge bg-primary text-light">{{cart.size}}</span>{{/empty}}<i class="mx-auto mb-1" data-feather="shopping-cart"></i>${{total}}</span></a>
+        </div>
 			<!-- search-box-->
 			<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
 				<div class="input-group flex-nowrap">

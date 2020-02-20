@@ -207,9 +207,8 @@
 					class="d-block position-relative"> <i class="mx-auto mb-1"
 						data-feather="log-in"></i> Sign In/Up
 				</span></a> {{/logged}} <a class="navbar-btn bg-0 my-3" href="#offcanvas-cart"
-					data-toggle="offcanvas"><span class="d-block position-relative"><span
-						class="navbar-btn-badge bg-primary text-light">4</span><i
-						class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
+					data-toggle="offcanvas"><span class="d-block position-relative">{{^empty}}<span class="navbar-btn-badge bg-primary text-light">{{cart.size}}</span>{{/empty}}<i
+						class="mx-auto mb-1" data-feather="shopping-cart"></i>${{total}}</span></a>
 			</div>
 			<!-- search-box-->
 			<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
