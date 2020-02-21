@@ -336,13 +336,15 @@
 				</div>
 				<!-- Profile info-->
 				<h5 class="mb-4 pt-sm-3">Profile info</h5>
-				<form class="row" action="/profile/updated" method="post" 					
-					enctype="multipart/form-data">
+				<form class="row needs-validation" action="/profile/updated" method="post" 	
+					oninput='confirm_password.setCustomValidity(confirm_password.value != password.value ? "Passwords do not match!" : "")'				
+					enctype="multipart/form-data" novalidate>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-fn">First Name</label> <input
 								class="form-control" type="text" id="account-fn"
 								name="firstName" value="{{user.firstName}}" required>
+							<div class="invalid-feedback">Please enter your name!</div>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -350,6 +352,7 @@
 							<label for="account-ln">Last Name</label> <input
 								class="form-control" type="text" id="account-ln" name="lastName"
 								value="{{user.lastName}}" required>
+							<div class="invalid-feedback">Please enter your surname!</div>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -364,6 +367,7 @@
 							<label for="account-phone">Phone Number</label> <input
 								class="form-control" type="text" id="account-phone" name="phone"
 								value="{{user.phone}}" required>
+							<div class="invalid-feedback">Please enter your phone!</div>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -376,7 +380,8 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-confirm-pass">Confirm Password</label> <input
-								class="form-control" type="password" id="account-confirm-pass">
+								class="form-control" type="password" name="confirm_password" id="account-confirm-pass">
+							<div class="invalid-feedback">Passwords do not match!</div>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -390,9 +395,9 @@
 						<div class="form-group">
 							<label for="credit-card">Credit card number</label> <input
 								class="form-control" type="password" id="credit-card" pattern="[0-9]*"
-								oninvalid="setCustomValidity('Must be between 13-16 digits')"
-								oninput="this.setCustomValidity('')"
+								minlength="13" maxlength="16"
 								name="creditCard">
+							<div class="invalid-feedback">Please enter a valid card number (13-16 digits)!</div>
 						</div>
 					</div>
 

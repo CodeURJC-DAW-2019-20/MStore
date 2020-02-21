@@ -81,13 +81,14 @@ public class User {
 		sellers = new LinkedList<User>();
 	}
 
-	public User(String firstName, String lastName, String email, String phone, String password,
+	public User(String firstName, String lastName, String email, String phone, String password, String userAddress,
 			String... roles) {
 		this();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
+		this.userAddress = userAddress;
 		this.password = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 	}

@@ -121,7 +121,7 @@ public class CartController {
 
 		List<User> sellerList = user.getSellers();
 		
-		List<Post> removeList=new LinkedList<>();
+		List<Post> removeList = new LinkedList<>();
 		
 		for (Post p : cartAux) { // set sellers
 			if (!containsSeller(sellerList, p.getUser())) {
@@ -129,10 +129,11 @@ public class CartController {
 			}
 			removeList.add(p);
 		}
+		
 		user.setSellers(sellerList);
 		userRepository.save(user);
 		
-		for(Post post:removeList) {
+		for(Post post : removeList) {
 			deletePostFromBD(post);
 		}
 
@@ -162,11 +163,11 @@ public class CartController {
 	//this method delete a post from database
 
 		private void deletePostFromBD(Post p) {
-			Brand b=p.getBrand();
+			Brand b = p.getBrand();
 			b.getPosts().remove(p);
 			brandRepository.save(b);
 			
-			User u=p.getUser();
+			User u = p.getUser();
 			u.getPosts().remove(p);
 			userRepository.save(u);
 			

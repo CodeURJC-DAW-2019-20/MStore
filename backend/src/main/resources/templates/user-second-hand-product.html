@@ -27,7 +27,8 @@
 <!-- Main Theme Styles + Bootstrap-->
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="/css/theme.min.css">
-<!-- Customizer styles and scripts-->
+<!-- For tags customize-->
+<link rel="stylesheet" type="text/css" href="/css/jquery.tagsinput.css" />
 </head>
 <!-- Body-->
 <body>
@@ -279,7 +280,7 @@
 					</div>
 				</div>
 				<div class="pb-5">
-					<a class="btn btn-primary btn-block" href="account-profile.html"><i
+					<a class="btn btn-primary btn-block" href="/account_settings"><i
 						data-feather="settings"></i> Change Account Info</a>
 				</div>
 			</div>
@@ -288,13 +289,14 @@
 				<!-- Pickup address-->
 				<h5 class="mb-4">1. Pickup address</h5>
 				<form class="needs-validation" action="/sell_product/added_product"
-					method="post" enctype="multipart/form-data">
+					method="post" enctype="multipart/form-data" novalidate>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="address">Address</label> <input class="form-control"
 									type="text" name="postAddress"
 									placeholder="Plaza de los limones 12" id="address" required>
+								<div class="invalid-feedback">Please enter an address!</div>
 								<small class="form-text text-muted">Street address &
 									Number of Apartment, suite, building, etc.</small>
 							</div>
@@ -307,51 +309,54 @@
 						<label for="component-name">Component Name</label> <input
 							class="form-control" type="text" name="name"
 							placeholder="MSI Printer" id="component-name" required>
+						<div class="invalid-feedback">Please enter the name of the component!</div>
 					</div>
 					<div class="form-group">
 						<label for="select-input">Select the product to sell</label> <select
 							class="form-control custom-select" name="component"
 							id="select-input" required>
-							<option>Choose a component</option>
-							<option>Motherboards</option>
-							<option>Storage Devices</option>
-							<option>CPU / Processors</option>
-							<option>Video Cards &amp; Video Devices</option>
-							<option>Speakers</option>
-							<option>Headphones</option>
-							<option>Computer Mice</option>
-							<option>Monitors</option>
-							<option>Ink Printer</option>
-							<option>Laser Printer</option>
-							<option>3D Printer</option>
-							<option>Printer Supplies</option>
+							<option value="">Choose a component</option>
+							<option value="Motherboards">Motherboards</option>
+							<option value="Storage Devices">Storage Devices</option>
+							<option value="CPU / Processors">CPU / Processors</option>
+							<option value="Video Cards & Video Devices">Video Cards &amp; Video Devices</option>
+							<option value="Speakers">Speakers</option>
+							<option value="Headphones">Headphones</option>
+							<option value="Computer Mice">Computer Mice</option>
+							<option value="Monitors">Monitors</option>
+							<option value="Ink Printer">Ink Printer</option>
+							<option value="Laser Printer">Laser Printer</option>
+							<option value="3D Printer">3D Printer</option>
+							<option value="Printer Supplies">Printer Supplies</option>
 						</select>
+						<div class="invalid-feedback">Please choose a category!</div>
 					</div>
 					<div class="form-group">
 						<label for="select-input">Select the brand</label> <select
 							class="form-control custom-select" name="bname" id="select-input"
 							required>
-							<option>Choose a brand</option>
-							<option>Intel</option>
-							<option>AMD</option>
-							<option>NVIDIA</option>
-							<option>ASUS</option>
-							<option>Corsair</option>
-							<option>Seagate</option>
-							<option>Gigabyte</option>
-							<option>Logitech</option>
-							<option>Pioneer</option>
-							<option>WD</option>
-							<option>HP</option>
-							<option>Other</option>
+							<option value="">Choose a brand</option>
+							<option value="Intel">Intel</option>
+							<option value="AMD">AMD</option>
+							<option value="NVIDIA">NVIDIA</option>
+							<option value="ASUS">ASUS</option>
+							<option value="Corsair">Corsair</option>
+							<option value="Seagate">Seagate</option>
+							<option value="Gigabyte">Gigabyte</option>
+							<option value="Logitech">Logitech</option>
+							<option value="Pioneer">Pioneer</option>
+							<option value="WD">WD</option>
+							<option value="HP">HP</option>
+							<option value="Other">Other</option>
 						</select>
+						<div class="invalid-feedback">Please choose a brand!</div>
 					</div>
 					<div class="form-group">
 						<label for="tags-input">Tags</label><br> <input type="text"
-							name="tags" id="tags-input" data-role="tagsinput" />
+							name="tags" id="tags-input"/>
 					</div>
 					<div class="form-group">
-						<label for="file-input">Upload you photos</label>
+						<label for="file-input">Upload you photos (Max 4)</label>
 						<div class="file-upload-wrapper">
 							<input type="file" name="imagenFile" lang="en"
 								id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
@@ -372,12 +377,14 @@
 							<div class="input-group-append">
 								<span class="input-group-text">$</span>
 							</div>
+							<div class="invalid-feedback">Please enter the price you want to sell the product!</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="textarea-input">Details</label>
 						<textarea class="form-control" name="details" id="textarea-input"
 							placeholder="Tell us about the product" rows="7" required></textarea>
+						<div class="invalid-feedback">Please enter a brief summary of your product!</div>
 					</div>
 					<div class="form-group">
 						<label for="textarea-input">Features (Optional)</label>
@@ -557,5 +564,19 @@
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="/js/vendor.min.js"></script>
 	<script src="/js/theme.min.js"></script>
+	<script src="/js/jquery.tagsinput.js"></script>
+  	<script type="text/javascript">
+    	$(function() {
+    	  $('#tags-input').tagsInput({
+    		   'width':'auto',
+    		   'interactive':true,
+    		   'defaultText':'Add a tag',
+    		   'delimiter': [',',';'], 
+    		   'removeWithBackspace' : true,
+    		   'minChars' : 0,
+    		   'placeholderColor' : '#A3A7AB'
+    		  });
+    	});
+  </script>
 </body>
 </html>
