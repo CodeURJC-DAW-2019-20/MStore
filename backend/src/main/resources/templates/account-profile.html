@@ -405,7 +405,7 @@
 				</div>
 				<!-- Profile info-->
 				<h5 class="mb-4 pt-sm-3">Profile info</h5>
-				<form class="row" action="/profile/updated" method="post"
+				<form class="row" action="/profile/updated" method="post" 					
 					enctype="multipart/form-data">
 					<div class="col-md-6">
 						<div class="form-group">
@@ -458,7 +458,9 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="credit-card">Credit card number</label> <input
-								class="form-control" type="number" id="credit-card"
+								class="form-control" type="password" id="credit-card" pattern="[0-9]*"
+								oninvalid="setCustomValidity('Must be between 13-16 digits')"
+								oninput="this.setCustomValidity('')"
 								name="creditCard">
 						</div>
 					</div>
@@ -473,9 +475,8 @@
 					<br>
 
 					<div class="col-12">
-						<button class="btn btn-primary mt-3 mt-sm-0" type="submit"
-							data-toggle="toast" data-target="#profile-toast">Update
-							profile</button>
+						<button class="btn btn-primary mt-3 mt-sm-0" type="submit">
+							Update profile</button>
 					</div>
 				</form>
 				<!-- Technical support + Tickets (visible Mobile)-->

@@ -183,20 +183,8 @@
 				href="/"><img width="100" src="img/logo-dark.png" alt="MStore" /></a>
 			<!-- navbar buttons-->
 			<div class="navbar-btns d-flex position-relative order-sm-3">
-				<div
-					class="navbar-toggler navbar-btn collapsed bg-0 border-left-0 my-3"
-					data-toggle="collapse" data-target="#menu">
-					<i class="mx-auto mb-2" data-feather="menu"></i>Menu
-				</div>
-				<span class="d-block position-relative"><a
-					class="navbar-btn bg-0 my-3" href="#offcanvas-account"
-					data-toggle="offcanvas"><i class="mx-auto mb-1"
-						data-feather="log-in"></i>Sign In/Up</a><a
-					class="navbar-btn bg-0 my-3" href="#offcanvas-cart"
-					data-toggle="offcanvas"><span class="d-block position-relative"><span
-							class="navbar-btn-badge bg-primary text-light">4</span><i
-							class="mx-auto mb-1" data-feather="shopping-cart"></i>$325.00</span></a>
-			</div>
+          <div class="navbar-toggler navbar-btn collapsed bg-0 border-left-0 my-3" data-toggle="collapse" data-target="#menu"><i class="mx-auto mb-2" data-feather="menu"></i>Menu</div><span class="d-block position-relative"><a class="navbar-btn bg-0 my-3" href="#offcanvas-account" data-toggle="offcanvas"><i class="mx-auto mb-1" data-feather="log-in"></i>Sign In/Up</a><a class="navbar-btn bg-0 my-3" href="#offcanvas-cart" data-toggle="offcanvas"><span class="d-block position-relative">{{^empty}}<span class="navbar-btn-badge bg-primary text-light">{{cart.size}}</span>{{/empty}}<i class="mx-auto mb-1" data-feather="shopping-cart"></i>${{total}}</span></a>
+        </div>
 			<!-- search-box-->
 			<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
 				<div class="input-group flex-nowrap">
@@ -339,7 +327,7 @@
 				<ol class="breadcrumb">
 					<li class="mt-n1 mr-1"><i data-feather="home"></i></li>
 					<li class="breadcrumb-item"><a href="/">Home</a></li>
-					<li class="breadcrumb-item"><a href="#">Shop</a></li>
+					<li class="breadcrumb-item"><a href="/shop/">Shop</a></li>
 				</ol>
 			</nav>
 			<h1 class="page-title">Checkout</h1>
@@ -354,18 +342,11 @@
 				<a class="step step-completed" href="cart.html"><span
 					class="step-indicator"><i data-feather="check"></i></span><span
 					class="step-icon"><i data-feather="shopping-cart"></i></span>1.
-					Shopping cart</a><a class="step step-completed"
-					href="checkout-details.html"><span class="step-indicator"><i
-						data-feather="check"></i></span><span class="step-icon"><i
-						data-feather="user"></i></span>2. Your details</a><a
-					class="step step-completed" href="checkout-shipping.html"><span
-					class="step-indicator"><i data-feather="check"></i></span><span
-					class="step-icon"><i data-feather="truck"></i></span>3. Shipping</a><a
-					class="step step-completed" href="checkout-payment.html"><span
-					class="step-indicator"><i data-feather="check"></i></span><span
-					class="step-icon"><i data-feather="credit-card"></i></span>4.
-					Payment</a><a class="step step-active" href="checkout-review.html"><span
-					class="step-icon"><i data-feather="check-circle"></i></span>5.
+					Shopping cart</a><a class="step step-completed" href="/payment">
+					<span class="step-indicator"><i data-feather="check"></i></span><span
+					class="step-icon"><i data-feather="credit-card"></i></span>2.
+					Payment</a><a class="step step-active"><span
+					class="step-icon"><i data-feather="check-circle"></i></span>3.
 					Final review</a>
 			</div>
 		</div>
@@ -431,7 +412,7 @@
 				<div class="d-flex pt-4">
 					<div class="w-50 pr-3">
 						<a class="btn btn-outline-secondary btn-block"
-							href="checkout-payment.html"><i class="mr-1"
+							href="/payment"><i class="mr-1"
 							data-feather="chevron-left"></i>Back</a>
 					</div>
 					<div class="w-50 pl-2">
@@ -446,9 +427,18 @@
 			<div class="col-xl-3 col-md-4 pt-4 mt-3 pt-md-0 mt-md-0">
 				<h2 class="h6 px-4 py-3 bg-secondary text-center">Order summary</h2>
 				<div class="font-size-sm border-bottom pt-2 pb-3">
+					{{#empty}}
 					<div class="d-flex justify-content-between mb-2">
-						<span>Subtotal:</span><span>${{total}}</span>
+						<span class='text-muted'>The cart is empty</span>
 					</div>
+					{{/empty}}
+					{{^empty}}
+					 {{#cart}}
+					 <div class="d-flex justify-content-between mb-2">
+						<span>{{name}}:</span><span>${{price}}</span>
+					 </div>
+					 {{/cart}}
+					{{/empty}}
 				</div>
 				<div class="h3 font-weight-semibold text-center py-3">${{total}}</div>
 			</div>

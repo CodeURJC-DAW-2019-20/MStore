@@ -48,7 +48,7 @@ public class SellerProfileController {
 	public String loadPublicProfile(Model model, HttpServletRequest request, 
 			@PathVariable("id") long id, HttpSession session) {
 		loadPublicProfile(model, request, id);
-		cService.Load(model, session, id);
+		cService.LoadNotProduct(model, session);
 		return "seller-public-profile";
 	}
 	

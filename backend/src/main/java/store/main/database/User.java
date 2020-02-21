@@ -53,6 +53,9 @@ public class User {
 	private String userAddress;
 	
 	@JsonView(BasicInfo.class)
+	private String creditCard;
+	
+	@JsonView(BasicInfo.class)
 	@ElementCollection
 	private List<String> tags;
 
@@ -75,7 +78,7 @@ public class User {
 		sellers = new LinkedList<User>();
 	}
 
-	public User(String firstName, String lastName, String email, String phone, String password, String userAddress,
+	public User(String firstName, String lastName, String email, String phone, String password,
 			String... roles) {
 		this();
 		this.firstName = firstName;
@@ -84,7 +87,6 @@ public class User {
 		this.phone = phone;
 		this.password = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));
-		this.userAddress = userAddress;
 	}
 
 	public String getFirstName() {
@@ -122,9 +124,17 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
+	
+	public void setCreditCard(String creditCard) {
+		this.creditCard = creditCard;
+	}
+	
+	public String getCreditCard() {
+		return creditCard;
+	}
 
 	public void setPassword(String password) {
-		this.password =password;
+		this.password = password;
 	}
 	
 	public void setBCryptPassword(String password) {
@@ -171,8 +181,6 @@ public class User {
 		this.tags = tags;
 	}
 	
-	
-
 	public List<User> getSellers() {
 		return sellers;
 	}

@@ -31,7 +31,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/post/{id}-{img}/removeItem-{idRemove}").permitAll();
 		http.authorizeRequests().antMatchers("/post/{id}-{img}/itemAdded").permitAll();
 		http.authorizeRequests().antMatchers("/public_profile/{id}").permitAll();
-		http.authorizeRequests().antMatchers("/post/{id}-{img}").permitAll();
 		http.authorizeRequests().antMatchers("/public_profile/{idSeller}/{idBuyer}").permitAll();
 		http.authorizeRequests().antMatchers("/shop/").permitAll();
 		http.authorizeRequests().antMatchers("/shop/{tag}").permitAll();
@@ -44,9 +43,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/public_profile").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/account_settings").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/profile/updated").hasAnyRole("USER");
+		http.authorizeRequests().antMatchers("/payment").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/final_review").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/complete").hasAnyRole("USER");
-		
 
 		// Login form
 		http.formLogin().loginPage("/login");

@@ -143,7 +143,7 @@
 		</div>
 	</div>
 	<!-- Off-canvas cart-->
-    <div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
+	  <div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
       <div class="offcanvas-header d-flex justify-content-between align-items-center">
         <h3 class="offcanvas-title">Your cart</h3>
         <button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -327,7 +327,7 @@
 				<ol class="breadcrumb">
 					<li class="mt-n1 mr-1"><i data-feather="home"></i></li>
 					<li class="breadcrumb-item"><a href="/">Home</a></li>
-					<li class="breadcrumb-item"><a href="#">Shop</a></li>
+					<li class="breadcrumb-item"><a href="/shop/">Shop</a></li>
 				</ol>
 			</nav>
 			<h1 class="page-title">Checkout</h1>
@@ -339,195 +339,94 @@
 		<!-- Steps (wizard)-->
 		<div class="steps">
 			<div class="steps-body">
-				<a class="step step-completed" href="cart.html"><span
+				<a class="step step-completed" href="/cart"><span
 					class="step-indicator"><i data-feather="check"></i></span><span
 					class="step-icon"><i data-feather="shopping-cart"></i></span>1.
-					Shopping cart</a><a class="step step-completed"
-					href="checkout-details.html"><span class="step-indicator"><i
-						data-feather="check"></i></span><span class="step-icon"><i
-						data-feather="user"></i></span>2. Your details</a><a
-					class="step step-completed" href="checkout-shipping.html"><span
-					class="step-indicator"><i data-feather="check"></i></span><span
-					class="step-icon"><i data-feather="truck"></i></span>3. Shipping</a><a
-					class="step step-active" href="checkout-payment.html"><span
-					class="step-icon"><i data-feather="credit-card"></i></span>4.
-					Payment</a><a class="step" href="checkout-review.html"><span
-					class="step-icon"><i data-feather="check-circle"></i></span>5.
+					Shopping cart</a><a class="step step-active">
+					<span class="step-icon"><i data-feather="credit-card"></i></span>2.
+					Payment</a><a class="step"><span
+					class="step-icon"><i data-feather="check-circle"></i></span>3.
 					Final review</a>
 			</div>
 		</div>
 		<div class="row pt-4 mt-2">
 			<!-- Content-->
 			<div class="col-xl-9 col-md-8">
-				<h2 class="h6 px-4 py-3 bg-secondary mb-4">Choose payment
-					method</h2>
-				<div class="accordion mb-4" id="payment-method" role="tablist">
-					<div class="card">
-						<div class="card-header" role="tab">
-							<h3 class="accordion-heading">
-								<a href="#card" data-toggle="collapse"><i class="mr-2 mt-n1"
-									data-feather="credit-card"
-									style="width: 1.25rem; height: 1.25rem;"></i>Pay with Credit
-									Card<span class="accordion-indicator"><i
-										data-feather="chevron-up"></i></span></a>
-							</h3>
-						</div>
-						<div class="collapse show" id="card" data-parent="#payment-method"
-							role="tabpanel">
-							<div class="card-body">
-								<p>
-									We accept following credit cards:&nbsp;&nbsp;<img
-										class="d-inline-block align-middle" src="img/cards.png"
-										style="width: 187px;" alt="Cerdit Cards">
-								</p>
-								<div class="card-wrapper"></div>
-								<form class="interactive-credit-card row">
-									<div class="form-group col-sm-6">
-										<input class="form-control" type="text" name="number"
-											placeholder="Card Number" required>
-									</div>
-									<div class="form-group col-sm-6">
-										<input class="form-control" type="text" name="name"
-											placeholder="Full Name" required>
-									</div>
-									<div class="form-group col-sm-3">
-										<input class="form-control" type="text" name="expiry"
-											placeholder="MM/YY" required>
-									</div>
-									<div class="form-group col-sm-3">
-										<input class="form-control" type="text" name="cvc"
-											placeholder="CVC" required>
-									</div>
-									<div class="col-sm-6">
-										<button class="btn btn-outline-primary btn-block mt-0"
-											type="submit">Submit</button>
-									</div>
-								</form>
+				<h2 class="h6 px-4 py-3 bg-secondary mb-4">Complete payment method</h2>
+					<div class="card-body">
+						<p>
+							We accept following credit cards:&nbsp;&nbsp;<img
+							class="d-inline-block align-middle" src="img/cards.png"
+							style="width: 187px;" alt="Cerdit Cards">
+						</p>
+						<div class="card-wrapper"></div>
+						<form class="needs-validation row" action="/final_review" method="post"
+							novalidate>
+							<div class="form-group col-sm-6">
+								<label for="creditcard">Card Number</label>
+								<input class="form-control" type="text" name="creditcard" pattern="[0-9]*"
+									minlength="13" maxlength="16"
+									placeholder="Card Number" value="{{creditcard}}" required>
+								<div class="invalid-feedback">
+									Please enter your card number (13-16 digits)!</div>
 							</div>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-header" role="tab">
-							<h3 class="accordion-heading">
-								<a class="collapsed" href="#paypal" data-toggle="collapse"><i
-									class="icon-paypal mr-2"></i>Pay with PayPal<span
-									class="accordion-indicator"><i data-feather="chevron-up"></i></span></a>
-							</h3>
-						</div>
-						<div class="collapse" id="paypal" data-parent="#payment-method"
-							role="tabpanel">
-							<div class="card-body">
-								<p>
-									<strong>PayPal</strong> - the safer, easier way to pay
-								</p>
-								<form class="row" method="post">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<input class="form-control" type="email" placeholder="E-mail"
-												required>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<input class="form-control" type="password"
-												placeholder="Password" required>
-										</div>
-									</div>
-									<div class="col-12">
-										<div
-											class="d-flex flex-wrap justify-content-between align-items-center">
-											<a class="navi-link" href="#">Forgot password?</a>
-											<button class="btn btn-primary btn-sm" type="submit">Log
-												In</button>
-										</div>
-									</div>
-								</form>
+							<div class="form-group col-sm-6">
+								<label for="name">Full Name</label>
+								<input class="form-control" type="text" name="name"
+									value="{{name}}" disabled>
 							</div>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-header" role="tab">
-							<h3 class="accordion-heading">
-								<a class="collapsed" href="#points" data-toggle="collapse"><i
-									class="mr-2" data-feather="award"
-									style="width: 1.25rem; height: 1.25rem;"></i>Redeem Reward
-									Points<span class="accordion-indicator"><i
-										data-feather="chevron-up"></i></span></a>
-							</h3>
-						</div>
-						<div class="collapse" id="points" data-parent="#payment-method"
-							role="tabpanel">
-							<div class="card-body">
-								<p>
-									You currently have<strong>&nbsp;586</strong>&nbsp;Reward Points
-									to spend.
-								</p>
-								<div class="custom-control custom-checkbox d-block">
-									<input class="custom-control-input" type="checkbox"
-										id="use_points"> <label class="custom-control-label"
-										for="use_points">Use my Reward Points to pay for this
-										order.</label>
-								</div>
+							<div class="form-group col-sm-3">
+								<label for="expiry">Expiration Date</label>
+								<input class="form-control" type="text" name="expiry" pattern="([0-9]{2}[/]?){2}"
+									placeholder="MM/YY" required>
+								<div class="invalid-feedback">
+									Please enter your expiration date!</div>
 							</div>
-						</div>
+							<div class="form-group col-sm-3">
+								<label for="cvc">CVC</label>
+								<input class="form-control" type="text" name="cvc" pattern="[0-9]{3,4}"
+									placeholder="CVC" required>
+								<div class="invalid-feedback">
+									Please enter your CVC!</div>
+							</div>
+							<div class="col-sm-6">
+								<label for="email">Email</label>
+								<input class="form-control" type="text" name="email"
+									value="{{email}}" disabled>
+							</div>
+							<!-- Navigation-->
+							<div class="w-50 pr-3 pt-3">
+								<a class="btn btn-outline-secondary btn-block"
+									href="/cart"><i class="mr-1"
+									data-feather="chevron-left"></i>Back</a>
+							</div>
+							<div class="w-50 pl-2 pt-3">
+								<button class="btn btn-primary btn-block" type="submit"><span
+									class="d-none d-sm-inline">Submit</span><span
+									class="d-inline d-sm-none">Next</span><i class="ml-1"
+									data-feather="chevron-right"></i></button>
+							</div>
+						</form>
 					</div>
 				</div>
-				<!-- Navigation-->
-				<div class="d-flex pt-2">
-					<div class="w-50 pr-3">
-						<a class="btn btn-outline-secondary btn-block"
-							href="checkout-shipping.html"><i class="mr-1"
-							data-feather="chevron-left"></i>Back</a>
-					</div>
-					<div class="w-50 pl-2">
-						<a class="btn btn-primary btn-block" href="/final_review"><span
-							class="d-none d-sm-inline">Review your order</span><span
-							class="d-inline d-sm-none">Next</span><i class="ml-1"
-							data-feather="chevron-right"></i></a>
-					</div>
-				</div>
-			</div>
 			<!-- Sidebar-->
 			<div class="col-xl-3 col-md-4 pt-4 mt-3 pt-md-0 mt-md-0">
 				<h2 class="h6 px-4 py-3 bg-secondary text-center">Order summary</h2>
 				<div class="font-size-sm border-bottom pt-2 pb-3">
+					{{#empty}}
 					<div class="d-flex justify-content-between mb-2">
-						<span>Subtotal:</span><span>$325.00</span>
+						<span class='text-muted'>The cart is empty</span>
 					</div>
-					<div class="d-flex justify-content-between mb-2">
-						<span>Shipping:</span><span>$26.50</span>
-					</div>
-					<div class="d-flex justify-content-between mb-2">
-						<span>Taxes:</span><span>$7.25</span>
-					</div>
-					<div class="d-flex justify-content-between">
-						<span>Discount:</span><span>&mdash;</span>
-					</div>
+					{{/empty}}
+					{{^empty}}
+					 {{#cart}}
+					 <div class="d-flex justify-content-between mb-2">
+						<span>{{name}}:</span><span>${{price}}</span>
+					 </div>
+					 {{/cart}}
+					{{/empty}}
 				</div>
-				<div class="h3 font-weight-semibold text-center py-3">$358.75</div>
-				<form class="needs-validation" novalidate>
-					<div class="form-group">
-						<input class="form-control" type="text" id="cart-promocode"
-							placeholder="Promo code" required>
-						<div class="invalid-feedback">Please provide a valid promo
-							code!</div>
-					</div>
-					<button class="btn btn-outline-primary btn-block" type="submit">Apply
-						promo code</button>
-				</form>
-				<!-- Promo banner-->
-				<a class="d-block text-decoration-0 mt-4 mx-auto pt-2" href="#"
-					style="max-width: 277px;">
-					<div class="bg-secondary">
-						<div class="px-3 pt-4 text-center">
-							<h4 class="font-size-sm font-weight-normal pt-1 mb-2">2019
-								Spring / Summer</h4>
-							<h4 class="h5 pb-2">Hoodie Collection</h4>
-							<div class="btn btn-primary btn-sm">Shop now</div>
-						</div>
-						<img src="img/shop/banner01.jpg" alt="Promo banner">
-					</div>
-				</a>
+				<div class="h3 font-weight-semibold text-center py-3">${{total}}</div>
 			</div>
 		</div>
 	</div>

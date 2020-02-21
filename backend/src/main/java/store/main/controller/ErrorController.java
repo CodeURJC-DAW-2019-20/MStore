@@ -44,7 +44,7 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
 			break;
 		}
 		default: {
-			loadErrors(model, httpErrorCode, "There was an unknown problem",
+			loadErrors(model, httpErrorCode, "There was an unknown problem.",
 					"Unknown error");
 		}
 		}

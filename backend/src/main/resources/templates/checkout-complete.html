@@ -143,6 +143,36 @@
 		</div>
 	</div>
 	<!-- Off-canvas cart-->
+	  <div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
+      <div class="offcanvas-header d-flex justify-content-between align-items-center">
+        <h3 class="offcanvas-title">Your cart</h3>
+        <button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="offcanvas-body-inner">
+          <div class="widget widget-featured-entries pt-3">
+          {{#empty}}
+          <span class='text-muted'>The cart is empty</span>
+          {{/empty}}
+          {{^empty}}
+          {{#cart}}
+            <div class="media">
+              <div class="featured-entry-thumb mr-3"><a href="#"><img src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}.jpg" width="64"></a><form action="/post/cart/removeItem-{{id}}"><button type="submit" style="height:0px; width:0px; background: transparent; border: none !important;"><span class="item-remove-btn"><i data-feather="x"></i></span></button></form></div>
+              <div class="media-body">
+                <h6 class="featured-entry-title"><a href="#">{{name}}</a></h6>
+                <p class="featured-entry-meta">${{price}}</p>
+              </div>
+            </div>
+          {{/cart}}
+          {{/empty}}
+            <hr>
+            <div class="d-flex justify-content-between align-items-center py-3">
+              <div class="font-size-sm"> <span class="mr-2">Subtotal:</span><span class="font-weight-semibold text-dark">${{total}}</span></div>
+            </div> <a class="btn btn-primary btn-sm btn-block" href="/cart"><i class="mr-1" data-feather="credit-card"></i>Checkout</a>
+          </div>
+        </div>
+      </div>
+    </div>
 	<!-- Navbar Multilevel-->
 
 	<!-- Second line-->
@@ -298,9 +328,6 @@
 					<h3 class="h4 pb-3">Thank you {{name}} for your order!</h3>
 					<p class="mb-2">Your order has been placed and will be
 						processed as soon as possible.</p>
-					<p class="mb-2">
-						Make sure you make note of your order number, which is <strong>34VB5540K83.</strong>
-					</p>
 					<p>
 						Subscribe to us to receive offers! <u>You can now:</u>
 					</p>

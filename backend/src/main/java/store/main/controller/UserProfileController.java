@@ -75,6 +75,7 @@ public class UserProfileController {
 		u.setBCryptPassword(user.getPassword());
 		u.setPhone(user.getPhone());
 		u.setUserAddress(u.getUserAddress());
+		u.setCreditCard(user.getCreditCard());
 		userRepository.save(u);
 		cService.LoadNotProduct(model, session);
 		if(!imagenFile.getOriginalFilename().equals("")) 
