@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonView;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
@@ -63,13 +65,14 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JsonView(PostsInfo.class)
-	private List<Post> posts;
-
 	@OneToMany
 	@JsonView(SellersInfo.class)
 	private List<User> sellers;
+	
+	@JsonView(PostsInfo.class)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Post> posts;
 	
 	public User() {
 		roles = new LinkedList<String>();

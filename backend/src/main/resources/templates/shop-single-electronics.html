@@ -69,7 +69,7 @@
 		<div class="container flex-sm-nowrap px-3">
 			<!-- navbar brand-->
 			<a class="navbar-brand mr-0 mr-sm-4" style="min-width: 100px;"
-				href="/"><img width="100" src="img/logo-dark.png" alt="MStore" /></a>
+				href="/"><img width="100" src="/img/logo-dark.png" alt="MStore" /></a>
 			<!-- navbar buttons-->
 			<div class="navbar-btns d-flex position-relative order-sm-3">
 				<div
@@ -366,7 +366,7 @@
       </div>
     </div>
     <!-- Product info-->
-    <div class="w-70 p-3 col-centered col-md-50 col-md-offset-5" style="background-color:lightgrey">
+    <div class="bg-faded-info position-relative py-4" style="background-color:lightgrey">
     
         <div class="row">
           <div class="col-md-6 l-60 text-center">
@@ -388,49 +388,47 @@
         <br>
      
      
-    <!-- Related products-->
-    <div class="container pb-5">
-    
-    {{#recomend}}
-      <h2 class="h3 pb-4">You may also like</h2>
-      
-      <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;margin&quot;: 15, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;360&quot;:{&quot;items&quot;:2}} }">
-        
-        {{#list2}}
-        <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="/post/{{id}}"></a><img src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}-0.jpg"></div>
-          <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">{{component}}</a>
-            </div>
-            <h3 class="product-card-title"><a href="/post/{{id}}">{{name}}</a></h3><span class="text-primary">${{price}}</span>
-          </div>
-        </div>
-        {{/list2}}
-        
-         {{#list1}}
-        <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="/post/{{id}}"></a><img src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}-0.jpg"></div>
-          <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">{{component}}</a>
-            </div>
-            <h3 class="product-card-title"><a href="/post/{{id}}">{{name}}</a></h3><span class="text-primary">${{price}}</span>
-          </div>
-        </div>
-         {{/list1}}
-         
-         {{#list3}}
-        <div class="product-card">
-          <div class="product-thumb box-shadow-0"><a class="product-thumb-link" href="/post/{{id}}"></a><img src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}-0.jpg"></div>
-          <div class="product-card-body box-shadow-0">
-            <div class="d-flex flex-wrap justify-content-between pb-1"><a class="product-meta" href="#">{{component}}</a>
-            </div>
-            <h3 class="product-card-title"><a href="/post/{{id}}">{{name}}</a></h3><span class="text-primary">${{price}}</span>
-          </div>
-        </div>
-        {{/list3}}
-      </div>
-      {{/recomend}}
-    </div>
+	<!-- Related products-->
+	{{#recomend}}
+	<section class="container px-3 pt-4 mt-3">
+		<div
+			class="d-flex flex-wrap justify-content-between align-items-center pb-2">
+			<h2 class="h3 mb-3">You may also like</h2>
+			<a class="btn btn-outline-primary btn-sm border-0 mb-3" href="/shop/">More
+				products<i class="ml-1 mr-n2" data-feather="chevron-right"></i>
+			</a>
+		</div>
+		<div class="row no-gutters">
+			{{#list}}
+			<!-- Product-->
+			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
+				<div class="product-card">
+					<div class="product-thumb">
+						<a class="product-thumb-link" href="/post/{{id}}"></a><img
+							src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}.jpg">
+					</div>
+					<div class="product-card-body">
+						<div class="d-flex flex-wrap justify-content-between pb-1">
+							<a class="product-meta" href="#">{{component}}</a>
+						</div>
+						<h3 class="product-card-title">
+							<a href="/post/{{id}}">{{name}}</a>
+						</h3>
+						<span class="text-primary">${{price}}</span>
+					</div>
+					<div class="product-card-body body-hidden pt-2">
+						<button class="btn btn-primary btn-sm btn-block" type="button"
+							data-toggle="toast" data-target="#cart-toast">Add to
+							cart</button>
+					</div>
+				</div>
+			</div>
+			{{/list}}
+		</div>
+
+	</section>
+	{{/recomend}}
+	<br>
     <!-- Footer-->
     <footer class="page-footer bg-dark">
       <!-- first row-->

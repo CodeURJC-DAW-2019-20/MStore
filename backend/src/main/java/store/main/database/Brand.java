@@ -1,6 +1,8 @@
 package store.main.database;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +31,7 @@ public class Brand {
 	private String name;
 
 	@JsonView(PostsInfo.class)
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "brand", cascade = CascadeType.ALL)
 	private List<Post> posts;
 
 	protected Brand() {

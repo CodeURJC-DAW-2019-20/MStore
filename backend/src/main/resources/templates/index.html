@@ -32,36 +32,52 @@
 <!-- Body-->
 <body>
 	<!-- Off-canvas cart-->
-	  <div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
-      <div class="offcanvas-header d-flex justify-content-between align-items-center">
-        <h3 class="offcanvas-title">Your cart</h3>
-        <button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="offcanvas-body">
-        <div class="offcanvas-body-inner">
-          <div class="widget widget-featured-entries pt-3">
-          {{#empty}}
-          <span class='text-muted'>The cart is empty</span>
-          {{/empty}}
-          {{^empty}}
-          {{#cart}}
-            <div class="media">
-              <div class="featured-entry-thumb mr-3"><a href="#"><img src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}.jpg" width="64"></a><form action="/cart"><button type="submit" style="height:0px; width:0px; background: transparent; border: none !important;"><span class="item-remove-btn"><i data-feather="x"></i></span></button></form></div>
-              <div class="media-body">
-                <h6 class="featured-entry-title"><a href="#">{{name}}</a></h6>
-                <p class="featured-entry-meta">${{price}}</p>
-              </div>
-            </div>
-          {{/cart}}
-          {{/empty}}
-            <hr>
-            <div class="d-flex justify-content-between align-items-center py-3">
-              <div class="font-size-sm"> <span class="mr-2">Subtotal:</span><span class="font-weight-semibold text-dark">${{total}}</span></div>
-            </div> <a class="btn btn-primary btn-sm btn-block" href="/cart"><i class="mr-1" data-feather="credit-card"></i>Checkout</a>
-          </div>
-        </div>
-      </div>
-    </div>
+	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
+		<div
+			class="offcanvas-header d-flex justify-content-between align-items-center">
+			<h3 class="offcanvas-title">Your cart</h3>
+			<button class="close" type="button" data-dismiss="offcanvas"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="offcanvas-body-inner">
+				<div class="widget widget-featured-entries pt-3">
+					{{#empty}} <span class='text-muted'>The cart is empty</span>
+					{{/empty}} {{^empty}} {{#cart}}
+					<div class="media">
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="/images/posts/image-{{id}}-0.jpg"
+								alt="image-{{id}}.jpg" width="64"></a>
+							<form action="/cart">
+								<button type="submit"
+									style="height: 0px; width: 0px; background: transparent; border: none !important;">
+									<span class="item-remove-btn"><i data-feather="x"></i></span>
+								</button>
+							</form>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title">
+								<a href="#">{{name}}</a>
+							</h6>
+							<p class="featured-entry-meta">${{price}}</p>
+						</div>
+					</div>
+					{{/cart}} {{/empty}}
+					<hr>
+					<div class="d-flex justify-content-between align-items-center py-3">
+						<div class="font-size-sm">
+							<span class="mr-2">Subtotal:</span><span
+								class="font-weight-semibold text-dark">${{total}}</span>
+						</div>
+					</div>
+					<a class="btn btn-primary btn-sm btn-block" href="/cart"><i
+						class="mr-1" data-feather="credit-card"></i>Checkout</a>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Navbar Multilevel-->
 
 	<!-- Second line-->
@@ -69,7 +85,7 @@
 		<div class="container flex-sm-nowrap px-3">
 			<!-- navbar brand-->
 			<a class="navbar-brand mr-0 mr-sm-4" style="min-width: 100px;"
-				href="/"><img width="100" src="img/logo-dark.png" alt="MStore" /></a>
+				href="/"><img width="100" src="/img/logo-dark.png" alt="MStore" /></a>
 			<!-- navbar buttons-->
 			<div class="navbar-btns d-flex position-relative order-sm-3">
 				<div
@@ -93,44 +109,49 @@
 					class="d-block position-relative"> <i class="mx-auto mb-1"
 						data-feather="log-in"></i> Sign In/Up
 				</span></a> {{/logged}} <a class="navbar-btn bg-0 my-3" href="#offcanvas-cart"
-					data-toggle="offcanvas"><span class="d-block position-relative">{{^empty}}<span class="navbar-btn-badge bg-primary text-light">{{cart.size}}</span>{{/empty}}<i
-						class="mx-auto mb-1" data-feather="shopping-cart"></i>${{total}}</span></a>
+					data-toggle="offcanvas"><span class="d-block position-relative">{{^empty}}<span
+						class="navbar-btn-badge bg-primary text-light">{{cart.size}}</span>{{/empty}}<i
+						class="mx-auto mb-1" data-feather="shopping-cart"></i>${{total}}
+				</span></a>
 			</div>
 			<!-- search-box-->
 			<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
 				<form action="/finder" method="post">
-				<div class="input-group flex-nowrap">
-					<div class="input-group-prepend">
-						<span class="input-group-text rounded-left" id="search-icon"><i
-							data-feather="search"></i></span>
+					<div class="input-group flex-nowrap">
+						<div class="input-group-prepend">
+							<span class="input-group-text rounded-left" id="search-icon"><i
+								data-feather="search"></i></span>
+						</div>
+						<form action="/finder" method="post">
+							<template id="myListTemplate"> {{#postList}}
+							<option>{{name}}</option>
+							{{/postList}} </template>
+							<input class="form-control rounded-right" type="text" id="finder"
+								name="search" placeholder="Search site" aria-label="Search site"
+								aria-describedby="search-icon" list="myList" autocomplete="off">
+							<datalist id="myList"></datalist>
 					</div>
-					<form action="/finder" method="post">
-					<template id="myListTemplate">
-						{{#postList}}
-								<option>{{name}}</option>
-						{{/postList}}
-					</template>
-					<input class="form-control rounded-right" type="text"
-						id="finder" name="search" placeholder="Search site"
-						aria-label="Search site" aria-describedby="search-icon" list="myList" autocomplete="off">
-					<datalist id="myList"></datalist>
-				</div>
 				</form>
 			</div>
 		</div>
 	</header>
 	<script>
-			let finder = document.querySelector('#finder');
-			let results = document.querySelector('#myList');
-			let templateContent = document.querySelector('#myListTemplate').content;
-			finder.addEventListener('keyup', function handler(event) {
-    				while (results.children.length) results.removeChild(results.firstChild);
-    					let inputVal = new RegExp(finder.value.trim(), 'i');
-    					let set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function finderFilter(frag, item, i) {
-        				if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
-        					return frag;
-    		}, document.createDocumentFragment());
-    		results.appendChild(set);
+		let finder = document.querySelector('#finder');
+		let results = document.querySelector('#myList');
+		let templateContent = document.querySelector('#myListTemplate').content;
+		finder.addEventListener('keyup', function handler(event) {
+			while (results.children.length)
+				results.removeChild(results.firstChild);
+			let inputVal = new RegExp(finder.value.trim(), 'i');
+			let set = Array.prototype.reduce.call(templateContent
+					.cloneNode(true).children,
+					function finderFilter(frag, item, i) {
+						if (inputVal.test(item.textContent)
+								&& frag.children.length < 6)
+							frag.appendChild(item);
+						return frag;
+					}, document.createDocumentFragment());
+			results.appendChild(set);
 		});
 	</script>
 	<!-- Third line: Navigation-->
@@ -232,10 +253,10 @@
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a href="/" class="nav-link rounded">Home</a></li>
 					<li class="nav-item"><a href="/shop/" class="nav-link rounded">Shop</a></li>
-					<li class="nav-item"><a href="/sell_product/" class="nav-link rounded">Sell product</a></li>
-					{{#isAdmin}}
-						<li class="nav-item"><a href="/admin" class="nav-link rounded">Admin Page</a></li>
-					{{/isAdmin}}
+					<li class="nav-item"><a href="/sell_product/"
+						class="nav-link rounded">Sell product</a></li> {{#isAdmin}}
+					<li class="nav-item"><a href="/admin" class="nav-link rounded">Admin
+							Page</a></li> {{/isAdmin}}
 				</ul>
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown active"><a
@@ -350,8 +371,8 @@
 										<h3 class="mb-1">{{name}}</h3>
 										<h4 class="font-weight-light opacity-70 pb-3">starting at
 											${{price}}</h4>
-										<a class="btn btn-primary" href="/post/{{id}}">Shop
-											now<i class="ml-2" data-feather="arrow-right"></i>
+										<a class="btn btn-primary" href="/post/{{id}}-0">Shop now<i
+											class="ml-2" data-feather="arrow-right"></i>
 										</a>
 									</div>
 								</div>
@@ -384,23 +405,21 @@
 			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
 				<div class="product-card">
 					<div class="product-thumb">
-						<a class="product-thumb-link" href="/post/{{id}}"></a><img
-							src="/images/posts/image-{{id}}-0.jpg"
-							alt="image-{{id}}-0.jpg">
+						<a class="product-thumb-link" href="/post/{{id}}-0"></a><img
+							src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}-0.jpg">
 					</div>
 					<div class="product-card-body">
 						<div class="d-flex flex-wrap justify-content-between pb-1">
 							<a class="product-meta" href="#">{{component}}</a>
 						</div>
 						<h3 class="product-card-title">
-							<a href="/post/{{id}}">{{name}}</a>
+							<a href="/post/{{id}}-0">{{name}}</a>
 						</h3>
 						<span class="text-primary">${{price}}</span>
 					</div>
 					<div class="product-card-body body-hidden pt-2">
-						<button class="btn btn-primary btn-sm btn-block" type="button"
-							data-toggle="toast" data-target="#cart-toast">Add to
-							cart</button>
+						<a class="btn btn-primary" href="/post/{{id}}-0">Shop now<i
+							class="ml-2" data-feather="arrow-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -410,7 +429,7 @@
 	</section>
 	<br>
 	<!-- Product widgets-->
-	
+
 	<section class="container px-3 pt-4 mt-3">
 		<div
 			class="d-flex flex-wrap justify-content-between align-items-center pb-2">
@@ -425,23 +444,21 @@
 			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
 				<div class="product-card">
 					<div class="product-thumb">
-						<a class="product-thumb-link" href="/post/{{id}}"></a><img
-							src="/images/posts/image-{{id}}-0.jpg"
-							alt="image-{{id}}-0.jpg">
+						<a class="product-thumb-link" href="/post/{{id}}-0"></a><img
+							src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}-0.jpg">
 					</div>
 					<div class="product-card-body">
 						<div class="d-flex flex-wrap justify-content-between pb-1">
 							<a class="product-meta" href="#">{{component}}</a>
 						</div>
 						<h3 class="product-card-title">
-							<a href="/post/{{id}}">{{name}}</a>
+							<a href="/post/{{id}}-0">{{name}}</a>
 						</h3>
 						<span class="text-primary">${{price}}</span>
 					</div>
 					<div class="product-card-body body-hidden pt-2">
-						<button class="btn btn-primary btn-sm btn-block" type="button"
-							data-toggle="toast" data-target="#cart-toast">Add to
-							cart</button>
+						<a class="btn btn-primary" href="/post/{{id}}-0">Shop now<i
+							class="ml-2" data-feather="arrow-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -463,9 +480,8 @@
 							discounted price. Hurry up!</h5>
 						<div class="countdown h4 mb-4" data-date-time="10/10/2020 12:00"
 							data-labels="{&quot;label-day&quot;: &quot;d&quot;, &quot;label-hour&quot;: &quot;h&quot;, &quot;label-minute&quot;: &quot;m&quot;, &quot;label-second&quot;: &quot;s&quot;}"></div>
-						<a class="btn btn-primary" href="/post/{{post.id}}">Shop Now!<i
-							class="ml-2" data-feather="arrow-right"></i>
-						</a>
+						<a class="btn btn-primary" href="/post/{{post.id}}-0">Shop now<i
+							class="ml-2" data-feather="arrow-right"></i></a>
 					</div>
 				</div>
 				<div class="col-md-7">

@@ -23,55 +23,56 @@ public class ComponentController {
 	private List<Post> postList1 = new LinkedList<Post>();// store posts with user tag1
 	private List<Post> postList2 = new LinkedList<Post>();// store posts with user tag2
 	private List<Post> postList3 = new LinkedList<Post>();// store posts with user tag3
+	private List<Post> finalList = new LinkedList<>(); // store the 3 recommended tags
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private RatingRepository ratingRepository;
 
-
 	@Autowired
 	private PostRepository postRepository;
-	
+
 	@Autowired
 	private LoaderService loaderService;
 
 	@Autowired
 	private Cart cart;
-	
+
 	@Autowired
 	private CartService cService;
 
 	@RequestMapping("/post/{id}-{img}")
-	public String mapPost(Model model, @PathVariable Long id, @PathVariable int img, HttpSession session, HttpServletRequest request) {
+	public String mapPost(Model model, @PathVariable Long id, @PathVariable int img, HttpSession session,
+			HttpServletRequest request) {
 
 		Post post = postRepository.findById(id).get();
 		model.addAttribute("post", post);
 		cService.Load(model, session, id);
-		
-		//reset lists
+
+		// reset lists
 		this.postList1 = new LinkedList<>();
 		this.postList2 = new LinkedList<>();
 		this.postList3 = new LinkedList<>();
 
 		if (request.isUserInRole("USER")) {
-			loadRecommendationsIntoBD(postList1, postList2, postList3, request, post);// private method that loads the
-																						// recommendations of a
-																						// registered user
+			loadRecommendationsIntoBD(request, post);// private method that loads the
+														// recommendations of a
+														// registered user
 		} else {
-			loadRecommendationsIntoSesion(postList1, postList2, postList3, session, post);// private method that loads
-																							// the recommendations of a
-																							// visiting user
+			loadRecommendationsIntoSession(session, post);// private method that loads
+															// the recommendations of a
+															// visiting user
 		}
 		LinkedList<Integer> images = new LinkedList<>();
-		
-		for (int i=0; i<post.getnImg(); i++) {
+
+		for (int i = 0; i < post.getnImg(); i++) {
 			images.add(i);
 		}
-		
-		int totalr=0;
-		String seller = post.getUser().getFirstName()+" "+post.getUser().getLastName();
+
+		int totalr = 0;
+		String seller = post.getUser().getFirstName() + " " + post.getUser().getLastName();
 		model.addAttribute("emptyfeatures", post.getFeatures().matches(".*[a-zA-Z]+.*"));
 		model.addAttribute("userid", post.getUser().getId());
 		model.addAttribute("tag", post.getComponentTag());
@@ -82,31 +83,30 @@ public class ComponentController {
 		model.addAttribute("bname", post.getBrand().getName());
 		model.addAttribute("images", images);
 		model.addAttribute("image", img);
-		model.addAttribute("list1", postList1);
-		model.addAttribute("list2", postList2);
-		model.addAttribute("list3", postList3);
-		model.addAttribute("recomend", (postList1.size() + postList2.size() + postList3.size()) != 0); // there are
-																										// recommended
+
+		addToRecomendedList(model);
+
 		model = loaderService.userLoader(model, request);
-		model = loaderService.postLoader(model);																								// posts
+		model = loaderService.postLoader(model); // posts
 
 		return "shop-single-electronics";
 	}
 
 	@RequestMapping("/post/{id}-{img}/itemAdded")
-	public String mapPostCart(Model model, @PathVariable Long id, @PathVariable int img, HttpSession session, HttpServletRequest request) {
-		
+	public String mapPostCart(Model model, @PathVariable Long id, @PathVariable int img, HttpSession session,
+			HttpServletRequest request) {
+
 		cService.AddComponent(model, session, id);
 
 		Post post = postRepository.findById(id).get();
 		model.addAttribute("post", post);
-		
+
 		LinkedList<Integer> images = new LinkedList<>();
-		for (int i=0; i<post.getnImg(); i++) {
+		for (int i = 0; i < post.getnImg(); i++) {
 			images.add(i);
 		}
-		int totalr=0;
-		String seller = post.getUser().getFirstName()+" "+post.getUser().getLastName();
+		int totalr = 0;
+		String seller = post.getUser().getFirstName() + " " + post.getUser().getLastName();
 		model.addAttribute("emptyfeatures", post.getFeatures().matches(".*[a-zA-Z]+.*"));
 		model.addAttribute("userid", post.getUser().getId());
 		model.addAttribute("tag", post.getComponentTag());
@@ -117,36 +117,40 @@ public class ComponentController {
 		model.addAttribute("bname", post.getBrand().getName());
 		model.addAttribute("images", images);
 		model.addAttribute("image", img);
-		model.addAttribute("list1", postList1);
-		model.addAttribute("list2", postList2);
-		model.addAttribute("list3", postList3);
-		model.addAttribute("recomend", (postList1.size() + postList2.size() + postList3.size()) != 0); // there are
-																										// recommended
+
+		model.addAttribute("recomend", !finalList.isEmpty());
+		model.addAttribute("list", finalList);
+
 		model = loaderService.userLoader(model, request);
-		model = loaderService.postLoader(model);																							// posts
+		model = loaderService.postLoader(model); // posts
 
 		return "shop-single-electronics";
 	}
 
-
-	private void loadRecommendationsIntoBD(List<Post> postList1, List<Post> postList2, List<Post> postList3,
-			HttpServletRequest request, Post post) {
+	private void loadRecommendationsIntoBD(HttpServletRequest request, Post post) {
 		User user = userRepository.findByEmail(request.getUserPrincipal().getName());
 		List<String> userTags = user.getTags();
-		loadList(userTags, post, postList1, postList2, postList3);
+		loadList(userTags, post);
 		user.setTags(userTags);
 		userRepository.save(user); // update user tag list
 	}
 
-	private void loadRecommendationsIntoSesion(List<Post> postList1, List<Post> postList2, List<Post> postList3,
-			HttpSession session, Post post) {
+	private void loadRecommendationsIntoSession(HttpSession session, Post post) {
 		List<String> userTags = (List<String>) session.getAttribute("tags");
-		List<String> list = loadList(userTags, post, postList1, postList2, postList3);
+		List<String> list = loadList(userTags, post);
 		session.setAttribute("tags", list); // update user tag list in session
 	}
 
-	private List<String> loadList(List<String> userTags, Post post, List<Post> postList1, List<Post> postList2,
-			List<Post> postList3) {
+	private void addToRecomendedList(Model model) {
+		finalList = new LinkedList<>();// reset final list
+		finalList.addAll(postList2);
+		finalList.addAll(postList1);
+		finalList.addAll(postList3);
+		model.addAttribute("recomend", !finalList.isEmpty()); // there are recommended posts
+		model.addAttribute("list", finalList);
+	}
+
+	private List<String> loadList(List<String> userTags, Post post) {
 
 		// Advanced algorithm
 
@@ -219,41 +223,40 @@ public class ComponentController {
 		return userTags;
 
 	}
-	
-	private List<Boolean> getratings (Post post, int totalr) {
+
+	private List<Boolean> getratings(Post post, int totalr) {
 		List<List<Rating>> rating = new LinkedList<List<Rating>>();
-		for(int i=0;i<6;i++){
+		for (int i = 0; i < 6; i++) {
 			rating.add((ratingRepository.findBySellerEmailIgnoreCaseAndStars(post.getUser().getEmail(), i)));
-			}
-		int cont =0;
-		for(int i=0;i<rating.size();i++){
-			cont+=rating.get(i).size()*i;
-			totalr+= rating.get(i).size();
-			}
-		if (totalr!=0) {
-		cont= cont / totalr;
 		}
-		List<Boolean>ratingf=new LinkedList<Boolean>();
-		for(int i=0;i<5;i++){
-			if (i<cont) {
-			ratingf.add(true);
-			}
-			else {
-			ratingf.add(false);
+		int cont = 0;
+		for (int i = 0; i < rating.size(); i++) {
+			cont += rating.get(i).size() * i;
+			totalr += rating.get(i).size();
+		}
+		if (totalr != 0) {
+			cont = cont / totalr;
+		}
+		List<Boolean> ratingf = new LinkedList<Boolean>();
+		for (int i = 0; i < 5; i++) {
+			if (i < cont) {
+				ratingf.add(true);
+			} else {
+				ratingf.add(false);
 			}
 		}
 		return ratingf;
 	}
-	
-	private int countratings (Post post) {
+
+	private int countratings(Post post) {
 		List<List<Rating>> rating = new LinkedList<List<Rating>>();
-		for(int i=0;i<6;i++){
+		for (int i = 0; i < 6; i++) {
 			rating.add((ratingRepository.findBySellerEmailIgnoreCaseAndStars(post.getUser().getEmail(), i)));
-			}
-		int totalr=0;
-		for(int i=0;i<rating.size();i++){
-			totalr+= rating.get(i).size();
-			}
+		}
+		int totalr = 0;
+		for (int i = 0; i < rating.size(); i++) {
+			totalr += rating.get(i).size();
+		}
 		return totalr;
 	}
 }

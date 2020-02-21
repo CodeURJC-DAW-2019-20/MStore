@@ -29,24 +29,27 @@ public class CartController {
 	private PostRepository postRepository;
 
 	@Autowired
+	private BrandRepository brandRepository;
+
+	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private CartService cService;
-	
+
 	@Autowired
 	private LoaderService loaderService;
-	
+
 	private User getUserInfo(HttpServletRequest request) {
 		return userRepository.findByEmail(request.getUserPrincipal().getName());
 	}
 
 	@RequestMapping("/cart")
 	public String mapPost(Model model, HttpSession session, HttpServletRequest request) {
-		
+
 		model = loaderService.userLoader(model, request);
 		model = loaderService.postLoader(model);
-		
+
 		cService.LoadNotProduct(model, session);
 
 		return "cart";
@@ -54,7 +57,7 @@ public class CartController {
 
 	@RequestMapping("/cart/removeItem-{idRemove}")
 	public String mapPost(Model model, @PathVariable Long idRemove, HttpSession session, HttpServletRequest request) {
-		
+
 		model = loaderService.userLoader(model, request);
 		model = loaderService.postLoader(model);
 
@@ -62,36 +65,36 @@ public class CartController {
 
 		return "cart";
 	}
-	
+
 	@GetMapping("/payment")
 	public String checkoutPayment(Model model, HttpSession session, HttpServletRequest request) {
-		
-		//Get User
+
+		// Get User
 		User user = getUserInfo(request);
-		
+
 		String creditCard = "";
-		
+
 		if (user.getCreditCard() != null) {
 			creditCard = user.getCreditCard();
 		}
-								
+
 		model.addAttribute("creditcard", creditCard);
 		model.addAttribute("name", user.getFirstName() + " " + user.getLastName());
 		model.addAttribute("email", user.getEmail());
-		
+
 		model = loaderService.userLoader(model, request);
 		model = loaderService.postLoader(model);
-		
+
 		cService.LoadNotProduct(model, session);
-		
+
 		return "checkout-payment";
 	}
 
 	@PostMapping("/final_review")
 	public String finalReview(Model model, HttpSession session, HttpServletRequest request, String creditcard) {
-			
+
 		User user = getUserInfo(request);
-			
+
 		String creditCard = creditcard.substring(creditcard.length() - 4, creditcard.length());
 
 		// User data to model
@@ -100,49 +103,74 @@ public class CartController {
 		model.addAttribute("lastname", user.getLastName());
 		model.addAttribute("email", user.getEmail());
 		model.addAttribute("creditcard", creditCard);
-		
+
 		model = loaderService.userLoader(model, request);
 		model = loaderService.postLoader(model);
-		
+
 		cService.LoadNotProduct(model, session);
-		
+
 		return "checkout-review";
 	}
 
 	@RequestMapping("/complete")
 	public String completeOrder(Model model, HttpSession session, HttpServletRequest request) {
-		
+
 		User user = getUserInfo(request);
 
 		List<Post> cartAux = (List<Post>) session.getAttribute("cart");
+
+		List<User> sellerList = user.getSellers();
 		
-		/*Marcos there is a bug here, fix it :)
-		 
-		 	List<User> sellerList = user.getSellers();
-		 
+		List<Post> removeList=new LinkedList<>();
+		
 		for (Post p : cartAux) { // set sellers
+			if (!containsSeller(sellerList, p.getUser())) {
 				sellerList.add(p.getUser());
-				//p.getUser().getPosts().remove(p);
-				//p.getBrand().getPosts().remove(p);
-				//postRepository.delete(p);//delete post
+			}
+			removeList.add(p);
 		}
-		
 		user.setSellers(sellerList);
 		userRepository.save(user);
+		
+		for(Post post:removeList) {
+			deletePostFromBD(post);
+		}
 
-		*/
 		model = loaderService.userLoader(model, request);
 		model = loaderService.postLoader(model);
-		
+
 		// Reset cart
 		session.setAttribute("cart", new LinkedList<>());
 		session.setAttribute("total", (long) 0);
 		session.setAttribute("empty", true);
-		model.addAttribute("name",user.getFirstName());
-		
+		model.addAttribute("name", user.getFirstName());
+
 		cService.LoadNotProduct(model, session);
-		
+
 		return "checkout-complete";
 	}
+
+	private boolean containsSeller(List<User> list, User user) {
+		for (User u : list) {
+			if (user.getFirstName().equals(u.getFirstName()) && user.getLastName().equals(u.getLastName())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	//this method delete a post from database
+
+		private void deletePostFromBD(Post p) {
+			Brand b=p.getBrand();
+			b.getPosts().remove(p);
+			brandRepository.save(b);
+			
+			User u=p.getUser();
+			u.getPosts().remove(p);
+			userRepository.save(u);
+			
+			postRepository.deleteById(p.getId());
+		}
 
 }
