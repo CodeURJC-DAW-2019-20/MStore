@@ -21,6 +21,7 @@ import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.CartService;
 import store.main.service.ImageService;
+import store.main.service.LoaderService;
 
 @Controller
 public class UserProfileController {
@@ -38,6 +39,9 @@ public class UserProfileController {
 
 	@Autowired
 	private ImageService imgService;
+	
+	@Autowired
+	private LoaderService loaderService;
 
 	private User getUserInfo(HttpServletRequest request) {
 		return userRepository.findByEmail(request.getUserPrincipal().getName());
@@ -51,6 +55,10 @@ public class UserProfileController {
 			model.addAttribute("stars"+i,ratingRepository.findBySellerEmailIgnoreCaseAndStars(u.getEmail(), i).size());
 
 		List<Post> lp = postRepository.findFirst8ByUserEmail(u.getEmail());
+		
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
+		
 		model.addAttribute("user", u);
 		model.addAttribute("itemList",lp);
 		cService.LoadNotProduct(model, session);
@@ -61,6 +69,8 @@ public class UserProfileController {
 	public String loadAcountSettings(Model model, HttpServletRequest request, HttpSession session) {
 		User u = getUserInfo(request);
 		model.addAttribute("user", u);
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
 		cService.LoadNotProduct(model, session);
 		return "account-profile";
 	}

@@ -34,7 +34,7 @@ public class DataInsert implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		//saveExamples();
+		saveExamples();
 
 	}
 
@@ -56,6 +56,7 @@ public class DataInsert implements CommandLineRunner {
 		user.getRoles().add("ROLE_USER");
 		User user2 = new User("Marcos", "Ruiz", "mr@gmail.com", "677453980", "1234", "Calle de la maceta 15");
 		user2.getRoles().add("ROLE_USER");
+		user2.getRoles().add("ROLE_ADMIN");
 		User user3 = new User("Joselu", "Sierra", "josesi@gmail.com", "945543665", "doggy", "Barrio Sesamo 17");
 		user3.getRoles().add("ROLE_USER");
 		User user4 = new User("Destroyer", "killer2332", "KillerxXXx@gmail.com", "345755434", "headshot360",

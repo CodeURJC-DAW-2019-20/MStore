@@ -23,6 +23,7 @@ import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.CartService;
 import store.main.service.ImageService;
+import store.main.service.LoaderService;
 
 @Controller
 public class SellProductController {
@@ -40,6 +41,9 @@ public class SellProductController {
 
 	@Autowired
 	private ImageService imgService;
+	
+	@Autowired
+	private LoaderService loaderService;
 
 	private User getUserInfo(HttpServletRequest request) {
 		return userRepository.findByEmail(request.getUserPrincipal().getName());
@@ -57,6 +61,8 @@ public class SellProductController {
 	@GetMapping("/sell_product/")
 	public String loadSellProduct(Model model, HttpServletRequest request, HttpSession session) {
 		loadSellProductR(model, request);
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
 		cService.LoadNotProduct(model, session);
 		return "user-second-hand-product";
 	}
@@ -72,6 +78,8 @@ public class SellProductController {
 			@RequestParam 	List<MultipartFile> imagenFile, HttpServletRequest request, HttpSession session) throws IOException {
 		
 		nuevoAnuncioCall(model, post, bname, imagenFile, request);
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
 		cService.LoadNotProduct(model, session);
 		return "redirect:/";
 

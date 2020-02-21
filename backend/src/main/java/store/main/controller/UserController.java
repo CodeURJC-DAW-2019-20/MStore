@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.CartService;
+import store.main.service.LoaderService;
 
 @Controller
 public class UserController {
@@ -31,15 +32,28 @@ public class UserController {
 	@Autowired
 	private CartService cService;
 	
+	@Autowired
+	private LoaderService loaderService;
+	
 	@GetMapping("/login")
-	public String login(Model model, HttpSession session) {
+	public String login(Model model, HttpSession session, HttpServletRequest request) {
+		
 		cService.LoadNotProduct(model, session);
+		
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
+		
 		model.addAttribute("error", false);
 		return "login";
 	}
 
 	@GetMapping("/loginerror")
-	public String loginerror(Model model) {
+	public String loginerror(Model model, HttpSession session, HttpServletRequest request) {
+		
+		cService.LoadNotProduct(model, session);
+		
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
 
 		model.addAttribute("error", true);
 		return "login";
@@ -50,14 +64,16 @@ public class UserController {
 	public String logout(HttpSession session) {
 
 		session.invalidate();
-		return "index";
+		return "redirect:/";
 	}
 
 	@PostMapping("/register")
 	public String register(Model model, User user, HttpServletRequest request, HttpSession session) {
 
 		User registeredUser = userRepository.findByEmail(user.getEmail());
+		
 		cService.LoadNotProduct(model, session);
+		
 		if (registeredUser != null) {
 			model.addAttribute("registered", true);
 			return "login";

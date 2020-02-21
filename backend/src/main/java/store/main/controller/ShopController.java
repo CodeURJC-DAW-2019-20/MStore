@@ -21,6 +21,7 @@ import store.main.database.BrandRepository;
 import store.main.database.Post;
 import store.main.database.PostRepository;
 import store.main.service.CartService;
+import store.main.service.LoaderService;
 
 @Controller
 public class ShopController {
@@ -33,6 +34,7 @@ public class ShopController {
 	
 	@Autowired
 	private CartService cService;
+	
 
 	@GetMapping("/shop/")
 	public String shop(Model model, @RequestParam(defaultValue = "0") Integer pageNo,

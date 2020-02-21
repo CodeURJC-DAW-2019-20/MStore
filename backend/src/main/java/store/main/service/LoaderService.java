@@ -3,18 +3,25 @@ package store.main.service;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import store.main.database.Post;
 import store.main.database.PostRepository;
+import store.main.database.User;
+import store.main.database.UserRepository;
 
 @Service
-public class HomeLoader {
+public class LoaderService {
 
 	@Autowired
-	private PostRepository postRepository; // repository of posts
+	private PostRepository postRepository; // Repository of posts
+	
+	@Autowired
+	private UserRepository userRepository; // Repository of users
 
 	/**
 	 * Loads the Home Page
@@ -43,6 +50,28 @@ public class HomeLoader {
 		loadPosts(model, postListIdDesc,"3",8);
 		
 		model.addAttribute("post",postListPriceDesc.get(0)); //The most expensive product
+		return model;
+	}
+	
+	public Model userLoader(Model model, HttpServletRequest request) {
+		
+		if (request.isUserInRole("USER")) {
+			
+			User user = userRepository.findByEmail(request.getUserPrincipal().getName());
+			
+			model.addAttribute("logged", true);
+			model.addAttribute("user", user);
+			
+		} else {
+			model.addAttribute("logged", false);
+		}
+		
+		if (request.isUserInRole("ADMIN")) {
+			model.addAttribute("isAdmin", true);
+		} else {
+			model.addAttribute("isAdmin", false);
+		}
+		
 		return model;
 	}
 	

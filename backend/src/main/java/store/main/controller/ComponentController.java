@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import store.main.database.*;
 import store.main.service.CartService;
+import store.main.service.LoaderService;
 
 @Controller
 public class ComponentController {
@@ -32,6 +33,9 @@ public class ComponentController {
 
 	@Autowired
 	private PostRepository postRepository;
+	
+	@Autowired
+	private LoaderService loaderService;
 
 	@Autowired
 	private Cart cart;
@@ -61,9 +65,11 @@ public class ComponentController {
 																							// visiting user
 		}
 		LinkedList<Integer> images = new LinkedList<>();
+		
 		for (int i=0; i<post.getnImg(); i++) {
 			images.add(i);
 		}
+		
 		int totalr=0;
 		String seller = post.getUser().getFirstName()+" "+post.getUser().getLastName();
 		model.addAttribute("emptyfeatures", post.getFeatures().matches(".*[a-zA-Z]+.*"));
@@ -81,13 +87,14 @@ public class ComponentController {
 		model.addAttribute("list3", postList3);
 		model.addAttribute("recomend", (postList1.size() + postList2.size() + postList3.size()) != 0); // there are
 																										// recommended
-																										// posts
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);																								// posts
 
 		return "shop-single-electronics";
 	}
 
 	@RequestMapping("/post/{id}-{img}/itemAdded")
-	public String mapPostCart(Model model, @PathVariable Long id, @PathVariable int img, HttpSession session) {
+	public String mapPostCart(Model model, @PathVariable Long id, @PathVariable int img, HttpSession session, HttpServletRequest request) {
 		
 		cService.AddComponent(model, session, id);
 
@@ -115,7 +122,8 @@ public class ComponentController {
 		model.addAttribute("list3", postList3);
 		model.addAttribute("recomend", (postList1.size() + postList2.size() + postList3.size()) != 0); // there are
 																										// recommended
-																										// posts
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);																							// posts
 
 		return "shop-single-electronics";
 	}

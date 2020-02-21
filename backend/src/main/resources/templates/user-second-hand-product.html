@@ -19,7 +19,7 @@
 <link rel="icon" type="image/png" sizes="16x16"
 	href="/favicon-16x16.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="mask-icon" color="#111" href="/safari-pinned-tab.svg">
+<link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
 <meta name="msapplication-TileColor" content="#111">
 <meta name="theme-color" content="#ffffff">
 <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
@@ -31,122 +31,8 @@
 </head>
 <!-- Body-->
 <body>
-	<!-- Off-canvas account-->
-	<div class="offcanvas offcanvas-reverse" id="offcanvas-account">
-		<div
-			class="offcanvas-header d-flex justify-content-between align-items-center">
-			<h3 class="offcanvas-title">Sign in / Create account</h3>
-			<button class="close" type="button" data-dismiss="offcanvas"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-		<div class="offcanvas-body">
-			<div class="offcanvas-body-inner">
-				<ul class="nav nav-tabs nav-justified" role="tablist">
-					<li class="nav-item"><a class="nav-link active" href="#signin"
-						data-toggle="tab" role="tab"><i data-feather="log-in"></i>&nbsp;Sign
-							In</a></li>
-					<li class="nav-item"><a class="nav-link" href="#signup"
-						data-toggle="tab" role="tab"><i data-feather="user"></i>&nbsp;Sign
-							Up</a></li>
-				</ul>
-				<div class="tab-content pt-1">
-					<div class="tab-pane fade show active" id="signin" role="tabpanel">
-						<form class="needs-validation" novalidate>
-							<div class="form-group">
-								<label class="sr-only" for="signin-email">Email</label>
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="signin-email-icon"><i
-											data-feather="mail"></i></span>
-									</div>
-									<input class="form-control" type="email" id="signin-email"
-										placeholder="Email" aria-label="Email"
-										aria-describedby="signin-email-icon" required>
-									<div class="invalid-feedback">Please provide email
-										address.</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signin-password">Password</label>
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="signin-password-icon"><i
-											data-feather="lock"></i></span>
-									</div>
-									<input class="form-control" type="password"
-										id="signin-password" placeholder="Password"
-										aria-label="Password" aria-describedby="signin-password-icon"
-										required>
-									<div class="invalid-feedback">Please enter a password.</div>
-								</div>
-							</div>
-							<div class="custom-control custom-checkbox mb-3">
-								<input class="custom-control-input" type="checkbox"
-									id="remember-me" checked> <label
-									class="custom-control-label" for="remember-me">Remember
-									me</label>
-							</div>
-							<button class="btn btn-primary btn-block" type="submit">Sign
-								In</button>
-						</form>
-					</div>
-					<div class="tab-pane fade" id="signup" role="tabpanel">
-						<form class="needs-validation" novalidate>
-							<div class="form-group">
-								<label class="sr-only" for="signup-name">Full name</label> <input
-									class="form-control" type="text" id="signup-name"
-									placeholder="Full name" aria-label="Full name" required>
-								<div class="invalid-feedback">Please enter your full name.</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-email">Email address</label>
-								<input class="form-control" type="email" id="signup-email"
-									placeholder="Email address" aria-label="Email address" required>
-								<div class="invalid-feedback">Please provide a valid email
-									address.</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-password">Password</label> <input
-									class="form-control" type="password" id="signup-password"
-									placeholder="Password" aria-label="Password" required>
-								<div class="invalid-feedback">Please enter a password.</div>
-							</div>
-							<div class="form-group">
-								<label class="sr-only" for="signup-password-confirm">Confirm
-									password</label> <input class="form-control" type="password"
-									id="signup-password-confirm" placeholder="Confirm password"
-									aria-label="Confirm password" required>
-								<div class="invalid-feedback">Please confirm password.</div>
-							</div>
-							<button class="btn btn-primary btn-block" type="submit">Sign
-								Up</button>
-						</form>
-					</div>
-				</div>
-				<div class="d-flex align-items-center pt-5">
-					<hr class="w-100">
-					<div class="px-3 w-100 text-nowrap font-weight-semibold">Or
-						sign in via</div>
-					<hr class="w-100">
-				</div>
-				<div class="text-center pt-4">
-					<a class="social-btn sb-facebook mx-2 mb-3" href="#"
-						data-toggle="tooltip" title="Facebook"><i
-						class="flaticon-facebook"></i></a><a
-						class="social-btn sb-google-plus mx-2 mb-3" href="#"
-						data-toggle="tooltip" title="Google"><i
-						class="flaticon-google-plus"></i></a><a
-						class="social-btn sb-twitter mx-2 mb-3" href="#"
-						data-toggle="tooltip" title="Twitter"><i
-						class="flaticon-twitter"></i></a>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- Off-canvas cart-->
-	 <div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
+	  <div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
       <div class="offcanvas-header d-flex justify-content-between align-items-center">
         <h3 class="offcanvas-title">Your cart</h3>
         <button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -160,7 +46,7 @@
           {{^empty}}
           {{#cart}}
             <div class="media">
-              <div class="featured-entry-thumb mr-3"><a href="#"><img src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}.jpg" width="64"></a><form action="/sell_product/removeItem-{{id}}"><button type="submit" style="height:0px; width:0px; background: transparent; border: none !important;"><span class="item-remove-btn"><i data-feather="x"></i></span></button></form></div>
+              <div class="featured-entry-thumb mr-3"><a href="#"><img src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}.jpg" width="64"></a><form action="/cart"><button type="submit" style="height:0px; width:0px; background: transparent; border: none !important;"><span class="item-remove-btn"><i data-feather="x"></i></span></button></form></div>
               <div class="media-body">
                 <h6 class="featured-entry-title"><a href="#">{{name}}</a></h6>
                 <p class="featured-entry-meta">${{price}}</p>
@@ -183,25 +69,70 @@
 		<div class="container flex-sm-nowrap px-3">
 			<!-- navbar brand-->
 			<a class="navbar-brand mr-0 mr-sm-4" style="min-width: 100px;"
-				href="/"><img width="100" src="/img/logo-dark.png" alt="MStore" /></a>
+				href="/"><img width="100" src="img/logo-dark.png" alt="MStore" /></a>
 			<!-- navbar buttons-->
-		 <div class="navbar-btns d-flex position-relative order-sm-3">
-          <div class="navbar-toggler navbar-btn collapsed bg-0 border-left-0 my-3" data-toggle="collapse" data-target="#menu"><i class="mx-auto mb-2" data-feather="menu"></i>Menu</div><span class="d-block position-relative"><a class="navbar-btn bg-0 my-3" href="#offcanvas-account" data-toggle="offcanvas"><i class="mx-auto mb-1" data-feather="log-in"></i>Sign In/Up</a><a class="navbar-btn bg-0 my-3" href="#offcanvas-cart" data-toggle="offcanvas"><span class="d-block position-relative">{{^empty}}<span class="navbar-btn-badge bg-primary text-light">{{cart.size}}</span>{{/empty}}<i class="mx-auto mb-1" data-feather="shopping-cart"></i>${{total}}</span></a>
-        </div>
+			<div class="navbar-btns d-flex position-relative order-sm-3">
+				<div
+					class="navbar-toggler navbar-btn collapsed bg-0 border-left-0 my-3"
+					data-toggle="collapse" data-target="#menu">
+					<i class="mx-auto mb-2" data-feather="menu"></i>Menu
+				</div>
+
+				{{#logged}}
+				<div
+					class="row d-block text-center text-primary mx-auto mb-1 font-size-sm pr-3 my-auto">
+					<i data-feather="user"></i> Hello {{user.firstName}}
+				</div>
+				<div
+					class="row d-block text-center text-primary mx-auto mb-1 font-size-sm pr-3 my-auto">
+					<a class="btn btn-outline-primary btn-sm" href="/logout"><i
+						class="mr-1" data-feather="log-out"></i>Log out</a>
+				</div>
+				{{/logged}} {{^logged}} <a class="navbar-btn bg-0 my-3"
+					href="/login" data-toggle="offcanvas"><span
+					class="d-block position-relative"> <i class="mx-auto mb-1"
+						data-feather="log-in"></i> Sign In/Up
+				</span></a> {{/logged}} <a class="navbar-btn bg-0 my-3" href="#offcanvas-cart"
+					data-toggle="offcanvas"><span class="d-block position-relative">{{^empty}}<span class="navbar-btn-badge bg-primary text-light">{{cart.size}}</span>{{/empty}}<i
+						class="mx-auto mb-1" data-feather="shopping-cart"></i>${{total}}</span></a>
+			</div>
 			<!-- search-box-->
 			<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
+				<form action="/finder" method="post">
 				<div class="input-group flex-nowrap">
 					<div class="input-group-prepend">
 						<span class="input-group-text rounded-left" id="search-icon"><i
 							data-feather="search"></i></span>
 					</div>
+					<form action="/finder" method="post">
+					<template id="myListTemplate">
+						{{#postList}}
+								<option>{{name}}</option>
+						{{/postList}}
+					</template>
 					<input class="form-control rounded-right" type="text"
-						id="site-search" placeholder="Search site"
-						aria-label="Search site" aria-describedby="search-icon">
+						id="finder" name="search" placeholder="Search site"
+						aria-label="Search site" aria-describedby="search-icon" list="myList" autocomplete="off">
+					<datalist id="myList"></datalist>
 				</div>
+				</form>
 			</div>
 		</div>
 	</header>
+	<script>
+			let finder = document.querySelector('#finder');
+			let results = document.querySelector('#myList');
+			let templateContent = document.querySelector('#myListTemplate').content;
+			finder.addEventListener('keyup', function handler(event) {
+    				while (results.children.length) results.removeChild(results.firstChild);
+    					let inputVal = new RegExp(finder.value.trim(), 'i');
+    					let set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function finderFilter(frag, item, i) {
+        				if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
+        					return frag;
+    		}, document.createDocumentFragment());
+    		results.appendChild(set);
+		});
+	</script>
 	<!-- Third line: Navigation-->
 	<div class="navbar navbar-expand-lg navbar-light bg-light px-0">
 		<div class="container px-3">
@@ -299,12 +230,12 @@
 						</div></li>
 				</ul>
 				<ul class="nav nav-pills">
-					<li class="nav-item"><a href="/" class="nav-link rounded">Home</a>
-					</li>
-					<li class="nav-item"><a href="/shop/" class="nav-link rounded">Shop</a>
-					</li>
-					<li class="nav-item"><a href="/sell_product/"
-						class="nav-link rounded">Sell product</a></li>
+					<li class="nav-item"><a href="/" class="nav-link rounded">Home</a></li>
+					<li class="nav-item"><a href="/shop/" class="nav-link rounded">Shop</a></li>
+					<li class="nav-item"><a href="/sell_product/" class="nav-link rounded">Sell product</a></li>
+					{{#isAdmin}}
+						<li class="nav-item"><a href="/admin" class="nav-link rounded">Admin Page</a></li>
+					{{/isAdmin}}
 				</ul>
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown active"><a
@@ -336,7 +267,7 @@
 			<!-- Sidebar-->
 			<div class="col-xl-3 col-lg-4">
 				<!-- Customer picture-->
-				<img src="img/account/customer-lg.jpg" alt="Daniel Adams">
+				<img src="/images/users/image-{{user.id}}.jpg" alt="{{user.firstName}} {{user.lastName}}">
 				<div class="d-flex flex-wrap justify-content-between pb-2">
 					<div class="pt-3 mr-3">
 						<h3 class="mb-0">{{user.firstName}}</h3>

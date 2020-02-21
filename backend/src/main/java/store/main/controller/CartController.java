@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import store.main.database.*;
 import store.main.service.CartService;
+import store.main.service.LoaderService;
 
 @Controller
 public class CartController {
@@ -33,13 +34,18 @@ public class CartController {
 	@Autowired
 	private CartService cService;
 	
+	@Autowired
+	private LoaderService loaderService;
+	
 	private User getUserInfo(HttpServletRequest request) {
 		return userRepository.findByEmail(request.getUserPrincipal().getName());
 	}
 
 	@RequestMapping("/cart")
-	public String mapPost(Model model, HttpSession session) {
+	public String mapPost(Model model, HttpSession session, HttpServletRequest request) {
 		
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
 		
 		cService.LoadNotProduct(model, session);
 
@@ -47,7 +53,10 @@ public class CartController {
 	}
 
 	@RequestMapping("/cart/removeItem-{idRemove}")
-	public String mapPost(Model model, @PathVariable Long idRemove, HttpSession session) {
+	public String mapPost(Model model, @PathVariable Long idRemove, HttpSession session, HttpServletRequest request) {
+		
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
 
 		cService.RemoveComponentNotProduct(model, session, idRemove);
 
@@ -70,6 +79,9 @@ public class CartController {
 		model.addAttribute("name", user.getFirstName() + " " + user.getLastName());
 		model.addAttribute("email", user.getEmail());
 		
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
+		
 		cService.LoadNotProduct(model, session);
 		
 		return "checkout-payment";
@@ -89,6 +101,9 @@ public class CartController {
 		model.addAttribute("email", user.getEmail());
 		model.addAttribute("creditcard", creditCard);
 		
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
+		
 		cService.LoadNotProduct(model, session);
 		
 		return "checkout-review";
@@ -100,17 +115,24 @@ public class CartController {
 		User user = getUserInfo(request);
 
 		List<Post> cartAux = (List<Post>) session.getAttribute("cart");
-		List<User> sellerList = user.getSellers();
+		
+		/*Marcos there is a bug here, fix it :)
+		 
+		 	List<User> sellerList = user.getSellers();
+		 
 		for (Post p : cartAux) { // set sellers
-			if (!sellerList.contains(p.getUser())) {
 				sellerList.add(p.getUser());
-				/*p.getUser().getPosts().remove(p);
-				p.getBrand().getPosts().remove(p);
-				postRepository.delete(p);//delete post*/
-			}
+				//p.getUser().getPosts().remove(p);
+				//p.getBrand().getPosts().remove(p);
+				//postRepository.delete(p);//delete post
 		}
+		
 		user.setSellers(sellerList);
 		userRepository.save(user);
+
+		*/
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
 		
 		// Reset cart
 		session.setAttribute("cart", new LinkedList<>());

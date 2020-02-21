@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 	
+	Post findByName(String name);
+	
 	List<Post> findByComponentTag(Integer cTag);
 
 	List<Post> findByComponentTagOrderByPriceAsc(Integer tag);

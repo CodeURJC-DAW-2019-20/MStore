@@ -24,6 +24,7 @@ import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.CartService;
 import store.main.service.ImageService;
+import store.main.service.LoaderService;
 
 @Controller
 public class SellerProfileController {
@@ -38,6 +39,9 @@ public class SellerProfileController {
 	
 	@Autowired
 	private PostRepository postRepository;
+	
+	@Autowired
+	private LoaderService loaderService;
 
 	private User getUserInfo(HttpServletRequest request) {
 		return userRepository.findByEmail(request.getUserPrincipal().getName());
@@ -48,6 +52,8 @@ public class SellerProfileController {
 	public String loadPublicProfile(Model model, HttpServletRequest request, 
 			@PathVariable("id") long id, HttpSession session) {
 		loadPublicProfile(model, request, id);
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
 		cService.LoadNotProduct(model, session);
 		return "seller-public-profile";
 	}
@@ -62,6 +68,9 @@ public class SellerProfileController {
 		model.addAttribute("user", u.get());
 		model.addAttribute("itemList",lp);
 		
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
+		
 		if(request.isUserInRole("USER") || request.isUserInRole("ADMIN")) {
 			User user = getUserInfo(request);
 			model.addAttribute("hasSold",user.getSellers().contains(u.get()));
@@ -73,8 +82,10 @@ public class SellerProfileController {
 	
 	@PostMapping("/public_profile/{idSeller}/{idBuyer}")
 	public String saveRating(Model model, @RequestParam String stars,
-			@PathVariable("idSeller") long idSeller, @PathVariable("idBuyer") long idBuyer, HttpSession session) {
+			@PathVariable("idSeller") long idSeller, @PathVariable("idBuyer") long idBuyer, HttpSession session, HttpServletRequest request) {
 		saveRating(model, stars, idSeller, idBuyer);
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
 		cService.LoadNotProduct(model, session);
 		return ("redirect:/public_profile/"+idSeller);
 	}
