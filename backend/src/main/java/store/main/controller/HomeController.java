@@ -32,7 +32,7 @@ public class HomeController {
 	public String loadHome(Model model, HttpServletRequest request, HttpSession session) {
 		
 		model = hLoader.modelLoader(model);
-		
+		model = hLoader.postLoader(model);
 		cService.LoadNotProduct(model, session);
 		
 		if (request.isUserInRole("USER")) {

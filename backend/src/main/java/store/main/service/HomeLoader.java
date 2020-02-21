@@ -64,4 +64,10 @@ public class HomeLoader {
 			model.addAttribute("list"+tag, list);
 		}	
 	}
+	
+	public Model postLoader(Model model){
+		model.addAttribute("postList", postRepository.findAll());
+		return model;
+		
+	}
 }

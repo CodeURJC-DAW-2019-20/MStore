@@ -110,7 +110,8 @@ public class CartController {
 			}
 		}
 		user.setSellers(sellerList);
-				
+		userRepository.save(user);
+		
 		// Reset cart
 		session.setAttribute("cart", new LinkedList<>());
 		session.setAttribute("total", (long) 0);
