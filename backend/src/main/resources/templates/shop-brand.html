@@ -99,40 +99,25 @@
 			<!-- search-box-->
 			<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
 				<form action="/finder" method="post">
-				<div class="input-group flex-nowrap">
-					<div class="input-group-prepend">
-						<span class="input-group-text rounded-left" id="search-icon"><i
-							data-feather="search"></i></span>
+					<div class="input-group flex-nowrap">
+						<div class="input-group-prepend">
+							<span class="input-group-text rounded-left" id="search-icon"><i
+								data-feather="search"></i></span>
+						</div>
+						<template id="myListTemplate"> 
+							{{#postList}}
+							<option>{{name}}</option>
+							{{/postList}} 
+						</template>
+						<input class="form-control rounded-right" type="text" id="finder"
+							name="search" placeholder="Search site" aria-label="Search site"
+							aria-describedby="search-icon" list="myList" autocomplete="off">
+						<datalist id="myList"></datalist>
 					</div>
-					<form action="/finder" method="post">
-					<template id="myListTemplate">
-						{{#postList}}
-								<option>{{name}}</option>
-						{{/postList}}
-					</template>
-					<input class="form-control rounded-right" type="text"
-						id="finder" name="search" placeholder="Search site"
-						aria-label="Search site" aria-describedby="search-icon" list="myList" autocomplete="off">
-					<datalist id="myList"></datalist>
-				</div>
 				</form>
 			</div>
 		</div>
 	</header>
-	<script>
-			let finder = document.querySelector('#finder');
-			let results = document.querySelector('#myList');
-			let templateContent = document.querySelector('#myListTemplate').content;
-			finder.addEventListener('keyup', function handler(event) {
-    				while (results.children.length) results.removeChild(results.firstChild);
-    					let inputVal = new RegExp(finder.value.trim(), 'i');
-    					let set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function finderFilter(frag, item, i) {
-        				if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
-        					return frag;
-    		}, document.createDocumentFragment());
-    		results.appendChild(set);
-		});
-	</script>
 	<!-- Third line: Navigation-->
 	<div class="navbar navbar-expand-lg navbar-light bg-light px-0">
 		<div class="container px-3">
@@ -716,5 +701,19 @@
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="/js/vendor.min.js"></script>
 	<script src="/js/theme.min.js"></script>
+	<script>
+			let finder = document.querySelector('#finder');
+			let results = document.querySelector('#myList');
+			let templateContent = document.querySelector('#myListTemplate').content;
+			finder.addEventListener('keyup', function handler(event) {
+    				while (results.children.length) results.removeChild(results.firstChild);
+    					let inputVal = new RegExp(finder.value.trim(), 'i');
+    					let set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function finderFilter(frag, item, i) {
+        				if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
+        					return frag;
+    		}, document.createDocumentFragment());
+    		results.appendChild(set);
+		});
+	</script>
 </body>
 </html>

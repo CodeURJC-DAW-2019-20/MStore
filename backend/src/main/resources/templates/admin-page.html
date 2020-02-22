@@ -27,7 +27,8 @@
 <!-- Main Theme Styles + Bootstrap-->
 <link rel="stylesheet" media="screen" id="main-styles"
 	href="/css/theme.min.css">
-<!-- Customizer styles and scripts-->
+<!-- For tags customize-->
+<link rel="stylesheet" type="text/css" href="/css/jquery.tagsinput.css" />
 </head>
 <!-- Body-->
 <body>
@@ -99,40 +100,25 @@
 			<!-- search-box-->
 			<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
 				<form action="/finder" method="post">
-				<div class="input-group flex-nowrap">
-					<div class="input-group-prepend">
-						<span class="input-group-text rounded-left" id="search-icon"><i
-							data-feather="search"></i></span>
+					<div class="input-group flex-nowrap">
+						<div class="input-group-prepend">
+							<span class="input-group-text rounded-left" id="search-icon"><i
+								data-feather="search"></i></span>
+						</div>
+						<template id="myListTemplate"> 
+							{{#postList}}
+							<option>{{name}}</option>
+							{{/postList}} 
+						</template>
+						<input class="form-control rounded-right" type="text" id="finder"
+							name="search" placeholder="Search site" aria-label="Search site"
+							aria-describedby="search-icon" list="myList" autocomplete="off">
+						<datalist id="myList"></datalist>
 					</div>
-					<form action="/finder" method="post">
-					<template id="myListTemplate">
-						{{#postList}}
-								<option>{{name}}</option>
-						{{/postList}}
-					</template>
-					<input class="form-control rounded-right" type="text"
-						id="finder" name="search" placeholder="Search site"
-						aria-label="Search site" aria-describedby="search-icon" list="myList" autocomplete="off">
-					<datalist id="myList"></datalist>
-				</div>
 				</form>
 			</div>
 		</div>
 	</header>
-	<script>
-			let finder = document.querySelector('#finder');
-			let results = document.querySelector('#myList');
-			let templateContent = document.querySelector('#myListTemplate').content;
-			finder.addEventListener('keyup', function handler(event) {
-    				while (results.children.length) results.removeChild(results.firstChild);
-    					let inputVal = new RegExp(finder.value.trim(), 'i');
-    					let set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function finderFilter(frag, item, i) {
-        				if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
-        					return frag;
-    		}, document.createDocumentFragment());
-    		results.appendChild(set);
-		});
-	</script>
 	<!-- Third line: Navigation-->
 	<div class="navbar navbar-expand-lg navbar-light bg-light px-0">
 		<div class="container px-3">
@@ -254,162 +240,149 @@
 			</div>
 		</div>
 	</div>
-	<!-- Page Content-->
-	<div class="container pt-lg-3 pb-5 mb-sm-3">
-		<!-- Toast notifications-->
-		<div class="toast-container toast-bottom-center">
-			<div class="toast mb-3" id="cart-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-success text-white">
-					<i class="mr-2" data-feather="check-circle"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Added to cart!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="toast-body">This item was added to your cart.</div>
-			</div>
-			<div class="toast mb-3" id="compare-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-info text-white">
-					<i class="mr-2" data-feather="info"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Added to comparison!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="toast-body">This item was added to comparison
-					table.</div>
-			</div>
-			<div class="toast mb-3" id="wishlist-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-info text-white">
-					<i class="mr-2" data-feather="info"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Added to wishlist!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="toast-body">This item was added to your wishlist.</div>
-			</div>
-			<div class="toast mb-3" id="profile-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-success text-white">
-					<i class="mr-2" data-feather="check-circle"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Updated!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="toast-body">Your profile info updated successfuly.</div>
-			</div>
-			<div class="toast mb-3" id="address-toast" data-delay="5000"
-				role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-header bg-success text-white">
-					<i class="mr-2" data-feather="check-circle"
-						style="width: 1.25rem; height: 1.25rem;"></i><span
-						class="font-weight-semibold mr-auto">Updated!</span>
-					<button class="close text-white ml-2 mb-1" type="button"
-						data-dismiss="toast" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="toast-body">Your addresses info updated
-					successfuly.</div>
-			</div>
+	<!-- Page Title-->
+	<div class="page-title-wrapper" aria-label="Page title">
+		<div class="container">
+			<h2 class="page-title">Sell your product</h2>
+			<span class="d-block mt-2 text-muted"></span>
 		</div>
-		<div class="row pt-5">
+	</div>
+	<!-- Page Content-->
+	<div class="container pb-5">
+		<div class="row pt-1">
 			<!-- Sidebar-->
 			<div class="col-xl-3 col-lg-4">
 				<!-- Customer picture-->
-				<a class="gallery-item mb-grid-gutter mx-auto"
-					style="max-width: 18.75rem;"><img
-					src="/images/users/image-{{user.id}}.jpg" alt="{{user.firstName}}"></a>
-			</div>
-			<!-- Main content-->
-			<div class="col-lg-8 offset-xl-1">
-				<!-- Seller details-->
-				<div class="d-flex flex-wrap justify-content-between pb-4">
+				<img src="/images/users/image-{{user.id}}.jpg" alt="{{user.firstName}} {{user.lastName}}">
+				<div class="d-flex flex-wrap justify-content-between pb-2">
 					<div class="pt-3 mr-3">
-						<h3 class="mb-0">{{user.firstName}} {{user.lastName}}</h3>
-						<span class="font-size-sm text-warning">{{user.email}}</span>
+						<h3 class="mb-0">{{user.firstName}}</h3>
+						<span class="font-size-sm text-warning">{{user.email}} <i
+							data-feather="mail"></i></span>
+						<p class="font-size-sm text-info">
+							{{user.phone}}<i data-feather="phone"></i>
+						</p>
 					</div>
 				</div>
-				<ul class="list-unstyled border p-3 mb-4">
-					<li class="pb-1"><span class="opacity-80">&ndash; First
-							name:</span><span class="font-weight-semibold ml-1">{{user.firstName}}</span></li>
-					<li class="pb-1"><span class="opacity-80">&ndash; Last
-							name:</span><span class="font-weight-semibold ml-1">{{user.lastName}}</span></li>
-					<li><span class="opacity-80">&ndash; Phone number:</span><span
-						class="font-weight-semibold ml-1">{{user.phone}}</span></li>
-				</ul>
-				<div>
-					<canvas id="myChart"></canvas>
-					<script src="/js/Chart.js"></script>
-					<script>
-            var chart = new Chart(document.getElementById('myChart').getContext('2d'), {
-                type: 'bar',
-                data:{
-                datasets: [{
-                    data: [{{stars5}},{{stars4}},{{stars3}},{{stars2}},{{stars1}},{{stars0}}],
-                    backgroundColor: ['#42a5f5', 'red', 'green','blue','violet','yellow'],
-                    label: 'Seller rating'}],
-                    labels: ['5 Stars','4 Stars','3 Stars','2 Stars','1 Star', '0 Stars']},
-                options: {
-                            responsive: true,
-                            animation: {
-                                duration: 0 // general animation time
-                            }
-                        }
-            });
-            </script>
+				<div class="pb-5">
+					<a class="btn btn-primary btn-block" href="/account_settings"><i
+						data-feather="settings"></i> Change Account Info</a>
 				</div>
 			</div>
-			<!-- Sellers products grid-->
-			<section class="container px-3 pt-4 mt-3">
-				<div
-					class="d-flex flex-wrap justify-content-between align-items-center pb-2">
-					<h2 class="h3 mb-3">Sellers products</h2>
-					<a class="btn btn-outline-primary btn-sm border-0 mb-3"
-						href="/shop/">More products<i class="ml-1 mr-n2"
-						data-feather="chevron-right"></i></a>
-				</div>
-				<div class="row no-gutters">
-					{{#itemList}}
-					<!-- Product-->
-					<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
-						<div class="product-card">
-							<div class="product-thumb">
-								<a class="product-thumb-link" href="/post/{{id}}"></a><img
-									src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}.jpg">
-							</div>
-							<div class="product-card-body">
-								<div class="d-flex flex-wrap justify-content-between pb-1">
-									<a class="product-meta" href="#">{{component}}</a>
-								</div>
-								<h3 class="product-card-title">
-									<a href="/post/{{id}}">{{name}}</a>
-								</h3>
-								<span class="text-primary">${{price}}</span>
-							</div>
-							<div class="product-card-body body-hidden pt-2">
-								<button class="btn btn-primary btn-sm btn-block" type="button"
-									data-toggle="toast" data-target="#cart-toast">Add to
-									cart</button>
+			<!-- Main content-->
+			<div class="col-lg-8 mx-5">
+				<!-- Pickup address-->
+				<h5 class="mb-4">1. Pickup address</h5>
+				<form class="needs-validation" action="/sell_product/added_product"
+					method="post" enctype="multipart/form-data" novalidate>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="address">Address</label> <input class="form-control"
+									type="text" name="postAddress"
+									placeholder="Plaza de los limones 12" id="address" required>
+								<div class="invalid-feedback">Please enter an address!</div>
+								<small class="form-text text-muted">Street address &
+									Number of Apartment, suite, building, etc.</small>
 							</div>
 						</div>
 					</div>
-					{{/itemList}}
-				</div>
-			</section>
+					<hr class="mt-2 pb-2">
+					<!-- Shipping address-->
+					<h5 class="mb-4 pt-sm-3">2. Product information</h5>
+					<div class="form-group">
+						<label for="component-name">Component Name</label> <input
+							class="form-control" type="text" name="name"
+							placeholder="MSI Printer" id="component-name" required>
+						<div class="invalid-feedback">Please enter the name of the component!</div>
+					</div>
+					<div class="form-group">
+						<label for="select-input">Select the product to sell</label> <select
+							class="form-control custom-select" name="component"
+							id="select-input" required>
+							<option value="">Choose a component</option>
+							<option value="Motherboards">Motherboards</option>
+							<option value="Storage Devices">Storage Devices</option>
+							<option value="CPU / Processors">CPU / Processors</option>
+							<option value="Video Cards & Video Devices">Video Cards &amp; Video Devices</option>
+							<option value="Speakers">Speakers</option>
+							<option value="Headphones">Headphones</option>
+							<option value="Computer Mice">Computer Mice</option>
+							<option value="Monitors">Monitors</option>
+							<option value="Ink Printer">Ink Printer</option>
+							<option value="Laser Printer">Laser Printer</option>
+							<option value="3D Printer">3D Printer</option>
+							<option value="Printer Supplies">Printer Supplies</option>
+						</select>
+						<div class="invalid-feedback">Please choose a category!</div>
+					</div>
+					<div class="form-group">
+						<label for="select-input">Select the brand</label> <select
+							class="form-control custom-select" name="bname" id="select-input"
+							required>
+							<option value="">Choose a brand</option>
+							<option value="Intel">Intel</option>
+							<option value="AMD">AMD</option>
+							<option value="NVIDIA">NVIDIA</option>
+							<option value="ASUS">ASUS</option>
+							<option value="Corsair">Corsair</option>
+							<option value="Seagate">Seagate</option>
+							<option value="Gigabyte">Gigabyte</option>
+							<option value="Logitech">Logitech</option>
+							<option value="Pioneer">Pioneer</option>
+							<option value="WD">WD</option>
+							<option value="HP">HP</option>
+							<option value="Other">Other</option>
+						</select>
+						<div class="invalid-feedback">Please choose a brand!</div>
+					</div>
+					<div class="form-group">
+						<label for="tags-input">Tags</label><br> <input type="text"
+							name="tags" id="tags-input"/>
+					</div>
+					<div class="form-group">
+						<label for="file-input">Upload you photos (Max 4)</label>
+						<div class="file-upload-wrapper">
+							<input type="file" name="imagenFile" lang="en"
+								id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
+							<input type="file" name="imagenFile" lang="en"
+								id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
+							<br>
+							<br> <input type="file" name="imagenFile" lang="en"
+								id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
+							<input type="file" name="imagenFile" lang="en"
+								id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="number-input">Price to sell ($)</label>
+						<div class="input-group">
+							<input class="form-control" name="price" placeholder="Amount"
+								type="number" min="0" id="number-input" required>
+							<div class="input-group-append">
+								<span class="input-group-text">$</span>
+							</div>
+							<div class="invalid-feedback">Please enter the price you want to sell the product!</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="textarea-input">Details</label>
+						<textarea class="form-control" name="details" id="textarea-input"
+							placeholder="Tell us about the product" rows="7" required></textarea>
+						<div class="invalid-feedback">Please enter a brief summary of your product!</div>
+					</div>
+					<div class="form-group">
+						<label for="textarea-input">Features (Optional)</label>
+						<textarea class="form-control" name="features" id="textarea-input"
+							placeholder="e.g. Play a great variety of newly released games at 1080p 60fps"
+							rows="7"></textarea>
+					</div>
+					<div class="text-sm-right">
+						<button class="btn btn-primary" type="submit">Sell
+							product</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 	<!-- Footer-->
@@ -557,10 +530,8 @@
 							</form>
 						</div>
 					</div>
-
 					<!--End mc_embed_signup-->
 				</div>
-
 			</div>
 		</div>
 		<div class="py-3" style="background-color: #1a1a1a;">
@@ -578,5 +549,33 @@
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="/js/vendor.min.js"></script>
 	<script src="/js/theme.min.js"></script>
+	<script src="/js/jquery.tagsinput.js"></script>
+  	<script type="text/javascript">
+    	$(function() {
+    	  $('#tags-input').tagsInput({
+    		   'width':'auto',
+    		   'interactive':true,
+    		   'defaultText':'Add a tag',
+    		   'delimiter': [',',';'], 
+    		   'removeWithBackspace' : true,
+    		   'minChars' : 0,
+    		   'placeholderColor' : '#A3A7AB'
+    		  });
+    	});
+  </script>
+  <script>
+			let finder = document.querySelector('#finder');
+			let results = document.querySelector('#myList');
+			let templateContent = document.querySelector('#myListTemplate').content;
+			finder.addEventListener('keyup', function handler(event) {
+    				while (results.children.length) results.removeChild(results.firstChild);
+    					let inputVal = new RegExp(finder.value.trim(), 'i');
+    					let set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function finderFilter(frag, item, i) {
+        				if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
+        					return frag;
+    		}, document.createDocumentFragment());
+    		results.appendChild(set);
+		});
+	</script>
 </body>
 </html>
