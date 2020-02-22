@@ -23,8 +23,9 @@ _We are the group number 10 of the subject **Web Application Development.** The 
 
 ## Entities 💡 
 - Posts
-- Clients
+- User
 - Brand
+- Rating
 
 ## Type of Users 😃
 - Visitors
@@ -32,10 +33,9 @@ _We are the group number 10 of the subject **Web Application Development.** The 
 - Administrators
 
 ## User permissions 🔒
-_Registered users will have more permissions and functionalities than visiting users. Only registered users can access their profile information and make purchases. Administrators can configure web page options._
+_Registered users will have more permissions and functionalities than visiting users. Only registered users can access their profile information, make purchases and sell products. Administrators have their own page to delete or edit posts._
 
 ## Images 🎨
-
 - User profile picture
 - Products image
 - Brands image
@@ -47,7 +47,7 @@ _There are bar charts in the product sales ratings of the selling users._
 _Sending mail to users._
 
 ## Advanced algorithm 📌
-_A system of personalized offers and recommendations is implemented based on the products that the user has purchased._
+_A system of personalized offers and recommendations based on the products that the user has seen and visiting._
 
 ## Screenshots 📷
 
