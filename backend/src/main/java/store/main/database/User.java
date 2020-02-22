@@ -70,8 +70,8 @@ public class User {
 	private List<User> sellers;
 	
 	@JsonView(PostsInfo.class)
+	@OneToMany(mappedBy = "user")
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Post> posts;
 	
 	public User() {

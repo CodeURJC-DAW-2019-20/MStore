@@ -120,22 +120,16 @@ public class CartController {
 		List<Post> cartAux = (List<Post>) session.getAttribute("cart");
 
 		List<User> sellerList = user.getSellers();
-		
-		List<Post> removeList = new LinkedList<>();
-		
+
 		for (Post p : cartAux) { // set sellers
-			if (!containsSeller(sellerList, p.getUser())) {
-				sellerList.add(p.getUser());
+			User u = userRepository.findByEmail(p.getUser().getEmail());
+			if (!containsSeller(sellerList, u)) {
+				sellerList.add(u);
 			}
-			removeList.add(p);
+			deletePostFromBD(p);
 		}
-		
 		user.setSellers(sellerList);
 		userRepository.save(user);
-		
-		for(Post post : removeList) {
-			deletePostFromBD(post);
-		}
 
 		model = loaderService.userLoader(model, request);
 		model = loaderService.postLoader(model);
@@ -153,25 +147,25 @@ public class CartController {
 
 	private boolean containsSeller(List<User> list, User user) {
 		for (User u : list) {
-			if (user.getFirstName().equals(u.getFirstName()) && user.getLastName().equals(u.getLastName())) {
+			if (u.getEmail().equals(user.getEmail())) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	//this method delete a post from database
 
-		private void deletePostFromBD(Post p) {
-			Brand b = p.getBrand();
-			b.getPosts().remove(p);
-			brandRepository.save(b);
-			
-			User u = p.getUser();
-			u.getPosts().remove(p);
-			userRepository.save(u);
-			
-			postRepository.deleteById(p.getId());
-		}
+	// this method delete a post from database
+
+	private void deletePostFromBD(Post p) {
+		Brand b = brandRepository.findByName(p.getBrand().getName());
+		b.getPosts().remove(p);
+		brandRepository.save(b);
+
+		User u = userRepository.findByEmail(p.getUser().getEmail());
+		u.getPosts().remove(p);
+		userRepository.save(u);
+
+		postRepository.delete(p);
+	}
 
 }

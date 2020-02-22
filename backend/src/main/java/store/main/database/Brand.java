@@ -31,7 +31,7 @@ public class Brand {
 	private String name;
 
 	@JsonView(PostsInfo.class)
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "brand", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "brand")
 	private List<Post> posts;
 
 	protected Brand() {

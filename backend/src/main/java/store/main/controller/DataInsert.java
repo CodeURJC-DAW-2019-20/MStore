@@ -49,7 +49,7 @@ public class DataInsert implements CommandLineRunner {
 		Brand b8 = new Brand("GIGABYTE");
 		Brand b9 = new Brand("SEAGATE");
 		Brand b10 = new Brand("NVIDIA");
-		Brand b11 = new Brand("MSI");
+		Brand b11 = new Brand("MSI PREMIUM");
 		Brand b12 = new Brand("INTEL");
 		Brand b13 = new Brand("PIONEER");
 		User user = new User("Diego", "Montoto", "dm@gmail.com", "686665758", "passw1", "Plaza de los limones 12");

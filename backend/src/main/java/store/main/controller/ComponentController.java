@@ -49,7 +49,7 @@ public class ComponentController {
 
 		Post post = postRepository.findById(id).get();
 		model.addAttribute("post", post);
-		cService.Load(model, session, id);
+		cService.Load(model, session, id,request);
 
 		// reset lists
 		this.postList1 = new LinkedList<>();

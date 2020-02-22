@@ -2,6 +2,7 @@ package store.main.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import store.main.controller.Cart;
-import store.main.database.Post;
-import store.main.database.PostRepository;
+import store.main.database.*;
 
 @Service
 public class CartService {
@@ -21,7 +21,15 @@ public class CartService {
 	@Autowired
 	private PostRepository postRepository;
 	
-	public void Load (Model model, HttpSession session, Long id) {
+	@Autowired
+	private UserRepository userRepository;
+	
+
+	private User getUserInfo(HttpServletRequest request) {
+		return userRepository.findByEmail(request.getUserPrincipal().getName());
+	}
+	
+	public void Load (Model model, HttpSession session, Long id,HttpServletRequest request) {
 		cart.cartInit(session);
 
 		boolean empty = (boolean) session.getAttribute("empty");
@@ -34,6 +42,11 @@ public class CartService {
 
 		Post post = postRepository.findById(id).get();
 		boolean alreadyOn = cartAux.contains(post);
+		if(request.isUserInRole("USER")) {
+			User user=getUserInfo(request);
+			boolean isSameUser= user.getPosts().contains(post);
+			model.addAttribute("isSameUser",isSameUser);
+		}
 		post.getnImg();
 
 		model.addAttribute("alreadyOn", alreadyOn);	

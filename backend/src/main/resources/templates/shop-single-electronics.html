@@ -281,6 +281,15 @@
         </div>
         <div class="toast-body">This item is already in your cart.</div>
       </div>
+      
+            <div class="toast mb-3" id="cart-user" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-danger text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Is your product!</span>
+          <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="toast-body">This article is a product that you are selling.</div>
+      </div>
+      
+      
       <div class="toast mb-3" id="compare-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header bg-info text-white"><i class="mr-2" data-feather="info" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to comparison!</span>
           <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -333,9 +342,16 @@
               <button class="btn btn-primary btn-block disabled" type="button" data-toggle="toast" data-target="#cart-toast">
               <i class="mr-2" data-feather="shopping-cart"></i>Add to cart</button>
               {{/alreadyOn}}
-              {{^alreadyOn}}
+              
+              {{^alreadyOn}} 
+              {{#isSameUser}}
+              <button class="btn btn-primary btn-block disabled" type="button" data-toggle="toast" data-target="#cart-user">
+              <i class="mr-2" data-feather="shopping-cart"></i>Add to cart</button>
+              {{/isSameUser}}
+              {{^isSameUser}}
               <button class="btn btn-primary btn-block" type="submit" action="/post/{{post.id}}-{{img}}/itemAdded" data-toggle="toast" data-target="#cart-toast">
               <i class="mr-2" data-feather="shopping-cart"></i>Add to cart</button>
+              {{/isSameUser}}
               {{/alreadyOn}}
               </form>       
             </div>
