@@ -49,7 +49,7 @@ public class LoaderService {
 		// load newly arrived products
 		loadPosts(model, postListIdDesc,"3",8);
 		
-		model.addAttribute("post",postListPriceDesc.get(0)); //The most expensive product
+		model.addAttribute("post",postListIdDesc.get(0)); //The most expensive product
 		return model;
 	}
 	

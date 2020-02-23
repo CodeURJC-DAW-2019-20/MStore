@@ -47,15 +47,14 @@ public class SellerProfileController {
 		return userRepository.findByEmail(request.getUserPrincipal().getName());
 	}
 	
-	
+	 
 	@GetMapping("/public_profile/{id}")
 	public String loadPublicProfile(Model model, HttpServletRequest request, 
 			@PathVariable("id") long id, HttpSession session) {
-		loadPublicProfile(model, request, id);
-		model = loaderService.userLoader(model, request);
-		model = loaderService.postLoader(model);
-		cService.LoadNotProduct(model, session);
-		return "seller-public-profile";
+				loadPublicProfile(model, request, id);
+				model =loaderService.postLoader(model);
+				cService.LoadNotProduct(model, session);
+				return "seller-public-profile";
 	}
 	
 	private void loadPublicProfile(Model model, HttpServletRequest request, long id) {
@@ -67,9 +66,6 @@ public class SellerProfileController {
 		List<Post> lp = postRepository.findFirst8ByUserEmail(u.get().getEmail());
 		model.addAttribute("user", u.get());
 		model.addAttribute("itemList",lp);
-		
-		model = loaderService.userLoader(model, request);
-		model = loaderService.postLoader(model);
 		
 		if(request.isUserInRole("USER") || request.isUserInRole("ADMIN")) {
 			User user = getUserInfo(request);
@@ -84,9 +80,6 @@ public class SellerProfileController {
 	public String saveRating(Model model, @RequestParam String stars,
 			@PathVariable("idSeller") long idSeller, @PathVariable("idBuyer") long idBuyer, HttpSession session, HttpServletRequest request) {
 		saveRating(model, stars, idSeller, idBuyer);
-		model = loaderService.userLoader(model, request);
-		model = loaderService.postLoader(model);
-		cService.LoadNotProduct(model, session);
 		return ("redirect:/public_profile/"+idSeller);
 	}
 	

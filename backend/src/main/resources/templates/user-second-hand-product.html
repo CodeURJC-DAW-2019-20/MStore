@@ -1,101 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<title>MStore | Online Computer & Technology Store</title>
-<!-- SEO Meta Tags-->
-<meta name="description"
-	content="MStore - Online Computer & Technology Store">
-<meta name="keywords"
-	content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
-<meta name="author" content="Createx Studio">
-<!-- Viewport-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Favicon and Touch Icons-->
-<link rel="apple-touch-icon" sizes="180x180"
-	href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32"
-	href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16"
-	href="/favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
-<link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
-<meta name="msapplication-TileColor" content="#111">
-<meta name="theme-color" content="#ffffff">
-<!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-<link rel="stylesheet" media="screen" href="/css/vendor.min.css">
-<!-- Main Theme Styles + Bootstrap-->
-<link rel="stylesheet" media="screen" id="main-styles"
-	href="/css/theme.min.css">
-<!-- For tags customize-->
-<link rel="stylesheet" type="text/css" href="/css/jquery.tagsinput.css" />
+	<meta charset="utf-8">
+	<title>MStore | Online Computer & Technology Store</title>
+	<!-- SEO Meta Tags-->
+	<meta name="description" content="MStore - Online Computer & Technology Store">
+	<meta name="keywords"
+		content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
+	<meta name="author" content="Createx Studio">
+	<!-- Viewport-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Favicon and Touch Icons-->
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
+	<meta name="msapplication-TileColor" content="#111">
+	<meta name="theme-color" content="#ffffff">
+	<!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+	<link rel="stylesheet" media="screen" href="/css/vendor.min.css">
+	<!-- Main Theme Styles + Bootstrap-->
+	<link rel="stylesheet" media="screen" id="main-styles" href="/css/theme.min.css">
+	<!-- For tags customize-->
+	<link rel="stylesheet" type="text/css" href="/css/jquery.tagsinput.css" />
 </head>
 <!-- Body-->
+
 <body>
 	<!-- Off-canvas cart-->
-	  <div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
-      <div class="offcanvas-header d-flex justify-content-between align-items-center">
-        <h3 class="offcanvas-title">Your cart</h3>
-        <button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="offcanvas-body">
-        <div class="offcanvas-body-inner">
-          <div class="widget widget-featured-entries pt-3">
-          {{#empty}}
-          <span class='text-muted'>The cart is empty</span>
-          {{/empty}}
-          {{^empty}}
-          {{#cart}}
-            <div class="media">
-              <div class="featured-entry-thumb mr-3"><a href="#"><img src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}.jpg" width="64"></a><form action="/cart"><button type="submit" style="height:0px; width:0px; background: transparent; border: none !important;"><span class="item-remove-btn"><i data-feather="x"></i></span></button></form></div>
-              <div class="media-body">
-                <h6 class="featured-entry-title"><a href="#">{{name}}</a></h6>
-                <p class="featured-entry-meta">${{price}}</p>
-              </div>
-            </div>
-          {{/cart}}
-          {{/empty}}
-            <hr>
-            <div class="d-flex justify-content-between align-items-center py-3">
-              <div class="font-size-sm"> <span class="mr-2">Subtotal:</span><span class="font-weight-semibold text-dark">${{total}}</span></div>
-            </div> <a class="btn btn-primary btn-sm btn-block" href="/cart"><i class="mr-1" data-feather="credit-card"></i>Checkout</a>
-          </div>
-        </div>
-      </div>
-    </div>
+	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
+		<div class="offcanvas-header d-flex justify-content-between align-items-center">
+			<h3 class="offcanvas-title">Your cart</h3>
+			<button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span
+					aria-hidden="true">&times;</span></button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="offcanvas-body-inner">
+				<div class="widget widget-featured-entries pt-3">
+					{{#empty}}
+					<span class='text-muted'>The cart is empty</span>
+					{{/empty}}
+					{{^empty}}
+					{{#cart}}
+					<div class="media">
+						<div class="featured-entry-thumb mr-3"><a href="#"><img src="/images/posts/image-{{id}}-0.jpg"
+									alt="image-{{id}}.jpg" width="64"></a>
+							<form action="/cart"><button type="submit"
+									style="height:0px; width:0px; background: transparent; border: none !important;"><span
+										class="item-remove-btn"><i data-feather="x"></i></span></button></form>
+						</div>
+						<div class="media-body">
+							<h6 class="featured-entry-title"><a href="#">{{name}}</a></h6>
+							<p class="featured-entry-meta">${{price}}</p>
+						</div>
+					</div>
+					{{/cart}}
+					{{/empty}}
+					<hr>
+					<div class="d-flex justify-content-between align-items-center py-3">
+						<div class="font-size-sm"> <span class="mr-2">Subtotal:</span><span
+								class="font-weight-semibold text-dark">${{total}}</span></div>
+					</div> <a class="btn btn-primary btn-sm btn-block" href="/cart"><i class="mr-1"
+							data-feather="credit-card"></i>Checkout</a>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Navbar Multilevel-->
 
 	<!-- Second line-->
 	<header class="navbar navbar-expand-lg navbar-light bg-light px-0">
 		<div class="container flex-sm-nowrap px-3">
 			<!-- navbar brand-->
-			<a class="navbar-brand mr-0 mr-sm-4" style="min-width: 100px;"
-				href="/"><img width="100" src="/img/logo-dark.png" alt="MStore" /></a>
+			<a class="navbar-brand mr-0 mr-sm-4" style="min-width: 100px;" href="/"><img width="100"
+					src="/img/logo-dark.png" alt="MStore" /></a>
 			<!-- navbar buttons-->
 			<div class="navbar-btns d-flex position-relative order-sm-3">
-				<div
-					class="navbar-toggler navbar-btn collapsed bg-0 border-left-0 my-3"
-					data-toggle="collapse" data-target="#menu">
+				<div class="navbar-toggler navbar-btn collapsed bg-0 border-left-0 my-3" data-toggle="collapse"
+					data-target="#menu">
 					<i class="mx-auto mb-2" data-feather="menu"></i>Menu
 				</div>
 
 				{{#logged}}
-				<div
-					class="row d-block text-center text-primary mx-auto mb-1 font-size-sm pr-3 my-auto">
+				<div class="row d-block text-center text-primary mx-auto mb-1 font-size-sm pr-3 my-auto">
 					<i data-feather="user"></i> Hello {{user.firstName}}
 				</div>
-				<div
-					class="row d-block text-center text-primary mx-auto mb-1 font-size-sm pr-3 my-auto">
-					<a class="btn btn-outline-primary btn-sm" href="/logout"><i
-						class="mr-1" data-feather="log-out"></i>Log out</a>
+				<div class="row d-block text-center text-primary mx-auto mb-1 font-size-sm pr-3 my-auto">
+					<a class="btn btn-outline-primary btn-sm" href="/logout"><i class="mr-1"
+							data-feather="log-out"></i>Log out</a>
 				</div>
-				{{/logged}} {{^logged}} <a class="navbar-btn bg-0 my-3"
-					href="/login" data-toggle="offcanvas"><span
-					class="d-block position-relative"> <i class="mx-auto mb-1"
-						data-feather="log-in"></i> Sign In/Up
-				</span></a> {{/logged}} <a class="navbar-btn bg-0 my-3" href="#offcanvas-cart"
-					data-toggle="offcanvas"><span class="d-block position-relative">{{^empty}}<span class="navbar-btn-badge bg-primary text-light">{{cart.size}}</span>{{/empty}}<i
-						class="mx-auto mb-1" data-feather="shopping-cart"></i>${{total}}</span></a>
+				{{/logged}} {{^logged}} <a class="navbar-btn bg-0 my-3" href="/login" data-toggle="offcanvas"><span
+						class="d-block position-relative"> <i class="mx-auto mb-1" data-feather="log-in"></i> Sign In/Up
+					</span></a> {{/logged}} <a class="navbar-btn bg-0 my-3" href="#offcanvas-cart"
+					data-toggle="offcanvas"><span class="d-block position-relative">{{^empty}}<span
+							class="navbar-btn-badge bg-primary text-light">{{cart.size}}</span>{{/empty}}<i
+							class="mx-auto mb-1" data-feather="shopping-cart"></i>${{total}}</span></a>
 			</div>
 			<!-- search-box-->
 			<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
@@ -103,16 +104,16 @@
 					<div class="input-group flex-nowrap">
 						<div class="input-group-prepend">
 							<span class="input-group-text rounded-left" id="search-icon"><i
-								data-feather="search"></i></span>
+									data-feather="search"></i></span>
 						</div>
-						<template id="myListTemplate"> 
+						<template id="myListTemplate">
 							{{#postList}}
 							<option>{{name}}</option>
-							{{/postList}} 
+							{{/postList}}
 						</template>
-						<input class="form-control rounded-right" type="text" id="finder"
-							name="search" placeholder="Search site" aria-label="Search site"
-							aria-describedby="search-icon" list="myList" autocomplete="off">
+						<input class="form-control rounded-right" type="text" id="finder" name="search"
+							placeholder="Search site" aria-label="Search site" aria-describedby="search-icon"
+							list="myList" autocomplete="off">
 						<datalist id="myList"></datalist>
 					</div>
 				</form>
@@ -126,106 +127,100 @@
 			<div class="collapse navbar-collapse" id="menu">
 				<!-- Site menu-->
 				<ul class="navbar-nav">
-					<li class="nav-item dropdown mega-dropdown dropdown-more"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Categories<i
-							data-feather="more-horizontal"></i></a>
+					<li class="nav-item dropdown mega-dropdown dropdown-more"><a class="nav-link dropdown-toggle"
+							href="#" data-toggle="dropdown">Categories<i data-feather="more-horizontal"></i></a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
-									<div
-										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+									<div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
 										style="background-image: url(img/megamenu/computerHardware.jpg);">
 										<h3 class="h5 text-white text-shadow my-3">Computer
 											Hardware</h3>
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Motherboards</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Storage
+											<li><a href="#"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Motherboards</span></a></li>
+											<li><a href="#"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Storage
 														Devices</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">CPU
+											<li><a href="#"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span class="font-size-sm">CPU
 														/ Processors</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Video
+											<li><a href="#"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Video
 														Cards &amp; Video Devices</span></a></li>
 										</ul>
 									</div>
 								</div>
 								<div class="dropdown-column">
-									<div
-										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+									<div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
 										style="background-image: url(img/megamenu/comp-accessories.png);">
 										<h3 class="h5 text-white text-shadow my-3">Computer
 											Accessories</h3>
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Speakers
-												</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Headphones
-												</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Computer
+											<li><a href="#"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Speakers
+													</span></a></li>
+											<li><a href="#"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Headphones
+													</span></a></li>
+											<li><a href="#"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Computer
 														Mice</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Monitors</span></a></li>
+											<li><a href="#"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Monitors</span></a></li>
 										</ul>
 									</div>
 								</div>
 								<div class="dropdown-column">
-									<div
-										class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+									<div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
 										style="background-image: url(img/megamenu/printer.png);">
 										<h3 class="h5 text-white text-shadow my-3">Printers</h3>
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Ink
+											<li><a href="#"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span class="font-size-sm">Ink
 														Printer</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Laser
+											<li><a href="#"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Laser
 														Printer</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">3D
+											<li><a href="#"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span class="font-size-sm">3D
 														Printer</span></a></li>
-											<li><a href="#"><i
-													class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Printer
+											<li><a href="#"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Printer
 														Supplies</span></a></li>
 										</ul>
 									</div>
 								</div>
 							</div>
-						</div></li>
+						</div>
+					</li>
 				</ul>
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a href="/" class="nav-link rounded">Home</a></li>
 					<li class="nav-item"><a href="/shop/" class="nav-link rounded">Shop</a></li>
 					<li class="nav-item"><a href="/sell_product/" class="nav-link rounded">Sell Product</a></li>
 					{{#isAdmin}}
-						<li class="nav-item"><a href="/admin" class="nav-link rounded">Admin Page</a></li>
+					<li class="nav-item"><a href="/admin" class="nav-link rounded">Admin Page</a></li>
 					{{/isAdmin}}
 				</ul>
 				<ul class="navbar-nav">
-					<li class="nav-item dropdown active"><a
-						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">User
+					<li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="#"
+							data-toggle="dropdown">User
 							Account</a>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="/account_settings">Profile
@@ -234,7 +229,8 @@
 							<li><a class="dropdown-item" href="/public_profile">Public
 									Profile</a></li>
 							<li class="dropdown-divider"></li>
-						</ul></li>
+						</ul>
+					</li>
 				</ul>
 				<!-- Rounded nav pills -->
 			</div>
@@ -260,34 +256,32 @@
 			<!-- Sidebar-->
 			<div class="col-xl-3 col-lg-4">
 				<!-- Customer picture-->
-				<img src="/images/users/image-{{user.id}}.jpg" alt="{{user.firstName}} {{user.lastName}}">
+				<img src="/images/users/image-{{user.id}}.jpg" onerror="this.src='/images/users/default.jpg'" alt="{{user.firstName}} {{user.lastName}}">
 				<div class="d-flex flex-wrap justify-content-between pb-2">
 					<div class="pt-3 mr-3">
 						<h3 class="mb-0">{{user.firstName}}</h3>
-						<span class="font-size-sm text-warning">{{user.email}} <i
-							data-feather="mail"></i></span>
+						<span class="font-size-sm text-warning">{{user.email}} <i data-feather="mail"></i></span>
 						<p class="font-size-sm text-info">
 							{{user.phone}}<i data-feather="phone"></i>
 						</p>
 					</div>
 				</div>
 				<div class="pb-5">
-					<a class="btn btn-primary btn-block" href="/account_settings"><i
-						data-feather="settings"></i> Change Account Info</a>
+					<a class="btn btn-primary btn-block" href="/account_settings"><i data-feather="settings"></i> Change
+						Account Info</a>
 				</div>
 			</div>
 			<!-- Main content-->
 			<div class="col-lg-8 mx-5">
 				<!-- Pickup address-->
 				<h5 class="mb-4">1. Pickup address</h5>
-				<form class="needs-validation" action="/sell_product/added_product"
-					method="post" enctype="multipart/form-data" novalidate>
+				<form class="needs-validation" action="/sell_product/added_product" method="post"
+					enctype="multipart/form-data" novalidate>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="address">Address</label> <input class="form-control"
-									type="text" name="postAddress"
-									placeholder="Plaza de los limones 12" id="address" required>
+								<label for="address">Address</label> <input class="form-control" type="text"
+									name="postAddress" placeholder="Plaza de los limones 12" id="address" required>
 								<div class="invalid-feedback">Please enter an address!</div>
 								<small class="form-text text-muted">Street address &
 									Number of Apartment, suite, building, etc.</small>
@@ -298,15 +292,13 @@
 					<!-- Shipping address-->
 					<h5 class="mb-4 pt-sm-3">2. Product information</h5>
 					<div class="form-group">
-						<label for="component-name">Component Name</label> <input
-							class="form-control" type="text" name="name"
-							placeholder="MSI Printer" id="component-name" required>
+						<label for="component-name">Component Name</label> <input class="form-control" type="text"
+							name="name" placeholder="MSI Printer" id="component-name" required>
 						<div class="invalid-feedback">Please enter the name of the component!</div>
 					</div>
 					<div class="form-group">
 						<label for="select-input">Select the product to sell</label> <select
-							class="form-control custom-select" name="component"
-							id="select-input" required>
+							class="form-control custom-select" name="component" id="select-input" required>
 							<option value="">Choose a component</option>
 							<option value="Motherboards">Motherboards</option>
 							<option value="Storage Devices">Storage Devices</option>
@@ -324,9 +316,8 @@
 						<div class="invalid-feedback">Please choose a category!</div>
 					</div>
 					<div class="form-group">
-						<label for="select-input">Select the brand</label> <select
-							class="form-control custom-select" name="bname" id="select-input"
-							required>
+						<label for="select-input">Select the brand</label> <select class="form-control custom-select"
+							name="bname" id="select-input" required>
 							<option value="">Choose a brand</option>
 							<option value="Intel">Intel</option>
 							<option value="AMD">AMD</option>
@@ -344,28 +335,27 @@
 						<div class="invalid-feedback">Please choose a brand!</div>
 					</div>
 					<div class="form-group">
-						<label for="tags-input">Tags</label><br> <input type="text"
-							name="tags" id="tags-input"/>
+						<label for="tags-input">Tags</label><br> <input type="text" name="tags" id="tags-input" />
 					</div>
 					<div class="form-group">
 						<label for="file-input">Upload you photos (Max 4)</label>
 						<div class="file-upload-wrapper">
-							<input type="file" name="imagenFile" lang="en"
-								id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
-							<input type="file" name="imagenFile" lang="en"
-								id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
+							<input type="file" name="imagenFile" lang="en" id="input-file-now" class="file-upload"
+								accept=".jpg, .jpeg" />
+							<input type="file" name="imagenFile" lang="en" id="input-file-now" class="file-upload"
+								accept=".jpg, .jpeg" />
 							<br>
-							<br> <input type="file" name="imagenFile" lang="en"
-								id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
-							<input type="file" name="imagenFile" lang="en"
-								id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
+							<br> <input type="file" name="imagenFile" lang="en" id="input-file-now" class="file-upload"
+								accept=".jpg, .jpeg" />
+							<input type="file" name="imagenFile" lang="en" id="input-file-now" class="file-upload"
+								accept=".jpg, .jpeg" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="number-input">Price to sell ($)</label>
 						<div class="input-group">
-							<input class="form-control" name="price" placeholder="Amount"
-								type="number" min="0" id="number-input" required>
+							<input class="form-control" name="price" placeholder="Amount" type="number" min="0"
+								id="number-input" required>
 							<div class="input-group-append">
 								<span class="input-group-text">$</span>
 							</div>
@@ -403,49 +393,49 @@
 							<h3 class="widget-title text-white border-light">Shop
 								departments</h3>
 							<ul>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/0"><i class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Motherboards</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/1"><i class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Storage
+								<li><a class="nav-link-inline nav-link-light" href="/shop/0"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Motherboards</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/1"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Storage
 											Devices</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/2"><i class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">CPU
+								<li><a class="nav-link-inline nav-link-light" href="/shop/2"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">CPU
 											/ Processors</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/3"><i class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Video
+								<li><a class="nav-link-inline nav-link-light" href="/shop/3"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Video
 											Cards &amp; Video Devices</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/4"><i class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Speakers</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/5"><i class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Monitors</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/6"><i class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Computer
+								<li><a class="nav-link-inline nav-link-light" href="/shop/4"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Speakers</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/5"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Monitors</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/6"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Computer
 											Mice</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/7"><i class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/8"><i class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Ink
+								<li><a class="nav-link-inline nav-link-light" href="/shop/7"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Headphones</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/8"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Ink
 											Printer</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/9"><i class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Laser
+								<li><a class="nav-link-inline nav-link-light" href="/shop/9"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Laser
 											Printer</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/10"><i class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">3D
+								<li><a class="nav-link-inline nav-link-light" href="/shop/10"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">3D
 											Printers</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/11"><i class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Printer
+								<li><a class="nav-link-inline nav-link-light" href="/shop/11"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Printer
 											Supplies</span></a></li>
 							</ul>
 						</div>
@@ -454,50 +444,39 @@
 						<div class="widget widget-links pb-4">
 							<h3 class="widget-title text-white border-light">Our brands</h3>
 							<ul>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/Intel"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Intel</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/AMD"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">AMD</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/NVIDIA"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">NVIDIA</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/ASUS"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">ASUS</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/Corsair"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Corsair</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/Seagate"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Seagate</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/Gigabyte"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Gigabyte</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/Logitech"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Logitech</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/Pioneer"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">Pioneer</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/WD"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">WD</span></a></li>
-								<li><a class="nav-link-inline nav-link-light"
-									href="/shop/brand/HP"><i
-										class="widget-categories-indicator"
-										data-feather="chevron-right"></i><span class="font-size-sm">HP</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/brand/Intel"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Intel</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/brand/AMD"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">AMD</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/brand/NVIDIA"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">NVIDIA</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/brand/ASUS"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">ASUS</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/brand/Corsair"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Corsair</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/brand/Seagate"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Seagate</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/brand/Gigabyte"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Gigabyte</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/brand/Logitech"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Logitech</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/brand/Pioneer"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">Pioneer</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/brand/WD"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">WD</span></a></li>
+								<li><a class="nav-link-inline nav-link-light" href="/shop/brand/HP"><i
+											class="widget-categories-indicator" data-feather="chevron-right"></i><span
+											class="font-size-sm">HP</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -508,29 +487,24 @@
 								informed</h3>
 							<form
 								action="https://urjc.us4.list-manage.com/subscribe/post?u=7816e91fc0e80c209c0a7750e&amp;id=a3e1cc1eb7"
-								method="post" id="mc-embedded-subscribe-form"
-								name="mc-embedded-subscribe-form" class="validate"
-								target="_blank" novalidate>
+								method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+								class="validate" target="_blank" novalidate>
 								<div class="input-group mb-2">
 									<div class="input-group-prepend">
-										<span class="input-group-text"
-											style="background-color: #e8e8e8;"><i
-											data-feather="mail"></i></span>
+										<span class="input-group-text" style="background-color: #e8e8e8;"><i
+												data-feather="mail"></i></span>
 									</div>
-									<input class="form-control border-0 box-shadow-0 bg-secondary"
-										type="email" name="EMAIL" id="mce-EMAIL" value=""
-										placeholder="Your email" required>
+									<input class="form-control border-0 box-shadow-0 bg-secondary" type="email"
+										name="EMAIL" id="mce-EMAIL" value="" placeholder="Your email" required>
 								</div>
 								<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-								<div style="position: absolute; left: -5000px;"
-									aria-hidden="true">
-									<input type="text"
-										name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
+								<div style="position: absolute; left: -5000px;" aria-hidden="true">
+									<input type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
 								</div>
-								<button class="btn btn-primary btn-block" type="submit"
-									name="subscribe" id="mc-embedded-subscribe">Subscribe*</button>
-								<p class="font-size-xs text-white opacity-60 pt-2 mb-2"
-									id="mc-helper">*Subscribe to our newsletter to receive
+								<button class="btn btn-primary btn-block" type="submit" name="subscribe"
+									id="mc-embedded-subscribe">Subscribe*</button>
+								<p class="font-size-xs text-white opacity-60 pt-2 mb-2" id="mc-helper">*Subscribe to our
+									newsletter to receive
 									early discount offers, updates and new products info.</p>
 								<!-- Subscription status-->
 								<div class="subscribe-status"></div>
@@ -542,21 +516,20 @@
 			</div>
 		</div>
 		<div class="py-3" style="background-color: #1a1a1a;">
-			<div class="container font-size-xs text-center"
-				aria-label="Copyright">
+			<div class="container font-size-xs text-center" aria-label="Copyright">
 				<span class="text-white opacity-60 mr-1">© All rights
-					reserved. Made by</span><a class="nav-link-inline nav-link-light"
-					href="https://createx.studio/" target="_blank">Createx Studio</a>
+					reserved. Made by</span><a class="nav-link-inline nav-link-light" href="https://createx.studio/"
+					target="_blank">Createx Studio</a>
 			</div>
 		</div>
 	</footer>
 	<!-- Back To Top Button-->
-	<a class="scroll-to-top-btn" href="#"><i
-		class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
+	<a class="scroll-to-top-btn" href="#"><i class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
 	<script src="/js/vendor.min.js"></script>
 	<script src="/js/theme.min.js"></script>
 	<script src="/js/jquery.tagsinput.js"></script>
+<<<<<<< Updated upstream
   	<script type="text/javascript">
     	$(function() {
     	  $('#tags-input').tagsInput({
@@ -581,7 +554,88 @@
         					return frag;
     		}, document.createDocumentFragment());
     		results.appendChild(set);
+||||||| constructed merge base
+  	<script type="text/javascript">
+    	$(function() {
+    	  $('#tags-input').tagsInput({
+    		   'width':'auto',
+    		   'interactive':true,
+    		   'defaultText':'Add a tag',
+    		   'delimiter': [',',';'], 
+    		   'removeWithBackspace' : true,
+    		   'minChars' : 0,
+    		   'placeholderColor' : '#A3A7AB'
+    		  });
+    	});
+  </script>
+  <script>
+			let finder = document.querySelector('#finder');
+			let results = document.querySelector('#myList');
+			let templateContent = document.querySelector('#myListTemplate').content;
+			finder.addEventListener('keyup', function handler(event) {
+    				while (results.children.length) results.removeChild(results.firstChild);
+    					let inputVal = new RegExp(finder.value.trim(), 'i');
+    					let set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function finderFilter(frag, item, i) {
+        				if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
+        					return frag;
+    		}, document.createDocumentFragment());
+    		results.appendChild(set);
+||||||| constructed merge base
+  	<script type="text/javascript">
+    	$(function() {
+    	  $('#tags-input').tagsInput({
+    		   'width':'auto',
+    		   'interactive':true,
+    		   'defaultText':'Add a tag',
+    		   'delimiter': [',',';'], 
+    		   'removeWithBackspace' : true,
+    		   'minChars' : 0,
+    		   'placeholderColor' : '#A3A7AB'
+    		  });
+    	});
+  </script>
+  <script>
+			let finder = document.querySelector('#finder');
+			let results = document.querySelector('#myList');
+			let templateContent = document.querySelector('#myListTemplate').content;
+			finder.addEventListener('keyup', function handler(event) {
+    				while (results.children.length) results.removeChild(results.firstChild);
+    					let inputVal = new RegExp(finder.value.trim(), 'i');
+    					let set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function finderFilter(frag, item, i) {
+        				if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
+        					return frag;
+    		}, document.createDocumentFragment());
+    		results.appendChild(set);
+=======
+	<script type="text/javascript">
+		$(function () {
+			$('#tags-input').tagsInput({
+				'width': 'auto',
+				'interactive': true,
+				'defaultText': 'Add a tag',
+				'delimiter': [',', ';'],
+				'removeWithBackspace': true,
+				'minChars': 0,
+				'placeholderColor': '#A3A7AB'
+			});
+		});
+	</script>
+	<script>
+		let finder = document.querySelector('#finder');
+		let results = document.querySelector('#myList');
+		let templateContent = document.querySelector('#myListTemplate').content;
+		finder.addEventListener('keyup', function handler(event) {
+			while (results.children.length) results.removeChild(results.firstChild);
+			let inputVal = new RegExp(finder.value.trim(), 'i');
+			let set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function finderFilter(
+				frag, item, i) {
+				if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
+				return frag;
+			}, document.createDocumentFragment());
+			results.appendChild(set);
+>>>>>>> Stashed changes
 		});
 	</script>
 </body>
+
 </html>

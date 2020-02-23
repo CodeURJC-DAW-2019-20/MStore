@@ -56,13 +56,14 @@ public class UserProfileController {
 
 		List<Post> lp = postRepository.findFirst8ByUserEmail(u.getEmail());
 		
-		model = loaderService.userLoader(model, request);
 		model = loaderService.postLoader(model);
-		
 		model.addAttribute("user", u);
+		model.addAttribute("id",u.getId());
 		model.addAttribute("itemList",lp);
+		model.addAttribute("hasSold",false);
+		model.addAttribute("idBuyer",0);
 		cService.LoadNotProduct(model, session);
-		return "seller-profile";
+		return "seller-public-profile";
 	}
 	
 	@GetMapping("/account_settings")
