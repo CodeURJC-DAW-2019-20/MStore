@@ -3,8 +3,6 @@ package store.main.controller;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,8 +18,6 @@ import store.main.database.Brand;
 import store.main.database.BrandRepository;
 import store.main.database.Post;
 import store.main.database.PostRepository;
-import store.main.service.CartService;
-import store.main.service.LoaderService;
 
 @Controller
 public class ShopController {
@@ -31,21 +27,9 @@ public class ShopController {
 
 	@Autowired
 	private BrandRepository brandRepository;
-	
-	@Autowired
-	private CartService cService;
-	
 
 	@GetMapping("/shop/")
 	public String shop(Model model, @RequestParam(defaultValue = "0") Integer pageNo,
-			@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "id") String sortBy,
-			@RequestParam(defaultValue = "asc") String ord, HttpSession session) {
-			shopCall(model, pageNo, pageSize, sortBy, ord);
-			cService.LoadNotProduct(model, session);
-		return "shop-style2-ls";
-	}
-	
-	public void shopCall(Model model, @RequestParam(defaultValue = "0") Integer pageNo,
 			@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "id") String sortBy,
 			@RequestParam(defaultValue = "asc") String ord) {
 		Pageable paging;
@@ -59,27 +43,27 @@ public class ShopController {
 		Page<Post> p = repository.findAll(paging);
 
 		Long nPost = repository.count();
+		Integer maxPages = (int) (nPost / 10);
+		boolean viewMore = nPost > 10;
 
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("sortBy", sortBy);
 		model.addAttribute("ord", ord);
+		model.addAttribute("withTag", false);
 		model.addAttribute("posts", p);
 		model.addAttribute("nPosts", nPost);
-	}
-	
-	@GetMapping("/shop/{tag}")
-	public String shopByTag(Model model, @PathVariable("tag") Integer tag,
-			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
-			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord, HttpSession session) {
-		shopByTagCall(model, tag, pageNo, pageSize, sortBy, ord);
-		cService.LoadNotProduct(model, session);
+		model.addAttribute("maxPages", maxPages);
+		model.addAttribute("viewMore", viewMore);
+
 		return "shop-style2-ls";
 	}
 
-	public void shopByTagCall(Model model, @PathVariable("tag") Integer tag,
+	@GetMapping("/shop/{tag}")
+	public String shopByTag(Model model, @PathVariable("tag") Integer tag,
 			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
 			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord) {
+
 		List<Post> p = new LinkedList<>();
 
 		if (sortBy.equalsIgnoreCase("price")) {
@@ -102,33 +86,41 @@ public class ShopController {
 
 		Integer nPost = p.size();
 		boolean zeroPost = nPost == 0;
+		Integer maxPages = nPost / 10;
 
-		model.addAttribute("posts", p);
+		Integer ini = pageNo * 10;
+		Integer fin;
+		if (pageNo == maxPages) {
+			fin = nPost;
+		} else {
+			fin = ini + 10;
+		}
+		List<Post> posts = p.subList(ini, fin);
+		boolean viewMore = nPost > 10;
+
+		model.addAttribute("posts", posts);
 		model.addAttribute("nPosts", nPost);
+		model.addAttribute("withTag", true);
+		model.addAttribute("numberT", tag);
 
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("sortBy", sortBy);
 		model.addAttribute("ord", ord);
 		model.addAttribute("zeroPost", zeroPost);
+		model.addAttribute("maxPages", maxPages);
+		model.addAttribute("viewMore", viewMore);
+
+		return "shop-style2-ls";
 	}
-	
+
 	@GetMapping("/shop/brand/{name}")
 	public String shopByBrand(Model model, @PathVariable("name") String name,
 			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
-			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord, HttpSession session) {
-		shopByBrandCall(model, name, pageNo, pageSize, sortBy, ord);
-		cService.LoadNotProduct(model, session);
-
-		return "shop-brand";
-	}
-	
-	public void shopByBrandCall(Model model, @PathVariable("name") String name,
-			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
 			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord) {
+
 		Brand b = brandRepository.findFirstByNameIgnoreCase(name);
 		List<Post> posts = new LinkedList<>();
-
 
 		if (sortBy.equalsIgnoreCase("price")) {
 			if (ord.equalsIgnoreCase("asc")) {
@@ -148,8 +140,23 @@ public class ShopController {
 
 		Integer nPost = posts.size();
 		boolean zeroPost = nPost == 0;
+		Integer maxPages = nPost / 10;
 
-		model.addAttribute("posts", posts);
+		Integer ini = pageNo * 10;
+		Integer fin;
+		if (pageNo >= maxPages) {
+			fin = nPost;
+		} else {
+			fin = ini + 10;
+		}
+		List<Post> p = new LinkedList<>();
+		if (!(ini > fin)) {
+			p = posts.subList(ini, fin);
+		}
+
+		boolean viewMore = nPost > 10;
+
+		model.addAttribute("posts", p);
 		model.addAttribute("nPosts", nPost);
 		model.addAttribute("nameBrand", name);
 		model.addAttribute("pageNo", pageNo);
@@ -157,6 +164,10 @@ public class ShopController {
 		model.addAttribute("sortBy", sortBy);
 		model.addAttribute("ord", ord);
 		model.addAttribute("zeroPost", zeroPost);
+		model.addAttribute("maxPages", maxPages);
+		model.addAttribute("viewMore", viewMore);
+
+		return "shop-brand";
 	}
 
 }

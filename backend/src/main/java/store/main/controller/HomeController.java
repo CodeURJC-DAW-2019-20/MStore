@@ -7,13 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import store.main.database.Post;
 import store.main.database.PostRepository;
-import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.CartService;
 import store.main.service.LoaderService;
