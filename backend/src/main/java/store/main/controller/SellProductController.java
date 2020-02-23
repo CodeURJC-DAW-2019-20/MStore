@@ -77,9 +77,7 @@ public class SellProductController {
 			@RequestParam 	List<MultipartFile> imagenFile, HttpServletRequest request, HttpSession session) throws IOException {
 		
 		nuevoAnuncioCall(model, post, bname, imagenFile, request);
-		model = loaderService.userLoader(model, request);
-		model = loaderService.postLoader(model);
-		cService.LoadNotProduct(model, session);
+		
 		return "redirect:/";
 
 	}

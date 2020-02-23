@@ -125,7 +125,7 @@ public class CartController {
 			if (!containsSeller(sellerList, u)) {
 				sellerList.add(u);
 			}
-			deletePostFromBD(p);
+			cService.deletePostFromBD(p);
 		}
 		user.setSellers(sellerList);
 		userRepository.save(user);
@@ -151,20 +151,6 @@ public class CartController {
 			}
 		}
 		return false;
-	}
-
-	// this method delete a post from database
-
-	private void deletePostFromBD(Post p) {
-		Brand b = brandRepository.findByName(p.getBrand().getName());
-		b.getPosts().remove(p);
-		brandRepository.save(b);
-
-		User u = userRepository.findByEmail(p.getUser().getEmail());
-		u.getPosts().remove(p);
-		userRepository.save(u);
-
-		postRepository.delete(p);
 	}
 
 }

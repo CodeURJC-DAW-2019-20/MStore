@@ -50,6 +50,11 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
 						"Invalid method error");
 				break;
 			}
+			case 403: {
+				loadErrors(model, httpErrorCode, "You don't have permission to access this page.",
+						"Forbidden");
+				break;
+			}
 			default: {
 				loadErrors(model, httpErrorCode, "There was an unknown problem.",
 						"Unknown error");

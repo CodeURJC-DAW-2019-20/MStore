@@ -217,7 +217,7 @@
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a href="/" class="nav-link rounded">Home</a></li>
 					<li class="nav-item"><a href="/shop/" class="nav-link rounded">Shop</a></li>
-					<li class="nav-item"><a href="/sell_product/" class="nav-link rounded">Sell product</a></li>
+					<li class="nav-item"><a href="/sell_product/" class="nav-link rounded">Sell Product</a></li>
 					{{#isAdmin}}
 						<li class="nav-item"><a href="/admin" class="nav-link rounded">Admin Page</a></li>
 					{{/isAdmin}}
@@ -265,16 +265,13 @@
           <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="toast-body">This item is already in your cart.</div>
-      </div>
-      
-            <div class="toast mb-3" id="cart-user" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
+      </div>  
+      <div class="toast mb-3" id="cart-user" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header bg-danger text-white"><i class="mr-2" data-feather="check-circle" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Is your product!</span>
           <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
-        <div class="toast-body">This article is a product that you are selling.</div>
+        <div class="toast-body">This item is a product that you are selling.</div>
       </div>
-      
-      
       <div class="toast mb-3" id="compare-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header bg-info text-white"><i class="mr-2" data-feather="info" style="width: 1.25rem; height: 1.25rem;"></i><span class="font-weight-semibold mr-auto">Added to comparison!</span>
           <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -401,7 +398,7 @@
 			<div class="col-lg-3 col-sm-4 col-6 border border-collapse">
 				<div class="product-card">
 					<div class="product-thumb">
-						<a class="product-thumb-link" href="/post/{{id}}"></a><img
+						<a class="product-thumb-link" href="/post/{{id}}-0"></a><img
 							src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}.jpg">
 					</div>
 					<div class="product-card-body">
@@ -409,7 +406,7 @@
 							<a class="product-meta" href="#">{{component}}</a>
 						</div>
 						<h3 class="product-card-title">
-							<a href="/post/{{id}}">{{name}}</a>
+							<a href="/post/{{id}}-0">{{name}}</a>
 						</h3>
 						<span class="text-primary">${{price}}</span>
 					</div>

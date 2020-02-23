@@ -8,9 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import store.main.database.Post;
 import store.main.database.PostRepository;
-import store.main.database.UserRepository;
 import store.main.service.CartService;
 import store.main.service.LoaderService;
 
@@ -23,9 +23,6 @@ public class HomeController {
 	
 	@Autowired
 	private CartService cService;
-	
-	@Autowired
-	private UserRepository userRepository;
 	
 	@Autowired
 	private PostRepository postRepository;

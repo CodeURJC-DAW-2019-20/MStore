@@ -24,6 +24,9 @@ public class CartService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private BrandRepository brandRepository;
+	
 
 	private User getUserInfo(HttpServletRequest request) {
 		return userRepository.findByEmail(request.getUserPrincipal().getName());
@@ -43,7 +46,7 @@ public class CartService {
 		Post post = postRepository.findById(id).get();
 		boolean alreadyOn = cartAux.contains(post);
 		if(request.isUserInRole("USER")) {
-			User user=getUserInfo(request);
+			User user = getUserInfo(request);
 			boolean isSameUser= user.getPosts().contains(post);
 			model.addAttribute("isSameUser",isSameUser);
 		}
@@ -112,7 +115,19 @@ public class CartService {
 		model.addAttribute("empty", empty);
 	}
 	
-	
+	public void deletePostFromBD(Post p) {
+		Brand b = brandRepository.findByName(p.getBrand().getName());
+		b.getPosts().remove(p);
+		brandRepository.save(b);
+
+		User u = userRepository.findByEmail(p.getUser().getEmail());
+		u.getPosts().remove(p);
+		userRepository.save(u);
+
+		postRepository.delete(p);
 	}
+	
+	
+}
 
 

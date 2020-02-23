@@ -65,6 +65,7 @@ public class ComponentController {
 															// the recommendations of a
 															// visiting user
 		}
+		
 		LinkedList<Integer> images = new LinkedList<>();
 
 		for (int i = 0; i < post.getnImg(); i++) {
