@@ -43,9 +43,12 @@ public class HomeController {
 		
 		Post post = postRepository.findByName(search);
 		
-		Long id = post.getId();
-		
-		return "redirect:/post/"+ id + "-0";
+		if(post!=null) {
+			Long id = post.getId();	
+			return "redirect:/post/"+ id + "-0";
+		}else {
+			return "redirect:/";
+		}
 	}
 
 }

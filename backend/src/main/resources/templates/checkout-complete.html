@@ -121,6 +121,7 @@
 							placeholder="Search site" aria-label="Search site" aria-describedby="search-icon"
 							list="myList" autocomplete="off">
 						<datalist id="myList"></datalist>
+						<input type="hidden" name="_csrf" value="{{token}}"/>
 					</div>
 					<input type="hidden" name="_csrf" value="{{token}}"/>
 				</form>

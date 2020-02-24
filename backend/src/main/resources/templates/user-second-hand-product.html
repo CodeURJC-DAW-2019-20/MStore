@@ -121,6 +121,7 @@
 							placeholder="Search site" aria-label="Search site" aria-describedby="search-icon"
 							list="myList" autocomplete="off">
 						<datalist id="myList"></datalist>
+						<input type="hidden" name="_csrf" value="{{token}}"/>
 					</div>
 				</form>
 			</div>
@@ -139,7 +140,7 @@
 							<div class="dropdown-inner">
 								<div class="dropdown-column">
 									<div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
-										style="background-image: url(img/megamenu/computerHardware.jpg);">
+										style="background-image: url(/img/megamenu/computerHardware.jpg);">
 										<h3 class="h5 text-white text-shadow my-3">Computer
 											Hardware</h3>
 									</div>
@@ -164,7 +165,7 @@
 								</div>
 								<div class="dropdown-column">
 									<div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
-										style="background-image: url(img/megamenu/comp-accessories.png);">
+										style="background-image: url(/img/megamenu/comp-accessories.png);">
 										<h3 class="h5 text-white text-shadow my-3">Computer
 											Accessories</h3>
 									</div>
@@ -190,7 +191,7 @@
 								</div>
 								<div class="dropdown-column">
 									<div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
-										style="background-image: url(img/megamenu/printer.png);">
+										style="background-image: url(/img/megamenu/printer.png);">
 										<h3 class="h5 text-white text-shadow my-3">Printers</h3>
 									</div>
 									<div class="widget widget-links">
@@ -538,7 +539,6 @@
 	<script src="/js/vendor.min.js"></script>
 	<script src="/js/theme.min.js"></script>
 	<script src="/js/jquery.tagsinput.js"></script>
-<<<<<<< Updated upstream
   	<script type="text/javascript">
     	$(function() {
     	  $('#tags-input').tagsInput({
@@ -563,87 +563,7 @@
         					return frag;
     		}, document.createDocumentFragment());
     		results.appendChild(set);
-||||||| constructed merge base
-  	<script type="text/javascript">
-    	$(function() {
-    	  $('#tags-input').tagsInput({
-    		   'width':'auto',
-    		   'interactive':true,
-    		   'defaultText':'Add a tag',
-    		   'delimiter': [',',';'], 
-    		   'removeWithBackspace' : true,
-    		   'minChars' : 0,
-    		   'placeholderColor' : '#A3A7AB'
-    		  });
-    	});
-  </script>
-  <script>
-			let finder = document.querySelector('#finder');
-			let results = document.querySelector('#myList');
-			let templateContent = document.querySelector('#myListTemplate').content;
-			finder.addEventListener('keyup', function handler(event) {
-    				while (results.children.length) results.removeChild(results.firstChild);
-    					let inputVal = new RegExp(finder.value.trim(), 'i');
-    					let set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function finderFilter(frag, item, i) {
-        				if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
-        					return frag;
-    		}, document.createDocumentFragment());
-    		results.appendChild(set);
-||||||| constructed merge base
-  	<script type="text/javascript">
-    	$(function() {
-    	  $('#tags-input').tagsInput({
-    		   'width':'auto',
-    		   'interactive':true,
-    		   'defaultText':'Add a tag',
-    		   'delimiter': [',',';'], 
-    		   'removeWithBackspace' : true,
-    		   'minChars' : 0,
-    		   'placeholderColor' : '#A3A7AB'
-    		  });
-    	});
-  </script>
-  <script>
-			let finder = document.querySelector('#finder');
-			let results = document.querySelector('#myList');
-			let templateContent = document.querySelector('#myListTemplate').content;
-			finder.addEventListener('keyup', function handler(event) {
-    				while (results.children.length) results.removeChild(results.firstChild);
-    					let inputVal = new RegExp(finder.value.trim(), 'i');
-    					let set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function finderFilter(frag, item, i) {
-        				if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
-        					return frag;
-    		}, document.createDocumentFragment());
-    		results.appendChild(set);
-=======
-	<script type="text/javascript">
-		$(function () {
-			$('#tags-input').tagsInput({
-				'width': 'auto',
-				'interactive': true,
-				'defaultText': 'Add a tag',
-				'delimiter': [',', ';'],
-				'removeWithBackspace': true,
-				'minChars': 0,
-				'placeholderColor': '#A3A7AB'
 			});
-		});
-	</script>
-	<script>
-		let finder = document.querySelector('#finder');
-		let results = document.querySelector('#myList');
-		let templateContent = document.querySelector('#myListTemplate').content;
-		finder.addEventListener('keyup', function handler(event) {
-			while (results.children.length) results.removeChild(results.firstChild);
-			let inputVal = new RegExp(finder.value.trim(), 'i');
-			let set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function finderFilter(
-				frag, item, i) {
-				if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
-				return frag;
-			}, document.createDocumentFragment());
-			results.appendChild(set);
->>>>>>> Stashed changes
-		});
 	</script>
 </body>
 
