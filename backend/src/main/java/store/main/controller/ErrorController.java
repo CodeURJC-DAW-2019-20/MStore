@@ -30,7 +30,7 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
 		int httpErrorCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
 		loadErrorOnPage(model, httpErrorCode);
 		
-		return "Error";
+		return "error";
 	}
 
 	public void loadErrorOnPage(Model model, int httpErrorCode) {

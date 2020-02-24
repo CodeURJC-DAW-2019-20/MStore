@@ -46,7 +46,7 @@
           {{^empty}}
           {{#cart}}
             <div class="media">
-              <div class="featured-entry-thumb mr-3"><a href="#"><img src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}.jpg" width="64"></a><form action="/cart"><button type="submit" style="height:0px; width:0px; background: transparent; border: none !important;"><span class="item-remove-btn"><i data-feather="x"></i></span></button></form></div>
+              <div class="featured-entry-thumb mr-3"><a href="#"><img src="/images/posts/image-{{id}}-0.jpg" onerror="this.src='/images/users/default.jpg'" alt="image-{{id}}.jpg" width="64"></a><form action="/cart"><button type="submit" style="height:0px; width:0px; background: transparent; border: none !important;"><span class="item-remove-btn"><i data-feather="x"></i></span></button></form></div>
               <div class="media-body">
                 <h6 class="featured-entry-title"><a href="#">{{name}}</a></h6>
                 <p class="featured-entry-meta">${{price}}</p>
@@ -317,7 +317,7 @@
 				<!-- Customer picture-->
 				<a class="gallery-item mb-grid-gutter mx-auto"
 					style="max-width: 18.75rem;"><img
-					src="/images/users/image-{{user.id}}.jpg" alt="{{user.firstName}}"></a>
+					src="/images/users/image-{{user.id}}.jpg" onerror="this.src='/images/users/default.jpg'" alt="{{user.firstName}}"></a>
 			</div>
 			<!-- Main content-->
 			<div class="col-lg-8 offset-xl-1">
