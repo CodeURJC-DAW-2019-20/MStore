@@ -315,6 +315,7 @@
 						</ul>
 					</div>
 				</div>
+				{{#load}}
 				<div class="col-lg-8">
 					<!-- Hero slider-->
 					<div class="bg-secondary bg-size-cover mb-grid-gutter"
@@ -342,10 +343,38 @@
 						</div>
 					</div>
 				</div>
+			{{/load}}
+			{{^load}}
+							<div class="col-lg-8">
+					<!-- Hero slider-->
+					<div class="mb-grid-gutter">
+						<div class="owl-carousel trigger-carousel"
+							data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;autoHeight&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 5500 }">
+							<div class="row align-items-center py-5">
+								<div class="col-md-5">
+									<div class="pl-3 pr-3 pl-md-5 pr-md-0 pt-4 pt-lg-5 pb-5 text-center text-md-left">
+										<h3 class="mb-1">No products</h3>
+										<br>
+										<a class="btn btn-primary" href="/sell_product/">Sell your product here<i class="ml-2"
+												data-feather="arrow-down"></i>
+										</a>
+									</div>
+								</div>
+								<div class="col-md-7">
+									<img class="d-block mx-auto" src="/img/noproducts.jpg"
+										alt="noproducts.jpg">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{{/load}}
 			</div>
 		</div>
 		<hr class="mt-4">
 	</section>
+
+		{{#load}}
 	<!-- Featured products grid-->
 	<section class="container px-3 pt-4 mt-3">
 		<div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
@@ -354,6 +383,7 @@
 				products<i class="ml-1 mr-n2" data-feather="chevron-right"></i>
 			</a>
 		</div>
+
 		<div class="row no-gutters">
 			{{#list2}}
 			<!-- Product-->
@@ -382,7 +412,10 @@
 			{{/list2}}
 		</div>
 	</section>
+			{{/load}}
 	<br>
+	
+	{{#load}}
 	<!-- Product widgets-->
 
 	<section class="container px-3 pt-4 mt-3">
@@ -420,7 +453,9 @@
 			{{/list3}}
 		</div>
 	</section>
-
+			{{/load}}
+	
+	{{#load}}
 	<!-- Promo banner-->
 	<section class="container py-4 my-3 px-3">
 		<div class="bg-faded-info position-relative py-4">
@@ -442,6 +477,7 @@
 			</div>
 		</div>
 	</section>
+	{{/load}}
 	<!-- Brands carousel-->
 	<section class="container px-3 pb-4">
 		<div class="owl-carousel border-right"

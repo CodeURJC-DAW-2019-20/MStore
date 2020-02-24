@@ -35,7 +35,7 @@ CREATE TABLE `brand` (
 
 LOCK TABLES `brand` WRITE;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
-INSERT INTO `brand` VALUES (2,'AMD'),(26,'ASUS'),(28,'NVIDIA'),(33,'HP'),(36,'Corsair'),(38,'Intel'),(40,'Gigabyte'),(43,'Logitech'),(45,'Pioneer'),(48,'Seagate'),(50,'WD');
+INSERT INTO `brand` VALUES (2,'AMD'),(26,'ASUS'),(28,'NVIDIA'),(33,'HP'),(36,'Corsair'),(38,'Intel'),(40,'Gigabyte'),(43,'Logitech'),(45,'Pioneer'),(48,'Seagate'),(50,'WD'),(61,''),(82,'Other');
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-24 12:42:48
+-- Dump completed on 2020-02-24 18:56:10
