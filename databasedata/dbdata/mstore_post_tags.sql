@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: mstore
+-- Host: localhost    Database: mstore
 -- ------------------------------------------------------
 -- Server version	8.0.19
 
@@ -36,7 +36,7 @@ CREATE TABLE `post_tags` (
 
 LOCK TABLES `post_tags` WRITE;
 /*!40000 ALTER TABLE `post_tags` DISABLE KEYS */;
-INSERT INTO `post_tags` VALUES (3,'gaming'),(3,''),(3,';Graphics'),(4,'gaming'),(4,''),(4,';graphics'),(5,'gaming'),(5,''),(5,';high end'),(5,''),(5,';graphics'),(6,'gaming'),(6,''),(6,';overclocked'),(7,'gaming'),(7,''),(7,';budget'),(8,'gaming'),(8,''),(8,';budget'),(9,'gaming'),(9,''),(9,';graphics'),(10,'gaming'),(10,''),(10,';Radeon'),(11,'radeon'),(11,''),(11,';gaming'),(13,'gaming'),(13,''),(13,';radeon'),(14,'gaming'),(14,''),(14,';RX'),(15,'AMD'),(15,''),(15,';gaming'),(16,'gaming'),(16,''),(16,';graphics'),(18,'gaming'),(18,''),(18,';graphics'),(19,'MSI'),(19,''),(19,';gaming'),(19,''),(19,';graphics'),(21,'gaming'),(21,''),(21,';graphics'),(22,'gaming'),(22,''),(22,';HD'),(23,'gaming'),(23,''),(23,';HD'),(24,'gaming'),(24,''),(24,';graphics'),(25,'graphics'),(25,''),(25,';gaming'),(27,'gaming'),(27,''),(27,';HD'),(29,'gaming'),(30,'Ryzen'),(31,'Ryzen'),(34,'1080p'),(35,'mothrboard'),(35,''),(35,';gaming'),(37,'mice'),(37,''),(37,';gaming'),(39,'gaming'),(41,'gaming'),(41,''),(41,';RTX'),(41,''),(41,';HD'),(44,'sound'),(46,'sound'),(49,'1TB'),(51,'1TB'),(52,'laser'),(52,''),(52,';printer'),(53,'printer'),(54,'printer');
+INSERT INTO `post_tags` VALUES (5,'gaming'),(5,''),(5,';high end'),(5,''),(5,';graphics'),(7,'gaming'),(7,''),(7,';budget'),(9,'gaming'),(9,''),(9,';graphics'),(14,'gaming'),(14,''),(14,';RX'),(15,'AMD'),(15,''),(15,';gaming'),(16,'gaming'),(16,''),(16,';graphics'),(18,'gaming'),(18,''),(18,';graphics'),(19,'MSI'),(19,''),(19,';gaming'),(19,''),(19,';graphics'),(21,'gaming'),(21,''),(21,';graphics'),(23,'gaming'),(23,''),(23,';HD'),(24,'gaming'),(24,''),(24,';graphics'),(25,'graphics'),(25,''),(25,';gaming'),(27,'gaming'),(27,''),(27,';HD'),(29,'gaming'),(30,'Ryzen'),(31,'Ryzen'),(34,'1080p'),(35,'mothrboard'),(35,''),(35,';gaming'),(37,'mice'),(37,''),(37,';gaming'),(39,'gaming'),(41,'gaming'),(41,''),(41,';RTX'),(41,''),(41,';HD'),(44,'sound'),(46,'sound'),(49,'1TB'),(53,'printer'),(60,'sound'),(4,'gaming'),(4,'graphics'),(4,'AMD'),(6,'gaming'),(6,'overclocked'),(6,'AMD'),(6,'graphics'),(52,'laser'),(52,'printer'),(52,'HP'),(54,'printer'),(54,'3D'),(11,'radeon'),(11,'gaming'),(11,'AMD'),(22,'gaming'),(22,'HD'),(22,'AMD'),(51,'1TB'),(51,'HDD'),(8,'gaming'),(8,'budget'),(10,'gaming'),(10,'Radeon'),(13,'gaming'),(13,'Radeon');
 /*!40000 ALTER TABLE `post_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-22 20:21:16
+-- Dump completed on 2020-02-24 12:42:50

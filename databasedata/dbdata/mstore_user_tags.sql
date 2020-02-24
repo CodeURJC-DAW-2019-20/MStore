@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: mstore
+-- Host: localhost    Database: mstore
 -- ------------------------------------------------------
 -- Server version	8.0.19
 
@@ -36,7 +36,7 @@ CREATE TABLE `user_tags` (
 
 LOCK TABLES `user_tags` WRITE;
 /*!40000 ALTER TABLE `user_tags` DISABLE KEYS */;
-INSERT INTO `user_tags` VALUES (1,'gaming'),(1,';overclocked'),(1,';overclocked'),(12,';Radeon'),(12,''),(12,''),(17,'gaming'),(17,''),(17,';graphics');
+INSERT INTO `user_tags` VALUES (1,'gaming'),(1,';overclocked'),(1,';overclocked'),(12,';Radeon'),(12,''),(12,''),(17,'gaming'),(17,''),(17,';graphics'),(55,'gaming'),(55,';Graphics'),(55,'gaming'),(59,'sound'),(59,'sound'),(59,'sound'),(57,'sound'),(57,'sound'),(57,'sound'),(58,';high end'),(58,';high end'),(58,'');
 /*!40000 ALTER TABLE `user_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-22 20:21:15
+-- Dump completed on 2020-02-24 12:42:47

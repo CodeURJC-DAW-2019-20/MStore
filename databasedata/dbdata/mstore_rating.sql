@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: mstore
+-- Host: localhost    Database: mstore
 -- ------------------------------------------------------
 -- Server version	8.0.19
 
@@ -41,6 +41,7 @@ CREATE TABLE `rating` (
 
 LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
+INSERT INTO `rating` VALUES (56,4,55,1),(61,3,42,47),(62,2,32,20),(63,1,12,1),(64,5,42,55),(65,3,42,32),(66,2,32,42),(67,1,20,32),(68,3,59,57),(69,4,59,1),(70,5,32,47),(71,2,55,12),(72,3,32,17),(73,5,47,17),(74,1,47,42),(75,2,20,32),(76,3,47,59);
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-22 20:21:14
+-- Dump completed on 2020-02-24 12:42:46
