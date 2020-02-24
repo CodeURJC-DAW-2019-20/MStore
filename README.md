@@ -142,15 +142,22 @@ It is a drop-down window where the selected products are found while browsing th
 #### 6. Profile
 
 ![h6](https://i.imgur.com/ehmn2Ee.jpg "Profile")
+![h10](https://i.ibb.co/r6DYcgZ/Captura.jpg "Profile")
+
 
 #### 7. Cart
-![h7](https://i.imgur.com/wSFeTCr.png "Profile")
+![h7](https://i.imgur.com/wSFeTCr.png "Cart")
 
 #### 8. Admin page
+![h8](https://i.ibb.co/6vJmk5r/1.jpg "Search")
+![h9](https://i.ibb.co/PtdCVMc/2.jpg "Remove and Edit")
+
+### Navigation Diagram 📊
+![h11](https://i.ibb.co/176SXkN/Navigation-Diagram-bicubic.jpg "Navigation")
 
 ---------------------
  
-  ### Development instructions
+  ### Development instructions ⚙️
   #### Development tools
   * [![Spring](https://img.shields.io/static/v1?label=Install&message=Spring%20Tools&color=brightgreen)](https://spring.io/tools)
    * [![MySQL](https://img.shields.io/static/v1?label=Install&message=MySQL&color=blue)](https://dev.mysql.com/downloads/installer/)
@@ -269,20 +276,25 @@ User:
 
 ---------------------
 
-  ### Entity Relationship Diagram (ERD)
+  ### Entity Relationship Diagram (ERD) 📈
+  ![DB5](https://i.ibb.co/4Zm1Cq7/model.jpg "ERD")
+
   
 ---------------------
 
-### UML Class Diagram
+### UML Class Diagram 📂📘
+![UML1](https://i.ibb.co/MCX3MBN/1.jpg "UML")
+![UML2](https://i.ibb.co/jkJ861J/2.jpg "UML")
+![UML3](https://i.ibb.co/bdRjC0h/3.jpg "UML")
 
 ---------------------
 
-### Members Participation 
+### Members Participation ✅
 
 | Plugin | Description | 5 most important commits | 5 most relevant files
 | ------ | ------------- | ------------| ------| 
 | Daniel Ruiz Bustos | |
-| Marcos Ruiz Muñoz |  |
+| Marcos Ruiz Muñoz |In this phase, I have made the Home page, the navigation of the page updating the header and the links. I have implemented the advanced algorithm of recommendations. Also the functionality of buying a product, added more data in database and made the Readme diagrams. I have helped to make the Cart page.  |<ul><li>Added HomeController & fixes</li><li>Added shop navegation</li><li>Advanced algorithm implemented</li><li>Final Review(*) & header updated</li><li>Update README</li></ul>|<ul><li>HomeController.java</li><li>index.html</li><li>CartController.java</li><li>ComponentController.java</li><li>shop-single-electronics.html</li></ul>
 | Jose Luis Sierra Benito	 | |
 | Noelia Martínez Sánchez | Description | <ul><li>item1</li><li>item2</li><li>item3</li><li>item4</li><li>item5</li></ul> | <ul><li>item1</li><li>item2</li><li>item3</li><li>item4</li><li>item5</li></ul>|
 | Diego Montoto Ramos | |
