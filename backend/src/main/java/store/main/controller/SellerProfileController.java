@@ -52,6 +52,7 @@ public class SellerProfileController {
 	public String loadPublicProfile(Model model, HttpServletRequest request, 
 			@PathVariable("id") long id, HttpSession session) {
 				loadPublicProfile(model, request, id);
+				model = loaderService.userLoader(model, request);
 				model =loaderService.postLoader(model);
 				cService.LoadNotProduct(model, session);
 				return "seller-public-profile";
@@ -64,7 +65,7 @@ public class SellerProfileController {
 			model.addAttribute("stars"+i,ratingRepository.findBySellerEmailIgnoreCaseAndStars(u.get().getEmail(), i).size());
 
 		List<Post> lp = postRepository.findFirst8ByUserEmail(u.get().getEmail());
-		model.addAttribute("user", u.get());
+		model.addAttribute("u", u.get());
 		model.addAttribute("itemList",lp);
 		
 		if(request.isUserInRole("USER") || request.isUserInRole("ADMIN")) {

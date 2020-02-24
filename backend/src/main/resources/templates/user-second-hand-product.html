@@ -23,8 +23,7 @@
 	<link rel="stylesheet" media="screen" href="/css/vendor.min.css">
 	<!-- Main Theme Styles + Bootstrap-->
 	<link rel="stylesheet" media="screen" id="main-styles" href="/css/theme.min.css">
-	<!-- For tags customize-->
-	<link rel="stylesheet" type="text/css" href="/css/jquery.tagsinput.css" />
+	<!-- Customizer styles and scripts-->
 </head>
 <!-- Body-->
 
@@ -33,36 +32,42 @@
 	<div class="offcanvas offcanvas-reverse" id="offcanvas-cart">
 		<div class="offcanvas-header d-flex justify-content-between align-items-center">
 			<h3 class="offcanvas-title">Your cart</h3>
-			<button class="close" type="button" data-dismiss="offcanvas" aria-label="Close"><span
-					aria-hidden="true">&times;</span></button>
+			<button class="close" type="button" data-dismiss="offcanvas" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
 		</div>
 		<div class="offcanvas-body">
 			<div class="offcanvas-body-inner">
 				<div class="widget widget-featured-entries pt-3">
-					{{#empty}}
-					<span class='text-muted'>The cart is empty</span>
-					{{/empty}}
-					{{^empty}}
-					{{#cart}}
+					{{#empty}} <span class='text-muted'>The cart is empty</span>
+					{{/empty}} {{^empty}} {{#cart}}
 					<div class="media">
-						<div class="featured-entry-thumb mr-3"><a href="#"><img src="/images/posts/image-{{id}}-0.jpg"
-									alt="image-{{id}}.jpg" width="64"></a>
-							<form action="/cart"><button type="submit"
-									style="height:0px; width:0px; background: transparent; border: none !important;"><span
-										class="item-remove-btn"><i data-feather="x"></i></span></button></form>
+						<div class="featured-entry-thumb mr-3">
+							<a href="#"><img src="/images/posts/image-{{id}}-0.jpg" alt="image-{{id}}.jpg"
+									width="64"></a>
+							<form action="/cart">
+								<button type="submit"
+									style="height: 0px; width: 0px; background: transparent; border: none !important;">
+									<span class="item-remove-btn"><i data-feather="x"></i></span>
+								</button>
+							</form>
 						</div>
 						<div class="media-body">
-							<h6 class="featured-entry-title"><a href="#">{{name}}</a></h6>
+							<h6 class="featured-entry-title">
+								<a href="#">{{name}}</a>
+							</h6>
 							<p class="featured-entry-meta">${{price}}</p>
 						</div>
 					</div>
-					{{/cart}}
-					{{/empty}}
+					{{/cart}} {{/empty}}
 					<hr>
 					<div class="d-flex justify-content-between align-items-center py-3">
-						<div class="font-size-sm"> <span class="mr-2">Subtotal:</span><span
-								class="font-weight-semibold text-dark">${{total}}</span></div>
-					</div> <a class="btn btn-primary btn-sm btn-block" href="/cart"><i class="mr-1"
+						<div class="font-size-sm">
+							<span class="mr-2">Subtotal:</span><span
+								class="font-weight-semibold text-dark">${{total}}</span>
+						</div>
+					</div>
+					<a class="btn btn-primary btn-sm btn-block" href="/cart"><i class="mr-1"
 							data-feather="credit-card"></i>Checkout</a>
 				</div>
 			</div>
@@ -96,7 +101,8 @@
 					</span></a> {{/logged}} <a class="navbar-btn bg-0 my-3" href="#offcanvas-cart"
 					data-toggle="offcanvas"><span class="d-block position-relative">{{^empty}}<span
 							class="navbar-btn-badge bg-primary text-light">{{cart.size}}</span>{{/empty}}<i
-							class="mx-auto mb-1" data-feather="shopping-cart"></i>${{total}}</span></a>
+							class="mx-auto mb-1" data-feather="shopping-cart"></i>${{total}}
+					</span></a>
 			</div>
 			<!-- search-box-->
 			<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
@@ -139,17 +145,17 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i class="widget-categories-indicator"
+											<li><a href="/shop/0"><i class="widget-categories-indicator"
 														data-feather="chevron-right"></i><span
 														class="font-size-sm">Motherboards</span></a></li>
-											<li><a href="#"><i class="widget-categories-indicator"
+											<li><a href="/shop/1"><i class="widget-categories-indicator"
 														data-feather="chevron-right"></i><span
 														class="font-size-sm">Storage
 														Devices</span></a></li>
-											<li><a href="#"><i class="widget-categories-indicator"
+											<li><a href="/shop/2"><i class="widget-categories-indicator"
 														data-feather="chevron-right"></i><span class="font-size-sm">CPU
 														/ Processors</span></a></li>
-											<li><a href="#"><i class="widget-categories-indicator"
+											<li><a href="/shop/3"><i class="widget-categories-indicator"
 														data-feather="chevron-right"></i><span
 														class="font-size-sm">Video
 														Cards &amp; Video Devices</span></a></li>
@@ -164,19 +170,19 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i class="widget-categories-indicator"
+											<li><a href="/shop/4"><i class="widget-categories-indicator"
 														data-feather="chevron-right"></i><span
 														class="font-size-sm">Speakers
 													</span></a></li>
-											<li><a href="#"><i class="widget-categories-indicator"
+											<li><a href="/shop/5"><i class="widget-categories-indicator"
 														data-feather="chevron-right"></i><span
 														class="font-size-sm">Headphones
 													</span></a></li>
-											<li><a href="#"><i class="widget-categories-indicator"
+											<li><a href="/shop/6"><i class="widget-categories-indicator"
 														data-feather="chevron-right"></i><span
 														class="font-size-sm">Computer
 														Mice</span></a></li>
-											<li><a href="#"><i class="widget-categories-indicator"
+											<li><a href="/shop/7"><i class="widget-categories-indicator"
 														data-feather="chevron-right"></i><span
 														class="font-size-sm">Monitors</span></a></li>
 										</ul>
@@ -189,17 +195,17 @@
 									</div>
 									<div class="widget widget-links">
 										<ul>
-											<li><a href="#"><i class="widget-categories-indicator"
+											<li><a href="/shop/8"><i class="widget-categories-indicator"
 														data-feather="chevron-right"></i><span class="font-size-sm">Ink
 														Printer</span></a></li>
-											<li><a href="#"><i class="widget-categories-indicator"
+											<li><a href="/shop/9"><i class="widget-categories-indicator"
 														data-feather="chevron-right"></i><span
 														class="font-size-sm">Laser
 														Printer</span></a></li>
-											<li><a href="#"><i class="widget-categories-indicator"
+											<li><a href="/shop/10"><i class="widget-categories-indicator"
 														data-feather="chevron-right"></i><span class="font-size-sm">3D
 														Printer</span></a></li>
-											<li><a href="#"><i class="widget-categories-indicator"
+											<li><a href="/shop/11"><i class="widget-categories-indicator"
 														data-feather="chevron-right"></i><span
 														class="font-size-sm">Printer
 														Supplies</span></a></li>
@@ -215,9 +221,10 @@
 					<li class="nav-item"><a href="/shop/" class="nav-link rounded">Shop</a></li>
 					<li class="nav-item"><a href="/sell_product/" class="nav-link rounded">Sell Product</a></li>
 					{{#isAdmin}}
-					<li class="nav-item"><a href="/admin" class="nav-link rounded">Admin Page</a></li>
-					{{/isAdmin}}
+					<li class="nav-item"><a href="/admin" class="nav-link rounded">Admin
+							Page</a></li> {{/isAdmin}}
 				</ul>
+				{{#logged}}
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="#"
 							data-toggle="dropdown">User
@@ -232,6 +239,7 @@
 						</ul>
 					</li>
 				</ul>
+				{{/logged}}
 				<!-- Rounded nav pills -->
 			</div>
 		</div>

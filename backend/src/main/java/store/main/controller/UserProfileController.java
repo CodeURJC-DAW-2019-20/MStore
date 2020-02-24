@@ -57,7 +57,8 @@ public class UserProfileController {
 		List<Post> lp = postRepository.findFirst8ByUserEmail(u.getEmail());
 		
 		model = loaderService.postLoader(model);
-		model.addAttribute("user", u);
+		model = loaderService.userLoader(model, request);
+		model.addAttribute("u", u);
 		model.addAttribute("id",u.getId());
 		model.addAttribute("itemList",lp);
 		model.addAttribute("hasSold",false);
@@ -70,6 +71,15 @@ public class UserProfileController {
 	public String loadAcountSettings(Model model, HttpServletRequest request, HttpSession session) {
 		User u = getUserInfo(request);
 		model.addAttribute("user", u);
+		if(u.getUserAddress()==null)
+			model.addAttribute("userAddress","");
+		else
+			model.addAttribute("userAddress",u.getUserAddress());
+		
+		if(u.getCreditCard()==null)
+			model.addAttribute("creditCard","");
+		else
+			model.addAttribute("creditCard",u.getCreditCard());		
 		model = loaderService.userLoader(model, request);
 		model = loaderService.postLoader(model);
 		cService.LoadNotProduct(model, session);
@@ -83,9 +93,10 @@ public class UserProfileController {
 		User u = getUserInfo(request);
 		u.setFirstName(user.getFirstName());
 		u.setLastName(user.getLastName());
-		u.setBCryptPassword(user.getPassword());
+		if(!user.getPassword().equals(""))
+			u.setBCryptPassword(user.getPassword());
 		u.setPhone(user.getPhone());
-		u.setUserAddress(u.getUserAddress());
+		u.setUserAddress(user.getUserAddress());
 		u.setCreditCard(user.getCreditCard());
 		userRepository.save(u);
 		cService.LoadNotProduct(model, session);
