@@ -22,15 +22,6 @@ import store.main.service.LoaderService;
 public class CartController {
 
 	@Autowired
-	private Cart cart;
-
-	@Autowired
-	private PostRepository postRepository;
-
-	@Autowired
-	private BrandRepository brandRepository;
-
-	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired

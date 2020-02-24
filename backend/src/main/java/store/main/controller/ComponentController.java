@@ -38,9 +38,6 @@ public class ComponentController {
 	private LoaderService loaderService;
 
 	@Autowired
-	private Cart cart;
-
-	@Autowired
 	private CartService cService;
 
 	@RequestMapping("/post/{id}-{img}")

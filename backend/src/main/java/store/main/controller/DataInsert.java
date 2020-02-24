@@ -1,17 +1,10 @@
 package store.main.controller;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
-import store.main.database.Brand;
 import store.main.database.BrandRepository;
-import store.main.database.Post;
 import store.main.database.PostRepository;
-import store.main.database.Rating;
 import store.main.database.RatingRepository;
 import store.main.database.User;
 import store.main.database.UserRepository;

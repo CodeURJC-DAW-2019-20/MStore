@@ -339,7 +339,8 @@
               <button class="btn btn-primary btn-block" type="submit" action="/post/{{post.id}}-{{img}}/itemAdded" data-toggle="toast" data-target="#cart-toast">
               <i class="mr-2" data-feather="shopping-cart"></i>Add to cart</button>
               {{/isSameUser}}
-              {{/alreadyOn}}
+			  {{/alreadyOn}}
+			  <input type="hidden" name="_csrf" value="{{token}}"/>
               </form>       
             </div>
            </div>
