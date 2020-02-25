@@ -19,6 +19,9 @@ public class Post {
 
 	public interface BasicInfo {
 	};
+	
+	public interface TagsInfo {
+	};
 
 	public interface UserInfo {
 	};
@@ -33,30 +36,39 @@ public class Post {
 
 	@JsonView(BasicInfo.class)
 	private int nImg = 0;
+	
 	@JsonView(BasicInfo.class)
 	private String name;
+	
 	@JsonView(BasicInfo.class)
 	private String component;
-	@JsonView(BasicInfo.class)
-	private int componentTag; // Motherboard, Storage device,..
-	@JsonView(BasicInfo.class)
+	
 	@ElementCollection
+	@JsonView(TagsInfo.class)
 	private List<String> tags;
+	
 	@JsonView(BasicInfo.class)
 	private int price;
+	
 	@JsonView(BasicInfo.class)
 	private String details;
+	
 	@JsonView(BasicInfo.class)
 	private String features;
+	
 	@JsonView(BasicInfo.class)
 	private String postAddress;
 
-	@JsonView(BrandInfo.class)
+	@JsonView(BasicInfo.class)
+	private int componentTag; // Motherboard, Storage device,..
+
 	@ManyToOne
+	@JsonView(BrandInfo.class)
 	private Brand brand;
 
-	@JsonView(UserInfo.class)
+
 	@ManyToOne
+	@JsonView(UserInfo.class)
 	private User user;
 
 	public Post() {

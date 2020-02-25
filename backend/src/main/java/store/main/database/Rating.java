@@ -6,18 +6,35 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import store.main.database.User.BasicInfo;
+
 @Entity
 public class Rating {
+	public interface BasicInfo {
+	};
+
+	public interface BuyerInfo {
+	};
+
+	public interface SellerInfo {
+	};
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(BasicInfo.class)
 	Long id;
 
+	@JsonView(BasicInfo.class)
 	private int stars;
 
 	@OneToOne
+	@JsonView(SellerInfo.class)
 	private User seller;
 
 	@OneToOne
+	@JsonView(BuyerInfo.class)
 	private User buyer;
 
 	public Rating() {

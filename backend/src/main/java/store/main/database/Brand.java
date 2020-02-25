@@ -21,16 +21,18 @@ public class Brand {
 	public interface PostsInfo {
 	};
 
-	@JsonView(BasicInfo.class)
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(BasicInfo.class)
 	Long id;
 
 	@JsonView(BasicInfo.class)
 	private String name;
 
-	@JsonView(PostsInfo.class)
+
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "brand")
+	@JsonView(PostsInfo.class)
 	private List<Post> posts;
 
 	protected Brand() {

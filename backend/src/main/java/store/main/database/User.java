@@ -24,6 +24,9 @@ public class User {
 	public interface BasicInfo {
 	};
 
+	public interface ListInfo {
+	};
+
 	public interface PostsInfo {
 	};
 
@@ -56,21 +59,23 @@ public class User {
 	@JsonView(BasicInfo.class)
 	private String creditCard;
 
-	@JsonView(BasicInfo.class)
 	@ElementCollection
+	@JsonView(ListInfo.class)
 	private List<String> tags;
 
-	@JsonView(BasicInfo.class)
+
 	@ElementCollection(fetch = FetchType.EAGER)
+	@JsonView(ListInfo.class)
 	private List<String> roles;
 
 	@OneToMany
 	@JsonView(SellersInfo.class)
 	private List<User> sellers;
 
-	@JsonView(PostsInfo.class)
+
 	@OneToMany(mappedBy = "user")
 	@LazyCollection(LazyCollectionOption.FALSE)
+	@JsonView(PostsInfo.class)
 	private List<Post> posts;
 
 	public User() {
