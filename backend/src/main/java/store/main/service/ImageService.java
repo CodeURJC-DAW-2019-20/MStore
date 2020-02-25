@@ -33,8 +33,8 @@ public class ImageService implements WebMvcConfigurer {
 	private Path createFilePath(long id, Path folder) {
 		return folder.resolve("image-" + id + ".jpg");
 	}
-	
-	private Path createFilePath(long id, Path folder,int nImg) {
+
+	private Path createFilePath(long id, Path folder, int nImg) {
 		return folder.resolve("image-" + id + "-" + nImg + ".jpg");
 	}
 
@@ -45,12 +45,12 @@ public class ImageService implements WebMvcConfigurer {
 		if (!Files.exists(folder)) {
 			Files.createDirectories(folder);
 		}
-		
+
 		Path newFile;
-		
-		if(nImg==null)
+
+		if (nImg == null)
 			newFile = createFilePath(id, folder);
-		else 
+		else
 			newFile = createFilePath(id, folder, nImg);
 		image.transferTo(newFile);
 	}

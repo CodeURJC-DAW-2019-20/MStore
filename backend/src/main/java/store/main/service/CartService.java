@@ -14,25 +14,24 @@ import store.main.database.*;
 
 @Service
 public class CartService {
-	
+
 	@Autowired
 	private Cart cart;
-	
+
 	@Autowired
 	private PostRepository postRepository;
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private BrandRepository brandRepository;
-	
 
 	private User getUserInfo(HttpServletRequest request) {
 		return userRepository.findByEmail(request.getUserPrincipal().getName());
 	}
-	
-	public void Load (Model model, HttpSession session, Long id,HttpServletRequest request) {
+
+	public void Load(Model model, HttpSession session, Long id, HttpServletRequest request) {
 		cart.cartInit(session);
 
 		boolean empty = (boolean) session.getAttribute("empty");
@@ -45,17 +44,17 @@ public class CartService {
 
 		Post post = postRepository.findById(id).get();
 		boolean alreadyOn = cartAux.contains(post);
-		if(request.isUserInRole("USER")) {
+		if (request.isUserInRole("USER")) {
 			User user = getUserInfo(request);
-			boolean isSameUser= user.getPosts().contains(post);
-			model.addAttribute("isSameUser",isSameUser);
+			boolean isSameUser = user.getPosts().contains(post);
+			model.addAttribute("isSameUser", isSameUser);
 		}
 		post.getnImg();
 
-		model.addAttribute("alreadyOn", alreadyOn);	
+		model.addAttribute("alreadyOn", alreadyOn);
 	}
-	
-	public void LoadNotProduct (Model model, HttpSession session) {
+
+	public void LoadNotProduct(Model model, HttpSession session) {
 		cart.cartInit(session);
 
 		boolean empty = (boolean) session.getAttribute("empty");
@@ -65,10 +64,9 @@ public class CartService {
 		model.addAttribute("cart", cartAux);
 		model.addAttribute("total", total);
 		model.addAttribute("empty", empty);
-		
+
 	}
-	
-	
+
 	public void AddComponent(Model model, HttpSession session, Long id) {
 		Post post = postRepository.findById(id).get();
 		model.addAttribute("post", post);
@@ -84,7 +82,7 @@ public class CartService {
 		model.addAttribute("total", total);
 		model.addAttribute("empty", empty);
 	}
-	
+
 	public void RemoveComponent(Model model, HttpSession session, Long id, Long idRemove) {
 		Post post = postRepository.findById(id).get();
 		model.addAttribute("post", post);
@@ -100,7 +98,7 @@ public class CartService {
 		model.addAttribute("total", total);
 		model.addAttribute("empty", empty);
 	}
-	
+
 	public void RemoveComponentNotProduct(Model model, HttpSession session, Long id) {
 		cart.removeFromCart(postRepository.findById(id).get(), session);
 
@@ -114,7 +112,7 @@ public class CartService {
 		model.addAttribute("total", total);
 		model.addAttribute("empty", empty);
 	}
-	
+
 	public void deletePostFromBD(Post p) {
 		Brand b = brandRepository.findByName(p.getBrand().getName());
 		b.getPosts().remove(p);
@@ -126,8 +124,5 @@ public class CartService {
 
 		postRepository.delete(p);
 	}
-	
-	
+
 }
-
-

@@ -323,7 +323,7 @@
 				<!-- Customer picture-->
 				<a class="gallery-item mb-grid-gutter mx-auto"
 					style="max-width: 18.75rem;"><img
-					src="/images/users/image-{{user.id}}.jpg" onerror="this.src='/images/users/default.jpg'" alt="{{user.firstName}}"></a>
+					src="/images/users/image-{{u.id}}.jpg" onerror="this.src='/images/users/default.jpg'" alt="{{u.firstName}}"></a>
 			</div>
 			<!-- Main content-->
 			<div class="col-lg-8 offset-xl-1">
@@ -343,7 +343,7 @@
 						class="font-weight-semibold ml-1">{{u.phone}}</span></li>
 				</ul>
 				{{#hasSold}}
-				<form action="/public_profile/{{user.id}}/{{idBuyer}}" method="post">
+				<form action="/public_profile/{{u.id}}/{{idBuyer}}" method="post">
 					<div class="form-group">
 						<label for="select-input">¿Do you want to rate this seller
 							base on your last purchase</label> <select

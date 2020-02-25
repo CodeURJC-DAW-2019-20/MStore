@@ -32,13 +32,13 @@ public class ShopController {
 
 	@Autowired
 	private BrandRepository brandRepository;
-	
+
 	@Autowired
 	private LoaderService hLoader;
-	
+
 	@Autowired
 	private CartService cService;
-	
+
 	@GetMapping("/shop/")
 	public String shop(Model model, @RequestParam(defaultValue = "0") Integer pageNo,
 			@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "id") String sortBy,
@@ -66,7 +66,7 @@ public class ShopController {
 		model.addAttribute("nPosts", nPost);
 		model.addAttribute("maxPages", maxPages);
 		model.addAttribute("viewMore", viewMore);
-		
+
 		model = hLoader.postLoader(model);
 		model = hLoader.userLoader(model, request);
 		cService.LoadNotProduct(model, session);
@@ -126,7 +126,7 @@ public class ShopController {
 		model.addAttribute("zeroPost", zeroPost);
 		model.addAttribute("maxPages", maxPages);
 		model.addAttribute("viewMore", viewMore);
-		
+
 		model = hLoader.postLoader(model);
 		model = hLoader.userLoader(model, request);
 		cService.LoadNotProduct(model, session);
@@ -191,7 +191,7 @@ public class ShopController {
 		model = hLoader.postLoader(model);
 		model = hLoader.userLoader(model, request);
 		cService.LoadNotProduct(model, session);
-		
+
 		return "shop-brand";
 	}
 

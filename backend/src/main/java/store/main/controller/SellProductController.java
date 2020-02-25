@@ -34,13 +34,13 @@ public class SellProductController {
 
 	@Autowired
 	private BrandRepository brandRepository;
-	
+
 	@Autowired
 	private CartService cService;
 
 	@Autowired
 	private ImageService imgService;
-	
+
 	@Autowired
 	private LoaderService loaderService;
 
@@ -65,8 +65,7 @@ public class SellProductController {
 		cService.LoadNotProduct(model, session);
 		return "user-second-hand-product";
 	}
-	
-	
+
 	private void loadSellProductR(Model model, HttpServletRequest request) {
 		User u = getUserInfo(request);
 		model.addAttribute("user", u);
@@ -74,17 +73,18 @@ public class SellProductController {
 
 	@PostMapping("/sell_product/added_product")
 	public String nuevoAnuncio(Model model, Post post, @RequestParam String bname,
-			@RequestParam 	List<MultipartFile> imagenFile, HttpServletRequest request, HttpSession session) throws IOException {
-		
+			@RequestParam List<MultipartFile> imagenFile, HttpServletRequest request, HttpSession session)
+			throws IOException {
+
 		nuevoAnuncioCall(model, post, bname, imagenFile, request);
-		
+
 		return "redirect:/";
 
 	}
-	
+
 	public void nuevoAnuncioCall(Model model, Post post, @RequestParam String bname,
-			@RequestParam 	List<MultipartFile> imagenFile, HttpServletRequest request) throws IOException {
-		
+			@RequestParam List<MultipartFile> imagenFile, HttpServletRequest request) throws IOException {
+
 		Brand b = getBrand(bname);
 		post.setBrand(b);
 		post.setComponentTag(post.getComponent());
@@ -92,19 +92,18 @@ public class SellProductController {
 		u.getPosts().add(post);
 		post.setUser(u);
 		postRepository.save(post);
-		
-		int aux=0;
-		for(MultipartFile mf:imagenFile) 
-			if(!mf.getOriginalFilename().equals("")) {
-				imgService.saveImage("posts", post.getId(), mf,aux);
+
+		int aux = 0;
+		for (MultipartFile mf : imagenFile)
+			if (!mf.getOriginalFilename().equals("")) {
+				imgService.saveImage("posts", post.getId(), mf, aux);
 				aux++;
 			}
-		
+
 		post.setnImg(aux);
 		userRepository.save(u);
 		b.getPosts().add(post);
 		brandRepository.save(b);
 	}
-	
 
 }

@@ -13,17 +13,17 @@ public class Rating {
 	Long id;
 
 	private int stars;
-	
+
 	@OneToOne
 	private User seller;
-	
+
 	@OneToOne
 	private User buyer;
-	
+
 	public Rating() {
-		
+
 	}
-	
+
 	public Rating(int stars) {
 		this.stars = stars;
 	}
@@ -59,7 +59,5 @@ public class Rating {
 	public void setBuyer(User buyer) {
 		this.buyer = buyer;
 	}
-	
-	
-	
+
 }

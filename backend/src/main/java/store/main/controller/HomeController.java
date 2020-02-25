@@ -20,33 +20,33 @@ public class HomeController {
 
 	@Autowired
 	private LoaderService hLoader;
-	
+
 	@Autowired
 	private CartService cService;
-	
+
 	@Autowired
 	private PostRepository postRepository;
-	
+
 	@GetMapping("/") // main page
 	public String loadHome(Model model, HttpServletRequest request, HttpSession session) {
-		
+
 		model = hLoader.modelLoader(model);
 		model = hLoader.postLoader(model);
 		model = hLoader.userLoader(model, request);
 		cService.LoadNotProduct(model, session);
-				
+
 		return "index";
 	}
-	
+
 	@PostMapping("/finder")
 	public String findPost(HttpServletRequest request, String search) {
-		
+
 		Post post = postRepository.findByName(search);
-		
-		if(post!=null) {
-			Long id = post.getId();	
-			return "redirect:/post/"+ id + "-0";
-		}else {
+
+		if (post != null) {
+			Long id = post.getId();
+			return "redirect:/post/" + id + "-0";
+		} else {
 			return "redirect:/";
 		}
 	}

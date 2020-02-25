@@ -25,33 +25,33 @@ import store.main.service.LoaderService;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private CartService cService;
-	
+
 	@Autowired
 	private LoaderService loaderService;
-	
+
 	@GetMapping("/login")
 	public String login(Model model, HttpSession session, HttpServletRequest request) {
-		
+
 		cService.LoadNotProduct(model, session);
-		
+
 		model = loaderService.userLoader(model, request);
 		model = loaderService.postLoader(model);
-		
+
 		model.addAttribute("error", false);
 		return "login";
 	}
 
 	@GetMapping("/loginerror")
 	public String loginerror(Model model, HttpSession session, HttpServletRequest request) {
-		
+
 		cService.LoadNotProduct(model, session);
-		
+
 		model = loaderService.userLoader(model, request);
 		model = loaderService.postLoader(model);
 
@@ -59,7 +59,6 @@ public class UserController {
 		return "login";
 	}
 
-	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 
@@ -71,9 +70,9 @@ public class UserController {
 	public String register(Model model, User user, HttpServletRequest request, HttpSession session) {
 
 		User registeredUser = userRepository.findByEmail(user.getEmail());
-		
+
 		cService.LoadNotProduct(model, session);
-		
+
 		if (registeredUser != null) {
 			model.addAttribute("registered", true);
 			return "login";
@@ -81,28 +80,29 @@ public class UserController {
 
 		user.getRoles().add("ROLE_USER");
 		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-		
+
 		userRepository.save(user);
-		
+
 		autoLogin(user, request);
-		
+
 		return "redirect:/";
 	}
-	
-    private void autoLogin(User user, HttpServletRequest request) {
-    	
+
+	private void autoLogin(User user, HttpServletRequest request) {
+
 		List<GrantedAuthority> roles = new ArrayList<>();
 		for (String role : user.getRoles()) {
 			roles.add(new SimpleGrantedAuthority(role));
 		}
-        
-        UsernamePasswordAuthenticationToken authenticationToken = 
-        		new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword(), roles);
-        
-        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-        
-        request.getSession().setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext());
-        
-    }
+
+		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+				user.getEmail(), user.getPassword(), roles);
+
+		SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
+		request.getSession().setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
+				SecurityContextHolder.getContext());
+
+	}
 
 }

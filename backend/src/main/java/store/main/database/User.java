@@ -26,7 +26,7 @@ public class User {
 
 	public interface PostsInfo {
 	};
-	
+
 	public interface SellersInfo {
 	};
 
@@ -52,10 +52,10 @@ public class User {
 
 	@JsonView(BasicInfo.class)
 	private String userAddress;
-	
+
 	@JsonView(BasicInfo.class)
 	private String creditCard;
-	
+
 	@JsonView(BasicInfo.class)
 	@ElementCollection
 	private List<String> tags;
@@ -67,12 +67,12 @@ public class User {
 	@OneToMany
 	@JsonView(SellersInfo.class)
 	private List<User> sellers;
-	
+
 	@JsonView(PostsInfo.class)
 	@OneToMany(mappedBy = "user")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Post> posts;
-	
+
 	public User() {
 		roles = new LinkedList<String>();
 		posts = new LinkedList<Post>();
@@ -127,11 +127,11 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public void setCreditCard(String creditCard) {
 		this.creditCard = creditCard;
 	}
-	
+
 	public String getCreditCard() {
 		return creditCard;
 	}
@@ -139,7 +139,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public void setBCryptPassword(String password) {
 		this.password = new BCryptPasswordEncoder().encode(password);
 	}
@@ -183,7 +183,7 @@ public class User {
 	public void setTags(List<String> tags) {
 		this.tags = tags;
 	}
-	
+
 	public List<User> getSellers() {
 		return sellers;
 	}

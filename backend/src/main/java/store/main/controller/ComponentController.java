@@ -46,7 +46,7 @@ public class ComponentController {
 
 		Post post = postRepository.findById(id).get();
 		model.addAttribute("post", post);
-		cService.Load(model, session, id,request);
+		cService.Load(model, session, id, request);
 
 		// reset lists
 		this.postList1 = new LinkedList<>();
@@ -62,7 +62,7 @@ public class ComponentController {
 															// the recommendations of a
 															// visiting user
 		}
-		
+
 		LinkedList<Integer> images = new LinkedList<>();
 
 		for (int i = 0; i < post.getnImg(); i++) {

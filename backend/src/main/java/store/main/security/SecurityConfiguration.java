@@ -36,8 +36,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/shop/{tag}").permitAll();
 		http.authorizeRequests().antMatchers("/shop/brand/{name}").permitAll();
 		http.authorizeRequests().antMatchers("/finder").permitAll();
-		
-		//Private pages
+
+		// Private pages
 		http.authorizeRequests().antMatchers("/sell_product/").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/sell_product/added_product").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/logout").hasAnyRole("USER");
@@ -52,7 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/admin/edit/{id}").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/admin/updated/{id}").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/admin/deleted/{id}").hasAnyRole("ADMIN");
-		
+
 		// Login form
 		http.formLogin().loginPage("/login");
 		http.formLogin().usernameParameter("username");

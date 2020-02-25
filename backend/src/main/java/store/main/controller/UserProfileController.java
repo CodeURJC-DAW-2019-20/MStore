@@ -30,56 +30,56 @@ public class UserProfileController {
 
 	@Autowired
 	private RatingRepository ratingRepository;
-	
+
 	@Autowired
 	private PostRepository postRepository;
-	
+
 	@Autowired
 	private CartService cService;
 
 	@Autowired
 	private ImageService imgService;
-	
+
 	@Autowired
 	private LoaderService loaderService;
 
 	private User getUserInfo(HttpServletRequest request) {
 		return userRepository.findByEmail(request.getUserPrincipal().getName());
 	}
-	
-	
+
 	@GetMapping("/public_profile")
 	public String loadPublicProfile(Model model, HttpServletRequest request, HttpSession session) {
 		User u = getUserInfo(request);
-		for(int i=0;i<6;i++)
-			model.addAttribute("stars"+i,ratingRepository.findBySellerEmailIgnoreCaseAndStars(u.getEmail(), i).size());
+		for (int i = 0; i < 6; i++)
+			model.addAttribute("stars" + i,
+					ratingRepository.findBySellerEmailIgnoreCaseAndStars(u.getEmail(), i).size());
 
 		List<Post> lp = postRepository.findFirst8ByUserEmail(u.getEmail());
-		
+
 		model = loaderService.postLoader(model);
 		model = loaderService.userLoader(model, request);
 		model.addAttribute("u", u);
-		model.addAttribute("id",u.getId());
-		model.addAttribute("itemList",lp);
-		model.addAttribute("hasSold",false);
-		model.addAttribute("idBuyer",0);
+		model.addAttribute("id", u.getId());
+		model.addAttribute("itemList", lp);
+		model.addAttribute("hasSold", false);
+		model.addAttribute("idBuyer", 0);
 		cService.LoadNotProduct(model, session);
 		return "seller-public-profile";
 	}
-	
+
 	@GetMapping("/account_settings")
 	public String loadAcountSettings(Model model, HttpServletRequest request, HttpSession session) {
 		User u = getUserInfo(request);
 		model.addAttribute("user", u);
-		if(u.getUserAddress()==null)
-			model.addAttribute("userAddress","");
+		if (u.getUserAddress() == null)
+			model.addAttribute("userAddress", "");
 		else
-			model.addAttribute("userAddress",u.getUserAddress());
-		
-		if(u.getCreditCard()==null)
-			model.addAttribute("creditCard","");
+			model.addAttribute("userAddress", u.getUserAddress());
+
+		if (u.getCreditCard() == null)
+			model.addAttribute("creditCard", "");
 		else
-			model.addAttribute("creditCard",u.getCreditCard());		
+			model.addAttribute("creditCard", u.getCreditCard());
 		model = loaderService.userLoader(model, request);
 		model = loaderService.postLoader(model);
 		cService.LoadNotProduct(model, session);
@@ -87,22 +87,22 @@ public class UserProfileController {
 	}
 
 	@PostMapping("/profile/updated")
-	public String nuevoAnuncio(Model model, User user,
-			@RequestParam MultipartFile imagenFile, HttpServletRequest request, HttpSession session) throws IOException {
-		
+	public String nuevoAnuncio(Model model, User user, @RequestParam MultipartFile imagenFile,
+			HttpServletRequest request, HttpSession session) throws IOException {
+
 		User u = getUserInfo(request);
 		u.setFirstName(user.getFirstName());
 		u.setLastName(user.getLastName());
-		if(!user.getPassword().equals(""))
+		if (!user.getPassword().equals(""))
 			u.setBCryptPassword(user.getPassword());
 		u.setPhone(user.getPhone());
 		u.setUserAddress(user.getUserAddress());
 		u.setCreditCard(user.getCreditCard());
 		userRepository.save(u);
 		cService.LoadNotProduct(model, session);
-		if(!imagenFile.getOriginalFilename().equals("")) 
-				imgService.saveImage("users", u.getId(), imagenFile, null);
-				
+		if (!imagenFile.getOriginalFilename().equals(""))
+			imgService.saveImage("users", u.getId(), imagenFile, null);
+
 		return "redirect:/";
 	}
 }

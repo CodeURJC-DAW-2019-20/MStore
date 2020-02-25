@@ -30,66 +30,67 @@ public class SellerProfileController {
 
 	@Autowired
 	private RatingRepository ratingRepository;
-	
+
 	@Autowired
 	private CartService cService;
-	
+
 	@Autowired
 	private PostRepository postRepository;
-	
+
 	@Autowired
 	private LoaderService loaderService;
 
 	private User getUserInfo(HttpServletRequest request) {
 		return userRepository.findByEmail(request.getUserPrincipal().getName());
 	}
-	
-	 
+
 	@GetMapping("/public_profile/{id}")
-	public String loadPublicProfile(Model model, HttpServletRequest request, 
-			@PathVariable("id") long id, HttpSession session) {
-				loadPublicProfile(model, request, id);
-				model = loaderService.userLoader(model, request);
-				model =loaderService.postLoader(model);
-				cService.LoadNotProduct(model, session);
-				return "seller-public-profile";
+	public String loadPublicProfile(Model model, HttpServletRequest request, @PathVariable("id") long id,
+			HttpSession session) {
+		loadPublicProfile(model, request, id);
+		model = loaderService.userLoader(model, request);
+		model = loaderService.postLoader(model);
+		cService.LoadNotProduct(model, session);
+		return "seller-public-profile";
 	}
-	
+
 	private void loadPublicProfile(Model model, HttpServletRequest request, long id) {
 		Optional<User> u = userRepository.findById(id);
-		
-		for(int i=0;i<6;i++)
-			model.addAttribute("stars"+i,ratingRepository.findBySellerEmailIgnoreCaseAndStars(u.get().getEmail(), i).size());
+
+		for (int i = 0; i < 6; i++)
+			model.addAttribute("stars" + i,
+					ratingRepository.findBySellerEmailIgnoreCaseAndStars(u.get().getEmail(), i).size());
 
 		List<Post> lp = postRepository.findFirst8ByUserEmail(u.get().getEmail());
 		model.addAttribute("u", u.get());
-		model.addAttribute("itemList",lp);
-		
-		if(request.isUserInRole("USER") || request.isUserInRole("ADMIN")) {
+		model.addAttribute("itemList", lp);
+
+		if (request.isUserInRole("USER") || request.isUserInRole("ADMIN")) {
 			User user = getUserInfo(request);
-			model.addAttribute("hasSold",user.getSellers().contains(u.get()));
-			model.addAttribute("idBuyer",user.getId());
-		}else {
-			model.addAttribute("hasSold",false);
+			model.addAttribute("hasSold", user.getSellers().contains(u.get()));
+			model.addAttribute("idBuyer", user.getId());
+		} else {
+			model.addAttribute("hasSold", false);
 		}
 	}
-	
+
 	@PostMapping("/public_profile/{idSeller}/{idBuyer}")
-	public String saveRating(Model model, @RequestParam String stars,
-			@PathVariable("idSeller") long idSeller, @PathVariable("idBuyer") long idBuyer, HttpSession session, HttpServletRequest request) {
+	public String saveRating(Model model, @RequestParam String stars, @PathVariable("idSeller") long idSeller,
+			@PathVariable("idBuyer") long idBuyer, HttpSession session, HttpServletRequest request) {
 		saveRating(model, stars, idSeller, idBuyer);
-		return ("redirect:/public_profile/"+idSeller);
+		String out = "redirect:/public_profile/" + idSeller;
+		return out;
 	}
-	
+
 	private void saveRating(Model model, String stars, long idSeller, long idBuyer) {
 		Optional<User> us = userRepository.findById(idSeller);
 		Optional<User> ub = userRepository.findById(idBuyer);
-		
+
 		Rating r = new Rating(Integer.parseInt(stars));
 		r.setSeller(us.get());
 		r.setBuyer(ub.get());
 		ratingRepository.save(r);
-		
+
 		ub.get().getSellers().remove(us.get());
 		userRepository.save(ub.get());
 	}

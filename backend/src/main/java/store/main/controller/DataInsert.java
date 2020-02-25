@@ -26,16 +26,16 @@ public class DataInsert implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		
-		//saveAdmin();
+
+		// saveAdmin();
 
 	}
-	
+
 	public void saveAdmin() {
 		User user = new User("Admin", "ElAdmin", "admin@gmail.com", "67434344", "admin", "Calle del admin 1");
 		user.getRoles().add("ROLE_USER");
 		user.getRoles().add("ROLE_ADMIN");
-		
+
 		userRepository.save(user);
 	}
 
