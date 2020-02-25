@@ -291,10 +291,12 @@ User:
 
 ### Members Participation ✅
 
+### Members Participation ✅
+
 | Plugin | Description | 5 most important commits | 5 most relevant files
 | ------ | ------------- | ------------| ------| 
 | Daniel Ruiz Bustos | |
-| Marcos Ruiz Muñoz |In this phase, I have made the Home page, the navigation of the page updating the header and the links. I have implemented the advanced algorithm of recommendations. Also the functionality of buying a product, added more data in database and made the Readme diagrams. I have helped to make the Cart page.  |<ul><li>Added HomeController & fixes</li><li>Added shop navegation</li><li>Advanced algorithm implemented</li><li>Final Review(*) & header updated</li><li>Update README</li></ul>|<ul><li>HomeController.java</li><li>index.html</li><li>CartController.java</li><li>ComponentController.java</li><li>shop-single-electronics.html</li></ul>
+| Marcos Ruiz Muñoz |In this phase, I have made the Home page, the navigation of the page updating the header and the links. I have implemented the advanced algorithm of recommendations. Also the functionality of buying a product, added more data in database and made the Readme diagrams. I have helped to make the Cart page.  |<ul><li><a href="https://github.com/CodeURJC-DAW-2019-20/MStore/commit/7cd87bd0efdcdc25f1e5ee3d6bf4fc87c7fde1a4">Added HomeController & fixes</a></li><li><a href="https://github.com/CodeURJC-DAW-2019-20/MStore/commit/739978554c55072b88af86e648944ba282779ae0">Updated carrousell & buy item</a></li><li><a href="https://github.com/CodeURJC-DAW-2019-20/MStore/commit/79b436e2f7f4ec62768a5f39df00f453e973d837">Advanced algorithm implemented</a></li><li><a href="https://github.com/CodeURJC-DAW-2019-20/MStore/commit/ae2a7bed7b91422962d1df54edeab5d6830d9198">Final Review(*) & header updated</a></li><li><a href="https://github.com/CodeURJC-DAW-2019-20/MStore/commit/d9d3607a678ab7e345b0820c0d03d1d5321a3cbc">Update README</a></li></ul>|<ul><li>HomeController.java</li><li>index.html</li><li>CartController.java</li><li>ComponentController.java</li><li>shop-single-electronics.html</li></ul>
 | Jose Luis Sierra Benito	 | |
 | Noelia Martínez Sánchez | Description | <ul><li>item1</li><li>item2</li><li>item3</li><li>item4</li><li>item5</li></ul> | <ul><li>item1</li><li>item2</li><li>item3</li><li>item4</li><li>item5</li></ul>|
 | Diego Montoto Ramos | |
