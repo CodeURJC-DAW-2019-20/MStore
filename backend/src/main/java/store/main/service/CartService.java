@@ -113,16 +113,4 @@ public class CartService {
 		model.addAttribute("empty", empty);
 	}
 
-	public void deletePostFromBD(Post p) {
-		Brand b = brandRepository.findByName(p.getBrand().getName());
-		b.getPosts().remove(p);
-		brandRepository.save(b);
-
-		User u = userRepository.findByEmail(p.getUser().getEmail());
-		u.getPosts().remove(p);
-		userRepository.save(u);
-
-		postRepository.delete(p);
-	}
-
 }

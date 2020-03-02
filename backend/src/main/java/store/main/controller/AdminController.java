@@ -16,15 +16,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import store.main.database.Brand;
 import store.main.database.BrandRepository;
 import store.main.database.Post;
 import store.main.database.PostRepository;
-import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.CartService;
-import store.main.service.ImageService;
 import store.main.service.LoaderService;
+import store.main.service.PostService;
 
 @Controller
 public class AdminController {
@@ -45,7 +43,7 @@ public class AdminController {
 	private CartService cService;
 
 	@Autowired
-	private ImageService imgService;
+	private PostService postService;
 
 	private void adminLoader(Model model, HttpSession session, HttpServletRequest request) {
 
@@ -70,46 +68,6 @@ public class AdminController {
 		model.addAttribute("found", true);
 		model.addAttribute("images", images);
 		model.addAttribute("edit", false);
-	}
-
-	private void setUpdatedPost(Post post, @RequestParam String bname, @RequestParam List<MultipartFile> imagenFile,
-			@PathVariable Long id) throws IOException {
-
-		Brand b = brandRepository.findFirstByNameIgnoreCase(bname);
-
-		if (b == null) {
-			b = new Brand(bname);
-			brandRepository.save(b);
-		}
-
-		Post oldPost = postRepository.findById(id).get();
-
-		User user = oldPost.getUser();
-
-		post.setBrand(b);
-		post.setUser(user);
-		post.setComponentTag(post.getComponent());
-		post.setId(oldPost.getId());
-		post.setPostAddress(oldPost.getPostAddress());
-
-		int totalImg = oldPost.getnImg();
-		int numImg = 0;
-
-		for (MultipartFile mf : imagenFile) {
-			numImg++;
-			if (!mf.getOriginalFilename().equals("")) {
-				if (numImg > totalImg) {
-					imgService.saveImage("posts", post.getId(), mf, totalImg);
-					totalImg++;
-				} else {
-					imgService.saveImage("posts", post.getId(), mf, numImg - 1);
-				}
-			}
-		}
-
-		post.setnImg(totalImg);
-
-		postRepository.save(post);
 	}
 
 	@GetMapping("/admin")
@@ -162,7 +120,7 @@ public class AdminController {
 			@RequestParam List<MultipartFile> imagenFile, HttpServletRequest request, HttpSession session)
 			throws IOException {
 
-		setUpdatedPost(post, bname, imagenFile, id);
+		postService.setUpdatedPost(post, bname, imagenFile, id);
 
 		session.setAttribute("updated", true);
 
@@ -174,7 +132,7 @@ public class AdminController {
 
 		Post post = postRepository.findById(id).get();
 
-		cService.deletePostFromBD(post);
+		postService.deletePostFromBD(post);
 
 		session.setAttribute("deleted", true);
 

@@ -14,14 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import store.main.database.Brand;
-import store.main.database.BrandRepository;
 import store.main.database.Post;
-import store.main.database.PostRepository;
 import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.CartService;
-import store.main.service.ImageService;
 import store.main.service.LoaderService;
 import store.main.service.PostService;
 

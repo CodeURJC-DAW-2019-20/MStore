@@ -3,10 +3,9 @@ package store.main.service;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -65,6 +64,55 @@ public class PostService {
 		brandRepository.save(b);
 		
 		return post;
+	}
+	
+	public Post setUpdatedPost(Post post, @RequestParam String bname, @RequestParam List<MultipartFile> imagenFile,
+			@PathVariable Long id) throws IOException {
+
+		Brand b = getBrand(bname);
+				
+		Post oldPost = postRepository.findById(id).get();
+
+		User user = oldPost.getUser();
+
+		post.setBrand(b);
+		post.setUser(user);
+		post.setComponentTag(post.getComponent());
+		post.setId(oldPost.getId());
+		post.setPostAddress(oldPost.getPostAddress());
+
+		int totalImg = oldPost.getnImg();
+		int numImg = 0;
+
+		for (MultipartFile mf : imagenFile) {
+			numImg++;
+			if (!mf.getOriginalFilename().equals("")) {
+				if (numImg > totalImg) {
+					imgService.saveImage("posts", post.getId(), mf, totalImg);
+					totalImg++;
+				} else {
+					imgService.saveImage("posts", post.getId(), mf, numImg - 1);
+				}
+			}
+		}
+
+		post.setnImg(totalImg);
+
+		postRepository.save(post);
+		
+		return post;
+	}
+	
+	public void deletePostFromBD(Post p) {
+		Brand b = brandRepository.findByName(p.getBrand().getName());
+		b.getPosts().remove(p);
+		brandRepository.save(b);
+
+		User u = userRepository.findByEmail(p.getUser().getEmail());
+		u.getPosts().remove(p);
+		userRepository.save(u);
+
+		postRepository.delete(p);
 	}
 
 }

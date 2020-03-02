@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import store.main.database.*;
 import store.main.service.CartService;
 import store.main.service.LoaderService;
+import store.main.service.PostService;
 
 @Controller
 public class CartController {
@@ -29,6 +30,9 @@ public class CartController {
 
 	@Autowired
 	private LoaderService loaderService;
+	
+	@Autowired
+	private PostService postService;
 
 	private User getUserInfo(HttpServletRequest request) {
 		return userRepository.findByEmail(request.getUserPrincipal().getName());
@@ -116,7 +120,7 @@ public class CartController {
 			if (!containsSeller(sellerList, u)) {
 				sellerList.add(u);
 			}
-			cService.deletePostFromBD(p);
+			postService.deletePostFromBD(p);
 		}
 		user.setSellers(sellerList);
 		userRepository.save(user);
