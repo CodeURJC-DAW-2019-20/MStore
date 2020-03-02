@@ -23,39 +23,23 @@ import store.main.database.UserRepository;
 import store.main.service.CartService;
 import store.main.service.ImageService;
 import store.main.service.LoaderService;
+import store.main.service.PostService;
 
 @Controller
 public class SellProductController {
+	
+	@Autowired
+	private PostService postService;
+	
 	@Autowired
 	private UserRepository userRepository;
-
-	@Autowired
-	private PostRepository postRepository;
-
-	@Autowired
-	private BrandRepository brandRepository;
-
+	
 	@Autowired
 	private CartService cService;
 
 	@Autowired
-	private ImageService imgService;
-
-	@Autowired
 	private LoaderService loaderService;
-
-	private User getUserInfo(HttpServletRequest request) {
-		return userRepository.findByEmail(request.getUserPrincipal().getName());
-	}
-
-	private Brand getBrand(String name) {
-		Brand b = brandRepository.findFirstByNameIgnoreCase(name);
-		if (b == null) {
-			b = new Brand(name);
-			brandRepository.save(b);
-		}
-		return b;
-	}
+	
 
 	@GetMapping("/sell_product/")
 	public String loadSellProduct(Model model, HttpServletRequest request, HttpSession session) {
@@ -67,7 +51,7 @@ public class SellProductController {
 	}
 
 	private void loadSellProductR(Model model, HttpServletRequest request) {
-		User u = getUserInfo(request);
+		User u = userRepository.findByEmail(request.getUserPrincipal().getName());;
 		model.addAttribute("user", u);
 	}
 
@@ -76,34 +60,12 @@ public class SellProductController {
 			@RequestParam List<MultipartFile> imagenFile, HttpServletRequest request, HttpSession session)
 			throws IOException {
 
-		nuevoAnuncioCall(model, post, bname, imagenFile, request);
+		postService.createPost(post, bname, imagenFile, userRepository.findByEmail(request.getUserPrincipal().getName()));
 
 		return "redirect:/";
 
 	}
 
-	public void nuevoAnuncioCall(Model model, Post post, @RequestParam String bname,
-			@RequestParam List<MultipartFile> imagenFile, HttpServletRequest request) throws IOException {
 
-		Brand b = getBrand(bname);
-		post.setBrand(b);
-		post.setComponentTag(post.getComponent());
-		User u = getUserInfo(request);
-		u.getPosts().add(post);
-		post.setUser(u);
-		postRepository.save(post);
-
-		int aux = 0;
-		for (MultipartFile mf : imagenFile)
-			if (!mf.getOriginalFilename().equals("")) {
-				imgService.saveImage("posts", post.getId(), mf, aux);
-				aux++;
-			}
-
-		post.setnImg(aux);
-		userRepository.save(u);
-		b.getPosts().add(post);
-		brandRepository.save(b);
-	}
 
 }
