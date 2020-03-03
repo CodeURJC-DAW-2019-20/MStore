@@ -2,6 +2,7 @@ package store.main.api;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,9 +48,9 @@ public class BrandRestController {
 	@GetMapping("/{id}")
 	@JsonView(completeBrand.class)
 	public ResponseEntity<Brand> getBrandId(@PathVariable long id) {
-		Brand brand=brandRepository.findById(id).get();
-		if(brand!=null) {
-			return new ResponseEntity<Brand>(brand,HttpStatus.OK);
+		Optional<Brand> brand=brandRepository.findById(id);
+		if(brand.isPresent()) {
+			return new ResponseEntity<Brand>(brand.get(),HttpStatus.OK);
 		}
 		else {
 			return new ResponseEntity<Brand>(HttpStatus.NOT_FOUND);
