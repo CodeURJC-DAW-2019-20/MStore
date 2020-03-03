@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,5 +62,19 @@ public class RatingRestController {
 	public Rating createPost(@RequestBody Rating rating) throws IOException {
 		return ratingService.saveRating(rating.getStars()+"", rating.getSeller().getId(), rating.getBuyer().getId());
 	}
+	
+	@JsonView(RatingUsers.class)
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Rating> deleteRating(@PathVariable long id){
+		Optional<Rating> rating = ratingRepository.findById(id);
+		if(rating.isPresent()) {
+		ratingService.deleteRatingFromDB(rating.get());
+		return new ResponseEntity<Rating>(rating.get(),HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<Rating>(HttpStatus.NOT_FOUND);
+		}
+	}
+
 	
 }

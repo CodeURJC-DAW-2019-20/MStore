@@ -32,4 +32,9 @@ public class RatingService {
 		
 		return r;
 	}
+	
+	public void deleteRatingFromDB(Rating rating) {
+		ratingRepository.delete(rating);
+}
+
 }
