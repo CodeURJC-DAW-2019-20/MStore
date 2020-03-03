@@ -34,7 +34,6 @@ import store.main.database.BrandRepository;
 import store.main.database.Post;
 import store.main.database.PostRepository;
 import store.main.database.User;
-import store.main.database.UserRepository;
 import store.main.service.PostService;
 import store.main.service.UserComponent;
 
@@ -60,8 +59,15 @@ public class PostRestController {
 	
 	@JsonView(CompletePost.class)
 	@GetMapping("/{id}")
-	public Post getPost(@PathVariable("id") long id) {
-		return postRepository.findById(id).get();
+	public ResponseEntity<Post> getPost(@PathVariable("id") long id) {
+
+		Optional<Post> post = postRepository.findById(id);
+		
+		if (post.isPresent()) {
+			return new ResponseEntity<>(post.get(),HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@JsonView(CompletePost.class)

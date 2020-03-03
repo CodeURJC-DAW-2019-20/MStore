@@ -55,7 +55,7 @@ public class UserRestController {
 	
 	@GetMapping("/{id}")
 	@JsonView(completeUser.class)
-	public ResponseEntity<User>getBrandId(@PathVariable long id) {
+	public ResponseEntity<User> getBrandId(@PathVariable long id) {
 		Optional<User> us = userRepository.findById(id);
 		if(us.isPresent()) {
 			return new ResponseEntity<User>(us.get(),HttpStatus.OK);
