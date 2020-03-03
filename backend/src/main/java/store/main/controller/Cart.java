@@ -6,61 +6,40 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
 import store.main.database.Post;
+import store.main.service.CartService;
 
 @Component
 @SessionScope
 public class Cart {
-
-	public void addToCart(Post post, HttpSession session) {
-
-		if (session.getAttribute("cart") == null) {
-			session.setAttribute("cart", new LinkedList<Post>());
-		}
-
-		List<Post> list = (List<Post>) session.getAttribute("cart");
-		long total = (long) session.getAttribute("total");
-
-		if (!list.contains(post)) {
-			total += post.getPrice();
-			list.add(post);
-		}
-
-		session.setAttribute("total", total);
-		session.setAttribute("cart", list);
-		session.setAttribute("empty", list.isEmpty());
+	
+	@Autowired
+	CartService cService;
+	
+	boolean emptyCart;
+	long totalprice;
+	List<Post> elements;
+	
+	
+	public Cart() {
+		this.emptyCart=true;
+		this.elements=new LinkedList<Post>();
+		this.totalprice=0;
 	}
-
-	public void removeFromCart(Post post, HttpSession session) {
-
-		if (session.getAttribute("cart") == null) {
-			session.setAttribute("cart", new LinkedList<Post>());
+	
+	public boolean Load(HttpSession session) {
+		if (session.getAttribute("cart")!=null) {
+			this.elements=(List<Post>) session.getAttribute("cart");
+			this.totalprice=(long) session.getAttribute("total");
+			this.emptyCart=(boolean) session.getAttribute("empty");
+			return true;
 		}
-
-		List<Post> list = (List<Post>) session.getAttribute("cart");
-		long total = (long) session.getAttribute("total");
-
-		if (list.contains(post)) {
-			list.remove(post);
-			total -= post.getPrice();
-		}
-		session.setAttribute("total", total);
-		session.setAttribute("cart", list);
-		session.setAttribute("empty", list.isEmpty());
-	}
-
-	public void cartInit(HttpSession session) {
-
-		if (session.getAttribute("cart") == null) {
-			List<Post> list = new ArrayList<Post>();
-			long total = 0;
-			boolean empty = true;
-			session.setAttribute("cart", list);
-			session.setAttribute("empty", empty);
-			session.setAttribute("total", total);
+		else {
+			return false;
 		}
 	}
 }

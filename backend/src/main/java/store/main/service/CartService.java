@@ -1,5 +1,7 @@
 package store.main.service;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +34,7 @@ public class CartService {
 	}
 
 	public void Load(Model model, HttpSession session, Long id, HttpServletRequest request) {
-		cart.cartInit(session);
+		cartInit(session);
 
 		boolean empty = (boolean) session.getAttribute("empty");
 		long total = (long) session.getAttribute("total");
@@ -55,7 +57,7 @@ public class CartService {
 	}
 
 	public void LoadNotProduct(Model model, HttpSession session) {
-		cart.cartInit(session);
+		cartInit(session);
 
 		boolean empty = (boolean) session.getAttribute("empty");
 		long total = (long) session.getAttribute("total");
@@ -70,7 +72,7 @@ public class CartService {
 	public void AddComponent(Model model, HttpSession session, Long id) {
 		Post post = postRepository.findById(id).get();
 		model.addAttribute("post", post);
-		cart.addToCart(post, session);
+		addToCart(post, session);
 
 		long total = (long) session.getAttribute("total");
 		List<Post> cartAux = (List<Post>) session.getAttribute("cart");
@@ -86,7 +88,7 @@ public class CartService {
 	public void RemoveComponent(Model model, HttpSession session, Long id, Long idRemove) {
 		Post post = postRepository.findById(id).get();
 		model.addAttribute("post", post);
-		cart.removeFromCart(postRepository.findById(idRemove).get(), session);
+		removeFromCart(postRepository.findById(idRemove).get(), session);
 
 		long total = (long) session.getAttribute("total");
 		List<Post> cartAux = (List<Post>) session.getAttribute("cart");
@@ -100,7 +102,7 @@ public class CartService {
 	}
 
 	public void RemoveComponentNotProduct(Model model, HttpSession session, Long id) {
-		cart.removeFromCart(postRepository.findById(id).get(), session);
+		removeFromCart(postRepository.findById(id).get(), session);
 
 		long total = (long) session.getAttribute("total");
 		List<Post> cartAux = (List<Post>) session.getAttribute("cart");
@@ -111,6 +113,70 @@ public class CartService {
 		model.addAttribute("cart", cartAux);
 		model.addAttribute("total", total);
 		model.addAttribute("empty", empty);
+	}
+	
+	public void addToCart(Post post, HttpSession session) {
+
+		if (session.getAttribute("cart") == null) {
+			session.setAttribute("cart", new LinkedList<Post>());
+		}
+
+		List<Post> list = (List<Post>) session.getAttribute("cart");
+		long total = (long) session.getAttribute("total");
+
+		if (!list.contains(post)) {
+			total += post.getPrice();
+			list.add(post);
+		}
+
+		session.setAttribute("total", total);
+		session.setAttribute("cart", list);
+		session.setAttribute("empty", list.isEmpty());
+	}
+
+	public void removeFromCart(Post post, HttpSession session) {
+
+		if (session.getAttribute("cart") == null) {
+			session.setAttribute("cart", new LinkedList<Post>());
+		}
+
+		List<Post> list = (List<Post>) session.getAttribute("cart");
+		long total = (long) session.getAttribute("total");
+
+		if (list.contains(post)) {
+			list.remove(post);
+			total -= post.getPrice();
+		}
+		session.setAttribute("total", total);
+		session.setAttribute("cart", list);
+		session.setAttribute("empty", list.isEmpty());
+	}
+
+	public void cartInit(HttpSession session) {
+
+		if (session.getAttribute("cart") == null) {
+			List<Post> list = new ArrayList<Post>();
+			long total = 0;
+			boolean empty = true;
+			session.setAttribute("cart", list);
+			session.setAttribute("empty", empty);
+			session.setAttribute("total", total);
+		}
+	}
+	
+	public void newCart(HttpSession session) {
+		List<Post> list = new ArrayList<Post>();
+		long total = 0;
+		boolean empty = true;
+		session.setAttribute("cart", list);
+		session.setAttribute("empty", empty);
+		session.setAttribute("total", total);
+}
+	
+	public void destroyCart(HttpSession session) {
+		session.removeAttribute("cart");
+		session.removeAttribute("total");
+		session.removeAttribute("empty");
 	}
 
 }
