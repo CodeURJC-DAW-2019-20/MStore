@@ -22,6 +22,7 @@ import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.CartService;
 import store.main.service.LoaderService;
+import store.main.service.RatingService;
 
 @Controller
 public class SellerProfileController {
@@ -30,6 +31,9 @@ public class SellerProfileController {
 
 	@Autowired
 	private RatingRepository ratingRepository;
+	
+	@Autowired
+	private RatingService ratingService;
 
 	@Autowired
 	private CartService cService;
@@ -77,21 +81,10 @@ public class SellerProfileController {
 	@PostMapping("/public_profile/{idSeller}/{idBuyer}")
 	public String saveRating(Model model, @RequestParam String stars, @PathVariable("idSeller") long idSeller,
 			@PathVariable("idBuyer") long idBuyer, HttpSession session, HttpServletRequest request) {
-		saveRating(model, stars, idSeller, idBuyer);
+		ratingService.saveRating(stars, idSeller, idBuyer);
 		String out = "redirect:/public_profile/" + idSeller;
 		return out;
 	}
 
-	private void saveRating(Model model, String stars, long idSeller, long idBuyer) {
-		Optional<User> us = userRepository.findById(idSeller);
-		Optional<User> ub = userRepository.findById(idBuyer);
-
-		Rating r = new Rating(Integer.parseInt(stars));
-		r.setSeller(us.get());
-		r.setBuyer(ub.get());
-		ratingRepository.save(r);
-
-		ub.get().getSellers().remove(us.get());
-		userRepository.save(ub.get());
-	}
+	
 }

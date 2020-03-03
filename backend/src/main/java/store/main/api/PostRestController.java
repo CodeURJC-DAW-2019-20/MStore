@@ -67,7 +67,7 @@ public class PostRestController {
 	@JsonView(CompletePost.class)
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Post createPost(@RequestBody Post post,  HttpServletRequest request) throws IOException {
+	public Post createPost(@RequestBody Post post) throws IOException {
 		return postService.createPost(post, post.getBrand().getName(), new LinkedList<MultipartFile>(), userComponent.getLoggedUser());
 	}
 	
