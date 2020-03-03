@@ -16,6 +16,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +35,7 @@ import store.main.database.BrandRepository;
 import store.main.database.Post;
 import store.main.database.PostRepository;
 import store.main.database.User;
+import store.main.database.UserRepository;
 import store.main.service.PostService;
 import store.main.service.UserComponent;
 
@@ -156,6 +158,20 @@ public class PostRestController {
 		}
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
+	
+	@JsonView(PostDetail.class)
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Post> deletePost(@PathVariable long id){
+		Optional<Post> post = postRepository.findById(id);
+		if(post.isPresent()) {
+			postService.deletePostFromBD(post.get());
+			return new ResponseEntity<Post>(post.get(),HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
+		}
+	}
+
 /*
 	@JsonView(PostDetail.class)
 	@GetMapping("/{tag}")
