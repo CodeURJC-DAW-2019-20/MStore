@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,28 +19,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import store.main.api.BrandRestController.completeBrand;
+import store.main.api.BrandRestController.CompleteBrand;
 import store.main.database.Brand;
 import store.main.database.BrandRepository;
 import store.main.database.Post;
+import store.main.service.BrandService;
 
 @RestController
 @RequestMapping("/api/brand")
 public class BrandRestController {
 	
 	@Autowired
+	private BrandService brandService;
+	@Autowired
 	BrandRepository brandRepository;
 	
-	interface completeBrand extends Brand.BasicInfo,Brand.PostsInfo,Post.BasicInfo {}
+	interface CompleteBrand extends Brand.BasicInfo,Brand.PostsInfo,Post.BasicInfo {}
 	
 	@GetMapping("/")
-	@JsonView(completeBrand.class)
+	@JsonView(CompleteBrand.class)
 	public Collection<Brand> getBrands() {
 		return brandRepository.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	@JsonView(completeBrand.class)
+	@JsonView(CompleteBrand.class)
 	public ResponseEntity<Brand> getBrandId(@PathVariable long id) {
 		Optional<Brand> brand = brandRepository.findById(id);
 		if(brand.isPresent()) {
@@ -59,7 +63,7 @@ public class BrandRestController {
 	}
 	
 	@PutMapping("/{id}")
-	@JsonView(completeBrand.class)
+	@JsonView(CompleteBrand.class)
 	public ResponseEntity<Brand> updateBrand(@RequestBody Brand updatedBrand, @PathVariable long id) {
 		
 		Optional<Brand> optionalBrand = brandRepository.findById(id);
@@ -76,6 +80,19 @@ public class BrandRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		
+	}
+	
+	@DeleteMapping("/{id}")
+	@JsonView(CompleteBrand.class)
+	public ResponseEntity<Brand> deleteBrand(@PathVariable long id){
+		Optional<Brand> brand = brandRepository.findById(id);
+		if(brand.isPresent()) {
+			brandService.deleteBrandFromDB(brand.get());
+			return new ResponseEntity<Brand>(brand.get(),HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<Brand>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 }
