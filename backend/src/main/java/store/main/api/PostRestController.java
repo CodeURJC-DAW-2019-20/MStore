@@ -36,6 +36,7 @@ import store.main.database.PostRepository;
 import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.PostService;
+import store.main.service.UserComponent;
 
 @RestController
 @RequestMapping("/api/post")
@@ -48,7 +49,7 @@ public class PostRestController {
 	private PostRepository postRepository;
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserComponent userComponent;
 
 	@Autowired
 	private BrandRepository brandRepository;
@@ -67,7 +68,7 @@ public class PostRestController {
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Post createPost(@RequestBody Post post,  HttpServletRequest request) throws IOException {
-		return postService.createPost(post, post.getBrand().getName(), new LinkedList<MultipartFile>(), userRepository.findByEmail(request.getUserPrincipal().getName()));
+		return postService.createPost(post, post.getBrand().getName(), new LinkedList<MultipartFile>(), userComponent.getLoggedUser());
 	}
 	
 	@JsonView(CompletePost.class)
@@ -149,7 +150,7 @@ public class PostRestController {
 		}
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
-
+/*
 	@JsonView(PostDetail.class)
 	@GetMapping("/{tag}")
 	public ResponseEntity<List<Post>> shopByTag(Model model, @PathVariable("tag") Integer tag,
@@ -191,5 +192,5 @@ public class PostRestController {
 
 		return new ResponseEntity<>(posts, HttpStatus.OK);
 	}
-	
+	*/
 }
