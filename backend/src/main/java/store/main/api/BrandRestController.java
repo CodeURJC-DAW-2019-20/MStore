@@ -1,7 +1,6 @@
 package store.main.api;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import store.main.api.BrandRestController.CompleteBrand;
 import store.main.database.Brand;
 import store.main.database.BrandRepository;
 import store.main.database.Post;
@@ -75,9 +73,9 @@ public class BrandRestController {
 			brand.setName(updatedBrand.getName());
 			brandRepository.save(brand);
 			
-			return new ResponseEntity<>(brand,HttpStatus.OK);
+			return new ResponseEntity<Brand>(brand,HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Brand>(HttpStatus.NOT_FOUND);
 		}
 		
 	}

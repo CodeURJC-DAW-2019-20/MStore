@@ -35,7 +35,6 @@ import store.main.database.BrandRepository;
 import store.main.database.Post;
 import store.main.database.PostRepository;
 import store.main.database.User;
-import store.main.database.UserRepository;
 import store.main.service.PostService;
 import store.main.service.UserComponent;
 

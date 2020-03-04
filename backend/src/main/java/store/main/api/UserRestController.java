@@ -1,6 +1,5 @@
 package store.main.api;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -18,9 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import store.main.api.UserRestController.completeUser;
 import store.main.database.Post;
-import store.main.database.Rating;
 import store.main.database.User;
 import store.main.database.UserRepository;
 

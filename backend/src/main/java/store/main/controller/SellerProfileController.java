@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import store.main.database.Post;
 import store.main.database.PostRepository;
-import store.main.database.Rating;
 import store.main.database.RatingRepository;
 import store.main.database.User;
 import store.main.database.UserRepository;
