@@ -72,7 +72,7 @@ public class ImageRestController {
 	@PostMapping("/user/{id}/image")
 	public ResponseEntity<Post> createUserImage(@PathVariable long id, @RequestParam MultipartFile imagenFile)
 			throws IOException {
-		File file=new File("images/users/image-"+id+".jpg");
+		File file = new File("images/users/image-"+id+".jpg");
 		if(file.exists()) {
 			return new ResponseEntity<Post>(HttpStatus.NOT_ACCEPTABLE);
 		}
@@ -85,14 +85,14 @@ public class ImageRestController {
 			throws IOException {
 		Optional<Post> post = postRepository.findById(id);
 		if (post.isPresent()) {
-			if(post.get().getnImg()<3) {
+			if(post.get().getnImg() < 4) {
 				imgService.saveImage("posts", post.get().getId(), imagenFile, post.get().getnImg());
 				post.get().setnImg(post.get().getnImg() + 1);
 				postRepository.save(post.get());
 			return new ResponseEntity<>(HttpStatus.CREATED);
 			}
 			else {
-				return new ResponseEntity<Post>(HttpStatus.FORBIDDEN);
+				return new ResponseEntity<Post>(HttpStatus.INSUFFICIENT_STORAGE);
 			}
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

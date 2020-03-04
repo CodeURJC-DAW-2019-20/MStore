@@ -18,6 +18,7 @@ import store.main.database.Post;
 import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.CartService;
+import store.main.service.ImageService;
 import store.main.service.LoaderService;
 import store.main.service.PostService;
 
@@ -36,6 +37,8 @@ public class SellProductController {
 	@Autowired
 	private LoaderService loaderService;
 	
+	@Autowired
+	private ImageService imgService;
 
 	@GetMapping("/sell_product/")
 	public String loadSellProduct(Model model, HttpServletRequest request, HttpSession session) {
@@ -55,8 +58,20 @@ public class SellProductController {
 	public String nuevoAnuncio(Model model, Post post, @RequestParam String bname,
 			@RequestParam List<MultipartFile> imagenFile, HttpServletRequest request, HttpSession session)
 			throws IOException {
+		
+		//Save the images
+		int aux = 0;
+		
+		for (MultipartFile mf : imagenFile)
+			if (!mf.getOriginalFilename().equals("")) {
+				imgService.saveImage("posts", post.getId(), mf, aux);
+				aux++;
+			}
 
-		postService.createPost(post, bname, imagenFile, userRepository.findByEmail(request.getUserPrincipal().getName()));
+		post.setnImg(aux);
+
+		//Save rest of the data
+		postService.createPost(post, bname, userRepository.findByEmail(request.getUserPrincipal().getName()));
 
 		return "redirect:/";
 

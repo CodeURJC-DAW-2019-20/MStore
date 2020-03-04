@@ -22,6 +22,7 @@ import store.main.database.UserRepository;
 import store.main.service.CartService;
 import store.main.service.ImageService;
 import store.main.service.LoaderService;
+import store.main.service.UserService;
 
 @Controller
 public class UserProfileController {
@@ -40,6 +41,9 @@ public class UserProfileController {
 	@Autowired
 	private ImageService imgService;
 
+	@Autowired
+	private UserService userService;
+	
 	@Autowired
 	private LoaderService loaderService;
 
@@ -90,15 +94,10 @@ public class UserProfileController {
 	public String updateProfile(Model model, User user, @RequestParam MultipartFile imagenFile,
 			HttpServletRequest request, HttpSession session) throws IOException {
 
+		//Change info
 		User u = getUserInfo(request);
-		u.setFirstName(user.getFirstName());
-		u.setLastName(user.getLastName());
-		if (!user.getPassword().equals(""))
-			u.setBCryptPassword(user.getPassword());
-		u.setPhone(user.getPhone());
-		u.setUserAddress(user.getUserAddress());
-		u.setCreditCard(user.getCreditCard());
-		userRepository.save(u);
+		userService.updateUser(user,u);
+		
 		cService.LoadNotProduct(model, session);
 		if (!imagenFile.getOriginalFilename().equals(""))
 			imgService.saveImage("users", u.getId(), imagenFile, null);

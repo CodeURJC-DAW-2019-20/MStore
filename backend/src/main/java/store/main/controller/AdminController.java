@@ -21,6 +21,7 @@ import store.main.database.Post;
 import store.main.database.PostRepository;
 import store.main.database.UserRepository;
 import store.main.service.CartService;
+import store.main.service.ImageService;
 import store.main.service.LoaderService;
 import store.main.service.PostService;
 
@@ -41,6 +42,9 @@ public class AdminController {
 
 	@Autowired
 	private CartService cService;
+	
+	@Autowired
+	private ImageService imgService;
 
 	@Autowired
 	private PostService postService;
@@ -119,8 +123,29 @@ public class AdminController {
 	public String updatePost(Model model, Post post, @RequestParam String bname, @PathVariable Long id,
 			@RequestParam List<MultipartFile> imagenFile, HttpServletRequest request, HttpSession session)
 			throws IOException {
+			
+		//Update images	
+		Post oldPost = postRepository.findById(id).get();
+		
+		int totalImg = oldPost.getnImg();
+		int numImg = 0;
 
-		postService.setUpdatedPost(post, bname, imagenFile, id);
+		for (MultipartFile mf : imagenFile) {
+			numImg++;
+			if (!mf.getOriginalFilename().equals("")) {
+				if (numImg > totalImg) {
+					imgService.saveImage("posts", oldPost.getId(), mf, totalImg);
+					totalImg++;
+				} else {
+					imgService.saveImage("posts", oldPost.getId(), mf, numImg - 1);
+				}
+			}
+		}
+
+		post.setnImg(totalImg);
+
+		//Update rest of the data
+		postService.setUpdatedPost(post, bname, id);
 
 		session.setAttribute("updated", true);
 

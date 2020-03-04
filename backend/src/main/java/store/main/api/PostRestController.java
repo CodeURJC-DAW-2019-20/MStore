@@ -26,8 +26,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.fasterxml.jackson.annotation.JsonView;
 
 import store.main.database.Brand;
@@ -75,7 +73,10 @@ public class PostRestController {
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Post createPost(@RequestBody Post post) throws IOException {
-		return postService.createPost(post, post.getBrand().getName(), new LinkedList<MultipartFile>(), userComponent.getLoggedUser());
+		
+		post.setnImg(0);
+		
+		return postService.createPost(post, post.getBrand().getName(), userComponent.getLoggedUser());
 	}
 	
 	@JsonView(CompletePost.class)
@@ -83,14 +84,20 @@ public class PostRestController {
 	public ResponseEntity<Post> updatePost(@RequestBody Post post, @PathVariable long id) throws IOException {
 		
 		Optional<Post> oldPost = postRepository.findById(id);
-		
+				
 		if (oldPost.isPresent()) {
+			if (userComponent.getLoggedUser().getEmail().equals(oldPost.get().getUser().getEmail()) 
+					|| userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN")) {
 			
-			Post updatedPost = postService.setUpdatedPost(post, post.getBrand().getName(), new LinkedList<MultipartFile>(), id);
-			
-			return new ResponseEntity<>(updatedPost, HttpStatus.OK);
+				post.setnImg(oldPost.get().getnImg());
+				Post updatedPost = postService.setUpdatedPost(post, post.getBrand().getName(), id);
+				
+				return new ResponseEntity<Post>(updatedPost, HttpStatus.OK);
+			} else {
+				return new ResponseEntity<Post>(HttpStatus.FORBIDDEN);
+			}		
 		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
 		}
 	}
 

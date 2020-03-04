@@ -1,14 +1,9 @@
 package store.main.service;
 
 import java.io.IOException;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-
 import store.main.database.Brand;
 import store.main.database.BrandRepository;
 import store.main.database.Post;
@@ -24,10 +19,7 @@ public class PostService {
 
 	@Autowired
 	private BrandRepository brandRepository;
-	
-	@Autowired
-	private ImageService imgService;
-	
+		
 	@Autowired
 	private UserRepository userRepository;
 
@@ -41,8 +33,7 @@ public class PostService {
 		return b;
 	}
 	
-	public Post createPost(Post post, @RequestParam String bname,
-			@RequestParam List<MultipartFile> imagenFile, User u) throws IOException {
+	public Post createPost(Post post, @RequestParam String bname, User u) throws IOException {
 
 		Brand b = getBrand(bname);
 		post.setBrand(b);
@@ -51,14 +42,6 @@ public class PostService {
 		post.setUser(u);
 		postRepository.save(post);
 
-		int aux = 0;
-		for (MultipartFile mf : imagenFile)
-			if (!mf.getOriginalFilename().equals("")) {
-				imgService.saveImage("posts", post.getId(), mf, aux);
-				aux++;
-			}
-
-		post.setnImg(aux);
 		userRepository.save(u);
 		b.getPosts().add(post);
 		brandRepository.save(b);
@@ -66,8 +49,7 @@ public class PostService {
 		return post;
 	}
 	
-	public Post setUpdatedPost(Post post, @RequestParam String bname, @RequestParam List<MultipartFile> imagenFile,
-			@PathVariable Long id) throws IOException {
+	public Post setUpdatedPost(Post post, @RequestParam String bname, Long id) throws IOException {
 
 		Brand b = getBrand(bname);
 				
@@ -80,23 +62,6 @@ public class PostService {
 		post.setComponentTag(post.getComponent());
 		post.setId(oldPost.getId());
 		post.setPostAddress(oldPost.getPostAddress());
-
-		int totalImg = oldPost.getnImg();
-		int numImg = 0;
-
-		for (MultipartFile mf : imagenFile) {
-			numImg++;
-			if (!mf.getOriginalFilename().equals("")) {
-				if (numImg > totalImg) {
-					imgService.saveImage("posts", post.getId(), mf, totalImg);
-					totalImg++;
-				} else {
-					imgService.saveImage("posts", post.getId(), mf, numImg - 1);
-				}
-			}
-		}
-
-		post.setnImg(totalImg);
 
 		postRepository.save(post);
 		
