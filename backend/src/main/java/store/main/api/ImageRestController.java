@@ -65,6 +65,37 @@ public class ImageRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@PutMapping("/user/{id}")
+	public ResponseEntity<Post> updateUserImage(@PathVariable long id, @RequestParam MultipartFile imagenFile)
+			throws IOException {
+		Optional<User> user = userRepository.findById(id);
+		if (user.isPresent()) {
+			imgService.saveImage("users", user.get().getId(), imagenFile, null);
+			return new ResponseEntity<>(HttpStatus.CREATED);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@PostMapping("/post/{id}")
+	public ResponseEntity<Post> newPostImage(@PathVariable long id, @RequestParam MultipartFile imagenFile)
+			throws IOException {
+		Optional<Post> post = postRepository.findById(id);
+		if (post.isPresent()) {
+			if(post.get().getnImg()<3) {
+				imgService.saveImage("posts", post.get().getId(), imagenFile, post.get().getnImg());
+				post.get().setnImg(post.get().getnImg() + 1);
+				postRepository.save(post.get());
+			return new ResponseEntity<>(HttpStatus.CREATED);
+			}
+			else {
+				return new ResponseEntity<Post>(HttpStatus.FORBIDDEN);
+			}
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 
 }
 
