@@ -63,5 +63,15 @@ public class ImageService implements WebMvcConfigurer {
 
 		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg").body(file);
 	}
+	
+	public ResponseEntity<Object> createResponseFromImagePost(String folderName, long id,Integer nImage) throws MalformedURLException {
+
+		Path folder = FILES_FOLDER.resolve(folderName);
+
+		Resource file = new UrlResource(createFilePath(id, folder,nImage).toUri());
+
+		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg").body(file);
+	}
+
 
 }
