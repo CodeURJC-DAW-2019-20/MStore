@@ -1,5 +1,6 @@
 package store.main.api;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -26,7 +27,7 @@ import store.main.database.*;
 import store.main.service.ImageService;
 
 @RestController
-@RequestMapping("/api/image")
+@RequestMapping("/api")
 public class ImageRestController {
 
 	@Autowired
@@ -38,7 +39,7 @@ public class ImageRestController {
 	@Autowired
 	private ImageService imgService;
 
-	@GetMapping("/post/{id}")
+	@GetMapping("/post/{id}/image")
 	public ResponseEntity<Collection<Object>> getPostImage(@PathVariable long id) throws IOException {
 		Optional<Post> post = postRepository.findById(id);
 		List<Object> list = new LinkedList<>();
@@ -56,7 +57,7 @@ public class ImageRestController {
 		return new ResponseEntity<Collection<Object>>(HttpStatus.NOT_FOUND);
 	}
 
-	@GetMapping("/user/{id}")
+	@GetMapping("/user/{id}/image")
 	public ResponseEntity<Object> getUserImage(@PathVariable long id) throws IOException {
 		Optional<User> user = userRepository.findById(id);
 		if (user.isPresent()) {
@@ -66,19 +67,24 @@ public class ImageRestController {
 		}
 	}
 	
-	@PutMapping("/user/{id}")
+	@PutMapping("/user/{id}/image")
 	public ResponseEntity<Post> updateUserImage(@PathVariable long id, @RequestParam MultipartFile imagenFile)
 			throws IOException {
-		Optional<User> user = userRepository.findById(id);
-		if (user.isPresent()) {
-			imgService.saveImage("users", user.get().getId(), imagenFile, null);
-			return new ResponseEntity<>(HttpStatus.CREATED);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+		return this.imgService.saveUserImage(userRepository, id, imagenFile);
 	}
 	
-	@PostMapping("/post/{id}")
+	@PostMapping("/user/{id}/image")
+	public ResponseEntity<Post> createUserImage(@PathVariable long id, @RequestParam MultipartFile imagenFile)
+			throws IOException {
+		File file=new File("images/users/image-"+id+".jpg");
+		if(file.exists()) {
+			return new ResponseEntity<Post>(HttpStatus.NOT_ACCEPTABLE);
+		}
+		return imgService.saveUserImage(userRepository,id,imagenFile);
+	}
+
+
+	@PostMapping("/post/{id}/image")
 	public ResponseEntity<Post> newPostImage(@PathVariable long id, @RequestParam MultipartFile imagenFile)
 			throws IOException {
 		Optional<Post> post = postRepository.findById(id);

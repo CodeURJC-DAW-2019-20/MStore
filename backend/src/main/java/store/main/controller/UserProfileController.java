@@ -87,7 +87,7 @@ public class UserProfileController {
 	}
 
 	@PostMapping("/profile/updated")
-	public String nuevoAnuncio(Model model, User user, @RequestParam MultipartFile imagenFile,
+	public String updateProfile(Model model, User user, @RequestParam MultipartFile imagenFile,
 			HttpServletRequest request, HttpSession session) throws IOException {
 
 		User u = getUserInfo(request);
