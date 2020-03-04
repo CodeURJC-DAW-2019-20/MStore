@@ -50,6 +50,18 @@ public class CartRestController {
 		}
 	}
 	
+	@GetMapping("/{id}")
+	@JsonView(completeCart.class)
+	public ResponseEntity<Object> getCartItem(HttpSession session, @PathVariable long id) {
+		List<Post> elements= (List<Post>) session.getAttribute("cart");
+		Optional<Post> post = postRepository.findById(id);
+		if (post.isPresent() && elements.contains(post.get())) {
+			return new ResponseEntity<>(post.get(),HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
 	@PutMapping("/{id}")
 	@JsonView(completeCart.class)
 	public ResponseEntity<Post> ModifyCart(HttpSession session, @PathVariable long id) {
