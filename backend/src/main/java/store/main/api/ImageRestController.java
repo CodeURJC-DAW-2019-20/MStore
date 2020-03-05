@@ -92,7 +92,7 @@ public class ImageRestController {
 			throws IOException {
 		Optional<Post> post = postRepository.findById(id);
 		if (post.isPresent()) {
-			if (userComponent.getLoggedUser().getRoles().contains("ROLE_USER")) {
+			if (userComponent.getLoggedUser().getEmail().equals(post.get().getUser().getEmail())) {
 				if (post.get().getnImg() < 4) {
 					imgService.saveImage("posts", post.get().getId(), imagenFile, post.get().getnImg());
 					post.get().setnImg(post.get().getnImg() + 1);
