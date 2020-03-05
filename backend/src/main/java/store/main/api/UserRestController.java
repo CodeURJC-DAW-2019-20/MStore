@@ -43,16 +43,16 @@ public class UserRestController {
 	
 	@JsonView(User.BasicInfo.class)
 	@PostMapping("/")
-	@ResponseStatus(HttpStatus.CREATED)
-	public User postUser(@RequestBody User user) {
-		if(user != null && userRepository.findByEmail(user.getEmail())==null) {
-		user.getRoles().add("ROLE_USER");
-		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-
-		userRepository.save(user);
-		return user;
+	public ResponseEntity<User> postUser(@RequestBody User user) {
+		user.setId(null);
+		if(user != null && userRepository.findByEmail(user.getEmail())!=null)
+			return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
+		else{
+			user.getRoles().add("ROLE_USER");
+			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+			userRepository.save(user);
+			return new ResponseEntity<User>(user,HttpStatus.CREATED);
 		}
-		return null;
 	}
 	
 	@JsonView(User.BasicInfo.class)
@@ -75,15 +75,10 @@ public class UserRestController {
 		}
 	}
 	
-	@GetMapping("/")
-	@JsonView(User.BasicInfo.class)
-	public Collection<User> getBrands() {
-		return userRepository.findAll();
-	}
 	
 	@GetMapping("/{id}")
 	@JsonView(CompleteUser.class)
-	public ResponseEntity<User> getBrandId(@PathVariable long id) {
+	public ResponseEntity<User> getUser(@PathVariable long id) {
 		Optional<User> us = userRepository.findById(id);
 		if(us.isPresent()) {
 			return new ResponseEntity<User>(us.get(),HttpStatus.OK);

@@ -76,7 +76,7 @@ public class PostRestController {
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Post createPost(@RequestBody Post post) throws IOException {
-
+		post.setId(null);
 		post.setnImg(0);
 
 		return postService.createPost(post, post.getBrand().getName(), userComponent.getLoggedUser());

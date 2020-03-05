@@ -23,6 +23,7 @@ import store.main.database.Rating;
 import store.main.database.RatingRepository;
 import store.main.database.User;
 import store.main.service.RatingService;
+import store.main.service.UserComponent;
 
 @RestController
 @RequestMapping("/api/rating")
@@ -33,19 +34,15 @@ public class RatingRestController {
 	
 	@Autowired
 	private RatingRepository ratingRepository;
+	
+	@Autowired
+	private UserComponent userComponent;
 
 	interface RatingUsers extends Rating.BasicInfo, Rating.BuyerInfo, Rating.SellerInfo, User.BasicInfo {}
 	
-	
-	@GetMapping("/")
-	@JsonView(RatingUsers.class)
-	public Collection<Rating> getBrands() {
-		return ratingRepository.findAll();
-	}
-	
 	@GetMapping("/{id}")
 	@JsonView(RatingUsers.class)
-	public ResponseEntity<Rating> getBrandId(@PathVariable long id) {
+	public ResponseEntity<Rating> getRating(@PathVariable long id) {
 		Optional<Rating> rating=ratingRepository.findById(id);
 		if(rating.isPresent()) {
 			return new ResponseEntity<Rating>(rating.get(),HttpStatus.OK);
@@ -57,42 +54,11 @@ public class RatingRestController {
 	
 	@JsonView(RatingUsers.class)
 	@PostMapping("/")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Rating createPost(@RequestBody Rating rating) throws IOException {
-		return ratingService.saveRating(rating.getStars()+"", rating.getSeller().getId(), rating.getBuyer().getId());
+	public ResponseEntity<Rating> createRating(@RequestBody Rating rating) throws IOException {
+		rating.setId(null);
+		if(userComponent.getLoggedUser().getId()==rating.getBuyer().getId()&&userComponent.getLoggedUser().getSellers().contains(rating.getSeller()))
+			return new ResponseEntity<Rating>(ratingService.saveRating(rating.getStars()+"", rating.getSeller().getId(), rating.getBuyer().getId()),HttpStatus.CREATED);
+		else
+			return new ResponseEntity<Rating>(HttpStatus.FORBIDDEN);
 	}
-	
-	@JsonView(RatingUsers.class)
-	@PutMapping("/{id}")
-	public ResponseEntity<Rating> updateRating(@RequestBody Rating updatedRating, @PathVariable long id) {
-		
-		Optional<Rating> optionalRating = ratingRepository.findById(id);
-		
-		if (optionalRating.isPresent()) {
-			
-			Rating rating = optionalRating.get();
-			
-			rating.setStars(updatedRating.getStars());
-			ratingRepository.save(rating);
-			
-			return new ResponseEntity<Rating>(rating, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<Rating>(HttpStatus.NOT_FOUND);
-		}
-	}
-	
-	@JsonView(RatingUsers.class)
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Rating> deleteRating(@PathVariable long id){
-		Optional<Rating> rating = ratingRepository.findById(id);
-		if(rating.isPresent()) {
-		ratingService.deleteRatingFromDB(rating.get());
-		return new ResponseEntity<Rating>(rating.get(),HttpStatus.OK);
-		}
-		else {
-			return new ResponseEntity<Rating>(HttpStatus.NOT_FOUND);
-		}
-	}
-
-	
 }
