@@ -49,9 +49,6 @@ public class PostRestController {
 	@Autowired
 	private UserComponent userComponent;
 
-	@Autowired
-	private BrandRepository brandRepository;
-
 	interface PostDetail extends Post.BasicInfo, Post.BrandInfo, Brand.BasicInfo {
 	}
 
@@ -104,11 +101,10 @@ public class PostRestController {
 		}
 	}
 
-	@JsonView(CompletePost.class)
-	@GetMapping("/")
-	public ResponseEntity<List<Post>> shop(Model model, @RequestParam(defaultValue = "0") Integer pageNo,
+	
+	public ResponseEntity<List<Post>> aux(Model model, @RequestParam(defaultValue = "0") Integer pageNo,
 			@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "id") String sortBy,
-			@RequestParam(defaultValue = "asc") String ord, HttpServletRequest request, HttpSession session) {
+			@RequestParam(defaultValue = "asc") String ord) {
 		Pageable paging;
 
 		if (ord.equalsIgnoreCase("desc")) {
@@ -121,51 +117,59 @@ public class PostRestController {
 
 		List<Post> list = p.getContent();
 
+		if (list.isEmpty())
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 		return new ResponseEntity<>(list, HttpStatus.OK);
 
 	}
 
-	@JsonView(PostDetail.class)
-	@GetMapping("/brand/{name}")
-	public ResponseEntity<List<Post>> shopByBrand(Model model, @PathVariable("name") String name,
-			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
-			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord,
-			HttpServletRequest request, HttpSession session) {
 
-		Brand b = brandRepository.findFirstByNameIgnoreCase(name);
-		List<Post> posts = new LinkedList<>();
+	@JsonView(PostDetail.class)
+	@GetMapping("/")
+	public ResponseEntity<List<Post>> getPost(Model model, @RequestParam(defaultValue = "-1") Integer tag,
+			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
+			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord) {
+
+		if (tag == -1) {
+			return aux(model, pageNo, pageSize, sortBy, ord);
+		}
+		List<Post> p = new LinkedList<>();
 
 		if (sortBy.equalsIgnoreCase("price")) {
 			if (ord.equalsIgnoreCase("asc")) {
-				posts = postRepository.findByBrandOrderByPriceAsc(b);
+				p = postRepository.findByComponentTagOrderByPriceAsc(tag);
+
 			} else if (ord.equalsIgnoreCase("desc")) {
-				posts = postRepository.findByBrandOrderByPriceDesc(b);
+				p = postRepository.findByComponentTagOrderByPriceDesc(tag);
 			}
 		} else if (sortBy.equalsIgnoreCase("name")) {
 			if (ord.equalsIgnoreCase("asc")) {
-				posts = postRepository.findByBrandOrderByNameAsc(b);
+				p = postRepository.findByComponentTagOrderByNameAsc(tag);
+
 			} else if (ord.equalsIgnoreCase("desc")) {
-				posts = postRepository.findByBrandOrderByNameDesc(b);
+				p = postRepository.findByComponentTagOrderByNameDesc(tag);
 			}
 		} else {
-			posts = b.getPosts();
+			p = postRepository.findByComponentTag(tag);
 		}
 
-		Integer nPost = posts.size();
+		Integer nPost = p.size();
 		Integer maxPages = nPost / 10;
+
+		if (pageNo > maxPages)
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
 		Integer ini = pageNo * 10;
 		Integer fin;
-		if (pageNo >= maxPages) {
+		if (pageNo == maxPages) {
 			fin = nPost;
 		} else {
 			fin = ini + 10;
 		}
-		List<Post> p = new LinkedList<>();
-		if (!(ini > fin)) {
-			p = posts.subList(ini, fin);
-		}
-		return new ResponseEntity<>(p, HttpStatus.OK);
+		List<Post> posts = p.subList(ini, fin);
+
+		return new ResponseEntity<>(posts, HttpStatus.OK);
 	}
 
 	@JsonView(PostDetail.class)
@@ -184,38 +188,4 @@ public class PostRestController {
 			return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
 		}
 	}
-
-	/*
-	 * @JsonView(PostDetail.class)
-	 * 
-	 * @GetMapping("/{tag}") public ResponseEntity<List<Post>> shopByTag(Model
-	 * model, @PathVariable("tag") Integer tag,
-	 * 
-	 * @RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue
-	 * = "10") Integer pageSize,
-	 * 
-	 * @RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue
-	 * = "asc") String ord, HttpServletRequest request, HttpSession session) {
-	 * 
-	 * List<Post> p = new LinkedList<>();
-	 * 
-	 * if (sortBy.equalsIgnoreCase("price")) { if (ord.equalsIgnoreCase("asc")) { p
-	 * = postRepository.findByComponentTagOrderByPriceAsc(tag);
-	 * 
-	 * } else if (ord.equalsIgnoreCase("desc")) { p =
-	 * postRepository.findByComponentTagOrderByPriceDesc(tag); } } else if
-	 * (sortBy.equalsIgnoreCase("name")) { if (ord.equalsIgnoreCase("asc")) { p =
-	 * postRepository.findByComponentTagOrderByNameAsc(tag);
-	 * 
-	 * } else if (ord.equalsIgnoreCase("desc")) { p =
-	 * postRepository.findByComponentTagOrderByNameDesc(tag); } } else { p =
-	 * postRepository.findByComponentTag(tag); }
-	 * 
-	 * Integer nPost = p.size(); Integer maxPages = nPost / 10;
-	 * 
-	 * Integer ini = pageNo * 10; Integer fin; if (pageNo == maxPages) { fin =
-	 * nPost; } else { fin = ini + 10; } List<Post> posts = p.subList(ini, fin);
-	 * 
-	 * return new ResponseEntity<>(posts, HttpStatus.OK); }
-	 */
 }
