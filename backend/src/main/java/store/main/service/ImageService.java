@@ -69,25 +69,30 @@ public class ImageService implements WebMvcConfigurer {
 
 		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg").body(file);
 	}
-	
-	public ResponseEntity<Object> createResponseFromImagePost(String folderName, long id,Integer nImage) throws MalformedURLException {
+
+	public ResponseEntity<Object> createResponseFromImagePost(String folderName, long id, Integer nImage)
+			throws MalformedURLException {
 
 		Path folder = FILES_FOLDER.resolve(folderName);
 
-		Resource file = new UrlResource(createFilePath(id, folder,nImage).toUri());
+		Resource file = new UrlResource(createFilePath(id, folder, nImage).toUri());
 
 		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg").body(file);
 	}
-	
-	public ResponseEntity<Post> saveUserImage(UserRepository userRepository, long id, MultipartFile imagenFile) throws IOException {
+
+	public ResponseEntity<Post> saveUserImage(UserRepository userRepository, long id, MultipartFile imagenFile,
+			UserComponent userComponent) throws IOException {
 		Optional<User> user = userRepository.findById(id);
 		if (user.isPresent()) {
-			this.saveImage("users", user.get().getId(), imagenFile, null);
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			if (userComponent.getLoggedUser().getEmail().equals(user.get().getEmail())) {
+				this.saveImage("users", user.get().getId(), imagenFile, null);
+				return new ResponseEntity<>(HttpStatus.CREATED);
+			} else {
+				return new ResponseEntity<Post>(HttpStatus.FORBIDDEN);
+			}
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-
 
 }
