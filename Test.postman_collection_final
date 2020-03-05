@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "547be8c1-3b53-4a15-a208-2cc5518fa650",
+		"_postman_id": "1ad113b1-5b0d-47fd-8165-a70148b52de6",
 		"name": "Test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "https://localhost:8443/api/post/",
+			"name": "Add new post",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -52,19 +52,68 @@
 						"api",
 						"post",
 						""
-					],
-					"query": [
-						{
-							"key": "",
-							"value": ""
-						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/post/95",
+			"name": "Get post with id 91",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "passw1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "dm@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"nImg\": 1,\r\n        \"name\": \"AMD new card\",\r\n        \"component\": \"Video Cards & Video Devices\",\r\n        \"tags\": [\r\n            \"gaming\",\r\n            \"graphics\",\r\n            \"AMD\"\r\n        ],\r\n        \"price\": 950,\r\n        \"details\": \"EDITED: MID Quality Graphics Card from company AMD, air cooling, semi used, made for mid tier gaming, Afterburner support, can also be implemented ith SLI tchnology.\",\r\n        \"features\": \"EDITED: MID Quality Graphics Card from company AMD, air cooling, semi used.\",\r\n        \"postAddress\": \"Plaza de la limonada 3\",\r\n        \"componentTag\": 3,\r\n        \"brand\": {\r\n            \"id\": 2,\r\n            \"name\": \"AMD\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/post/91",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"post",
+						"91"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit post with id 91",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -100,7 +149,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/post/95",
+					"raw": "https://localhost:8443/api/post/91",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -109,34 +158,31 @@
 					"path": [
 						"api",
 						"post",
-						"95"
+						"91"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/post/95",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "Edit post with id 91 by admin",
 			"request": {
 				"auth": {
 					"type": "basic",
 					"basic": [
 						{
 							"key": "password",
-							"value": "passw1",
+							"value": "admin",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "dm@gmail.com",
+							"value": "admin@gmail.com",
 							"type": "string"
 						}
 					]
 				},
-				"method": "GET",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -155,7 +201,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/post/95",
+					"raw": "https://localhost:8443/api/post/115",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -164,25 +210,92 @@
 					"path": [
 						"api",
 						"post",
-						"95"
+						"115"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/image/post/95",
+			"name": "Get user with id 92",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "passw1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "dm@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"nImg\": 1,\r\n        \"name\": \"AMD new card\",\r\n        \"component\": \"Video Cards & Video Devices\",\r\n        \"tags\": [\r\n            \"gaming\",\r\n            \"graphics\",\r\n            \"AMD\"\r\n        ],\r\n        \"price\": 950,\r\n        \"details\": \"EDITED: MID Quality Graphics Card from company AMD, air cooling, semi used, made for mid tier gaming, Afterburner support, can also be implemented ith SLI tchnology.\",\r\n        \"features\": \"EDITED: MID Quality Graphics Card from company AMD, air cooling, semi used.\",\r\n        \"postAddress\": \"Plaza de la limonada 3\",\r\n        \"componentTag\": 3,\r\n        \"brand\": {\r\n            \"id\": 2,\r\n            \"name\": \"AMD\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/post/91",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"post",
+						"91"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add image to post with id 91",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "passw1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "dm@gmail.com",
+							"type": "string"
+						}
+					]
 				},
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
 					}
 				],
 				"body": {
@@ -191,7 +304,7 @@
 						{
 							"key": "imagenFile",
 							"type": "file",
-							"src": "/C:/Users/TheBrightKing/Desktop/Mstoregit/3bec063ecb6371b24c984b65ce9fdbff.jpg"
+							"src": "/C:/Users/TheBrightKing/Pictures/ada.jpg"
 						}
 					],
 					"options": {
@@ -201,7 +314,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/image/user/97",
+					"raw": "https://localhost:8443/api/post/91/image",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -209,16 +322,16 @@
 					"port": "8443",
 					"path": [
 						"api",
-						"image",
-						"user",
-						"97"
+						"post",
+						"91",
+						"image"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/image/post/95",
+			"name": "Get image from post with id 91",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -252,8 +365,8 @@
 					"formdata": [
 						{
 							"key": "imagenFile",
-							"value": null,
-							"type": "file"
+							"type": "file",
+							"src": []
 						}
 					],
 					"options": {
@@ -263,7 +376,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/image/post/95",
+					"raw": "https://localhost:8443/api/post/91/image",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -271,7 +384,28 @@
 					"port": "8443",
 					"path": [
 						"api",
-						"image",
+						"post",
+						"91",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete post 91",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/post/95",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
 						"post",
 						"95"
 					]
@@ -280,7 +414,43 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/post/brand/AMD",
+			"name": "Delete post 91 by admin",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/post/95",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"post",
+						"95"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get posts from AMD brand",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -336,69 +506,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/post/brand/AMD?pageNo=2",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "passw1",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "dm@gmail.com",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:8443/api/post/brand/AMD?pageNo=2",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"post",
-						"brand",
-						"AMD"
-					],
-					"query": [
-						{
-							"key": "pageNo",
-							"value": "2"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "https://localhost:8443/api/post/brand/AMD?pageNo=1&ord=desc&pageSize=12&sortBy=name",
+			"name": "Get posts from amd sorted from page 1",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -472,7 +580,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/post/brand/AMD?pageNo=0&ord=desc&sortBy=price",
+			"name": "Get posts from AMD sorted by price from page 0",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -542,7 +650,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/post/?pageNo=1&sortBy=name&ord=desc",
+			"name": "Get posts from AMD sorted by name from page 1",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -577,28 +685,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/post/95",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:8443/api/post/95",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"post",
-						"95"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "https://localhost:8443/api/user/",
+			"name": "Get user list",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -632,8 +719,8 @@
 					"formdata": [
 						{
 							"key": "imagenFile",
-							"value": null,
-							"type": "file"
+							"type": "file",
+							"src": []
 						}
 					],
 					"options": {
@@ -659,7 +746,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/user/12",
+			"name": "Get user with id 12",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -693,8 +780,8 @@
 					"formdata": [
 						{
 							"key": "imagenFile",
-							"value": null,
-							"type": "file"
+							"type": "file",
+							"src": []
 						}
 					],
 					"options": {
@@ -720,7 +807,47 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/user/",
+			"name": "Post a new user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Roberto\",\r\n    \"lastName\": \"Sanchez\",\r\n    \"email\": \"robert@gmail.com\",\r\n    \"phone\": \"456654342\",\r\n    \"password\": \"1234\",\r\n    \"userAddress\": null,\r\n    \"creditCard\": \"\",\r\n    \"tags\": [\r\n        \"\",\r\n        \"\",\r\n        \"\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/user/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user with id 92",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -747,7 +874,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/user/97",
+					"raw": "https://localhost:8443/api/user/92",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -756,14 +883,123 @@
 					"path": [
 						"api",
 						"user",
-						"97"
+						"92"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/post/",
+			"name": "Add image to user with id 92",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imagenFile",
+							"type": "file",
+							"src": "/C:/Users/TheBrightKing/Pictures/ada.jpg"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/user/92/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"user",
+						"92",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get image from user with id 92",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "passw1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "dm@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imagenFile",
+							"type": "file",
+							"src": []
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/user/92/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"user",
+						"92",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 92 posts a new item",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -785,13 +1021,13 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\r\n        \"nImg\": 1,\r\n        \"name\": \"Monitor UltraFine 4K\",\r\n        \"component\": \"Monitors\",\r\n        \"tags\": [\r\n            \"monitor\"\r\n        ],\r\n        \"price\": 250,\r\n        \"details\": \"With an impressive resolution of 3,840 by 2,160 pixels, LG's 23.7-inch UltraFine 4K monitor shows you your photos and videos in all their splendor. \",\r\n        \"features\": \"With an impressive resolution\",\r\n        \"postAddress\": \"Madrid Street \",\r\n        \"componentTag\": 7,\r\n        \"brand\": {\r\n            \"id\": 33,\r\n            \"name\": \"HP\"\r\n        }\r\n    }",
+					"raw": " {\r\n        \"nImg\": 1,\r\n        \"name\": \"AMD new card from user 92\",\r\n        \"component\": \"Video Cards & Video Devices\",\r\n        \"tags\": [\r\n            \"gaming\",\r\n            \"graphics\",\r\n            \"AMD\"\r\n        ],\r\n        \"price\": 700,\r\n        \"details\": \"High Quality Graphics Card from company AMD, air cooling, semi used, made for mid tier gaming, Afterburner support, can also be implemented ith SLI tchnology.\",\r\n        \"features\": \"High Quality Graphics Card from company AMD, air cooling, semi used.\",\r\n        \"postAddress\": \"Plaza de la limonada 3\",\r\n        \"componentTag\": 3,\r\n        \"brand\": {\r\n            \"id\": 2,\r\n            \"name\": \"AMD\"\r\n        }\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -815,54 +1051,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/image/post/95",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "imagenFile",
-							"type": "file",
-							"src": "/C:/Users/TheBrightKing/Desktop/Mstoregit/3bec063ecb6371b24c984b65ce9fdbff.jpg"
-						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:8443/api/image/user/97",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"image",
-						"user",
-						"97"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "https://localhost:8443/api/brand/",
+			"name": "Get brand list",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -905,12 +1094,12 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/brand/100",
+			"name": "Add new brand",
 			"request": {
 				"auth": {
 					"type": "noauth"
 				},
-				"method": "DELETE",
+				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -921,7 +1110,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"MSI\"\r\n}",
+					"raw": "{\r\n    \"name\":\"MSI2\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -929,7 +1118,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/brand/100",
+					"raw": "https://localhost:8443/api/brand/103",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -938,14 +1127,14 @@
 					"path": [
 						"api",
 						"brand",
-						"100"
+						"103"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/post/ (new brand)",
+			"name": "add post to the new brand",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -997,47 +1186,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/brand/ (new MSI to edit)",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"MSI2\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:8443/api/brand/103",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"brand",
-						"103"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "https://localhost:8443/api/brand/103 (edited)",
+			"name": "Get brand with id 94",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1064,7 +1213,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/brand/103",
+					"raw": "https://localhost:8443/api/brand/94",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -1073,14 +1222,54 @@
 					"path": [
 						"api",
 						"brand",
-						"103"
+						"94"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/rating/",
+			"name": "Delete brand with id 94",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"MSI\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/brand/94",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"brand",
+						"94"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all ratings",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1123,7 +1312,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/rating/56",
+			"name": "Get rating with id 56",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1166,50 +1355,22 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/rating/ (not logged)",
+			"name": "post a new rating while logged",
 			"request": {
 				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"stars\": 4,\n    \"seller\": {\n        \"id\": 97,\n        \"firstName\": \"Roberto\",\n        \"lastName\": \"Sanchez\",\n        \"email\": \"robert@gmail.com\",\n        \"phone\": \"456654342\",\n        \"password\": \"$2a$10$GzmSyZnYMgzsxgmUPdycUueXfqnrJ5qeknVv398XYwDRtvdTN3rEu\",\n        \"userAddress\": null,\n        \"creditCard\": \"\"\n    },\n    \"buyer\": {\n        \"id\": 55,\n        \"firstName\": \"DIEGO\",\n        \"lastName\": \"RAMOS\",\n        \"email\": \"dimonra13@gmail.com\",\n        \"phone\": \"669087298\",\n        \"password\": \"$2a$10$b/isCLZGoxMe4OaXjgp5juB7P6YXb.pRKKXgpxMnXz47ffnwnTEtO\",\n        \"userAddress\": null,\n        \"creditCard\": null\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "robert@gmail.com",
+							"type": "string"
 						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:8443/api/rating/",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"rating",
-						""
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "https://localhost:8443/api/rating/ (logged)",
-			"request": {
-				"auth": {
-					"type": "noauth"
 				},
 				"method": "POST",
 				"header": [
@@ -1246,7 +1407,59 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/rating/104",
+			"name": "Post a new rating while not logged",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "robert@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"stars\": 4,\n    \"seller\": {\n        \"id\": 97,\n        \"firstName\": \"Roberto\",\n        \"lastName\": \"Sanchez\",\n        \"email\": \"robert@gmail.com\",\n        \"phone\": \"456654342\",\n        \"password\": \"$2a$10$GzmSyZnYMgzsxgmUPdycUueXfqnrJ5qeknVv398XYwDRtvdTN3rEu\",\n        \"userAddress\": null,\n        \"creditCard\": \"\"\n    },\n    \"buyer\": {\n        \"id\": 55,\n        \"firstName\": \"DIEGO\",\n        \"lastName\": \"RAMOS\",\n        \"email\": \"dimonra13@gmail.com\",\n        \"phone\": \"669087298\",\n        \"password\": \"$2a$10$b/isCLZGoxMe4OaXjgp5juB7P6YXb.pRKKXgpxMnXz47ffnwnTEtO\",\n        \"userAddress\": null,\n        \"creditCard\": null\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/rating/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"rating",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get rating with id 96",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1259,8 +1472,8 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -1273,7 +1486,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/rating/104",
+					"raw": "https://localhost:8443/api/rating/96",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -1282,14 +1495,14 @@
 					"path": [
 						"api",
 						"rating",
-						"104"
+						"96"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/rating/105",
+			"name": "Delete rating 96",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -1313,7 +1526,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/rating/105",
+					"raw": "https://localhost:8443/api/rating/96",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -1322,100 +1535,14 @@
 					"path": [
 						"api",
 						"rating",
-						"105"
+						"96"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/rating/105",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": 56,\r\n    \"stars\": 3,\r\n    \"seller\": {\r\n        \"id\": 1,\r\n        \"firstName\": \"Diego\",\r\n        \"lastName\": \"Montoto\",\r\n        \"email\": \"dm@gmail.com\",\r\n        \"phone\": \"565465456\",\r\n        \"password\": \"$2a$10$WZ6RGYyDXm/pq9JLTrkFpuJoYqMzPRVoLxBa8B9UhSC1oE10WixBG\",\r\n        \"userAddress\": null,\r\n        \"creditCard\": \"\"\r\n    },\r\n    \"buyer\": {\r\n        \"id\": 55,\r\n        \"firstName\": \"DIEGO\",\r\n        \"lastName\": \"RAMOS\",\r\n        \"email\": \"dimonra13@gmail.com\",\r\n        \"phone\": \"669087298\",\r\n        \"password\": \"$2a$10$b/isCLZGoxMe4OaXjgp5juB7P6YXb.pRKKXgpxMnXz47ffnwnTEtO\",\r\n        \"userAddress\": null,\r\n        \"creditCard\": null\r\n    }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:8443/api/rating/105",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"rating",
-						"105"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "https://localhost:8443/api/cart/",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": 56,\r\n    \"stars\": 3,\r\n    \"seller\": {\r\n        \"id\": 1,\r\n        \"firstName\": \"Diego\",\r\n        \"lastName\": \"Montoto\",\r\n        \"email\": \"dm@gmail.com\",\r\n        \"phone\": \"565465456\",\r\n        \"password\": \"$2a$10$WZ6RGYyDXm/pq9JLTrkFpuJoYqMzPRVoLxBa8B9UhSC1oE10WixBG\",\r\n        \"userAddress\": null,\r\n        \"creditCard\": \"\"\r\n    },\r\n    \"buyer\": {\r\n        \"id\": 55,\r\n        \"firstName\": \"DIEGO\",\r\n        \"lastName\": \"RAMOS\",\r\n        \"email\": \"dimonra13@gmail.com\",\r\n        \"phone\": \"669087298\",\r\n        \"password\": \"$2a$10$b/isCLZGoxMe4OaXjgp5juB7P6YXb.pRKKXgpxMnXz47ffnwnTEtO\",\r\n        \"userAddress\": null,\r\n        \"creditCard\": null\r\n    }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:8443/api/cart/",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"cart",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "https://localhost:8443/api/cart/",
+			"name": "Create new cart",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -1455,7 +1582,50 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/cart/12432131",
+			"name": "Get cart",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 56,\r\n    \"stars\": 3,\r\n    \"seller\": {\r\n        \"id\": 1,\r\n        \"firstName\": \"Diego\",\r\n        \"lastName\": \"Montoto\",\r\n        \"email\": \"dm@gmail.com\",\r\n        \"phone\": \"565465456\",\r\n        \"password\": \"$2a$10$WZ6RGYyDXm/pq9JLTrkFpuJoYqMzPRVoLxBa8B9UhSC1oE10WixBG\",\r\n        \"userAddress\": null,\r\n        \"creditCard\": \"\"\r\n    },\r\n    \"buyer\": {\r\n        \"id\": 55,\r\n        \"firstName\": \"DIEGO\",\r\n        \"lastName\": \"RAMOS\",\r\n        \"email\": \"dimonra13@gmail.com\",\r\n        \"phone\": \"669087298\",\r\n        \"password\": \"$2a$10$b/isCLZGoxMe4OaXjgp5juB7P6YXb.pRKKXgpxMnXz47ffnwnTEtO\",\r\n        \"userAddress\": null,\r\n        \"creditCard\": null\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/cart/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"cart",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add element with invalid id to cart",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -1495,7 +1665,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/cart/5",
+			"name": "add/remove post 5",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -1535,7 +1705,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/cart/4",
+			"name": "add/remove post 4 ",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -1575,7 +1745,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/cart/7",
+			"name": "add/remove post 7",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -1615,7 +1785,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/cart/4",
+			"name": "Get post 4 from cart",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1658,15 +1828,12 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/cart/4",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "Delete cart",
 			"request": {
 				"auth": {
 					"type": "noauth"
 				},
-				"method": "GET",
+				"method": "DELETE",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -1685,7 +1852,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/cart/4",
+					"raw": "https://localhost:8443/api/cart/",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -1694,7 +1861,7 @@
 					"path": [
 						"api",
 						"cart",
-						"4"
+						""
 					]
 				}
 			},
