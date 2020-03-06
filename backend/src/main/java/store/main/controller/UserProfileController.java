@@ -20,6 +20,7 @@ import store.main.database.RatingRepository;
 import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.CartService;
+import store.main.service.GraphicService;
 import store.main.service.ImageService;
 import store.main.service.LoaderService;
 import store.main.service.UserService;
@@ -30,10 +31,10 @@ public class UserProfileController {
 	private UserRepository userRepository;
 
 	@Autowired
-	private RatingRepository ratingRepository;
-
-	@Autowired
 	private PostRepository postRepository;
+	
+	@Autowired
+	private GraphicService graphicService;
 
 	@Autowired
 	private CartService cService;
@@ -53,10 +54,12 @@ public class UserProfileController {
 
 	@GetMapping("/public_profile")
 	public String loadPublicProfile(Model model, HttpServletRequest request, HttpSession session) {
+		
 		User u = getUserInfo(request);
+		List<Integer> l = graphicService.createGraph(u);
+		
 		for (int i = 0; i < 6; i++)
-			model.addAttribute("stars" + i,
-					ratingRepository.findBySellerEmailIgnoreCaseAndStars(u.getEmail(), i).size());
+			model.addAttribute("stars" + i,l.get(i));
 
 		List<Post> lp = postRepository.findFirst8ByUserEmail(u.getEmail());
 

@@ -1,5 +1,6 @@
 package store.main.controller;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,20 +21,22 @@ import store.main.database.RatingRepository;
 import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.CartService;
+import store.main.service.GraphicService;
 import store.main.service.LoaderService;
 import store.main.service.RatingService;
 
 @Controller
 public class SellerProfileController {
+	
 	@Autowired
 	private UserRepository userRepository;
-
-	@Autowired
-	private RatingRepository ratingRepository;
 	
 	@Autowired
 	private RatingService ratingService;
 
+	@Autowired
+	private GraphicService graphicService;
+	
 	@Autowired
 	private CartService cService;
 
@@ -59,10 +62,10 @@ public class SellerProfileController {
 
 	private void loadPublicProfile(Model model, HttpServletRequest request, long id) {
 		Optional<User> u = userRepository.findById(id);
+		List<Integer> l = graphicService.createGraph(u.get());
 
 		for (int i = 0; i < 6; i++)
-			model.addAttribute("stars" + i,
-					ratingRepository.findBySellerEmailIgnoreCaseAndStars(u.get().getEmail(), i).size());
+			model.addAttribute("stars" + i,l.get(i));
 
 		List<Post> lp = postRepository.findFirst8ByUserEmail(u.get().getEmail());
 		model.addAttribute("u", u.get());
