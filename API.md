@@ -310,7 +310,7 @@ The user can send a seller rating.
   <p>
   - <b>Key:</b> Content-Type <br>
   - <b>Value:</b> application/json
-  <p>
+  </p>
 <p> <b>Body:</b></p>
 
 ```json
@@ -358,7 +358,7 @@ The user can send a seller rating.
 
 ### 6. Images
 
-###1. USER IMAGES
+### 1. USER IMAGES
 
 ###  ___Show user image___
 A user can see the image of another user.
@@ -367,6 +367,7 @@ A user can see the image of another user.
 - ***Success Response ✔️:***```200 OK```<br>
 
 <b>Response:</b>
+
 ```json
 {
     "headers": {
@@ -398,11 +399,11 @@ The user can modify their user picture.
 - **Method:** ``` PUT ```
 - ***Success Response ✔️:***```201 CREATE```<br>
 
-<p> <b>Body:</b></p>
+<p> <b>Body:</b></p></p>
   <p>
-  - <b>Key:</b> imagenFile <br> (file)
+  - <b>Key:</b> imagenFile(file) <br>
   - <b>Value:</b> file.jpg
-  <p>
+  </p>
 
 - ***Error Response ❌:***<br>
 ```403 FORBIDDEN``` <p>If the user has not logged in correctly.</p>
@@ -416,16 +417,16 @@ The user can add a user picture.
 
 <p> <b>Body:</b></p>
   <p>
-  - <b>Key:</b> imagenFile <br> (file)
+  - <b>Key:</b> imagenFile(file) <br>
   - <b>Value:</b> file.jpg
-  <p>
+  </p>
 
 - ***Error Response ❌:***<br>
 ```403 FORBIDDEN``` <p>If the user has not logged in correctly.</p>
 ```404 NOT FOUND``` <p>If the user ID was not found.</p>
 ```406 NOT ACCEPTABLE``` <p>If the user already had an image on their profile.</p>
 
-###2. POST IMAGES
+### 2. POST IMAGES
 
 ###  ___Show post image___
 A user can see the images of a post.
@@ -488,9 +489,9 @@ The admin can modify a post image.
 
 <p> <b>Body:</b></p>
   <p>
-  - <b>Key:</b> imagenFile <br> (file)
+  - <b>Key:</b> imagenFile(file) <br>
   - <b>Value:</b> file.jpg
-  <p>
+  </p>
 
 - ***Error Response ❌:***<br>
 ```403 FORBIDDEN``` <p>Only the admin can update images.</p>
@@ -504,9 +505,9 @@ The user can add a user picture.
 
 <p> <b>Body:</b></p>
   <p>
-  - <b>Key:</b> imagenFile <br> (file)
+  - <b>Key:</b> imagenFile(file) <br>
   - <b>Value:</b> file.jpg
-  <p>
+  </p>
 
 - ***Error Response ❌:***<br>
 ```401 UNAUTHORIZED``` <p>If the user has not logged in correctly.</p>
@@ -588,7 +589,7 @@ Visitors can add or remove products from the cart.
 ```
 
 - ***Error Response ❌:***<br>
-```404 NOT FOUND``` <pIf the post ID was not found.</p>
+```404 NOT FOUND``` <p>If the post ID was not found.</p>
 
 ###  ___New cart___
 New cart is created.
@@ -613,6 +614,33 @@ The user can remove all cart products.
 ```json
 {}
 ```
+### 8. Graphics
+
+###  ___Show Graphic___
+you can see a seller's rating chart
+- **URL:** http://localhost:8443/api/graphic/{id}
+- **Method:** ``` GET ```
+- ***Success Response ✔️:***```200 OK```<br>
+
+<b>Response:</b>
+<p>You need to log in with Basic Auth.</p>
+
+
+```json
+[
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+]
+```
+
+
+- ***Error Response ❌:***<br>
+```404 NOT FOUND``` <p>If the user ID was not found.</p>
+```401 UNAUTHORIZED```<p>If the user has not logged in correctly.</p>
 
 ---------------------
 
