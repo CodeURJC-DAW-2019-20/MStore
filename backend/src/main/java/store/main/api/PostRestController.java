@@ -1,6 +1,7 @@
 package store.main.api;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +34,7 @@ import store.main.database.BrandRepository;
 import store.main.database.Post;
 import store.main.database.PostRepository;
 import store.main.database.User;
+import store.main.service.LoaderService;
 import store.main.service.PostService;
 import store.main.service.UserComponent;
 
@@ -53,16 +55,33 @@ public class PostRestController {
 	}
 
 	interface CompletePost
-			extends Post.BasicInfo, Post.BrandInfo, Brand.BasicInfo, Post.TagsInfo, Post.UserInfo, User.BasicInfo {
+			extends Post.BasicInfo, Post.BrandInfo, Brand.BasicInfo, Post.TagsInfo, Post.UserInfo, User.BasicInfo,User.ListInfo {
 	}
 
 	@JsonView(CompletePost.class)
 	@GetMapping("/{id}")
-	public ResponseEntity<Post> getPost(@PathVariable("id") long id) {
+	public ResponseEntity<Post> getPost(@PathVariable("id") long id,HttpSession session) {
 
 		Optional<Post> post = postRepository.findById(id);
 
 		if (post.isPresent()) {
+			postService.getComp().setPostList1(new LinkedList<>());
+			postService.getComp().setPostList2(new LinkedList<>());
+			postService.getComp().setPostList3(new LinkedList<>());
+			if(userComponent.isLoggedUser()) {
+				User user=userComponent.getLoggedUser();
+				try {
+				postService.loadRecommendationsIntoBD(user, post.get());
+				}
+				catch(Exception e) {
+					user.setTags(new LinkedList<>());
+					postService.loadRecommendationsIntoBD(user, post.get());
+				}
+			}
+			else {
+				postService.loadRecommendationsIntoSession(session, post.get());
+			}
+			postService.addToRecomendedList();
 			return new ResponseEntity<>(post.get(), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -187,5 +206,10 @@ public class PostRestController {
 		} else {
 			return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
 		}
+	}
+	@JsonView(PostDetail.class)
+	@GetMapping("/toplist")
+	public Collection<Post> recommendPost(){
+		return postService.getFinalList();
 	}
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import store.main.database.*;
 import store.main.service.CartService;
 import store.main.service.LoaderService;
+import store.main.service.PostService;
 
 @Controller
 public class ComponentController {
@@ -39,6 +40,10 @@ public class ComponentController {
 
 	@Autowired
 	private CartService cService;
+	
+	@Autowired
+	private PostService postService;
+	
 
 	@RequestMapping("/post/{id}-{img}")
 	public String mapPost(Model model, @PathVariable Long id, @PathVariable int img, HttpSession session,
@@ -54,11 +59,11 @@ public class ComponentController {
 		this.postList3 = new LinkedList<>();
 
 		if (request.isUserInRole("USER")) {
-			loadRecommendationsIntoBD(request, post);// private method that loads the
+			postService.loadRecommendationsIntoBD(request, post);// private method that loads the
 														// recommendations of a
 														// registered user
 		} else {
-			loadRecommendationsIntoSession(session, post);// private method that loads
+			postService.loadRecommendationsIntoSession(session, post);// private method that loads
 															// the recommendations of a
 															// visiting user
 		}
@@ -82,12 +87,24 @@ public class ComponentController {
 		model.addAttribute("images", images);
 		model.addAttribute("image", img);
 
-		addToRecomendedList(model);
+		postService.addToRecomendedList(model);
 
 		model = loaderService.userLoader(model, request);
 		model = loaderService.postLoader(model); // posts
 
 		return "shop-single-electronics";
+	}
+
+	public void setPostList1(List<Post> postList1) {
+		this.postList1 = postList1;
+	}
+
+	public void setPostList2(List<Post> postList2) {
+		this.postList2 = postList2;
+	}
+
+	public void setPostList3(List<Post> postList3) {
+		this.postList3 = postList3;
 	}
 
 	@RequestMapping("/post/{id}-{img}/itemAdded")
@@ -125,101 +142,8 @@ public class ComponentController {
 		return "shop-single-electronics";
 	}
 
-	private void loadRecommendationsIntoBD(HttpServletRequest request, Post post) {
-		User user = userRepository.findByEmail(request.getUserPrincipal().getName());
-		List<String> userTags = user.getTags();
-		loadList(userTags, post);
-		user.setTags(userTags);
-		userRepository.save(user); // update user tag list
-	}
-
-	private void loadRecommendationsIntoSession(HttpSession session, Post post) {
-		List<String> userTags = (List<String>) session.getAttribute("tags");
-		List<String> list = loadList(userTags, post);
-		session.setAttribute("tags", list); // update user tag list in session
-	}
-
-	private void addToRecomendedList(Model model) {
-		finalList = new LinkedList<>();// reset final list
-		finalList.addAll(postList2);
-		finalList.addAll(postList1);
-		finalList.addAll(postList3);
-		model.addAttribute("recomend", !finalList.isEmpty()); // there are recommended posts
-		model.addAttribute("list", finalList);
-	}
-
-	private List<String> loadList(List<String> userTags, Post post) {
-
-		// Advanced algorithm
-
-		Random r = new Random(); // need a Random to choose the tags of a post
-		if (userTags == null) {
-			userTags = new LinkedList<>();
-		}
-
-		if (userTags.isEmpty()) { // the user enters for the first time and the recommended tags are those of the
-									// post he is seeing
-			if (post.getTags().size() > 3) {
-				while (userTags.size() < 3) {
-					userTags.add(post.getTags().get(r.nextInt(post.getTags().size())));
-				}
-			} else {
-				for (String tag : post.getTags()) {
-					if (userTags.size() < 3) {
-						userTags.add(tag);
-					}
-				}
-				while (userTags.size() < 3) {
-					userTags.add(userTags.get(0));
-				}
-			}
-		} else {// if the user has already visited other posts, the user's tags are replaced by
-				// more recent tags
-			if (post.getTags().size() > 2) {
-				int cont = 0;
-				while (cont < 2) {
-					userTags.add(0, post.getTags().get(r.nextInt(post.getTags().size())));
-					cont++;
-				}
-			} else {
-				for (String tag : post.getTags()) {
-					userTags.add(0, tag);
-				}
-			}
-			// remove old and unnecessary tags(the user has more than 3 recommended tags)
-			if (userTags.size() > 3) {
-				List<String> removeList = new LinkedList<>();
-				for (int i = 3; i < userTags.size(); i++) {
-					removeList.add(userTags.get(i));
-				}
-				for (String t : removeList) {
-					userTags.remove(t);
-				}
-			}
-
-		}
-		List<Post> postsList = postRepository.findAll();
-		/**
-		 * Once having the 3 key tags, a maximum of 9 recommended posts are searched.
-		 * postList1 stores the key tag 1 postList2 stores the key tag 2 postList3 3
-		 * stores the key tag 3
-		 */
-		for (Post p : postsList) {
-			if (p != post) {
-				if (p.getTags().contains(userTags.get(0)) && postList1.size() < 3 && !postList2.contains(p)
-						&& !postList3.contains(p) && !postList1.contains(p)) {
-					postList1.add(p);
-				} else if (p.getTags().contains(userTags.get(1)) && postList2.size() < 3 && !postList1.contains(p)
-						&& !postList3.contains(p) && !postList2.contains(p)) {
-					postList2.add(p);
-				} else if (p.getTags().contains(userTags.get(2)) && postList3.size() < 3 && !postList1.contains(p)
-						&& !postList2.contains(p) && !postList3.contains(p)) {
-					postList3.add(p);
-				}
-			}
-		}
-		return userTags;
-
+	public void setFinalList(List<Post> finalList) {
+		this.finalList = finalList;
 	}
 
 	private List<Boolean> getratings(Post post, int totalr) {
@@ -257,4 +181,23 @@ public class ComponentController {
 		}
 		return totalr;
 	}
+	
+	public List<Post> getPostList1() {
+		return postList1;
+	}
+
+
+	public List<Post> getPostList2() {
+		return postList2;
+	}
+
+
+	public List<Post> getPostList3() {
+		return postList3;
+	}
+
+	public List<Post> getFinalList() {
+		return finalList;
+	}
+
 }
