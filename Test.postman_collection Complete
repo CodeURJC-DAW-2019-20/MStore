@@ -807,6 +807,49 @@
 			"response": []
 		},
 		{
+			"name": "Get rating graphics from user with id 12",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 56,\r\n    \"stars\": 3,\r\n    \"seller\": {\r\n        \"id\": 1,\r\n        \"firstName\": \"Diego\",\r\n        \"lastName\": \"Montoto\",\r\n        \"email\": \"dm@gmail.com\",\r\n        \"phone\": \"565465456\",\r\n        \"password\": \"$2a$10$WZ6RGYyDXm/pq9JLTrkFpuJoYqMzPRVoLxBa8B9UhSC1oE10WixBG\",\r\n        \"userAddress\": null,\r\n        \"creditCard\": \"\"\r\n    },\r\n    \"buyer\": {\r\n        \"id\": 55,\r\n        \"firstName\": \"DIEGO\",\r\n        \"lastName\": \"RAMOS\",\r\n        \"email\": \"dimonra13@gmail.com\",\r\n        \"phone\": \"669087298\",\r\n        \"password\": \"$2a$10$b/isCLZGoxMe4OaXjgp5juB7P6YXb.pRKKXgpxMnXz47ffnwnTEtO\",\r\n        \"userAddress\": null,\r\n        \"creditCard\": null\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/rating/96",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"rating",
+						"96"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Post a new user",
 			"request": {
 				"auth": {
