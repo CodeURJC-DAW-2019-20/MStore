@@ -56,7 +56,7 @@ Alows a user to log out.
 ###  2. Users
   ###  ___Show user___
 Show a specific MStore user by id.
-- **URL:** http://localhost:8443/api/user/{id}
+- **URL:** http://localhost:8443/api/users/{id}
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 
@@ -87,7 +87,7 @@ Show a specific MStore user by id.
 
 ###  ___Modify user profile___
 The user can modify their profile.
-- **URL:** http://localhost:8443/api/user/{id}
+- **URL:** http://localhost:8443/api/users/{id}
 - **Method:** ``` PUT ```
 - ***Success Response ✔️:***```200 OK```<br>
 <p> <b>Header:</b></p>
@@ -131,7 +131,7 @@ You need to log in with Basic Auth.
 
 ###  ___Register an user___
 the user can register to MStore.
-- **URL:** http://localhost:8443/api/user/
+- **URL:** http://localhost:8443/api/users/
 - **Method:** ``` POST ```
 - ***Success Response ✔️:***```201 CREATED```<br>
 <p> <b>Header:</b></p>
@@ -172,11 +172,333 @@ the user can register to MStore.
 
 ###  3. Posts
 
+ ###  ___Show posts___
+Show all MStore posts.
+- **URL:** http://localhost:8443/api/posts/
+- **Method:** ``` GET ```
+- ***Success Response ✔️:***```200 OK``` <br>
+
+<b>Response:</b>
+```json
+[
+    {
+        "id": 44,
+        "nImg": 3,
+        "name": "Blue headphones",
+        "component": "Headphones",
+        "price": 25,
+        "details": "Blue logitech headphones with good sound quality, wireless but with cable option.",
+        "features": "Blue logitech headphones with good sound quality",
+        "postAddress": "Calle de los angeles 7",
+        "componentTag": 5,
+        "brand": {
+            "id": 43,
+            "name": "Logitech"
+        }
+    },
+    {
+        "id": 52,
+        "nImg": 1,
+        "name": "HP laser printer",
+        "component": "Laser Printer",
+        "price": 130,
+        "details": "Not used HP laser printer, comes in the original box",
+        "features": "HP laser printer new",
+        "postAddress": "Calle del manzano 2",
+        "componentTag": 0,
+        "brand": {
+            "id": 33,
+            "name": "HP"
+        }
+    },
+    {
+        "id": 53,
+        "nImg": 1,
+        "name": "3D printer",
+        "component": "3D Printer",
+        "price": 320,
+        "details": "3D printer from brand logitech with blue filament included, drivers not needed",
+        "features": "3D logitech branded printer",
+        "postAddress": "Calle del manzano 2",
+        "componentTag": 10,
+        "brand": {
+            "id": 43,
+            "name": "Logitech"
+        }
+    }
+            <.......>
+]
+```
+
+ ###  ___Show post___
+Show a specific MStore post by id..
+- **URL:** http://localhost:8443/api/posts/{id}
+- **Method:** ``` GET ```
+- ***Success Response ✔️:***```200 OK``` <br>
+
+<b>Response:</b>
+```json
+{
+    "id": 52,
+    "nImg": 1,
+    "name": "HP laser printer",
+    "component": "Laser Printer",
+    "tags": [
+        "laser",
+        "printer",
+        "HP"
+    ],
+    "price": 130,
+    "details": "Not used HP laser printer, comes in the original box",
+    "features": "HP laser printer new",
+    "postAddress": "Calle del manzano 2",
+    "componentTag": 0,
+    "brand": {
+        "id": 33,
+        "name": "HP"
+    },
+    "user": {
+        "id": 47,
+        "firstName": "Maria",
+        "lastName": "Sanchez",
+        "email": "mary@gmail.com",
+        "phone": "766578948",
+        "password": "$2a$10$vXuN5ZR/Sz7r0zeR0D2ANONrAD68PBH6aMv92UZHpBtqVCsPxgY8S",
+        "userAddress": null,
+        "creditCard": "",
+        "tags": [],
+        "roles": [
+            "ROLE_USER"
+        ]
+    }
+}
+```
+- ***Error Response ❌:***<br>
+```404 NOT_FOUND``` <p>If the post ID was not found.</p>
+
+###  ___Sell product___
+The user can sell a product to MStore.
+- **URL:** http://localhost:8443/api/posts/
+- **Method:** ``` POST ```
+- ***Success Response ✔️:***```201 CREATED```<br>
+<p> <b>Header:</b></p>
+  <p>
+  - <b>Key:</b> Content-Type <br>
+  - <b>Value:</b> application/json
+  <p>
+<p> <b>Body:</b></p>
+
+```json
+{
+    "name": "HP Monitor",
+    "component": "Laser Printer",
+    "tags": [
+        "monitor","HP"
+    ],
+    "price": 2500,
+    "details": "The best HP monitor",
+    "features": "52' full HD",
+    "postAddress": "Calle del manzano 22",
+    "componentTag": 7,
+    "brand": {
+        "name": "HP"
+    }
+}
+```
+<b>Response:</b>
+
+```json
+{
+{
+    "id": 93,
+    "nImg": 0,
+    "name": "HP Monitor",
+    "component": "Laser Printer",
+    "tags": [
+        "monitor",
+        "HP"
+    ],
+    "price": 2500,
+    "details": "The best HP monitor",
+    "features": "52' full HD",
+    "postAddress": "Calle del manzano 22",
+    "componentTag": 7,
+    "brand": {
+        "id": 33,
+        "name": "HP"
+    },
+    "user": {
+        "id": 58,
+        "firstName": "Admin",
+        "lastName": "ElAdmin",
+        "email": "admin@gmail.com",
+        "phone": "67434344",
+        "password": "$2a$10$vz56wKtvG9g1bzvpvo42GOjuy.4eLdV5sqaJP6yBui384c0nF1Q6m",
+        "userAddress": "Calle del admin 1",
+        "creditCard": null,
+        "tags": [
+            "HP",
+            "HP",
+            "laser",
+            "printer",
+            "HP"
+        ],
+        "roles": [
+            "ROLE_USER",
+            "ROLE_ADMIN"
+        ]
+    }
+}
+}
+```
+
+- ***Error Response ❌:***<br>
+```401 UNAUTHORIZED``` <p>The user is not logged.</p>
+
+###  ___Modify posts___
+The admin can modify posts.
+- **URL:** http://localhost:8443/api/posts/{id}
+- **Method:** ``` PUT ```
+- ***Success Response ✔️:***```200 OK```<br>
+<p> <b>Header:</b></p>
+  <p>
+  - <b>Key:</b> Content-Type <br>
+  - <b>Value:</b> application/json
+  <p>
+<p> <b>Body:</b></p>
+  <p>
+Admin needs to log in with Basic Auth.
+  <p>
+
+```json
+{
+    "name": "HP Monitor Edit",
+    "component": "Monitor",
+    "tags": [
+        "monitor","HP"
+    ],
+    "price": 2500,
+    "details": "The best HP monitor",
+    "features": "52' full HD",
+    "postAddress": "Calle del manzano 22",
+    "componentTag": 7,
+    "brand": {
+        "name": "HP"
+    }
+}
+```
+<b>Response:</b>
+
+```json
+{
+    "id": 93,
+    "nImg": 0,
+    "name": "HP Monitor Edit",
+    "component": "Monitor",
+    "tags": [
+        "monitor",
+        "HP"
+    ],
+    "price": 2500,
+    "details": "The best HP monitor",
+    "features": "52' full HD",
+    "postAddress": "Calle del manzano 22",
+    "componentTag": 7,
+    "brand": {
+        "id": 33,
+        "name": "HP"
+    },
+    "user": {
+        "id": 58,
+        "firstName": "Admin",
+        "lastName": "ElAdmin",
+        "email": "admin@gmail.com",
+        "phone": "67434344",
+        "password": "$2a$10$vz56wKtvG9g1bzvpvo42GOjuy.4eLdV5sqaJP6yBui384c0nF1Q6m",
+        "userAddress": "Calle del admin 1",
+        "creditCard": null,
+        "tags": [
+            "HP",
+            "HP",
+            "laser",
+            "printer",
+            "HP"
+        ],
+        "roles": [
+            "ROLE_USER",
+            "ROLE_ADMIN"
+        ]
+    }
+}
+```
+
+- ***Error Response ❌:***<br>
+```404 NOT FOUND``` <p>If the post id was not found.</p>
+```403 FORBIDDEN``` <p>If the user is not the admin.</p>
+
+###  ___Show recommendations___
+Show your recommendations.
+- **URL:** http://localhost:8443/api/posts/topProducts
+- **Method:** ``` GET ```
+- ***Success Response ✔️:***```200 OK``` <br>
+
+<b>Response:</b>
+
+```json
+[
+    {
+        "id": 77,
+        "nImg": 1,
+        "name": "HP Monitor 22er 21,5\"",
+        "component": "Monitors",
+        "price": 185,
+        "details": "Get the crisp image quality you crave thanks to this ultra-thin screen with micro-edges, immersive wide viewing angles and integrated audio. ",
+        "features": "",
+        "postAddress": "Madrid Street",
+        "componentTag": 7,
+        "brand": {
+            "id": 33,
+            "name": "HP"
+        }
+    },
+    {
+        "id": 80,
+        "nImg": 1,
+        "name": "HP X500 Black Wired USB Mouse",
+        "component": "Computer Mice",
+        "price": 7,
+        "details": "Designed with Your Comfort in Mind: The elongated arch and contoured shape provides relaxed control for either right or left-hand users",
+        "features": "Inserting the USB cord, you power your mouse and avoid ever replacing batteries\r\nNavigate with the convenient 3 control buttons and central scroll whee",
+        "postAddress": "Madrid Street",
+        "componentTag": 6,
+        "brand": {
+            "id": 33,
+            "name": "HP"
+        }
+    },
+    {
+        "id": 70,
+        "nImg": 1,
+        "name": "HP Monitor 27m 68,58 cm (27\" ), IPS, Full HD",
+        "component": "Monitors",
+        "price": 270,
+        "details": "Enjoy a great screen experience with this elegant HP monitor. Advanced IPS technology provides very wide viewing angles of up to 178 ° with consistent details and vibrant colors.",
+        "features": "IPS display with 68.58 cm (27 \") LED backlight\r\nMicro-edge display, Ultrathin, Very wide viewing angles up to 178 °",
+        "postAddress": "Madrid Street",
+        "componentTag": 7,
+        "brand": {
+            "id": 33,
+            "name": "HP"
+        }
+    }
+]
+```
+
 ###  4. Brands
 
  ###  ___Show brands___
 Show all MStore brands.
-- **URL:** http://localhost:8443/api/brand/
+- **URL:** http://localhost:8443/api/brands/
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 
@@ -236,7 +558,7 @@ Show all MStore brands.
 
  ###  ___Show brand___
 Show a specific MStore brand by id..
-- **URL:** http://localhost:8443/api/brand/{id}
+- **URL:** http://localhost:8443/api/brands/{id}
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 
@@ -267,7 +589,7 @@ Show a specific MStore brand by id..
 
  ###  ___Show rating___
 Show a specific MStore rating by id.
-- **URL:** http://localhost:8443/api/rating/{id}
+- **URL:** http://localhost:8443/api/ratings/{id}
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 
@@ -303,7 +625,7 @@ Show a specific MStore rating by id.
 
 ###  ___Send a rating___
 The user can send a seller rating.
-- **URL:** http://localhost:8443/api/rating/
+- **URL:** http://localhost:8443/api/ratings/
 - **Method:** ``` POST ```
 - ***Success Response ✔️:***```201 CREATED```<br>
 <p> <b>Header:</b></p>
@@ -362,7 +684,7 @@ The user can send a seller rating.
 
 ###  ___Show user image___
 A user can see the image of another user.
-- **URL:** http://localhost:8443/api/user/{id}/image
+- **URL:** http://localhost:8443/api/users/{id}/images
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK```<br>
 
@@ -395,7 +717,7 @@ A user can see the image of another user.
 
 ###  ___Modify a user image___
 The user can modify their user picture.
-- **URL:** http://localhost:8443/api/user/{id}/image
+- **URL:** http://localhost:8443/api/users/{id}/images
 - **Method:** ``` PUT ```
 - ***Success Response ✔️:***```201 CREATE```<br>
 
@@ -411,7 +733,7 @@ The user can modify their user picture.
 
 ###  ___Add a user image___
 The user can add a user picture.
-- **URL:** http://localhost:8443/api/user/{id}/image
+- **URL:** http://localhost:8443/api/users/{id}/images
 - **Method:** ``` POST ```
 - ***Success Response ✔️:***```201 CREATE```<br>
 
@@ -430,7 +752,7 @@ The user can add a user picture.
 
 ###  ___Show post image___
 A user can see the images of a post.
-- **URL:** http://localhost:8443/api/post/{id}/image
+- **URL:** http://localhost:8443/api/posts/{id}/images
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK```<br>
 
@@ -483,7 +805,7 @@ A user can see the images of a post.
 
 ###  ___Modify a post image___
 The admin can modify a post image.
-- **URL:** http://localhost:8443/api/post/{id}-{numimage}/image
+- **URL:** http://localhost:8443/api/posts/{id}-{numimage}/images
 - **Method:** ``` PUT ```
 - ***Success Response ✔️:***```200 OK```<br>
 
@@ -499,7 +821,7 @@ The admin can modify a post image.
 
 ###  ___Add a post image___
 The user can add a user picture.
-- **URL:** http://localhost:8443/api/post/{id}/image
+- **URL:** http://localhost:8443/api/posts/{id}/images
 - **Method:** ``` POST ```
 - ***Success Response ✔️:***```201 CREATE```<br>
 
@@ -520,7 +842,7 @@ The user can add a user picture.
 
  ###  ___Show cart___
 Show all cart products brands.
-- **URL:** http://localhost:8443/api/cart/
+- **URL:** http://localhost:8443/api/carts/
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 ```json
@@ -563,7 +885,7 @@ Show all cart products brands.
 
 ###  ___Update cart___
 Visitors can add or remove products from the cart.
-- **URL:** http://localhost:8443/api/cart/{id}
+- **URL:** http://localhost:8443/api/carts/{id}
 - **Method:** ``` POST ```
 - ***Success Response ✔️:***```200 OK```<br>
 
@@ -593,7 +915,7 @@ Visitors can add or remove products from the cart.
 
 ###  ___New cart___
 New cart is created.
-- **URL:** http://localhost:8443/api/cart/
+- **URL:** http://localhost:8443/api/carts/
 - **Method:** ``` POST ```
 - ***Success Response ✔️:***```201 CREATED```<br>
 
@@ -605,7 +927,7 @@ New cart is created.
 
 ###  ___Remove all cart products___
 The user can remove all cart products.
-- **URL:** http://localhost:8443/api/rating/
+- **URL:** http://localhost:8443/api/carts/
 - **Method:** ``` DELETE ```
 - ***Success Response ✔️:***```200 OK```<br>
 
@@ -618,7 +940,7 @@ The user can remove all cart products.
 
 ###  ___Show Graphic___
 you can see a seller's rating chart
-- **URL:** http://localhost:8443/api/graphic/{id}
+- **URL:** http://localhost:8443/api/graphics/{id}
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK```<br>
 
