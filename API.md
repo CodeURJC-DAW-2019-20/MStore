@@ -2,7 +2,6 @@
 
 # MSTORE - API REST DOCUMENTATION ⌨️
 
-
 ### About our API 🔍
 <p allign="justify">
 All you can find in our Rest API is information about users, posts, our brands, your cart, seller ratings, images and other resources. To use our Rest API, follow the rules in this document.
@@ -26,7 +25,7 @@ The resource API has GET, POST, PUT and DELETE methods. <b>http://localhost:8443
 ###  1. Authentication
   ###  ___Login___
 Alows a user to log in.
-- **URL:** http://localhost:8443/api/logIn
+- **URL:** https://localhost:8443/api/logIn
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK```
 
@@ -47,7 +46,7 @@ Alows a user to log in.
 
 ###  ___Logout___
 Alows a user to log out.
-- **URL:** http://localhost:8443/api/logOut
+- **URL:** https://localhost:8443/api/logOut
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` ```true```
 - ***Error Response ❌:***```401 UNAUTHORIZED```
@@ -56,7 +55,7 @@ Alows a user to log out.
 ###  2. Users
   ###  ___Show user___
 Show a specific MStore user by id.
-- **URL:** http://localhost:8443/api/users/{id}
+- **URL:** https://localhost:8443/api/users/{id}
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 
@@ -87,7 +86,7 @@ Show a specific MStore user by id.
 
 ###  ___Modify user profile___
 The user can modify their profile.
-- **URL:** http://localhost:8443/api/users/{id}
+- **URL:** https://localhost:8443/api/users/{id}
 - **Method:** ``` PUT ```
 - ***Success Response ✔️:***```200 OK```<br>
 <p> <b>Header:</b></p>
@@ -131,7 +130,7 @@ You need to log in with Basic Auth.
 
 ###  ___Register an user___
 the user can register to MStore.
-- **URL:** http://localhost:8443/api/users/
+- **URL:** https://localhost:8443/api/users/
 - **Method:** ``` POST ```
 - ***Success Response ✔️:***```201 CREATED```<br>
 <p> <b>Header:</b></p>
@@ -174,7 +173,7 @@ the user can register to MStore.
 
  ###  ___Show posts___
 Show all MStore posts.
-- **URL:** http://localhost:8443/api/posts/
+- **URL:** https://localhost:8443/api/posts/
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 
@@ -231,8 +230,8 @@ Show all MStore posts.
 ```
 
  ###  ___Show post___
-Show a specific MStore post by id..
-- **URL:** http://localhost:8443/api/posts/{id}
+Show a specific MStore post by name.
+- **URL:** https://localhost:8443/api/posts/{id}
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 
@@ -274,11 +273,11 @@ Show a specific MStore post by id..
 }
 ```
 - ***Error Response ❌:***<br>
-```404 NOT_FOUND``` <p>If the post ID was not found.</p>
+```404 NOT_FOUND``` <p>If the post was not found.</p>
 
 ###  ___Sell product___
 The user can sell a product to MStore.
-- **URL:** http://localhost:8443/api/posts/
+- **URL:** https://localhost:8443/api/posts/
 - **Method:** ``` POST ```
 - ***Success Response ✔️:***```201 CREATED```<br>
 <p> <b>Header:</b></p>
@@ -357,7 +356,7 @@ The user can sell a product to MStore.
 
 ###  ___Modify posts___
 The admin can modify posts.
-- **URL:** http://localhost:8443/api/posts/{id}
+- **URL:** https://localhost:8443/api/posts/{id}
 - **Method:** ``` PUT ```
 - ***Success Response ✔️:***```200 OK```<br>
 <p> <b>Header:</b></p>
@@ -438,7 +437,7 @@ Admin needs to log in with Basic Auth.
 
 ###  ___Show recommendations___
 Show your recommendations.
-- **URL:** http://localhost:8443/api/posts/top_products
+- **URL:** https://localhost:8443/api/posts/top_products
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 
@@ -498,7 +497,7 @@ Show your recommendations.
 
  ###  ___Show brands___
 Show all MStore brands.
-- **URL:** http://localhost:8443/api/brands/
+- **URL:** https://localhost:8443/api/brands/
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 
@@ -558,7 +557,7 @@ Show all MStore brands.
 
  ###  ___Show brand___
 Show a specific MStore brand by id..
-- **URL:** http://localhost:8443/api/brands/{id}
+- **URL:** https://localhost:8443/api/brands/{id}
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 
@@ -589,7 +588,7 @@ Show a specific MStore brand by id..
 
  ###  ___Show rating___
 Show a specific MStore rating by id.
-- **URL:** http://localhost:8443/api/ratings/{id}
+- **URL:** https://localhost:8443/api/ratings/{id}
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 
@@ -625,7 +624,7 @@ Show a specific MStore rating by id.
 
 ###  ___Send a rating___
 The user can send a seller rating.
-- **URL:** http://localhost:8443/api/ratings/
+- **URL:** https://localhost:8443/api/ratings/
 - **Method:** ``` POST ```
 - ***Success Response ✔️:***```201 CREATED```<br>
 <p> <b>Header:</b></p>
@@ -684,7 +683,7 @@ The user can send a seller rating.
 
 ###  ___Show user image___
 A user can see the image of another user.
-- **URL:** http://localhost:8443/api/users/{id}/images
+- **URL:** https://localhost:8443/api/users/{id}/images
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK```<br>
 
@@ -717,7 +716,7 @@ A user can see the image of another user.
 
 ###  ___Modify a user image___
 The user can modify their user picture.
-- **URL:** http://localhost:8443/api/users/{id}/images
+- **URL:** https://localhost:8443/api/users/{id}/images
 - **Method:** ``` PUT ```
 - ***Success Response ✔️:***```201 CREATE```<br>
 
@@ -733,7 +732,7 @@ The user can modify their user picture.
 
 ###  ___Add a user image___
 The user can add a user picture.
-- **URL:** http://localhost:8443/api/users/{id}/images
+- **URL:** https://localhost:8443/api/users/{id}/images
 - **Method:** ``` POST ```
 - ***Success Response ✔️:***```201 CREATE```<br>
 
@@ -752,7 +751,7 @@ The user can add a user picture.
 
 ###  ___Show post image___
 A user can see the images of a post.
-- **URL:** http://localhost:8443/api/posts/{id}/images
+- **URL:** https://localhost:8443/api/posts/{id}/images
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK```<br>
 
@@ -805,7 +804,7 @@ A user can see the images of a post.
 
 ###  ___Modify a post image___
 The admin can modify a post image.
-- **URL:** http://localhost:8443/api/posts/{id}-{numimage}/images
+- **URL:** https://localhost:8443/api/posts/{id}-{numimage}/images
 - **Method:** ``` PUT ```
 - ***Success Response ✔️:***```200 OK```<br>
 
@@ -821,7 +820,7 @@ The admin can modify a post image.
 
 ###  ___Add a post image___
 The user can add a user picture.
-- **URL:** http://localhost:8443/api/posts/{id}/images
+- **URL:** https://localhost:8443/api/posts/{id}/images
 - **Method:** ``` POST ```
 - ***Success Response ✔️:***```201 CREATE```<br>
 
@@ -842,7 +841,7 @@ The user can add a user picture.
 
  ###  ___Show cart___
 Show all cart products brands.
-- **URL:** http://localhost:8443/api/carts/
+- **URL:** https://localhost:8443/api/carts/
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 ```json
@@ -885,7 +884,7 @@ Show all cart products brands.
 
 ###  ___Update cart___
 Visitors can add or remove products from the cart.
-- **URL:** http://localhost:8443/api/carts/{id}
+- **URL:** https://localhost:8443/api/carts/{id}
 - **Method:** ``` POST ```
 - ***Success Response ✔️:***```200 OK```<br>
 
@@ -915,7 +914,7 @@ Visitors can add or remove products from the cart.
 
 ###  ___New cart___
 New cart is created.
-- **URL:** http://localhost:8443/api/carts/
+- **URL:** https://localhost:8443/api/carts/
 - **Method:** ``` POST ```
 - ***Success Response ✔️:***```201 CREATED```<br>
 
@@ -927,7 +926,7 @@ New cart is created.
 
 ###  ___Remove all cart products___
 The user can remove all cart products.
-- **URL:** http://localhost:8443/api/carts/
+- **URL:** https://localhost:8443/api/carts/
 - **Method:** ``` DELETE ```
 - ***Success Response ✔️:***```200 OK```<br>
 
@@ -940,7 +939,7 @@ The user can remove all cart products.
 
 ###  ___Show Graphic___
 you can see a seller's rating chart
-- **URL:** http://localhost:8443/api/graphics/{id}
+- **URL:** https://localhost:8443/api/graphics/{id}
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK```<br>
 
@@ -962,7 +961,6 @@ you can see a seller's rating chart
 
 - ***Error Response ❌:***<br>
 ```404 NOT FOUND``` <p>If the user ID was not found.</p>
-```401 UNAUTHORIZED```<p>If the user has not logged in correctly.</p>
 
 ---------------------
 
