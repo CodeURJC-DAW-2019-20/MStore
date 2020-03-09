@@ -56,35 +56,54 @@ public class PostRestController {
 	interface CompletePost
 			extends Post.BasicInfo, Post.BrandInfo, Brand.BasicInfo, Post.TagsInfo, Post.UserInfo, User.BasicInfo, User.ListInfo {
 	}
-
+	
+	private boolean isNumber(String input){
+		try {
+			Integer.parseInt(input);
+			return true;
+		} catch (NumberFormatException nfe){
+			return false;
+		}
+	}
+	
 	@JsonView(CompletePost.class)
 	@GetMapping("/{id}")
-	public ResponseEntity<Post> getPost(@PathVariable("id") long id,HttpSession session) {
-
-		Optional<Post> post = postRepository.findById(id);
-
-		if (post.isPresent()) {
+	public ResponseEntity<Post> getPost(@PathVariable("id") String input,HttpSession session) {
+		long id;
+		Post post ;
+		if(isNumber(input)) {
+			id = Integer.parseInt(input);
+			Optional<Post> paux = postRepository.findById(id);
+			if(paux.isPresent()) {
+				post=paux.get();
+			} else {
+				post=null;
+			}
+		}else {
+			post = postRepository.findByName(input);
+		}
+		if (post!=null) {
 			postService.getComp().setPostList1(new LinkedList<>());
 			postService.getComp().setPostList2(new LinkedList<>());
 			postService.getComp().setPostList3(new LinkedList<>());
 			if(userComponent.isLoggedUser()) {
 				User user = userComponent.getLoggedUser();
 				try {
-				postService.loadRecommendationsIntoBD(user, post.get());
+					postService.loadRecommendationsIntoBD(user, post);
 				}
 				catch(Exception e) {
 					user.setTags(new LinkedList<>());
-					postService.loadRecommendationsIntoBD(user, post.get());
+					postService.loadRecommendationsIntoBD(user, post);
 				}
-			}
-			else {
-				postService.loadRecommendationsIntoSession(session, post.get());
+			} else {
+				postService.loadRecommendationsIntoSession(session, post);
 			}
 			postService.addToRecomendedList();
-			return new ResponseEntity<>(post.get(), HttpStatus.OK);
+			return new ResponseEntity<>(post, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+		
 	}
 
 	@JsonView(PostExtended.class)

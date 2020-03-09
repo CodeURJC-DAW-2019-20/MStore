@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import store.main.database.Post;
+import store.main.database.PostRepository;
 import store.main.database.User;
 import store.main.database.UserRepository;
 import store.main.service.CartService;
@@ -27,6 +28,10 @@ public class SellProductController {
 	
 	@Autowired
 	private PostService postService;
+	
+	@Autowired
+	private PostRepository postRepository;
+	
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -58,10 +63,13 @@ public class SellProductController {
 	public String nuevoAnuncio(Model model, Post post, @RequestParam String bname,
 			@RequestParam List<MultipartFile> imagenFile, HttpServletRequest request, HttpSession session)
 			throws IOException {
-		
+
+		//Save rest of the data
+		postService.createPost(post, bname, userRepository.findByEmail(request.getUserPrincipal().getName()));
+
 		//Save the images
 		int aux = 0;
-		
+			
 		for (MultipartFile mf : imagenFile)
 			if (!mf.getOriginalFilename().equals("")) {
 				imgService.saveImage("posts", post.getId(), mf, aux);
@@ -69,10 +77,9 @@ public class SellProductController {
 			}
 
 		post.setnImg(aux);
-
-		//Save rest of the data
-		postService.createPost(post, bname, userRepository.findByEmail(request.getUserPrincipal().getName()));
-
+				
+		postRepository.save(post);
+		
 		return "redirect:/";
 
 	}
