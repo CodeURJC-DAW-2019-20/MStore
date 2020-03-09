@@ -62,7 +62,7 @@ public class UserRestController {
 	@PutMapping("/{id}")
 	public ResponseEntity<User> updateUser(@RequestBody User updateUser, @PathVariable long id) throws IOException {
 		
-		if (checkCompleteUser(updateUser)) {
+		if (!checkCompleteUser(updateUser)) {
 			return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
 		}
 		
