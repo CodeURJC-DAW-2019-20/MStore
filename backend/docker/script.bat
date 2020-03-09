@@ -2,5 +2,5 @@ docker run --rm -v {{path}}:/usr/src/project -w /usr/src/project maven:alpine mv
 
 cd ..
 
-docker buid -t appjar -f docker/Dockerfile .
+docker build -t nmartinezs2017/webapp10 -f docker/Dockerfile .
 
