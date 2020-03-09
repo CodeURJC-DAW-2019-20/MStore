@@ -26,6 +26,8 @@ services:
    ports: 
     - "8443:8443"
    environment:
-    SPRING_DATASOURCE_URL: jdbc:mysql://db/mstore?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    SPRING_DATASOURCE_URL: jdbc:mysql://db/mstore?serverTimezone=UTC&useUnicode=yes&characterEncoding=UTF-8&useSSL=false&createDatabaseIfNotExist=true
     SPRING_DATASOURCE_USERNAME: root
     SPRING_DATASOURCE_PASSWORD: pass
+    
+    
