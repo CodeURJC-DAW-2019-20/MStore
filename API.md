@@ -438,7 +438,7 @@ Admin needs to log in with Basic Auth.
 
 ###  ___Show recommendations___
 Show your recommendations.
-- **URL:** http://localhost:8443/api/posts/topProducts
+- **URL:** http://localhost:8443/api/posts/top_products
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 

@@ -1,6 +1,7 @@
 package store.main.api;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ import store.main.service.UserComponent;
 import store.main.service.UserService;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 public class UserRestController {
 
 	@Autowired
@@ -42,10 +43,14 @@ public class UserRestController {
 	@JsonView(User.BasicInfo.class)
 	@PostMapping("/")
 	public ResponseEntity<User> postUser(@RequestBody User user) {
-		user.setId(null);
 		if(user != null && userRepository.findByEmail(user.getEmail())!=null)
 			return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
 		else{
+			if (!checkCompleteUser(user) || user.getPassword() == null) {
+				return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
+			}
+			user.setId(null);
+			user.setPosts(new LinkedList<Post>());
 			user.getRoles().add("ROLE_USER");
 			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 			userRepository.save(user);
@@ -56,6 +61,10 @@ public class UserRestController {
 	@JsonView(User.BasicInfo.class)
 	@PutMapping("/{id}")
 	public ResponseEntity<User> updateUser(@RequestBody User updateUser, @PathVariable long id) throws IOException {
+		
+		if (checkCompleteUser(updateUser)) {
+			return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
+		}
 		
 		Optional<User> optionalUser = userRepository.findById(id);
 		
@@ -72,8 +81,7 @@ public class UserRestController {
 			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	
+		
 	@GetMapping("/{id}")
 	@JsonView(CompleteUser.class)
 	public ResponseEntity<User> getUser(@PathVariable long id) {
@@ -84,6 +92,16 @@ public class UserRestController {
 		else {
 			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 		}
+	}
+	
+	private boolean checkCompleteUser(User user) {
+		
+		if (user.getFirstName() == null || user.getLastName() == null || user.getEmail() == null ||
+				user.getPhone() == null) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 }

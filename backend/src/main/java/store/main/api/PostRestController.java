@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,21 +24,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import store.main.database.Brand;
-import store.main.database.BrandRepository;
 import store.main.database.Post;
 import store.main.database.PostRepository;
 import store.main.database.User;
-import store.main.service.LoaderService;
 import store.main.service.PostService;
 import store.main.service.UserComponent;
 
 @RestController
-@RequestMapping("/api/post")
+@RequestMapping("/api/posts")
 public class PostRestController {
 
 	@Autowired
@@ -53,9 +49,12 @@ public class PostRestController {
 
 	interface PostDetail extends Post.BasicInfo, Post.BrandInfo, Brand.BasicInfo {
 	}
+	
+	interface PostExtended extends Post.BasicInfo, Post.BrandInfo, Brand.BasicInfo, Post.TagsInfo, Post.UserInfo, User.BasicInfo {
+	}	
 
 	interface CompletePost
-			extends Post.BasicInfo, Post.BrandInfo, Brand.BasicInfo, Post.TagsInfo, Post.UserInfo, User.BasicInfo,User.ListInfo {
+			extends Post.BasicInfo, Post.BrandInfo, Brand.BasicInfo, Post.TagsInfo, Post.UserInfo, User.BasicInfo, User.ListInfo {
 	}
 
 	@JsonView(CompletePost.class)
@@ -69,7 +68,7 @@ public class PostRestController {
 			postService.getComp().setPostList2(new LinkedList<>());
 			postService.getComp().setPostList3(new LinkedList<>());
 			if(userComponent.isLoggedUser()) {
-				User user=userComponent.getLoggedUser();
+				User user = userComponent.getLoggedUser();
 				try {
 				postService.loadRecommendationsIntoBD(user, post.get());
 				}
@@ -88,33 +87,38 @@ public class PostRestController {
 		}
 	}
 
-	@JsonView(CompletePost.class)
+	@JsonView(PostExtended.class)
 	@PostMapping("/")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Post createPost(@RequestBody Post post) throws IOException {
+	public ResponseEntity<Post> createPost(@RequestBody Post post) throws IOException {
+		
+		if (!checkCompletePost(post)) {
+			return new ResponseEntity<Post>(HttpStatus.BAD_REQUEST);
+		}
+		
 		post.setId(null);
 		post.setnImg(0);
+			
+		Post newPost = postService.createPost(post, post.getBrand().getName(), userComponent.getLoggedUser());
+		
+		return new ResponseEntity<Post>(newPost, HttpStatus.CREATED);
 
-		return postService.createPost(post, post.getBrand().getName(), userComponent.getLoggedUser());
 	}
 
 	@JsonView(CompletePost.class)
 	@PutMapping("/{id}")
 	public ResponseEntity<Post> updatePost(@RequestBody Post post, @PathVariable long id) throws IOException {
 
+		if (!checkCompletePost(post)) {
+			return new ResponseEntity<Post>(HttpStatus.BAD_REQUEST);
+		}
+		
 		Optional<Post> oldPost = postRepository.findById(id);
 
 		if (oldPost.isPresent()) {
-			if (userComponent.getLoggedUser().getEmail().equals(oldPost.get().getUser().getEmail())
-					|| userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN")) {
+			post.setnImg(oldPost.get().getnImg());
+			Post updatedPost = postService.setUpdatedPost(post, post.getBrand().getName(), id);
 
-				post.setnImg(oldPost.get().getnImg());
-				Post updatedPost = postService.setUpdatedPost(post, post.getBrand().getName(), id);
-
-				return new ResponseEntity<Post>(updatedPost, HttpStatus.OK);
-			} else {
-				return new ResponseEntity<Post>(HttpStatus.FORBIDDEN);
-			}
+			return new ResponseEntity<Post>(updatedPost, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
 		}
@@ -196,20 +200,26 @@ public class PostRestController {
 	public ResponseEntity<Post> deletePost(@PathVariable long id) {
 		Optional<Post> post = postRepository.findById(id);
 		if (post.isPresent()) {
-			if (userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN")) {
-				postService.deletePostFromBD(post.get());
-				return new ResponseEntity<Post>(post.get(), HttpStatus.OK);
-			}
-			else {
-				return new ResponseEntity<Post>(HttpStatus.FORBIDDEN);
-			}
+			postService.deletePostFromBD(post.get());
+			return new ResponseEntity<Post>(post.get(), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
 		}
 	}
 	@JsonView(PostDetail.class)
-	@GetMapping("/toplist")
+	@GetMapping("/top_products")
 	public Collection<Post> recommendPost(){
 		return postService.getFinalList();
+	}
+	
+	
+	private boolean checkCompletePost(Post post) {
+		
+		if (post.getName() == null || post.getComponent() == null || post.getBrand() == null 
+				|| post.getPostAddress() == null || post.getPrice() == null || post.getDetails() == null) {
+			return false;
+		}
+		
+		return true;
 	}
 }

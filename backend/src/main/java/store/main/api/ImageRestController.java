@@ -40,7 +40,7 @@ public class ImageRestController {
 	private UserComponent userComponent;
 
 	//User Images REST API methods
-	@GetMapping("/user/{id}/image")
+	@GetMapping("/users/{id}/images")
 	public ResponseEntity<Object> getUserImage(@PathVariable long id) throws IOException {
 		Optional<User> user = userRepository.findById(id);
 
@@ -51,13 +51,13 @@ public class ImageRestController {
 		}
 	}
 
-	@PutMapping("/user/{id}/image")
+	@PutMapping("/users/{id}/images")
 	public ResponseEntity<Post> updateUserImage(@PathVariable long id, @RequestParam MultipartFile imagenFile)
 			throws IOException {
 		return this.imgService.saveUserImage(userRepository, id, imagenFile, userComponent);
 	}
 
-	@PostMapping("/user/{id}/image")
+	@PostMapping("/users/{id}/images")
 	public ResponseEntity<Post> createUserImage(@PathVariable long id, @RequestParam MultipartFile imagenFile)
 			throws IOException {
 		File file = new File("images/users/image-" + id + ".jpg");
@@ -69,7 +69,7 @@ public class ImageRestController {
 	
 	//Post Images REST API methods
 	
-	@GetMapping("/post/{id}/image")
+	@GetMapping("/posts/{id}/images")
 	public ResponseEntity<Collection<Object>> getPostImage(@PathVariable long id) throws IOException {
 		Optional<Post> post = postRepository.findById(id);
 		List<Object> list = new LinkedList<>();
@@ -87,13 +87,16 @@ public class ImageRestController {
 		return new ResponseEntity<Collection<Object>>(HttpStatus.NOT_FOUND);
 	}
 
-	@PostMapping("/post/{id}/image")
+	@PostMapping("/posts/{id}/images")
 	public ResponseEntity<Post> newPostImage(@PathVariable long id, @RequestParam MultipartFile imagenFile)
 			throws IOException {
 		Optional<Post> post = postRepository.findById(id);
 		if (post.isPresent()) {
 			if (userComponent.getLoggedUser().getEmail().equals(post.get().getUser().getEmail())) {
 				if (post.get().getnImg() < 4) {
+					if (imagenFile.getOriginalFilename().equals("")) {
+						return new ResponseEntity<Post>(HttpStatus.BAD_REQUEST);
+					}
 					imgService.saveImage("posts", post.get().getId(), imagenFile, post.get().getnImg());
 					post.get().setnImg(post.get().getnImg() + 1);
 					postRepository.save(post.get());
@@ -109,21 +112,20 @@ public class ImageRestController {
 		}
 	}
 	
-	@PutMapping("/post/{id}-{nimg}/image")
+	@PutMapping("/posts/{id}-{nimg}/images")
 	public ResponseEntity<Post> updatePostImage(@PathVariable long id, @PathVariable Integer nimg, @RequestParam MultipartFile imagenFile)
 			throws IOException {
 		Optional<Post> post = postRepository.findById(id);
 		if (post.isPresent()) {
-			if (userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN")) {
-				if (nimg < 0 || nimg>=post.get().getnImg()) {
-					return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
-				} else {
-					imgService.saveImage("posts", post.get().getId(), imagenFile,nimg);
-					postRepository.save(post.get());
-					return new ResponseEntity<>(HttpStatus.OK);
-				}
+			if (imagenFile.getOriginalFilename().equals("")) {
+				return new ResponseEntity<Post>(HttpStatus.BAD_REQUEST);
+			}
+			if (nimg < 0 || nimg>=post.get().getnImg()) {
+				return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
 			} else {
-				return new ResponseEntity<Post>(HttpStatus.FORBIDDEN);
+				imgService.saveImage("posts", post.get().getId(), imagenFile,nimg);
+				postRepository.save(post.get());
+				return new ResponseEntity<>(HttpStatus.OK);
 			}
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

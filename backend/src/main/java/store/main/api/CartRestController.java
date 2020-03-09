@@ -26,7 +26,7 @@ import store.main.database.PostRepository;
 import store.main.service.CartService;
 
 @RestController
-@RequestMapping("/api/cart")
+@RequestMapping("/api/carts")
 
 public class CartRestController {
 	

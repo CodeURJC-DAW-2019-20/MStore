@@ -25,21 +25,20 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/logIn").authenticated();
 		
 		// URLs that need authentication to access to it
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/post/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/post/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/post/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/posts/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/posts/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/posts/**").hasRole("ADMIN");
 		
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/user/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasRole("USER");
 		
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user/{id}/image").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/user/{id}/image").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/user/{id}/image").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/post/{id}/image").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/post/{id}/image").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/{id}/images").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/{id}/images").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/posts/{id}/images").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/posts/{id}-{nimg}/images").hasRole("ADMIN");
 		
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/rating/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/rating/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/ratings/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/ratings/**").hasRole("USER");
 				
 		// Other URLs can be accessed without authentication
 		http.authorizeRequests().anyRequest().permitAll();

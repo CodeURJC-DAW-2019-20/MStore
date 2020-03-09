@@ -36,7 +36,7 @@ public class LoginRestController {
 			return new ResponseEntity<>(loggedUser, HttpStatus.OK);
 		}
 	}
-
+	
 	@RequestMapping("/api/logOut")
 	public ResponseEntity<Boolean> logOut(HttpSession session) {
 

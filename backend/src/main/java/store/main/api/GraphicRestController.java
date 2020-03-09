@@ -23,7 +23,7 @@ public class GraphicRestController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@GetMapping("/api/graphic/{id}")
+	@GetMapping("/api/graphics/{id}")
 	public ResponseEntity<List<Integer>> getGraphic (@PathVariable("id") long id){
 		Optional<User> u = userRepository.findById(id);
 		if(u.isPresent())
