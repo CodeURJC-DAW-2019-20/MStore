@@ -174,6 +174,7 @@ the user can register to MStore.
  ###  ___Show posts___
 Show all MStore posts.
 - **URL:** https://localhost:8443/api/posts/
+- **Query params**: pageNo, pageSize, sortBy, ord, tag.
 - **Method:** ``` GET ```
 - ***Success Response ✔️:***```200 OK``` <br>
 
@@ -228,6 +229,8 @@ Show all MStore posts.
             <.......>
 ]
 ```
+- ***Error Response ❌: 404 NOT_FOUND ***<br>
+<p>If no results have been found.</p>
 
  ###  ___Show post___
 Show a specific MStore post by name.
