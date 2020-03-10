@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import store.main.database.Brand;
+import store.main.database.BrandRepository;
 import store.main.database.Post;
 import store.main.database.PostRepository;
 import store.main.database.User;
@@ -44,6 +45,9 @@ public class PostRestController {
 	@Autowired
 	private PostRepository postRepository;
 
+	@Autowired
+	private BrandRepository brandRepository;
+	
 	@Autowired
 	private UserComponent userComponent;
 
@@ -234,10 +238,13 @@ public class PostRestController {
 	
 	private boolean checkCompletePost(Post post) {
 		
-		if (post.getName() == null || post.getComponent() == null || post.getBrand() == null 
-				|| post.getPostAddress() == null || post.getPrice() == null || post.getDetails() == null) {
+		if (post.getName() == null || post.getComponent() == null || post.getBrand() == null ||
+				post.getBrand().getName()==null || post.getPostAddress() == null || post.getPrice() == null || post.getDetails() == null) {
 			return false;
 		}
+		
+		if(brandRepository.findByName(post.getBrand().getName())==null)
+			return false;
 		
 		return true;
 	}

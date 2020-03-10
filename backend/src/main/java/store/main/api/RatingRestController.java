@@ -1,6 +1,7 @@
 package store.main.api;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,13 +49,22 @@ public class RatingRestController {
 		}
 	}
 	
+	private boolean checkSellers(List<User> l,User u) {
+		for(User user:l) {
+			if(user.getId()==u.getId()) {
+				return true;
+			}
+		}
+		return false;
+	}
 	@JsonView(RatingUsers.class)
 	@PostMapping("/")
 	public ResponseEntity<Rating> createRating(@RequestBody Rating rating) throws IOException {
-		if(rating == null||rating.getBuyer() == null||rating.getSeller() == null)
+		User user = userComponent.getLoggedUser();
+		if(rating == null||rating.getBuyer() == null || rating.getBuyer().getId()==null ||rating.getSeller() == null|| rating.getSeller().getId() == null || rating.getBuyer().getSellers()==null)
 			return new ResponseEntity<Rating>(HttpStatus.BAD_REQUEST);
 		rating.setId(null);
-		if(userComponent.getLoggedUser().getId()==rating.getBuyer().getId()&&userComponent.getLoggedUser().getSellers().contains(rating.getSeller()))
+		if(user.getId()==rating.getBuyer().getId()&&checkSellers(rating.getBuyer().getSellers(),rating.getSeller()))
 			return new ResponseEntity<Rating>(ratingService.saveRating(rating.getStars()+"", rating.getSeller().getId(), rating.getBuyer().getId()),HttpStatus.CREATED);
 		else
 			return new ResponseEntity<Rating>(HttpStatus.FORBIDDEN);
