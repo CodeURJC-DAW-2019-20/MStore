@@ -962,18 +962,3 @@ you can see a seller's rating chart
 - ***Error Response ❌:***<br>
 ```404 NOT FOUND``` <p>If the user ID was not found.</p>
 
----------------------
-
-### Instructions for executing the dockerized application 📑
-
----------------------
-
-### Development Environment 📜
-
----------------------
-
-### UML Class Diagram 📂📘
-
-![UML1](https://i.ibb.co/wyqx2R5/Untitled-Diagram-9.jpg)
-![UML2](https://i.ibb.co/CV1RMWV/Untitled-Diagram-10.jpg)
-![UML3](https://i.ibb.co/LJ8jVKQ/Untitled-Diagram-11.jpg)
