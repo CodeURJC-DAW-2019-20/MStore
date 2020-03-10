@@ -321,6 +321,14 @@ docker-compose up
 
 ---------------------
 
+
+### UML Class Diagram 📂📘
+
+![UML1](https://i.ibb.co/wyqx2R5/Untitled-Diagram-9.jpg)
+![UML2](https://i.ibb.co/CV1RMWV/Untitled-Diagram-10.jpg)
+![UML3](https://i.ibb.co/LJ8jVKQ/Untitled-Diagram-11.jpg)
+
+
 ### Members Participation ✅
 
 | Plugin | Description | 5 most important commits | 5 most relevant files
