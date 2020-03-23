@@ -11,11 +11,11 @@
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" color="#111" href="/safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#111">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
@@ -548,7 +548,7 @@
               <div class="star-rating"><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star active" data-feather="star"></i><i class="sr-star" data-feather="star"></i>
               </div><span class="d-inline-block align-middle font-size-sm mt-1 ml-1 text-body">295 reviews</span></a>
             <h2 class="h1 font-weight-light pt-3 pb-2">
-              <del class="lead text-muted mr-2">$175.00</del><span class="text-primary">${{price}}</span>
+              <span class="text-primary">${{price}}</span>
             </h2>
             <div class="d-flex align-items-center pt-2">
               <input class="px-2 form-control mr-2" type="number" name="quantity" style="width: 3.2rem;" value="1" required>
@@ -565,9 +565,7 @@
               <div class="collapse show" id="productInfo" data-parent="#productPanels">
                 <div class="card-body">
                   <ul class="mb-0">
-                    <li>Tell the whole story with the 360° camera that captures every angle in 4K brilliance and share instantly</li>
-                    <li>Capture life as it happens in stunning 4K video and 15MP photos thanks to dual 180° lenses</li>
-                    <li><a class="scroll-to font-weight-semibold" href="#product-details">More info</a></li>
+                    <li>{{features}}</li>
                   </ul>
                 </div>
               </div>
@@ -575,53 +573,6 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="accordion-heading"><a class="collapsed" href="#shippingOptions" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="shippingOptions"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="truck" style="width: 1.1rem; height: 1.1rem;"></i></span>Shipping options<span class="accordion-indicator"><i data-feather="chevron-up"></i></span></a></h3>
-              </div>
-              <div class="collapse" id="shippingOptions" data-parent="#productPanels">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between border-bottom pb-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">Courier</div>
-                      <div class="font-size-sm text-muted">2 - 4 days</div>
-                    </div>
-                    <div>$26.50</div>
-                  </div>
-                  <div class="d-flex justify-content-between border-bottom py-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">Local shipping</div>
-                      <div class="font-size-sm text-muted">up to one week</div>
-                    </div>
-                    <div>$10.00</div>
-                  </div>
-                  <div class="d-flex justify-content-between border-bottom py-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">Flat rate</div>
-                      <div class="font-size-sm text-muted">5 - 7 days</div>
-                    </div>
-                    <div>$33.85</div>
-                  </div>
-                  <div class="d-flex justify-content-between border-bottom py-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">UPS ground shipping</div>
-                      <div class="font-size-sm text-muted">4 - 6 days</div>
-                    </div>
-                    <div>$18.00</div>
-                  </div>
-                  <div class="d-flex justify-content-between pt-2">
-                    <div>
-                      <div class="font-weight-semibold text-dark">Local pickup from store</div>
-                      <div class="font-size-sm text-muted">&mdash;</div>
-                    </div>
-                    <div>$0.00</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h3 class="accordion-heading"><a class="collapsed" href="#tagCloud" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="tagCloud"><span class="d-inline-block pr-2 border-right mr-2 align-middle mt-n1"><i data-feather="tag" style="width: 1.1rem; height: 1.1rem;"></i></span>Tag cloud<span class="accordion-indicator"><i data-feather="chevron-up"></i></span></a></h3>
-              </div>
-              <div class="collapse" id="tagCloud" data-parent="#productPanels">
-                <div class="card-body"><a class="tag-link mr-2 mb-2" href="#">#action camera</a><a class="tag-link mr-2 mb-2" href="#">#360° camera</a><a class="tag-link mr-2 mb-2" href="#">#samsung</a><a class="tag-link mr-2 mb-2" href="#">#4K video</a><a class="tag-link mr-2 mb-2" href="#">#gear 360</a><a class="tag-link mr-2 mb-2" href="#">#VR</a><a class="tag-link mr-2 mb-2" href="#">#electronics</a></div>
               </div>
             </div>
           </div>
@@ -866,7 +817,7 @@
     </footer>
     <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="scroll-to-top-btn-icon" data-feather="chevron-up"></i></a>
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="js/vendor.min.js"></script>
-    <script src="js/theme.min.js"></script>
+    <script src="/js/vendor.min.js"></script>
+    <script src="/js/theme.min.js"></script>
   </body>
 </html>
