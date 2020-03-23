@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 
 @Component({
-  templateUrl: './shop-single-electronics.html',
-  styleUrls: ['./static/css/theme.min.css']
+  templateUrl: './app.postComponent.html',
+  styleUrls: []
 })
 export class postComponent {
   title = 'MStoreAngular';
