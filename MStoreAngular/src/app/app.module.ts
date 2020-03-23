@@ -5,11 +5,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { postComponent } from './app.postComponent';
+import { shopComponent } from './app.shopComponent';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    postComponent,
+    shopComponent
   ],
   imports: [
     BrowserModule,

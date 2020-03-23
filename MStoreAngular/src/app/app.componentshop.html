@@ -1,0 +1,7 @@
+<router-outlet>
+    <span>Shop</span>
+    <br>
+    <br>
+    <span *ngFor='let post of Posts'><a [routerLink]="['/post',post.id]">post con id: {{post.id}}</a> <br></span>
+
+</router-outlet>
