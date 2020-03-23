@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { typeWithParameters } from '@angular/compiler/src/render3/util';
 
 @Component({
   templateUrl: './shop-single-electronics.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./static/css/theme.min.css']
 })
 export class postComponent {
   title = 'MStoreAngular';

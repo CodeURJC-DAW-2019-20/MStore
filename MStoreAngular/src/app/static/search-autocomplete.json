@@ -1,0 +1,8 @@
+[ 
+  {"name": "Clothing & Accessories", "type": "category", "badge": "success", "link": "#"}, 
+  {"name": "Jordan City Man's Hoodie", "type": "product", "badge": "warning", "link": "#"}, 
+  {"name": "Amazone Echo Dot 3", "type": "product", "badge": "warning", "link": "#"}, 
+  {"name": "Smart homes become even more smart", "type": "post", "badge": "info", "link": "#"}, 
+  {"name": "TV, Video & Adudio", "type": "category", "badge": "success", "link": "#"}, 
+  {"name": "Must have clothing on your next trip", "type": "post", "badge": "info", "link": "#"}
+]
