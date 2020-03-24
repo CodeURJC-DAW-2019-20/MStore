@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -8,17 +9,20 @@ import { AppComponent } from './app.component';
 import { postComponent } from './app.postComponent';
 import { shopComponent } from './app.shopComponent';
 import { cartComponent } from './app.cartComponent';
-
-
+import { profileComponent } from './app.profileComponent'
+import { editProfileComponent } from './app.editProfileComponent'
 @NgModule({
   declarations: [
     AppComponent,
     postComponent,
     shopComponent,
-    cartComponent
+    cartComponent,
+    profileComponent,
+    editProfileComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule
