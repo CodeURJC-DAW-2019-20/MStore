@@ -1,11 +1,40 @@
-{{id}}
+
 <br>
-{{name}}
 <br>
-{{features}}
+<div class="container">
+    <div class="row"> 
+    <div class="col-sm">
+        <div id = "imgcontainer" class="container"></div>
+    </div>
+    <div class="col-sm">
+        <span id="postname"><b> Post con id: {{id}}, {{name}}</b> </span> 
+        <br>
+        <br>
+        <br>
+        <br>
+        <span id="pricesection"> <b>${{price}} </b></span>
+        <br>
+        <label class="btn-primary w-75" ngbButtonLabel><b>Add to cart</b></label>
+        <br>
+        <br>
+        <div class="featurebox"> <span *ngFor='let feature of features'> <li>{{feature}}  </li></span></div>
+        <br>
+    </div>
+</div>
+</div>
 <br>
-{{details}}
 <br>
-{{price}}
-<br>
-{{category}}
+<div class="featurebox"> 
+
+<div class="row"> 
+    
+    <div class="col-sm">
+        <div>  <span *ngFor='let feature of features'> <li><b>{{feature}}  </b></li></span></div>
+    </div>
+    <div  class="col-sm">
+        <span id="fulldetails"><b> {{details}}</b> </span> 
+        <br>
+        <br>
+    </div>
+</div>
+</div>

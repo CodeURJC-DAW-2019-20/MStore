@@ -1,2 +1,9 @@
-<h1>Mstore</h1>
-<router-outlet></router-outlet>
+<div class="div">
+<span class="title"><a id="homeredirect" [routerLink]="['/']"> Mstore </a> </span>
+    <ng-template #popContent>Not yet implemented <br> <br> <a [routerLink]="['/cart']"> go to cart </a></ng-template>
+    <ng-template #popTitle><b>Cart content</b></ng-template>
+<button type="button" class="button btn-outline-secondary mr-2" [ngbPopover]="popContent" [popoverTitle]="popTitle" [autoClose]="false" >
+      Cart
+</button>
+</div>
+<router-outlet> </router-outlet>

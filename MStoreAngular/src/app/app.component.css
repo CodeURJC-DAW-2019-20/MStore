@@ -1,0 +1,114 @@
+.div {
+    background-color: black;
+    height: 50px;
+    position:sticky;
+    position:relative;
+    margin: 0px;
+}
+.title{
+    text-align: left;
+    color:white;
+    font-size: 30px;
+    font-family: Arial;
+}
+.cart {
+    text-align: right;
+    right: 20px;
+    position: absolute;
+    font-size: 30px;
+    color:white;
+    font-family: Arial;
+}
+
+.button {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 13px;
+    width: 5%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    position: absolute;
+    right:2px;
+    font-family: Arial;
+  }
+  
+  
+  .active, .button:hover {
+    background-color: #ccc;
+  }
+  
+  .card {
+      position:absolute;
+      font-family: Arial;
+      background-color: azure;
+  }
+
+  #homeredirect {
+      text-decoration: none;
+      color:white;
+    }
+/* cart */
+
+  .cartitle{
+    background-color:lightgrey;
+    text-align: center;
+    font-size: 50px;
+    font-family: Arial;
+    height: 80px;
+  }
+
+  .cartotal{
+    background-color:lightgrey;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 5px;
+    font-family: Arial;
+    height: 60px;
+  }
+
+  .emptytext{
+      color:darkgray;
+      font-family: Arial;
+      text-align: center;
+      font-size: 30px;
+      width: 100%;
+  }
+
+  .divcheck{
+      text-align: center;
+  }
+/* cart */
+
+/* post */
+      #imgcontainer {
+        width: 500px;
+        height: 500px;
+    }
+
+    .featurebox {
+        width: 100%;
+        background-color: darkgray;
+        padding: 15px 32px;
+        font-family: Arial;
+    }
+    #postname {
+        font-family: Arial;
+        font-size: 50px;
+    }
+
+    #pricesection{
+        font-family: Arial;
+        color:blue;
+        font-size: 40px;
+    }
+
+ /* post */ 
+
+
+
+
+
+

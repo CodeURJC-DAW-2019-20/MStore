@@ -3,7 +3,7 @@
   "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "MStoreAngular": {
+    "webappv9": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/MStoreAngular",
+            "outputPath": "dist/webappv9",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -62,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "MStoreAngular:build"
+            "browserTarget": "webappv9:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "MStoreAngular:build:production"
+              "browserTarget": "webappv9:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "MStoreAngular:build"
+            "browserTarget": "webappv9:build"
           }
         },
         "test": {
@@ -88,7 +89,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -111,15 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "MStoreAngular:serve"
+            "devServerTarget": "webappv9:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "MStoreAngular:serve:production"
+              "devServerTarget": "webappv9:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "MStoreAngular"
+  "defaultProject": "webappv9"
 }

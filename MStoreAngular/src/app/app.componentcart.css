@@ -1,0 +1,38 @@
+
+/* cart */
+
+  .cartitle{
+    background-color:lightgrey;
+    text-align: center;
+    font-size: 50px;
+    font-family: Arial;
+    height: 80px;
+  }
+
+  .cartotal{
+    background-color:lightgrey;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 5px;
+    font-family: Arial;
+    height: 60px;
+  }
+
+  .emptytext{
+      color:darkgray;
+      font-family: Arial;
+      text-align: center;
+      font-size: 30px;
+      width: 100%;
+  }
+
+  .divcheck{
+      text-align: center;
+  }
+/* cart */
+
+
+
+
+
+

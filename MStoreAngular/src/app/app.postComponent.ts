@@ -4,14 +4,14 @@ import { typeWithParameters } from '@angular/compiler/src/render3/util';
 
 @Component({
   templateUrl: './app.postComponent.html',
-  styleUrls: []
+  styleUrls: ['./app.componentpost.css']
 })
 export class postComponent {
   title = 'MStoreAngular';
   name = 'Post';
-  features='feature1';
+  features=['feature1', 'feature2', 'feature3'];
   details='details';
-  price='price';
+  price=0;
   category='category';
   id=0;
 

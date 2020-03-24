@@ -1,7 +1,16 @@
 <router-outlet>
-    <span>Cart</span>
     <br>
     <br>
+    <div class='cartitle'>Cart</div>
+    <br>
+    <br>
+    <span *ngIf='empty==true'><div class=emptytext>The cart is empty</div> <br></span>
     <span *ngFor='let post of items'><span>post con id: {{post.id}}</span> <br></span>
-
+    <br>
+    <div class='cartotal'>Total = ${{total}}</div>
+    <br>
+    <br>
+    <div class='divcheck'>
+        <label class="btn-primary w-75" ngbButtonLabel><b>Proceed to checkout</b></label>
+    </div>
 </router-outlet>
