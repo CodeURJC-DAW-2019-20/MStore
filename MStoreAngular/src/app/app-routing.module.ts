@@ -5,7 +5,8 @@ import { shopComponent } from './app.shopComponent';
 import { cartComponent } from './app.cartComponent';
 import { profileComponent } from './app.profileComponent';
 import { editProfileComponent } from './app.editProfileComponent';
-import { createPostComponent } from './app.createPostComponent'
+import { createPostComponent } from './app.createPostComponent';
+import { indexComponent } from './app.indexComponent';
 
 const routes: Routes = [
   { path: 'post/:id', component: postComponent, },
@@ -14,6 +15,8 @@ const routes: Routes = [
   { path: 'public_profile', component: profileComponent, },
   { path: 'edit_profile', component: editProfileComponent, },
   { path: 'sell_product', component: createPostComponent, },
+  { path: '', component: indexComponent, },
+  { path: '', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
