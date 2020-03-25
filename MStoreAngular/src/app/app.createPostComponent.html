@@ -1,0 +1,123 @@
+<router-outlet>
+    <br>
+    <h1>Sell your product</h1>
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            imagen aqui
+            <br>
+            <h2>{{user.firstName}}</h2>
+            <p style="color:rgb(255, 102, 0);">{{user.email}}</p>
+            <p style="color:rgb(059, 131, 189);">{{user.phone}}</p>
+            <button class="btn-primary">Change Account Info</button>
+        </div>
+        <div class="col-sm-8">
+            <form>
+                <div class="row">
+                    <h4>1. Pickup address</h4>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="address">Address</label> 
+                            <input class="form-control" type="text"
+                                name="post.postAddress" [(ngModel)]="post.postAddress" 
+                                placeholder="Plaza de los limones 12" id="address" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <br>
+                        <h4>2. Product information</h4>
+                        <br>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="component-name">Component Name</label>
+                            <input class="form-control" type="text"
+                                name="post.name" [(ngModel)]="post.name" 
+                                placeholder="MSI Printer" id="component-name" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="select-input">Select the product to sell</label> 
+                            <select
+							    class="form-control" name="post.component" [(ngModel)]="post.component" id="select-input" required>
+							<option value="">Choose a component</option>
+							<option value="Motherboards">Motherboards</option>
+							<option value="Storage Devices">Storage Devices</option>
+							<option value="CPU / Processors">CPU / Processors</option>
+							<option value="Video Cards & Video Devices">Video Cards &amp; Video Devices</option>
+							<option value="Speakers">Speakers</option>
+							<option value="Headphones">Headphones</option>
+							<option value="Computer Mice">Computer Mice</option>
+							<option value="Monitors">Monitors</option>
+							<option value="Ink Printer">Ink Printer</option>
+							<option value="Laser Printer">Laser Printer</option>
+							<option value="3D Printer">3D Printer</option>
+							<option value="Printer Supplies">Printer Supplies</option>
+						</select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="select-input">Select the brand</label> 
+                            <select 
+                                class="form-control"	name="post.brand.name" [(ngModel)]="post.brand.name" id="select-input" required>
+							<option value="">Choose a brand</option>
+							<option value="Intel">Intel</option>
+							<option value="AMD">AMD</option>
+							<option value="NVIDIA">NVIDIA</option>
+							<option value="ASUS">ASUS</option>
+							<option value="Corsair">Corsair</option>
+							<option value="Seagate">Seagate</option>
+							<option value="Gigabyte">Gigabyte</option>
+							<option value="Logitech">Logitech</option>
+							<option value="Pioneer">Pioneer</option>
+							<option value="WD">WD</option>
+							<option value="HP">HP</option>
+							<option value="Other">Other</option>
+						</select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            Tags aqui
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            imagenes aqui
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="number-input">Price to sell ($)</label>
+						    <div class="input-group">
+							    <input class="form-control" name="post.price" [(ngModel)]="post.price" placeholder="Amount" type="number" min="0" id="number-input" required>
+							<div class="input-group-append">
+                                <span class="input-group-text">$</span>
+                            </div>
+							</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="textarea-input">Details</label>
+						    <textarea class="form-control" name="post.details" [(ngModel)]="post.details" id="textarea-input"
+							placeholder="Tell us about the product" rows="7" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="textarea-input">Features (Optional)</label>
+						    <textarea class="form-control" name="post.features" [(ngModel)]="post.features" id="textarea-input"
+							placeholder="e.g. Play a great variety of newly released games at 1080p 60fps" rows="7"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <button class="btn-primary" type="submit">Sell product</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</router-outlet>

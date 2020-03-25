@@ -11,6 +11,8 @@ import { shopComponent } from './app.shopComponent';
 import { cartComponent } from './app.cartComponent';
 import { profileComponent } from './app.profileComponent'
 import { editProfileComponent } from './app.editProfileComponent'
+import { createPostComponent } from './app.createPostComponent'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,8 @@ import { editProfileComponent } from './app.editProfileComponent'
     shopComponent,
     cartComponent,
     profileComponent,
-    editProfileComponent
+    editProfileComponent,
+    createPostComponent
   ],
   imports: [
     BrowserModule,
