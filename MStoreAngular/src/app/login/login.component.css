@@ -1,0 +1,24 @@
+ .ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+ .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+
+  .myButton {
+	box-shadow: 0px 5px 10px -5px #276873;
+	background-color:#389eeb;
+	display:inline-block;
+	color:#ffffff;
+	padding:7px 25px;
+    text-decoration:none;
+    border: 0;
+}
+ .myButton:hover {
+	background-color:#389eeb;
+}
+ .myButton:active {
+	position:relative;
+	top:1px;
+}

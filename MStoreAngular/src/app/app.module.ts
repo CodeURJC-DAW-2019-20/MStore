@@ -15,6 +15,8 @@ import { createPostComponent } from './app.createPostComponent';
 import { indexComponent } from './app.indexComponent';
 import { errorInterceptor } from './app.errorInterceptor';
 import { errorComponentNF } from './app.errorComponentNF';
+import { LoginComponent } from './login/login.component';
+import { IconsModule } from './icons/icons.module';
 
 @NgModule({
   declarations: [
@@ -26,14 +28,17 @@ import { errorComponentNF } from './app.errorComponentNF';
     editProfileComponent,
     createPostComponent,
     indexComponent,
-    errorComponentNF
+    errorComponentNF,
+    indexComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    IconsModule
   ],
   providers: [      
     {provide: HTTP_INTERCEPTORS,
