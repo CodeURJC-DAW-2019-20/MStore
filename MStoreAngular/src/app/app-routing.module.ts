@@ -9,6 +9,7 @@ import { createPostComponent } from './app.createPostComponent';
 import { indexComponent } from './app.indexComponent';
 import { errorComponentNF } from './app.errorComponentNF';
 import { LoginComponent } from './login/login.component';
+import {finalreviewComponent} from './app.finalreviewComponent';
 
 const routes: Routes = [
   { path: 'post/:id', component: postComponent, },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'sell_product', component: createPostComponent, },
   { path: 'sign', component: LoginComponent},
   { path: '', component: indexComponent, },
+  { path: 'final_review',component: finalreviewComponent},
   { path: '', redirectTo: '', pathMatch: 'full' },
   {path: 'error-404', component: errorComponentNF},
   {path: '**', redirectTo: '/error-404'}

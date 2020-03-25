@@ -17,6 +17,7 @@ import { errorInterceptor } from './app.errorInterceptor';
 import { errorComponentNF } from './app.errorComponentNF';
 import { LoginComponent } from './login/login.component';
 import { IconsModule } from './icons/icons.module';
+import {finalreviewComponent} from './app.finalreviewComponent';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { IconsModule } from './icons/icons.module';
     indexComponent,
     errorComponentNF,
     indexComponent,
+    finalreviewComponent,
     LoginComponent
   ],
   imports: [
