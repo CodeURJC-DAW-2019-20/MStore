@@ -7,9 +7,9 @@
             <img src="{{src}}" alt="thumbnail" class="img-thumbnail rounded mx-5 d-block">
             <br>
             <div class="mx-5">
-            <h2>{{user.firstName}}</h2>
-                <p style="color:rgb(255, 102, 0);">{{user.email}}</p>
-                <p style="color:rgb(059, 131, 189);">{{user.phone}}</p>
+            <h2>{{user?.firstName}}</h2>
+                <p style="color:rgb(255, 102, 0);">{{user?.email}}</p>
+                <p style="color:rgb(059, 131, 189);">{{user?.phone}}</p>
                 <button class="myButton">Change Account Info</button>
             </div>
         </div>
@@ -85,9 +85,28 @@
                             Tags aqui
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-6">
                         <div class="form-group">
-                            imagenes aqui
+                            <p>Upload your profile photo</p>
+                            <input type="file" (change)="onFileChanged($event,0)">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <p>Upload your profile photo</p>
+                            <input type="file" (change)="onFileChanged($event,1)">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <p>Upload your profile photo</p>
+                            <input type="file" (change)="onFileChanged($event,2)">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <p>Upload your profile photo</p>
+                            <input type="file" (change)="onFileChanged($event,3)">
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -116,7 +135,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <button class="myButton" type="submit">Sell product</button>
+                        <button class="myButton" type="submit" (click)="onUpload()">Sell product</button>
                     </div>
                 </div>
             </form>

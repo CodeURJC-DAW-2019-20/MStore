@@ -9,8 +9,8 @@
         <div class="col-sm-8">
             <div class="row">
                 <div class="col-sm-8">
-                    <h2>{{user.firstName}} {{user.lastName}}</h2>
-                    <p style="color:rgb(255, 102, 0);">{{user.email}}</p>
+                    <h2>{{user?.firstName}} {{user?.lastName}}</h2>
+                    <p style="color:rgb(255, 102, 0);">{{user?.email}}</p>
                 </div>
                 <div class="col-sm-4">
                     <br>
@@ -81,7 +81,13 @@
 						</div>
                     </div>
                     <div class="col-12">
-						<button type="submit" class="myButton">Update profile</button>
+                        <div class="form-group">
+                            <p>Upload your profile photo</p>
+                            <input type="file" (change)="onFileChanged($event)">
+                        </div>
+                    </div>
+                    <div class="col-12">
+						<button type="submit" class="myButton" (click)="onUpload()">Update profile</button>
 					</div>
                 </div>
             </form>
