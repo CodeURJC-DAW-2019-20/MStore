@@ -7,6 +7,7 @@ import { profileComponent } from './app.profileComponent';
 import { editProfileComponent } from './app.editProfileComponent';
 import { createPostComponent } from './app.createPostComponent';
 import { indexComponent } from './app.indexComponent';
+import { errorComponentNF } from './app.errorComponentNF';
 
 const routes: Routes = [
   { path: 'post/:id', component: postComponent, },
@@ -16,7 +17,9 @@ const routes: Routes = [
   { path: 'edit_profile', component: editProfileComponent, },
   { path: 'sell_product', component: createPostComponent, },
   { path: '', component: indexComponent, },
-  { path: '', redirectTo: '', pathMatch: 'full' }
+  { path: '', redirectTo: '', pathMatch: 'full' },
+  {path: 'error-404', component: errorComponentNF},
+  {path: '**', redirectTo: '/error-404'}
 ];
 
 @NgModule({

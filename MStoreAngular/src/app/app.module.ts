@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,8 @@ import { profileComponent } from './app.profileComponent';
 import { editProfileComponent } from './app.editProfileComponent';
 import { createPostComponent } from './app.createPostComponent';
 import { indexComponent } from './app.indexComponent';
+import { errorInterceptor } from './app.errorInterceptor';
+import { errorComponentNF } from './app.errorComponentNF';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { indexComponent } from './app.indexComponent';
     profileComponent,
     editProfileComponent,
     createPostComponent,
-    indexComponent
+    indexComponent,
+    errorComponentNF
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,11 @@ import { indexComponent } from './app.indexComponent';
     HttpClientModule,
     NgbModule
   ],
-  providers: [],
+  providers: [      
+    {provide: HTTP_INTERCEPTORS,
+    useClass: errorInterceptor,
+    multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

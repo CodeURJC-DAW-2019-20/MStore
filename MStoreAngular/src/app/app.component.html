@@ -3,7 +3,8 @@
     <ng-template #popContent>Not yet implemented <br> <br> <a [routerLink]="['/cart']"> go to cart </a></ng-template>
     <ng-template #popTitle><b>Cart content</b></ng-template>
 <button type="button" class="button btn-outline-secondary mr-2" [ngbPopover]="popContent" [popoverTitle]="popTitle" [autoClose]="false" >
-      Cart
+    <img src="assets/img/cartlogo.png"  height="20" width="20" ><br>
+    ${{total}}
 </button>
 </div>
 <router-outlet> </router-outlet>

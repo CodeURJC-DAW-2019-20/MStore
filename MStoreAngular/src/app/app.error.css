@@ -1,0 +1,11 @@
+#errordiv {
+    text-align: center;
+    padding-top:200px;
+}
+
+#errorText {
+    font-family: Arial;
+    font-size: 30px;
+    color: black;
+}
+

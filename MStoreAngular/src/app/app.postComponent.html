@@ -1,40 +1,50 @@
-
 <br>
 <br>
 <div class="container">
-    <div class="row"> 
-    <div class="col-sm">
-        <div id = "imgcontainer" class="container"></div>
+    <div class="row">
+            <div class="col-sm">
+                <div id="imgcontainer" class="container">
+                <ngb-carousel #carousel>
+                    <ng-template ngbSlide *ngFor="let img of images; index as i">
+                        <div class="picsum-img-wrapper">
+                            <img [src]="img" alt="image {{i + 1}}">
+                        </div>
+                    </ng-template>
+                </ngb-carousel>
+            </div>
+        </div>
+        <div class="col-sm">
+            <span id="postname"><b> Post con id: {{id}}, {{name}}</b> </span>
+            <br>
+            <br>
+            <br>
+            <br>
+            <span id="pricesection"> <b>${{price}} </b></span>
+            <br>
+            <label class="btn-primary w-75" ngbButtonLabel><b>Add to cart</b></label>
+            <br>
+            <br>
+            <div class="featurebox"> <span *ngFor='let feature of features'>
+                    <li>{{feature}} </li>
+                </span></div>
+            <br>
+        </div>
     </div>
-    <div class="col-sm">
-        <span id="postname"><b> Post con id: {{id}}, {{name}}</b> </span> 
-        <br>
-        <br>
-        <br>
-        <br>
-        <span id="pricesection"> <b>${{price}} </b></span>
-        <br>
-        <label class="btn-primary w-75" ngbButtonLabel><b>Add to cart</b></label>
-        <br>
-        <br>
-        <div class="featurebox"> <span *ngFor='let feature of features'> <li>{{feature}}  </li></span></div>
-        <br>
-    </div>
-</div>
-</div>
-<br>
-<br>
-<div class="featurebox"> 
+    <br>
+    <br>
+    <div class="featurebox">
 
-<div class="row"> 
-    
-    <div class="col-sm">
-        <div>  <span *ngFor='let feature of features'> <li><b>{{feature}}  </b></li></span></div>
+        <div class="row">
+
+            <div class="col-sm">
+                <div> <span *ngFor='let feature of features'>
+                        <li><b>{{feature}} </b></li>
+                    </span></div>
+            </div>
+            <div class="col-sm">
+                <span id="fulldetails"><b> {{details}}</b> </span>
+                <br>
+                <br>
+            </div>
+        </div>
     </div>
-    <div  class="col-sm">
-        <span id="fulldetails"><b> {{details}}</b> </span> 
-        <br>
-        <br>
-    </div>
-</div>
-</div>

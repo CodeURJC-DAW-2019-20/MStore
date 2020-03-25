@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { typeWithParameters } from '@angular/compiler/src/render3/util';
+import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   templateUrl: './app.postComponent.html',
-  styleUrls: ['./app.componentpost.css']
+  styleUrls: ['./app.componentpost.css'],
+  providers: [NgbCarouselConfig]
 })
+
+
 export class postComponent {
   title = 'MStoreAngular';
   name = 'Post';
@@ -14,9 +17,19 @@ export class postComponent {
   price=0;
   category='category';
   id=0;
+  subModule=[{active:false},{active:false},{active:false},{active:false}];
 
-  constructor(activatedRoute:ActivatedRoute) {
+  images = [62, 83, 466, 965].map((n) => `https://picsum.photos/id/${n}/900/500`);
+
+
+  constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig) {
     this.id = activatedRoute.snapshot.params.id;
+    config.showNavigationArrows = true;
+    config.showNavigationIndicators = true;
+    config.interval=3000;
   }
 
+  activateClass(subModule, i){
+    subModule[i].active = true;    
+  }
 }
