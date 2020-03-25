@@ -4,12 +4,14 @@
     <br>
     <div class="row">
         <div class="col-sm-4">
-            imagen aqui
+            <img src="{{src}}" alt="thumbnail" class="img-thumbnail rounded mx-5 d-block">
             <br>
+            <div class="mx-5">
             <h2>{{user.firstName}}</h2>
-            <p style="color:rgb(255, 102, 0);">{{user.email}}</p>
-            <p style="color:rgb(059, 131, 189);">{{user.phone}}</p>
-            <button class="btn-primary">Change Account Info</button>
+                <p style="color:rgb(255, 102, 0);">{{user.email}}</p>
+                <p style="color:rgb(059, 131, 189);">{{user.phone}}</p>
+                <button class="myButton">Change Account Info</button>
+            </div>
         </div>
         <div class="col-sm-8">
             <form>
@@ -114,10 +116,11 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <button class="btn-primary" type="submit">Sell product</button>
+                        <button class="myButton" type="submit">Sell product</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    <br>
 </router-outlet>

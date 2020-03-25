@@ -1,0 +1,24 @@
+<router-outlet>
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{{src}}" alt="thumbnail" class="img-thumbnail rounded mx-5 d-block">
+        </div>
+        <div class="col-sm-8">
+
+            <h2>{{user.firstName}} {{user.lastName}}</h2>
+            <p style="color:rgb(255, 102, 0);">{{user.email}}</p>
+            <div class="card">
+            <div class="card-body">
+                <p><span style="color:rgb(115, 115, 115);">- First Name: </span><span>{{user.firstName}}</span></p>
+                <p><span style="color:rgb(115, 115, 115);">- Last Name: </span><span>{{user.lastName}}</span></p>
+                <p><span style="color:rgb(115, 115, 115);">- Phone Number: </span><span>{{user.phone}}</span></p>
+            </div>
+            </div>
+            <br>
+            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        </div>
+    </div>
+    <br>
+    Componente de mostrar 8 elementos
+</router-outlet>

@@ -10,30 +10,19 @@ interface User{
   creditCard?:number;
 }
 
-interface Post{
-  postAddress:string;
-  name:string;
-  component:string;
-  brand:{
-    name:string;
-  }
-  //tags:string[];
-  price:number;
-  details:string;
-  features?:string;
-}
-
 @Component({
-  templateUrl: './app.createPostComponent.html',
-  styleUrls: []
+  templateUrl: './app.editProfileComponent.html',
+  styleUrls: ['../button.css']
 })
-export class createPostComponent {
+export class editProfileComponent {
 
   user:User;
-  post:Post;
+  confirmPass:string;
+  src:string;
 
   constructor() {
    this.user = {firstName:'Diego',lastName:'Montoto',email:'dm@gmail.com', password:"hola",phone:654432987};
+   this.src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
   }
 
 }
