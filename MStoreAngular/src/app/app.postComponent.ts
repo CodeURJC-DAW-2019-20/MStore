@@ -18,7 +18,9 @@ export class postComponent {
   category='category';
   id=0;
   subModule=[{active:false},{active:false},{active:false},{active:false}];
-
+  recommendedPosts=[{id: 1, name: 'AMD card', price:55,  description: 'new AMD card'},
+  {id: 2, name: 'AMD card 2', price:220,  description: 'new AMD card'},
+  {id: 3, name: 'AMD card 3', price:6,  description: 'new AMD card'}];
   images = [62, 83, 466, 965].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
 
