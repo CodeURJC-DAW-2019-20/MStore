@@ -13,6 +13,8 @@ interface Post{
 })
 export class indexComponent {
     images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+    title1 = 'Featured Products';
+    title2 = 'New Arrivals';
     carousel:Array<Post>;
     featuredPosts:Array<Post>;
     newArrivals:Array<Post>;

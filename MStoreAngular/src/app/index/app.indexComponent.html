@@ -4,6 +4,8 @@
             <div class="row">
                 <!-- Categories-->
                 <div class="col-lg-4 d-none d-lg-block">
+                    <h3>Categories</h3>
+                    <hr class="mt-4">
                     <div class="border px-4 py-4">
                         <ul class="list-unstyled mb-0">
                             <li class="border-bottom"><a class="d-flex align-items-center nav-link-inline pb-3"
@@ -94,82 +96,14 @@
     </section>
 
     <!-- Featured products grid-->
-    <section class="container px-3 pt-4 mt-3">
-        <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
-            <h2 class="widget-title font-size-lg">Featured products</h2>
-            <a class="btn btn-outline-primary btn-sm border-0 mb-3" [routerLink]="['/shop']">More
-                products<i class="ml-1 mr-n2" data-feather="chevron-right"></i>
-            </a>
-        </div>
+    <app-posts [title]='title1' [posts]='featuredPosts'></app-posts>
 
-        <div class="row no-gutters">
-            
-            <!-- Product-->
-            <div *ngFor="let post of featuredPosts" class="col-lg-3 col-sm-4 col-6 border border-collapse">
-                <div class="product-card">
-                    <div class="product-thumb">
-                        <a class="product-thumb-link" [routerLink]="['/post',post.id]"></a> <img class="img-thumbnail" [src]="images[0]" alt="Random first slide">
-                    </div>
-                    <div class="product-card-body">
-                        <div class="d-flex flex-wrap justify-content-between pb-1">
-                            <a class="product-meta" href="#">Componente</a>
-                        </div>
-                        <h3 class="product-card-title">
-                            <a [routerLink]="['/post',post.id]">{{post.name}}</a>
-                        </h3>
-                        <span class="text-primary">${{post.price}}</span>
-                    </div>
-                    <div class="product-card-body body-hidden pt-2">
-                        <a class="btn btn-primary" [routerLink]="['/post',post.id]">Shop now<i class="ml-2"
-                                data-feather="arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Product-->
-        </div>
-        <hr class="mt-4">
-    </section>
-
-        <!-- New Arrivals-->
-        <section class="container px-3 pt-4 mt-3">
-            <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
-                <h2 class="widget-title font-size-lg">New arrivals</h2>
-                <a class="btn btn-outline-primary btn-sm border-0 mb-3" [routerLink]="['/shop']">More
-                    products<i class="ml-1 mr-n2" data-feather="chevron-right"></i>
-                </a>
-            </div>
-    
-            <div class="row no-gutters">
-                
-                <!-- Product-->
-                <div *ngFor="let post of newArrivals" class="col-lg-3 col-sm-4 col-6 border border-collapse">
-                    <div class="product-card">
-                        <div class="product-thumb">
-                            <a class="product-thumb-link" [routerLink]="['/post',post.id]"></a> <img class="img-thumbnail" [src]="images[1]" alt="Random first slide">
-                        </div>
-                        <div class="product-card-body">
-                            <div class="d-flex flex-wrap justify-content-between pb-1">
-                                <a class="product-meta" href="#">Componente</a>
-                            </div>
-                            <h3 class="product-card-title">
-                                <a [routerLink]="['/post',post.id]">{{post.name}}</a>
-                            </h3>
-                            <span class="text-primary">${{post.price}}</span>
-                        </div>
-                        <div class="product-card-body body-hidden pt-2">
-                            <a class="btn btn-primary" [routerLink]="['/post',post.id]">Shop now<i class="ml-2"
-                                    data-feather="arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product-->
-            </div>
-            <hr class="mt-4">
-        </section>
+    <!-- New Arrivals-->
+    <app-posts [title]='title2' [posts]='newArrivals'></app-posts>
 
 	<!-- Promo banner-->
 	<section class="container py-4 my-3 px-3">
-		<div class="bg-faded-info position-relative py-4">
+		<div class="bg-faded-info position-relative py-4"> 
 			<div class="row align-items-center">
 				<div class="col-md-5">
 					<span class="badge badge-danger ml-5">Newest offer</span>

@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { postComponent } from './app.postComponent';
 import { shopComponent } from './app.shopComponent';
-import { cartComponent } from './app.cartComponent';
+import { cartComponent } from './cart/app.cartComponent';
 import { profileComponent } from './publicProfile/app.profileComponent';
 import { editProfileComponent } from './editProfile/app.editProfileComponent';
 import { createPostComponent } from './createPost/app.createPostComponent';
-import { indexComponent } from './app.indexComponent';
-import { errorComponentNF } from './app.errorComponentNF';
+import { indexComponent } from './index/app.indexComponent';
+import { errorComponentNF } from './error/app.errorComponentNF';
 import { LoginComponent } from './login/login.component';
-import {finalreviewComponent} from './app.finalreviewComponent';
+import { postComponent } from './app.postComponent';
+import {finalreviewComponent} from './finalreview/app.finalreviewComponent';
 
 const routes: Routes = [
   { path: 'post/:id', component: postComponent, },

@@ -6,18 +6,19 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { postComponent } from './app.postComponent';
 import { shopComponent } from './app.shopComponent';
-import { cartComponent } from './app.cartComponent';
+import { postComponent } from './app.postComponent';
+import { cartComponent } from './cart/app.cartComponent';
 import { profileComponent } from './publicProfile/app.profileComponent';
 import { editProfileComponent } from './editProfile/app.editProfileComponent';
 import { createPostComponent } from './createPost/app.createPostComponent';
-import { indexComponent } from './app.indexComponent';
-import { errorInterceptor } from './app.errorInterceptor';
-import { errorComponentNF } from './app.errorComponentNF';
+import { indexComponent } from './index/app.indexComponent';
+import { errorInterceptor } from './error/app.errorInterceptor';
+import { errorComponentNF } from './error/app.errorComponentNF';
 import { LoginComponent } from './login/login.component';
 import { IconsModule } from './icons/icons.module';
-import {finalreviewComponent} from './app.finalreviewComponent';
+import {ShowPostsComponent} from './showPosts/app.showPostsComponent';
+import {finalreviewComponent} from './finalreview/app.finalreviewComponent';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {finalreviewComponent} from './app.finalreviewComponent';
     errorComponentNF,
     indexComponent,
     finalreviewComponent,
-    LoginComponent
+    LoginComponent,
+    ShowPostsComponent
   ],
   imports: [
     BrowserModule,
