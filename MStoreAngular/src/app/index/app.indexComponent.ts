@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component,ViewChild} from '@angular/core';
+import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 
 interface Post{
     id:number;
@@ -19,9 +19,8 @@ export class indexComponent {
     featuredPosts:Array<Post>;
     newArrivals:Array<Post>;
     topPost:Post;
-    
-
-
+    pauseOnHover = true;
+  
   constructor() {
       this.carousel=[{id: 1, name: 'AMD card', price:55,  description: 'new AMD card'},
       {id: 2, name: 'AMD card 2', price:220,  description: 'new AMD card'},

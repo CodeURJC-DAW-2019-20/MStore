@@ -101,26 +101,47 @@
     <!-- New Arrivals-->
     <app-posts [title]='title2' [posts]='newArrivals'></app-posts>
 
-	<!-- Promo banner-->
-	<section class="container py-4 my-3 px-3">
-		<div class="bg-faded-info position-relative py-4"> 
-			<div class="row align-items-center">
-				<div class="col-md-5">
-					<span class="badge badge-danger ml-5">Newest offer</span>
-					<div class="pt-4 pl-4 pl-sm-5">
-						<h3 class="font-family-body font-weight-light mb-2">All new</h3>
-						<h2 class="mb-2 pb-1">{{topPost.name}}</h2>
-						<h5 class="font-family-body font-weight-light mb-3">at
-							discounted price. Hurry up!</h5>
-						<a class="btn btn-primary" [routerLink]="['/post',topPost.id]">Shop now<i class="ml-2"
-								data-feather="arrow-right"></i></a>
-					</div>
-				</div>
-				<div class="col-md-7">
-					<img class="img-thumbnail" [src]="images[2]" alt="Random first slide">
-				</div>
-			</div>
+    <!-- Promo banner-->
+    <section class="container py-4 my-3 px-3">
+        <div class="bg-faded-info position-relative py-4">
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <span class="badge badge-danger ml-5">Newest offer</span>
+                    <div class="pt-4 pl-4 pl-sm-5">
+                        <h3 class="font-family-body font-weight-light mb-2">All new</h3>
+                        <h2 class="mb-2 pb-1">{{topPost.name}}</h2>
+                        <h5 class="font-family-body font-weight-light mb-3">at
+                            discounted price. Hurry up!</h5>
+                        <a class="btn btn-primary" [routerLink]="['/post',topPost.id]">Shop now<i class="ml-2"
+                                data-feather="arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <img class="img-thumbnail" [src]="images[2]" alt="Random first slide">
+                </div>
+            </div>
         </div>
-	</section>
+        <hr class="mt-4">
+    </section>
+
+        <!-- Brands carousel -->
+        <section class="container">
+            
+            <div class="col-sm-4 col-sm-offset-5">
+                <ngb-carousel [interval]="1200">
+                    <ng-template ngbSlide *ngFor="let img of images; index as i">
+                        <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank"
+                            rel="nofollow noopener noreferrer">
+                            <div class="picsum-img-wrapper">
+                                <img class="img-thumbnail" [src]="img" alt="My image {{i + 1}} description">
+                            </div>
+                        </a>
+                    </ng-template>
+                </ngb-carousel>
+                <hr>
+                    <input type="hidden" [(ngModel)]="pauseOnHover">
+            </div>
+
+        </section>
 
 </router-outlet>
