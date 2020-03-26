@@ -1,0 +1,24 @@
+<router-outlet>
+    <!-- Page Content-->
+	<div class="container pb-5 mb-sm-4">
+		<div class="pt-5">
+			<div class="card py-3 mt-sm-3">
+				<div class="card-body text-center">
+					<h3 class="h4 pb-3">Thank you Diego for your order!</h3>
+					<p class="mb-2">Your order has been placed and will be
+						processed as soon as possible.</p>
+					<p>
+						Subscribe to us to receive offers! <u>You can now:</u>
+					</p>
+                    <button class="btn mt-3 mr-3 noBorderRadius" 
+                        style="background-color: #f4f4f4;" [routerLink]="['/shop']">Go
+                        back shopping</button>
+                        <button class="btn btn-primary mt-3 border-0 noBorderRadius" 
+                        style="background-color:#5C77FC;" [routerLink]="['/']">&nbsp;Home
+                        <i-feather name="home" style="width: 15px; height: 15px;"></i-feather>
+                    </button>
+				</div>
+			</div>
+		</div>
+	</div>
+</router-outlet>

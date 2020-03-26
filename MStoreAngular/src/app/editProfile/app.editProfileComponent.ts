@@ -12,7 +12,7 @@ interface User{
 
 @Component({
   templateUrl: './app.editProfileComponent.html',
-  styleUrls: ['../button.css']
+  styleUrls: []
 })
 export class editProfileComponent {
 

@@ -3,7 +3,8 @@
     <ng-template #popContent>Not yet implemented <br> <br> <a [routerLink]="['/cart']"> go to cart </a></ng-template>
     <ng-template #popTitle><b>Cart content</b></ng-template>
 <button type="button" class="button btn-outline-secondary mr-2" [ngbPopover]="popContent" [popoverTitle]="popTitle" [autoClose]="false" >
-    <img src="assets/img/cartlogo.png"  height="20" width="20" ><br>
+  <span class="badge bg-primary text-light">1</span>
+  <i-feather name="shopping-cart"></i-feather><br>
     ${{total}}
 </button>
 </div>
@@ -58,14 +59,18 @@
               <h3 class="widget-title text-white border-light">Stay informed</h3>
               <form action="https://urjc.us4.list-manage.com/subscribe/post?u=7816e91fc0e80c209c0a7750e&amp;id=a3e1cc1eb7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                 <div class="input-group mb-2">
-                  <div class="input-group-prepend"><span class="input-group-text" style="background-color: #e8e8e8;"><i data-feather="mail"></i></span></div>
-                  <input class="form-control border-0 box-shadow-0 bg-secondary" type="email" name="EMAIL" id="mce-EMAIL" value="" placeholder="Your email" required>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text noBorderRadius pt-0" style="background-color: #e8e8e8;">
+                      <i-feather name="mail" style="width: 20px; height: 20px;"></i-feather>
+                    </span>
+                  </div>
+                  <input class="form-control noBorderRadius border-0 box-shadow-0" type="email" name="EMAIL" id="mce-EMAIL" value="" placeholder="Your email" required>
                 </div>
                 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                 <div style="position: absolute; left: -5000px;" aria-hidden="true">
                   <input type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
                 </div>
-                <button class="btn btn-primary btn-block" type="submit" name="subscribe" id="mc-embedded-subscribe">Subscribe*</button>
+                <button class="myButton btn-block" type="submit" name="subscribe" id="mc-embedded-subscribe">Subscribe*</button>
                 <p class="font-size-xs text-white opacity-60 pt-2 mb-2" id="mc-helper">*Subscribe to our newsletter to receive early discount offers, updates and new products info.</p>
                 <!-- Subscription status-->
                 <div class="subscribe-status"></div>

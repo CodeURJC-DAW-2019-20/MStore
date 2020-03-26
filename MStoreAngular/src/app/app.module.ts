@@ -19,7 +19,10 @@ import { errorComponentNF } from './error/app.errorComponentNF';
 import { LoginComponent } from './login/login.component';
 import { IconsModule } from './icons/icons.module';
 import {ShowPostsComponent} from './showPosts/app.showPostsComponent';
-import {finalreviewComponent} from './finalreview/app.finalreviewComponent';
+import { PaymentComponent } from './payment/payment.component';
+import { StepperComponent } from './stepper/stepper.component';
+import { FinalReviewComponent } from './final-review/final-review.component';
+import { CompleteComponent } from './complete/complete.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +37,12 @@ import {finalreviewComponent} from './finalreview/app.finalreviewComponent';
     indexComponent,
     errorComponentNF,
     indexComponent,
-    finalreviewComponent,
     LoginComponent,
-    ShowPostsComponent
+    ShowPostsComponent,
+    PaymentComponent,
+    StepperComponent,
+    FinalReviewComponent,
+    CompleteComponent
   ],
   imports: [
     BrowserModule,

@@ -26,7 +26,7 @@ interface Post{
 
 @Component({
   templateUrl: './app.createPostComponent.html',
-  styleUrls: ['../button.css']
+  styleUrls: []
 })
 export class createPostComponent {
 

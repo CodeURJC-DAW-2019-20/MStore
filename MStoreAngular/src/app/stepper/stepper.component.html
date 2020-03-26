@@ -1,0 +1,48 @@
+<router-outlet>
+    <!-- Page Title-->
+    <div class="page-title-wrapper" aria-label="Page title">
+        <div class="container">
+            <h1 class="page-title">Checkout</h1>
+            <span class="d-block mt-2 text-muted"></span>
+        </div>
+    </div>
+    <!--Stepper-->
+    <div class="container">
+        <div id="stepper1" class="bs-stepper">
+            <div class="bs-stepper-header">
+                <div class="step" data-target="#test-l-1">
+                    <button class="step-trigger">
+                        <span class="bs-stepper-circle">1</span>
+                        <span class="bs-stepper-label">Shopping Cart</span>
+                        <i-feather name="check-circle" style="color: green;"></i-feather>
+                    </button>
+                </div>
+                <div class="line"></div>
+                <div class="step" data-target="#test-l-2">
+                    <button class="step-trigger">
+                        <span class="bs-stepper-circle">2</span>
+                        <span class="bs-stepper-label">Payment</span>
+                        <i-feather *ngIf="step3" name="check-circle" style="color: green;"></i-feather>
+                    </button>
+                </div>
+                <div class="line"></div>
+                <div class="step" data-target="#test-l-3">
+                    <button class="step-trigger">
+                        <span class="bs-stepper-circle">3</span>
+                        <span class="bs-stepper-label">Final Review</span>
+                    </button>
+                </div>
+            </div>
+            <div class="bs-stepper-content">
+                <div id="test-l-1" class="content">
+                </div>
+                <div id="test-l-2" class="content">
+                    <app-payment (next1)="next()"></app-payment>
+                </div>
+                <div id="test-l-3" class="content">
+                    <app-final-review (previous2)="previous()"></app-final-review>
+                </div>
+            </div>
+        </div>
+    </div>
+</router-outlet>
