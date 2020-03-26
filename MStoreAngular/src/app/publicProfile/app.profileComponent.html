@@ -15,6 +15,24 @@
                 <p><span style="color:rgb(115, 115, 115);">- Phone Number: </span><span>{{user?.phone}}</span></p>
             </div>
             </div>
+            <form *ngIf="canRate">
+                <br>
+                <div class="form-group">
+                    <label for="select-input">¿Do you want to rate this seller
+                        base on your last purchase</label> 
+                        <select class="form-control" name="stars" id="select-input"
+                        required>
+                        <option>Choose the stars</option>
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <button class="myButton" type="submit" (click)="updateRate()">Rate</button>
+            </form>
             <br>
             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
         </div>

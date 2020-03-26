@@ -10,6 +10,7 @@ import { shopComponent } from './app.shopComponent';
 import { postComponent } from './app.postComponent';
 import { cartComponent } from './cart/app.cartComponent';
 import { profileComponent } from './publicProfile/app.profileComponent';
+import { MyProfileComponent } from './publicProfile/app.MyProfileComponent';
 import { editProfileComponent } from './editProfile/app.editProfileComponent';
 import { createPostComponent } from './createPost/app.createPostComponent';
 import { indexComponent } from './index/app.indexComponent';
@@ -27,6 +28,7 @@ import {finalreviewComponent} from './finalreview/app.finalreviewComponent';
     shopComponent,
     cartComponent,
     profileComponent,
+    MyProfileComponent,
     editProfileComponent,
     createPostComponent,
     indexComponent,

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { shopComponent } from './app.shopComponent';
 import { cartComponent } from './cart/app.cartComponent';
 import { profileComponent } from './publicProfile/app.profileComponent';
+import { MyProfileComponent } from './publicProfile/app.MyProfileComponent';
 import { editProfileComponent } from './editProfile/app.editProfileComponent';
 import { createPostComponent } from './createPost/app.createPostComponent';
 import { indexComponent } from './index/app.indexComponent';
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'post/:id', component: postComponent, },
   { path: 'shop', component: shopComponent, },
   { path: 'cart', component: cartComponent, },
-  { path: 'public_profile', component: profileComponent, },
+  { path: 'public_profile/:id', component: profileComponent, },
+  { path: 'public_profile', component: MyProfileComponent, },
   { path: 'edit_profile', component: editProfileComponent, },
   { path: 'sell_product', component: createPostComponent, },
   { path: 'sign', component: LoginComponent},
