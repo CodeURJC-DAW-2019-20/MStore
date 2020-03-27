@@ -6,23 +6,23 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ShopComponent } from './shop/shop.component';
-import { PostComponent } from './post/post.component';
-import { cartComponent } from './cart/app.cartComponent';
-import { profileComponent } from './publicProfile/app.profileComponent';
-import { MyProfileComponent } from './publicProfile/app.MyProfileComponent';
-import { editProfileComponent } from './editProfile/app.editProfileComponent';
-import { createPostComponent } from './createPost/app.createPostComponent';
-import { indexComponent } from './index/app.indexComponent';
-import { errorInterceptor } from './error/app.errorInterceptor';
-import { errorComponentNF } from './error/app.errorComponentNF';
-import { LoginComponent } from './login/login.component';
-import { IconsModule } from './icons/icons.module';
-import {ShowPostsComponent} from './showPosts/app.showPostsComponent';
-import { PaymentComponent } from './payment/payment.component';
-import { StepperComponent } from './stepper/stepper.component';
-import { FinalReviewComponent } from './final-review/final-review.component';
-import { CompleteComponent } from './complete/complete.component';
+import { ShopComponent } from './components/shop/shop.component';
+import { PostComponent } from './components/post/post.component';
+import { cartComponent } from './components/cart/app.cartComponent';
+import { profileComponent } from './components/publicProfile/app.profileComponent';
+import { MyProfileComponent } from './components/publicProfile/app.MyProfileComponent';
+import { editProfileComponent } from './components/editProfile/app.editProfileComponent';
+import { createPostComponent } from './components/createPost/app.createPostComponent';
+import { indexComponent } from './components/index/app.indexComponent';
+import { errorInterceptor } from './components/error/app.errorInterceptor';
+import { errorComponentNF } from './components/error/app.errorComponentNF';
+import { LoginComponent } from './components/login/login.component';
+import { IconsModule } from './components/icons/icons.module';
+import {ShowPostsComponent} from './components/showPosts/app.showPostsComponent';
+import { PaymentComponent } from './components/payment/payment.component';
+import { StepperComponent } from './components/stepper/stepper.component';
+import { FinalReviewComponent } from './components/final-review/final-review.component';
+import { CompleteComponent } from './components/complete/complete.component';
 
 @NgModule({
   declarations: [
