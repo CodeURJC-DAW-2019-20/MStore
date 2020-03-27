@@ -4,7 +4,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class errorInterceptor implements HttpInterceptor {intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+export class ErrorInterceptor implements HttpInterceptor {intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(retry(1), catchError((error: HttpErrorResponse) => {
                     let errorMessage = '';
                     let errorDescription = '';

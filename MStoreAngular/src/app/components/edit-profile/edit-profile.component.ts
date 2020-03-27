@@ -11,10 +11,10 @@ interface User{
 }
 
 @Component({
-  templateUrl: './app.editProfileComponent.html',
+  templateUrl: './edit-profile.component.html',
   styleUrls: []
 })
-export class editProfileComponent {
+export class EditProfileComponent {
 
   user:User;
   confirmPass:string;

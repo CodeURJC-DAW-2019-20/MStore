@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { FeatherModule } from 'angular-feather';
 import { Mail, Unlock, ChevronsLeft, ChevronsRight, ShoppingCart, CheckCircle, Home,
-  Trash2 } from 'angular-feather/icons';
+  Trash2, CreditCard, Search, Edit } from 'angular-feather/icons';
 
 const icons = {
   Mail,
@@ -12,7 +12,10 @@ const icons = {
   CheckCircle,
   ChevronsRight,
   Home,
-  Trash2
+  Trash2,
+  CreditCard,
+  Search,
+  Edit
 };
 
 @NgModule({

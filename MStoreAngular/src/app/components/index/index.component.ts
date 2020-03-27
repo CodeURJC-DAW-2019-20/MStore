@@ -1,13 +1,13 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
-import { PostsService } from 'src/app/servicies/posts.service';
+import { PostsService } from 'src/app/services/posts.service';
 import {Post} from 'src/app/models/post.model';
 @Component({
-  templateUrl: './app.indexComponent.html',
+  templateUrl: './index.component.html',
   styleUrls: []
 })
-export class indexComponent implements OnInit {
+export class IndexComponent implements OnInit {
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   title1 = 'Featured Products';
   title2 = 'New Arrivals';

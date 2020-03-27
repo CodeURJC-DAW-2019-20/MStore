@@ -25,10 +25,10 @@ interface Post{
 }
 
 @Component({
-  templateUrl: './app.createPostComponent.html',
+  templateUrl: './create-post.component.html',
   styleUrls: []
 })
-export class createPostComponent {
+export class CreatePostComponent {
 
   user:User;
   post:Post;

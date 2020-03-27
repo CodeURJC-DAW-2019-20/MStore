@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as CanvasJS from './canvasjs.min';
+import { ActivatedRoute } from '@angular/router';
 
 interface User{
   firstName:string;
@@ -9,10 +10,10 @@ interface User{
 }
 
 @Component({
-  templateUrl: './app.profileComponent.html',
+  templateUrl: './profile.component.html',
   styleUrls: []
 })
-export class MyProfileComponent {
+export class ProfileComponent {
 
   user:User;
   src:string;
@@ -20,9 +21,14 @@ export class MyProfileComponent {
   chartData:number[] = [3,4,9,2,0,1];
   canRate:boolean;
 
-  constructor() {
-   this.user = {firstName:'Diego',lastName:'Montoto',email:'dm@gmail.com',phone:654432987};
-   this.src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
+  constructor(private activatedRoute:ActivatedRoute) {
+
+    this.getUser(activatedRoute.snapshot.params['id']);
+  }
+
+  ngOnInit() {
+    this.canRate= this.isLoggedUser()&&this.canUserRate();
+    this.createGraph(this.chartData);
   }
 
   createGraph(data:number[]){
@@ -48,12 +54,20 @@ export class MyProfileComponent {
     this.chart.render();
   }
 
+  getUser(id:number){
+    this.user = {firstName:'Diego',lastName:'Montoto',email:'dm@gmail.com',phone:654432987};
+    this.src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
+  }
 
-  ngOnInit() {
-      this.canRate= false;
-      this.createGraph(this.chartData);
+  canUserRate(){
+    return true;
+  }
+
+  isLoggedUser(){
+    return true;
   }
 
   updateRate(){
+    this.canRate=false;
   }
 }

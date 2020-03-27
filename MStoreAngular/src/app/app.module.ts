@@ -3,45 +3,50 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { TagInputModule } from 'ngx-chips';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { PostComponent } from './components/post/post.component';
-import { cartComponent } from './components/cart/app.cartComponent';
-import { profileComponent } from './components/publicProfile/app.profileComponent';
-import { MyProfileComponent } from './components/publicProfile/app.MyProfileComponent';
-import { editProfileComponent } from './components/editProfile/app.editProfileComponent';
-import { createPostComponent } from './components/createPost/app.createPostComponent';
-import { indexComponent } from './components/index/app.indexComponent';
-import { errorInterceptor } from './components/error/app.errorInterceptor';
-import { errorComponentNF } from './components/error/app.errorComponentNF';
+import { CartComponent } from './components/cart/cart.component';
+import { ProfileComponent } from './components/public-profile/profile.component';
+import { MyProfileComponent } from './components/public-profile/my-profile.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
+import { IndexComponent } from './components/index/index.component';
+import { ErrorInterceptor } from './components/error/error-interceptor.component';
+import { ErrorComponentNF } from './components/error/errorNF.component';
 import { LoginComponent } from './components/login/login.component';
-import { IconsModule } from './components/icons/icons.module';
-import {ShowPostsComponent} from './components/showPosts/app.showPostsComponent';
+import { IconsModule } from './modules/icons/icons.module';
+import {ShowPostsComponent} from './components/show-posts/show-posts.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { FinalReviewComponent } from './components/final-review/final-review.component';
 import { CompleteComponent } from './components/complete/complete.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShopComponent,
     PostComponent,
-    cartComponent,
-    profileComponent,
+    CartComponent,
+    ProfileComponent,
     MyProfileComponent,
-    editProfileComponent,
-    createPostComponent,
-    indexComponent,
-    errorComponentNF,
+    EditProfileComponent,
+    CreatePostComponent,
+    IndexComponent,
+    ErrorComponentNF,
     LoginComponent,
     ShowPostsComponent,
     PaymentComponent,
     StepperComponent,
     FinalReviewComponent,
-    CompleteComponent
+    CompleteComponent,
+    AdminComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -49,11 +54,12 @@ import { CompleteComponent } from './components/complete/complete.component';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    IconsModule
+    IconsModule,
+    TagInputModule
   ],
   providers: [      
     {provide: HTTP_INTERCEPTORS,
-    useClass: errorInterceptor,
+    useClass: ErrorInterceptor,
     multi: true}
   ],
   bootstrap: [AppComponent]

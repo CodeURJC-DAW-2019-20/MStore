@@ -11,10 +11,10 @@ interface post {
   }
 
 @Component({
-  templateUrl: './app.cartComponent.html',
-  styleUrls: ['./app.componentcart.css']
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.css']
 })
-export class cartComponent {
+export class CartComponent {
   items:Array<post>;
   id=0;
   total=320;

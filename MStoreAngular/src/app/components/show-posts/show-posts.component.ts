@@ -9,7 +9,7 @@ interface Post{
 }
 @Component({
   selector: 'app-posts',
-  templateUrl: './app.showPostsComponent.html',
+  templateUrl: './show-posts.component.html',
   styleUrls: []
 })
 export class ShowPostsComponent {
