@@ -11,13 +11,28 @@
                     </a>
 				</h2>
 				<!-- Item-->
-				<h2 *ngIf='empty==true' class="w-100 p-3 text-center">
+				<h2 *ngIf='items.length === 0' class="w-100 p-3 text-center">
 					<span class='emptytext'>The cart is empty</span>
 				</h2>
                 <div *ngFor='let post of items'
                     class="d-sm-flex justify-content-between my-4 pb-4 border-bottom">
 					<div class="media d-block d-sm-flex text-center text-sm-left">
-						<span>post con id: {{post.id}}</span>
+						<a class="cart-item-thumb mx-auto mr-sm-4">
+							<img [src]="src" [alt]="src"></a>
+						<div class="media-body pt-3">
+							<h3 class="product-card-title font-weight-semibold border-0 pb-0">
+								{{post.name}}
+							</h3>
+							<div class="font-size-lg text-primary pt-2">${{post.price}}</div>
+							<br>
+							<form>
+								<button class="btn btn-outline-danger btn-sm btn-block mb-2"
+									type="submit">
+									<i-feather name="trash-2" style="width: 15px; height: 15px;"></i-feather>
+									<span class="pl-1">Remove</span>
+								</button>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { shopComponent } from './app.shopComponent';
+import { ShopComponent } from './shop/shop.component';
+import { PostComponent } from './post/post.component';
 import { cartComponent } from './cart/app.cartComponent';
 import { profileComponent } from './publicProfile/app.profileComponent';
 import { MyProfileComponent } from './publicProfile/app.MyProfileComponent';
@@ -9,13 +10,12 @@ import { createPostComponent } from './createPost/app.createPostComponent';
 import { indexComponent } from './index/app.indexComponent';
 import { errorComponentNF } from './error/app.errorComponentNF';
 import { LoginComponent } from './login/login.component';
-import { postComponent } from './app.postComponent';
 import { StepperComponent } from './stepper/stepper.component';
 import { CompleteComponent } from './complete/complete.component';
 
 const routes: Routes = [
-  { path: 'post/:id', component: postComponent, },
-  { path: 'shop', component: shopComponent, },
+  { path: 'post/:id', component: PostComponent, },
+  { path: 'shop', component: ShopComponent, },
   { path: 'cart', component: cartComponent, },
   { path: 'public_profile/:id', component: profileComponent, },
   { path: 'public_profile', component: MyProfileComponent, },

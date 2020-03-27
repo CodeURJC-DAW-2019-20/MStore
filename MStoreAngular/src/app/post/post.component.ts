@@ -1,15 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  templateUrl: './app.postComponent.html',
-  styleUrls: ['./app.componentpost.css'],
+  selector: 'app-post',
+  templateUrl: './post.component.html',
+  styleUrls: ['./post.component.css'],
   providers: [NgbCarouselConfig]
 })
+export class PostComponent implements OnInit {
 
-
-export class postComponent {
   title = 'MStoreAngular';
   name = 'Post';
   features=['feature1', 'feature2', 'feature3'];
@@ -24,15 +24,18 @@ export class postComponent {
   {id: 3, name: 'AMD card 3', price:6,  description: 'new AMD card'}];
   images = [62, 83, 466, 965].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-
-  constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig) {
+  constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig) { 
     this.id = activatedRoute.snapshot.params.id;
     config.showNavigationArrows = true;
     config.showNavigationIndicators = true;
     config.interval=3000;
   }
 
-  activateClass(subModule, i){
-    subModule[i].active = true;    
+  activateClass(subModule, i) {
+    subModule[i].active = true;
   }
+
+  ngOnInit(): void {
+  }
+
 }

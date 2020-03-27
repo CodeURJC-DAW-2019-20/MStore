@@ -6,8 +6,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { shopComponent } from './app.shopComponent';
-import { postComponent } from './app.postComponent';
+import { ShopComponent } from './shop/shop.component';
+import { PostComponent } from './post/post.component';
 import { cartComponent } from './cart/app.cartComponent';
 import { profileComponent } from './publicProfile/app.profileComponent';
 import { MyProfileComponent } from './publicProfile/app.MyProfileComponent';
@@ -27,8 +27,8 @@ import { CompleteComponent } from './complete/complete.component';
 @NgModule({
   declarations: [
     AppComponent,
-    postComponent,
-    shopComponent,
+    ShopComponent,
+    PostComponent,
     cartComponent,
     profileComponent,
     MyProfileComponent,
@@ -36,7 +36,6 @@ import { CompleteComponent } from './complete/complete.component';
     createPostComponent,
     indexComponent,
     errorComponentNF,
-    indexComponent,
     LoginComponent,
     ShowPostsComponent,
     PaymentComponent,

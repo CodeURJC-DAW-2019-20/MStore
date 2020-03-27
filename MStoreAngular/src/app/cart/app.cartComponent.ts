@@ -6,6 +6,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 interface post {
   id:number;
   name:string;
+  price: number;
   description:string;
   }
 
@@ -15,11 +16,14 @@ interface post {
 })
 export class cartComponent {
   items:Array<post>;
-  empty=true;
   id=0;
-  total=0;
+  total=320;
+  src:string = "https://finofilipino.org/wp-content/uploads/2019/11/wesrgfwerthertyhj.jpg"
 
   constructor() {
+    this.items =[{id: 1, name: 'AMD card', price:55,  description: 'new AMD card'},
+      {id: 2, name: 'AMD card 2', price:220,  description: 'new AMD card'},
+      {id: 3, name: 'AMD card 3', price:6,  description: 'new AMD card'}];
   }
 
 }

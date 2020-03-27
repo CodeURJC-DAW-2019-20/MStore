@@ -1,0 +1,24 @@
+/* post */
+#imgcontainer {
+    width: 500px;
+    height: 500px;
+}
+
+.featurebox {
+    width: 100%;
+    background-color: darkgray;
+    padding: 15px 32px;
+    font-family: Arial;
+}
+#postname {
+    font-family: Arial;
+    font-size: 50px;
+}
+
+#pricesection{
+    font-family: Arial;
+    color:blue;
+    font-size: 40px;
+}
+
+/* post */ 

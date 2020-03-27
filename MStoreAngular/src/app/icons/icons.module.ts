@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 
 import { FeatherModule } from 'angular-feather';
-import { Mail, Unlock, ChevronsLeft, ChevronsRight, ShoppingCart, CheckCircle, Home } from 'angular-feather/icons';
+import { Mail, Unlock, ChevronsLeft, ChevronsRight, ShoppingCart, CheckCircle, Home,
+  Trash2 } from 'angular-feather/icons';
 
 const icons = {
   Mail,
@@ -10,7 +11,8 @@ const icons = {
   ShoppingCart,
   CheckCircle,
   ChevronsRight,
-  Home
+  Home,
+  Trash2
 };
 
 @NgModule({
