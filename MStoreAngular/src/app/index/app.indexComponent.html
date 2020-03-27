@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <!--Carousel Wrapper-->
-                <div class="col-lg-8">
+                <div *ngIf="!empty" class="col-lg-8">
                     <ngb-carousel *ngIf="images" class="carousel slide">
                         <ng-template ngbSlide *ngFor="let post of carousel">
                             <div class="picsum-img-wrapper">
@@ -90,19 +90,40 @@
 
                     </ngb-carousel>
                 </div>
+
+                <div *ngIf="empty" class="col-lg-8">
+                    <ngb-carousel *ngIf="images">
+                        <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                                <img [src]="images[0]" alt="Random first slide">
+                            </div>
+                            <div class="carousel-caption">
+
+                                <div class="product-card-body body-hidden pt-2">
+                                    <h3 class="mb-1">No products</h3>
+                                    <br>
+                                    <a class="btn btn-primary" [routerLink]="['/sell_product']">Sell your product<i class="ml-2"
+                                            data-feather="arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </ng-template>
+
+                    </ngb-carousel>
+                </div>
+
             </div>
         </div>
         <hr class="mt-4">
     </section>
 
     <!-- Featured products grid-->
-    <app-posts [title]='title1' [posts]='featuredPosts'></app-posts>
+    <app-posts *ngIf="!empty" [title]='title1' [posts]='featuredPosts'></app-posts>
 
     <!-- New Arrivals-->
-    <app-posts [title]='title2' [posts]='newArrivals'></app-posts>
+    <app-posts *ngIf="!empty" [title]='title2' [posts]='newArrivals'></app-posts>
 
     <!-- Promo banner-->
-    <section class="container py-4 my-3 px-3">
+    <section *ngIf="!empty" class="container py-4 my-3 px-3">
         <div class="bg-faded-info position-relative py-4">
             <div class="row align-items-center">
                 <div class="col-md-5">
@@ -124,24 +145,24 @@
         <hr class="mt-4">
     </section>
 
-        <!-- Brands carousel -->
-        <section class="container">
-            
-            <div class="col-sm-4 col-sm-offset-5 mx-auto">
-                <ngb-carousel [interval]="1200">
-                    <ng-template ngbSlide *ngFor="let img of images; index as i">
-                        <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank"
-                            rel="nofollow noopener noreferrer">
-                            <div class="picsum-img-wrapper">
-                                <img class="img-thumbnail" [src]="img" alt="My image {{i + 1}} description">
-                            </div>
-                        </a>
-                    </ng-template>
-                </ngb-carousel>
-                <hr>
-                    <input type="hidden" [(ngModel)]="pauseOnHover">
-            </div>
+    <!-- Brands carousel -->
+    <section class="container">
 
-        </section>
+        <div class="col-sm-4 col-sm-offset-5 mx-auto">
+            <ngb-carousel [interval]="1200">
+                <ng-template ngbSlide *ngFor="let img of images; index as i">
+                    <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank"
+                        rel="nofollow noopener noreferrer">
+                        <div class="picsum-img-wrapper">
+                            <img class="img-thumbnail" [src]="img" alt="My image {{i + 1}} description">
+                        </div>
+                    </a>
+                </ng-template>
+            </ngb-carousel>
+            <hr>
+            <input type="hidden" [(ngModel)]="pauseOnHover">
+        </div>
+
+    </section>
 
 </router-outlet>
