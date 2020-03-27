@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Post } from 'src/app/models/post.model';
 
-const POSTS_URL = "'https://localhost:8443/api/posts/";
+const POSTS_URL = "https://localhost:8443/api/posts/";
 @Injectable({ providedIn: 'root' })
 export class PostsService {
 

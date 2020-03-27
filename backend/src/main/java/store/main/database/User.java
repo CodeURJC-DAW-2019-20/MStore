@@ -69,6 +69,7 @@ public class User {
 	private List<String> roles;
 
 	@OneToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JsonView(SellersInfo.class)
 	private List<User> sellers;
 

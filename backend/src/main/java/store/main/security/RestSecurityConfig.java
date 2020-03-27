@@ -1,12 +1,18 @@
 package store.main.security;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import store.main.database.UserRepositoryAuthenticationProvider;
 
@@ -29,7 +35,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/posts/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/posts/**").hasRole("ADMIN");
 		
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasRole("USER");
 		
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/{id}/images").hasRole("USER");
@@ -46,6 +52,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		// Disable CSRF protection (it is difficult to implement in REST APIs)
 		http.csrf().disable();
 
+		http.cors();
 		// Use Http Basic Authentication
 		http.httpBasic();
 
@@ -59,4 +66,15 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		// Database authentication provider
 		auth.authenticationProvider(userRepoAuthProvider);
 	}
+	
+	@Bean
+    CorsConfigurationSource corsConfigurationSource() 
+    {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/api/**", configuration);
+        return source;
+    }
 }

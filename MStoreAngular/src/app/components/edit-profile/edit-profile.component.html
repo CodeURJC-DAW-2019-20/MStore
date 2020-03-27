@@ -1,96 +1,105 @@
 <router-outlet>
-    <br>
-    <h1>Edit your profile</h1>
-    <br>
-    <div class="row">
-        <div class="col-sm-4">
-            <img src="{{src}}" alt="thumbnail" class="img-thumbnail rounded mx-5 d-block">
+    <!-- Page Title-->
+    <div class="page-title-wrapper" aria-label="Page title">
+        <div class="container">
+            <h2 class="page-title">Edit your profile</h2>
+            <span class="d-block mt-2 text-muted"></span>
         </div>
-        <div class="col-sm-8">
-            <div class="row">
-                <div class="col-sm-8">
-                    <h2>{{user?.firstName}} {{user?.lastName}}</h2>
-                    <p style="color:rgb(255, 102, 0);">{{user?.email}}</p>
-                </div>
-                <div class="col-sm-4">
-                    <br>
-                    <button class="myButton">Log out</button>
-                </div>
+    </div>
+    <div class="container pb-5">
+        <div class="row pt-1">
+            <!-- Sidebar-->
+            <div class="col-xl-3 col-lg-4">
+                <img src="{{src}}" alt="thumbnail" class="img-thumbnail rounded d-block">
             </div>
-            <h3>Profile Info</h3>
-            <br>
-            <form>
+            <!-- Main content-->
+            <div class="col-lg-8 mx-2">
                 <div class=row>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="account-fn">First Name</label> 
-                            <input class="form-control" type="text" id="account-fn" name="user.firstName" [(ngModel)]="user.firstName" required>
-                        </div>
+                    <div class="col-sm-8">
+                        <h2>{{user?.firstName}} {{user?.lastName}}</h2>
+                        <p style="color:rgb(255, 102, 0);">{{user?.email}}</p>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="account-ln">Last Name</label>
-                            <input class="form-control" type="text" id="account-ln" name="user.lastName" [(ngModel)]="user.lastName" required>
-                        </div>
+                    <div class="col-sm-4">
+                        <br>
+                        <button class="myButton">Log out</button>
                     </div>
-                    <div class="col-md-6">
-						<div class="form-group">
-                            <label for="account-email">Email Address</label> 
-                            <input
-								class="form-control" type="email" id="account-email"
-								name="user.email" [(ngModel)]="user.email" disabled>
-						</div>
-                    </div>
-                    <div class="col-md-6">
-						<div class="form-group">
-                            <label for="account-phone">Phone Number</label> 
-                            <input
-								class="form-control" type="text" id="account-phone" name="user.phone"
-								[(ngModel)]="user.phone" required>
-						</div>
-                    </div>
-                    <div class="col-md-6">
-						<div class="form-group">
-                            <label for="account-pass">New Password</label> 
-                            <input
-								class="form-control" type="password" id="account-pass" name="user.password"
-								[(ngModel)]="user.password">
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-                            <label for="account-confirm-pass">Confirm Password</label> 
-                            <input class="form-control" type="password" name="confirmPass" id="account-confirm-pass" [(ngModel)]="confirmPass">
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-                            <label for="account-address">Address</label> 
-                            <input
-                                class="form-control" type="text" id="account-address" name="user.userAddress"
-                                [(ngModel)]="user.userAddress">
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="credit-card">Credit card number</label> <input
-								class="form-control" type="password" id="credit-card" pattern="[0-9]*"
-								minlength="13" maxlength="16"
-								[(ngModel)]="user.creditCard" name="user.creditCard">
-							<div class="invalid-feedback">Please enter a valid card number (13-16 digits)!</div>
-						</div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <p>Upload your profile photo</p>
-                            <input type="file" (change)="onFileChanged($event)">
-                        </div>
-                    </div>
-                    <div class="col-12">
-						<button type="submit" class="myButton" (click)="onUpload()">Update profile</button>
-					</div>
                 </div>
-            </form>
+                <br>
+                <h3>Profile Info</h3>
+                <br>
+                <form>
+                    <div class=row>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="account-fn">First Name</label> 
+                                <input class="form-control" type="text" id="account-fn" name="user.firstName" [(ngModel)]="user.firstName" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="account-ln">Last Name</label>
+                                <input class="form-control" type="text" id="account-ln" name="user.lastName" [(ngModel)]="user.lastName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+		    				<div class="form-group">
+                                <label for="account-email">Email Address</label> 
+                                <input
+					    			class="form-control" type="email" id="account-email"
+						    		name="user.email" [(ngModel)]="user.email" disabled>
+    						</div>
+                        </div>
+                        <div class="col-md-6">
+			    			<div class="form-group">
+                                <label for="account-phone">Phone Number</label> 
+                                <input
+						    		class="form-control" type="text" id="account-phone" name="user.phone"
+							    	[(ngModel)]="user.phone" required>
+    						</div>
+                        </div>
+                        <div class="col-md-6">
+			    			<div class="form-group">
+                                <label for="account-pass">New Password</label> 
+                                <input
+						    		class="form-control" type="password" id="account-pass" name="user.password"
+							    	[(ngModel)]="user.password">
+    						</div>
+	    				</div>
+		    			<div class="col-md-6">
+			    			<div class="form-group">
+                                <label for="account-confirm-pass">Confirm Password</label> 
+                                <input class="form-control" type="password" name="confirmPass" id="account-confirm-pass" [(ngModel)]="confirmPass">
+						    </div>
+    					</div>
+	    				<div class="col-md-6">
+		    				<div class="form-group">
+                                <label for="account-address">Address</label> 
+                                <input
+                                    class="form-control" type="text" id="account-address" name="user.userAddress"
+                                    [(ngModel)]="user.userAddress">
+    						</div>
+	    				</div>
+		    			<div class="col-md-6">
+			    			<div class="form-group">
+				    			<label for="credit-card">Credit card number</label> <input
+					    			class="form-control" type="password" id="credit-card" pattern="[0-9]*"
+						    		minlength="13" maxlength="16"
+							    	[(ngModel)]="user.creditCard" name="user.creditCard">
+					    		<div class="invalid-feedback">Please enter a valid card number (13-16 digits)!</div>
+    						</div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <p>Upload your profile photo</p>
+                                <input type="file" (change)="onFileChanged($event)">
+                            </div>
+                        </div>
+                        <div class="col-12">
+		    				<button type="submit" class="myButton" (click)="onUpload()">Update profile</button>
+		    			</div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     <br>

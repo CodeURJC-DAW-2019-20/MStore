@@ -24,16 +24,18 @@ export class IndexComponent implements OnInit {
   }
   ngOnInit(){
     this.postService.getPosts().subscribe(
-      posts => this.posts = posts,
+      posts => {
+        this.posts = posts;
+        this.empty=this.posts.length==0;
+        if (!this.empty) {
+          this.carousel = this.posts.sort((e1, e2) => { if (e1.price > e2.price) { return -1 } else if (e1.price < e2.price) { return 1 } else { return 0; } }).slice(0,3);
+          this.featuredPosts = this.posts.sort((e1, e2) => { if (e1.price > e2.price) { return 1 } else if (e1.price < e2.price) { return -1 } else { return 0; } }).slice(0,8);
+          this.newArrivals = this.posts.sort((e1, e2) => { if (e1.id > e2.id) { return -1 } else if (e1.id < e2.id) { return 1 } else { return 0; } }).slice(0,8);
+          this.topPost = this.carousel[0];
+        }
+      },
       error => console.log(error)
     );
-    this.empty=this.posts.length==0;
-    if (!this.empty) {
-      this.carousel = this.posts.sort((e1, e2) => { if (e1.price > e2.price) { return -1 } else if (e1.price < e2.price) { return 1 } else { return 0; } }).slice(0,3);
-      this.featuredPosts = this.posts.sort((e1, e2) => { if (e1.price > e2.price) { return 1 } else if (e1.price < e2.price) { return -1 } else { return 0; } }).slice(0,8);
-      this.newArrivals = this.posts.sort((e1, e2) => { if (e1.id > e2.id) { return -1 } else if (e1.id < e2.id) { return 1 } else { return 0; } }).slice(0,8);
-      this.topPost = this.carousel[0];
-      }
   }
     
 

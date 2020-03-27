@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import * as CanvasJS from './canvasjs.min';
 import { ActivatedRoute } from '@angular/router';
-
-interface User{
-  firstName:string;
-  lastName:string;
-  email:string;
-  phone:number;
-}
+import { UserService } from 'src/app/services/user.service';
+import {User} from 'src/app/models/user.model';
 
 @Component({
   templateUrl: './profile.component.html',
@@ -21,14 +16,12 @@ export class ProfileComponent {
   chartData:number[] = [3,4,9,2,0,1];
   canRate:boolean;
 
-  constructor(private activatedRoute:ActivatedRoute) {
-
+  constructor(private activatedRoute:ActivatedRoute, private userService:UserService) {
     this.getUser(activatedRoute.snapshot.params['id']);
   }
 
   ngOnInit() {
-    this.canRate= this.isLoggedUser()&&this.canUserRate();
-    this.createGraph(this.chartData);
+    this.createGraph(this.chartData);    
   }
 
   createGraph(data:number[]){
@@ -55,7 +48,13 @@ export class ProfileComponent {
   }
 
   getUser(id:number){
-    this.user = {firstName:'Diego',lastName:'Montoto',email:'dm@gmail.com',phone:654432987};
+    this.userService.getUser(id).subscribe(
+      user => {
+        this.user=user;
+        this.canRate= this.isLoggedUser()&&this.canUserRate();
+      },
+      error => console.log(error)
+    );
     this.src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
   }
 

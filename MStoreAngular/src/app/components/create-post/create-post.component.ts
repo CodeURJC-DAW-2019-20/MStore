@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Button } from 'protractor';
 
 interface User{
   firstName:string;
@@ -18,7 +17,7 @@ interface Post{
   brand:{
     name:string;
   }
-  //tags:string[];
+  tags?: Array<String>;
   price:number;
   details:string;
   features?:string;
@@ -34,10 +33,12 @@ export class CreatePostComponent {
   post:Post;
   src:string;
   files:File[]=[];
-  
+  tags?: Array<String>;
   constructor() {
     this.src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
     this.user = {firstName:'Diego',lastName:'Montoto',email:'dm@gmail.com', password:"hola",phone:654432987};
+    this.post = {postAddress: '', name: '', component: '', brand: {name:''}, price: 0,
+    tags: [],details: '' };
   }
 
   onFileChanged(event,index) {

@@ -1,42 +1,50 @@
 <router-outlet>
-    <br>
-    <div class="row">
-        <div class="col-sm-4">
-            <img src="{{src}}" alt="thumbnail" class="img-thumbnail rounded mx-5 d-block">
-        </div>
-        <div class="col-sm-8">
-
-            <h2>{{user?.firstName}} {{user?.lastName}}</h2>
-            <p style="color:rgb(255, 102, 0);">{{user?.email}}</p>
-            <div class="card">
-            <div class="card-body">
-                <p><span style="color:rgb(115, 115, 115);">- First Name: </span><span>{{user?.firstName}}</span></p>
-                <p><span style="color:rgb(115, 115, 115);">- Last Name: </span><span>{{user?.lastName}}</span></p>
-                <p><span style="color:rgb(115, 115, 115);">- Phone Number: </span><span>{{user?.phone}}</span></p>
-            </div>
-            </div>
-            <form *ngIf="canRate">
-                <br>
-                <div class="form-group">
-                    <label for="select-input">¿Do you want to rate this seller
-                        base on your last purchase</label> 
-                        <select class="form-control" name="stars" id="select-input"
-                        required>
-                        <option>Choose the stars</option>
-                        <option>0</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-                <button class="myButton" type="submit" (click)="updateRate()">Rate</button>
-            </form>
-            <br>
-            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <!-- Page Title-->
+    <div class="page-title-wrapper" aria-label="Page title">
+        <div class="container">
+            <h2 class="page-title">Public profile</h2>
+            <span class="d-block mt-2 text-muted"></span>
         </div>
     </div>
-    <br>
+    <div class="container pb-5">
+        <div class="row pt-1">
+            <!-- Sidebar-->
+            <div class="col-xl-3 col-lg-4">
+                <img src="{{src}}" alt="thumbnail" class="img-thumbnail rounded d-block">
+            </div>
+            <!-- Main content-->
+            <div class="col-lg-8 mx-2">
+                <h2>{{user?.firstName}} {{user?.lastName}}</h2>
+                <p style="color:rgb(255, 102, 0);">{{user?.email}}</p>
+                <div class="card">
+                <div class="card-body">
+                    <p><span style="color:rgb(115, 115, 115);">- First Name: </span><span>{{user?.firstName}}</span></p>
+                    <p><span style="color:rgb(115, 115, 115);">- Last Name: </span><span>{{user?.lastName}}</span></p>
+                    <p><span style="color:rgb(115, 115, 115);">- Phone Number: </span><span>{{user?.phone}}</span></p>
+                </div>
+                </div>
+                <form *ngIf="canRate">
+                    <br>
+                    <div class="form-group">
+                        <label for="select-input">¿Do you want to rate this seller
+                            base on your last purchase</label> 
+                            <select class="form-control" name="stars" id="select-input"
+                            required>
+                            <option>Choose the stars</option>
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                             <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="myButton" type="submit" (click)="updateRate()">Rate</button>
+                </form>
+                <br>
+                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            </div>
+        </div>
+    </div>
     Componente de mostrar 8 elementos
 </router-outlet>
