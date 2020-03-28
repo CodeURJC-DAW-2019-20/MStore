@@ -19,6 +19,7 @@ export class IndexComponent implements OnInit {
   topPost: Post;
   pauseOnHover = true;
   l:number;
+  path="https://i.ibb.co/F0021cN/hero-main-bg.jpg";
 
   constructor(private router:Router,private postService:PostsService) {
   }
