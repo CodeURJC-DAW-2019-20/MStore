@@ -3,7 +3,7 @@
     <ng-template #popContent>Not yet implemented <br> <br> <a [routerLink]="['/cart']"> go to cart </a></ng-template>
     <ng-template #popTitle><b>Cart content</b></ng-template>
 <button type="button" class="button btn-outline-secondary mr-2" [ngbPopover]="popContent" [popoverTitle]="popTitle" [autoClose]="false" >
-  <span class="badge bg-primary text-light">1</span>
+  <span id= "notification" class="badge bg-primary text-light position-absolute ">1</span>
   <i-feather name="shopping-cart"></i-feather><br>
     ${{total}}
 </button>

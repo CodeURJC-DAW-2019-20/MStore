@@ -25,8 +25,8 @@
     cursor: pointer;
     padding-left: 13px;
     padding-right: 13px;
-    padding-top: 13px;
-    padding-bottom: 2px;
+    padding-top: 10px;
+    padding-bottom: 1px;
     width: 3%;
     border: none;
     outline: none;
@@ -52,6 +52,11 @@
   #homeredirect {
       text-decoration: none;
       color:white;
+    }
+
+
+    #notification{
+        right: 12px;
     }
   
 
