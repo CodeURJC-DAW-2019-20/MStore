@@ -8,13 +8,37 @@ const CART_URL = "https://localhost:8443/api/carts/";
 @Injectable({ providedIn: 'root' })
 export class CartService {
 
-    constructor(private httpClient: HttpClient) { }
+	constructor(private httpClient: HttpClient) { }
+	
+	
+	headers = {
+		'Content-Type': 'application/json',
+		'Accept': 'application/json',
+		'Access-Control-Allow-Headers': 'Content-Type',
+	  }
+	  
+	  requestOptions = {                                                                                                                                                                                 
+		headers: new Headers(this.headers), 
+	  };
+	  
 
-    getCart(): Observable<Post[]> {
+    getCart(){
 		return this.httpClient.get(CART_URL).pipe(			
 			catchError(error => this.handleError(error))
 		) as Observable<Post[]>;	
-    }
+	}
+	
+	postCart() {
+		return this.httpClient.post(CART_URL, this.requestOptions).pipe(			
+			catchError(error => this.handleError(error))
+		);
+	}
+
+	putCart(id:number) {
+		return this.httpClient.put(CART_URL+id, this.requestOptions).pipe(			
+			catchError(error => this.handleError(error))
+		);
+	}
 
     removeCart() {
 		return this.httpClient.delete(CART_URL).pipe(			

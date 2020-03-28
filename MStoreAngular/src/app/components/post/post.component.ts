@@ -4,6 +4,7 @@ import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import { PostsService } from 'src/app/services/posts.service';
 import { getHeapCodeStatistics } from 'v8';
 import { Post } from 'src/app/models/post.model';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-post',
@@ -23,7 +24,7 @@ export class PostComponent implements OnInit {
   {id: 3, name: 'AMD card 3', price:6,  description: 'new AMD card'}];
   images = [62, 83, 466, 965].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig, private postService:PostsService) { 
+  constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig, private postService:PostsService, private cartService:CartService) { 
     this.id = activatedRoute.snapshot.params.id;
     config.showNavigationArrows = true;
     config.showNavigationIndicators = true;
@@ -42,6 +43,12 @@ export class PostComponent implements OnInit {
 
   activateClass(subModule, i) {
     subModule[i].active = true;
+  }
+
+  addToCart () {
+    this.cartService.putCart(this.id).subscribe(
+      error => console.log(error)
+    );
   }
 
   ngOnInit(): void {
