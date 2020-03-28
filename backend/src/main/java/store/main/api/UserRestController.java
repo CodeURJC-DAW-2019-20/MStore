@@ -40,6 +40,8 @@ public class UserRestController {
 	
 	interface CompleteUser extends User.BasicInfo, User.PostsInfo, User.ListInfo, Post.BasicInfo, Post.BrandInfo, Brand.BasicInfo {}
 	
+	interface FullUser extends CompleteUser, User.SellersInfo{};
+	
 	@JsonView(User.BasicInfo.class)
 	@PostMapping("/")
 	public ResponseEntity<User> postUser(@RequestBody User user) {
@@ -83,7 +85,7 @@ public class UserRestController {
 	}
 		
 	@GetMapping("/{id}")
-	@JsonView(CompleteUser.class)
+	@JsonView(FullUser.class)
 	public ResponseEntity<User> getUser(@PathVariable long id) {
 		Optional<User> us = userRepository.findById(id);
 		if(us.isPresent()) {
