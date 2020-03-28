@@ -17,6 +17,7 @@
             <span id="postname"><b> {{post.name}}</b> </span>
             <br>
             <br>
+            <ngb-rating id="rating" [rate]="medianrate" [readonly]="true" [max]="5"></ngb-rating> <span id="totalrating"> from {{totalrates}} ratings</span>
             <br>
             <br>
             <span id="pricesection"> <b>${{post.price}} </b></span>

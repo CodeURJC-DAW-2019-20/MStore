@@ -21,4 +21,15 @@
     font-size: 40px;
 }
 
+#rating {
+    font-family: Arial;
+    color:orange;
+    font-size: 20px;
+}
+
+
+#totalrating {
+    color:darkgray;
+    font-size: 13px;
+}
 /* post */ 

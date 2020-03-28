@@ -5,6 +5,8 @@ import { PostsService } from 'src/app/services/posts.service';
 import { getHeapCodeStatistics } from 'v8';
 import { Post } from 'src/app/models/post.model';
 import { CartService } from 'src/app/services/cart.service';
+import { GraphicsService } from 'src/app/services/graphics.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-post',
@@ -22,9 +24,13 @@ export class PostComponent implements OnInit {
   recommendedPosts=[{id: 1, name: 'AMD card', price:55,  description: 'new AMD card'},
   {id: 2, name: 'AMD card 2', price:220,  description: 'new AMD card'},
   {id: 3, name: 'AMD card 3', price:6,  description: 'new AMD card'}];
+  rates: number[]=[];
+  userID: number;
+  medianrate=4;
+  totalrates=0;
   images = [62, 83, 466, 965].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig, private postService:PostsService, private cartService:CartService) { 
+  constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig, private postService:PostsService, private cartService:CartService, private graphicsService:GraphicsService) { 
     this.id = activatedRoute.snapshot.params.id;
     config.showNavigationArrows = true;
     config.showNavigationIndicators = true;
@@ -36,9 +42,30 @@ export class PostComponent implements OnInit {
     this.postService.getPost(id).subscribe(
       post => {
         this.post=post;
+        this.userID=post.user.id;
+        this.getRatings(this.userID);
       },
       error => console.log(error)
     );
+  }
+
+  getRatings(id:number){
+    this.graphicsService.getGraphic(id).subscribe(
+      graph => {
+        this.rates=graph;
+        this.convertRatings();
+      },
+      error => console.log(error)
+    );
+  }
+
+  convertRatings(){
+    let total=0;
+    for (let index = 0; index < this.rates.length; index++) {
+        total=total+this.rates[index]*index;
+        this.totalrates= this.totalrates+this.rates[index];
+    }
+   this.medianrate=total/this.totalrates;
   }
 
   activateClass(subModule, i) {
