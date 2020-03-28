@@ -14,7 +14,7 @@
     "@angular/animations": "~9.0.7",
     "@angular/common": "~9.0.7",
     "@angular/compiler": "~9.0.7",
-    "@angular/core": "~9.0.7",
+    "@angular/core": "^9.0.7",
     "@angular/forms": "~9.0.7",
     "@angular/localize": "^9.0.7",
     "@angular/platform-browser": "~9.0.7",
@@ -27,6 +27,7 @@
     "ngx-chips": "^2.1.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "v8": "^0.1.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

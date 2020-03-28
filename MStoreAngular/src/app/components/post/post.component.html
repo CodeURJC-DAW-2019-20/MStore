@@ -14,19 +14,19 @@
             </div>
         </div>
         <div class="col-sm">
-            <span id="postname"><b> Post con id: {{id}}, {{name}}</b> </span>
+            <span id="postname"><b> {{post.name}}</b> </span>
             <br>
             <br>
             <br>
             <br>
-            <span id="pricesection"> <b>${{price}} </b></span>
+            <span id="pricesection"> <b>${{post.price}} </b></span>
             <br>
             <label class="btn-primary w-75" ngbButtonLabel><b>Add to cart</b></label>
             <br>
             <br>
-            <div class="featurebox"> <span *ngFor='let feature of features'>
-                    <li>{{feature}} </li>
-                </span></div>
+            <div class="featurebox"> 
+                    <li>{{post.features}} </li>
+                </div>
             <br>
         </div>
     </div>
@@ -37,12 +37,12 @@
         <div class="row">
 
             <div class="col-sm">
-                <div> <span *ngFor='let feature of features'>
-                        <li><b>{{feature}} </b></li>
-                    </span></div>
+                <div> 
+                        <li><b>{{post.features}} </b></li>
+                    </div>
             </div>
             <div class="col-sm">
-                <span id="fulldetails"><b> {{details}}</b> </span>
+                <span id="fulldetails"><b> {{post.details}}</b> </span>
                 <br>
                 <br>
             </div>

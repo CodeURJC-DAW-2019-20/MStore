@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Post } from 'src/app/models/post.model';
@@ -15,6 +15,13 @@ export class PostsService {
 			catchError(error => this.handleError(error))
 		) as Observable<Post[]>;	
 	}
+
+	getPost(id:number): Observable<Post> {
+		return this.httpClient.get(POSTS_URL+id).pipe(			
+			catchError(error => this.handleError(error))
+		) as Observable<Post>;	
+	}
+
 
 	private handleError(error: any) {
 		console.error(error);
