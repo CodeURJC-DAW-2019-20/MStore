@@ -4,33 +4,26 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Post } from 'src/app/models/post.model';
 
-const POSTS_URL = "https://localhost:8443/api/posts/";
+const CART_URL = "https://localhost:8443/api/carts/";
 @Injectable({ providedIn: 'root' })
-export class PostsService {
+export class CartService {
 
     constructor(private httpClient: HttpClient) { }
 
-	getPosts(): Observable<Post[]> {
-		return this.httpClient.get(POSTS_URL).pipe(			
+    getCart(): Observable<Post[]> {
+		return this.httpClient.get(CART_URL).pipe(			
 			catchError(error => this.handleError(error))
 		) as Observable<Post[]>;	
-	}
+    }
 
-	getPost(id:number): Observable<Post> {
-		return this.httpClient.get(POSTS_URL+id).pipe(			
-			catchError(error => this.handleError(error))
-		) as Observable<Post>;	
-	}
-
-	removePost(post:Post) {
-		return this.httpClient.delete(POSTS_URL + post.id).pipe(			
+    removeCart() {
+		return this.httpClient.delete(CART_URL).pipe(			
 			catchError(error => this.handleError(error))
 		);
 	}
-
-	private handleError(error: any) {
+    
+    private handleError(error: any) {
 		console.error(error);
 		return Observable.throw("Server error (" + error.status + "): " + error.text())
 	}
-
 }
