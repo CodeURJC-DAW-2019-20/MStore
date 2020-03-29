@@ -61,10 +61,10 @@ public class RatingRestController {
 	@PostMapping("/")
 	public ResponseEntity<Rating> createRating(@RequestBody Rating rating) throws IOException {
 		User user = userComponent.getLoggedUser();
-		if(rating == null||rating.getBuyer() == null || rating.getBuyer().getId()==null ||rating.getSeller() == null|| rating.getSeller().getId() == null || rating.getBuyer().getSellers()==null)
+		if(rating == null||rating.getBuyer() == null || rating.getBuyer().getId()==null ||rating.getSeller() == null|| rating.getSeller().getId() == null || user.getSellers()==null)
 			return new ResponseEntity<Rating>(HttpStatus.BAD_REQUEST);
 		rating.setId(null);
-		if(user.getId()==rating.getBuyer().getId()&&checkSellers(userComponent.getLoggedUser().getSellers(),rating.getSeller()))
+		if(user.getId()==rating.getBuyer().getId()&&checkSellers(user.getSellers(),rating.getSeller()))
 			return new ResponseEntity<Rating>(ratingService.saveRating(rating.getStars()+"", rating.getSeller().getId(), rating.getBuyer().getId()),HttpStatus.CREATED);
 		else
 			return new ResponseEntity<Rating>(HttpStatus.FORBIDDEN);

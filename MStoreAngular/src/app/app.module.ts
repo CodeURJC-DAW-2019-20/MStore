@@ -26,6 +26,7 @@ import { FinalReviewComponent } from './components/final-review/final-review.com
 import { CompleteComponent } from './components/complete/complete.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { SearchPipe } from './search.pipe';
+import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -58,9 +59,8 @@ import { SearchPipe } from './search.pipe';
     TagInputModule
   ],
   providers: [      
-    {provide: HTTP_INTERCEPTORS,
-    useClass: ErrorInterceptor,
-    multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

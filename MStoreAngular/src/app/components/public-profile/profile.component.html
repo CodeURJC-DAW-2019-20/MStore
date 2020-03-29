@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label for="select-input">¿Do you want to rate this seller
                             base on your last purchase</label> 
-                            <select class="form-control" name="stars" id="select-input"
+                            <select class="form-control" name="stars" [(ngModel)]="stars" id="select-input"
                             required>
                             <option>Choose the stars</option>
                             <option>0</option>
@@ -39,7 +39,7 @@
                             <option>5</option>
                         </select>
                     </div>
-                    <button class="myButton" type="submit" (click)="updateRate()">Rate</button>
+                    <button class="myButton" (click)="updateRate()">Rate</button>
                 </form>
                 <br>
                 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
