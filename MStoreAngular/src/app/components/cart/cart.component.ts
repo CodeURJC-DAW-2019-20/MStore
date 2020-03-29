@@ -13,13 +13,14 @@ import { Post } from 'src/app/models/post.model';
 export class CartComponent {
   items:Post[]=[];
   id=0;
-  total=320;
+  total=0;
   src:string = "./assets/img/sanchis.png"
   @Output() 
   onRemove: EventEmitter<Post[]> = new EventEmitter<Post[]>();
 
   constructor(private cartService:CartService) {
     this.items=this.cartService.getCart();
+    this.total=this.cartService.getTotal();
   }
 
   removeItem(i:number){

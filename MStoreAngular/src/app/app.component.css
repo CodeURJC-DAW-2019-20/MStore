@@ -59,6 +59,12 @@
         right: 12px;
     }
 
+    #empty{
+        font-family: Arial;
+        text-align: center;
+        color:darkgray;
+    }
+
 
 
 
