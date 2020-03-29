@@ -2,28 +2,27 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { CartService } from 'src/app/services/cart.service';
+import { Post } from 'src/app/models/post.model';
 
-interface post {
-  id:number;
-  name:string;
-  price: number;
-  description:string;
-  }
 
 @Component({
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
-  items:Array<post>;
+  items:Array<Post>=[];
   id=0;
   total=320;
   src:string = "https://finofilipino.org/wp-content/uploads/2019/11/wesrgfwerthertyhj.jpg"
 
-  constructor() {
-    this.items =[{id: 1, name: 'AMD card', price:55,  description: 'new AMD card'},
-      {id: 2, name: 'AMD card 2', price:220,  description: 'new AMD card'},
-      {id: 3, name: 'AMD card 3', price:6,  description: 'new AMD card'}];
+  constructor(private cartService:CartService) {
+    this.items=this.cartService.getCart();
+  }
+
+  removeItem(i:number){
+    this.cartService.removeFromCartIndex(i);
+
   }
 
 }

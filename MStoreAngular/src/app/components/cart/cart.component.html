@@ -20,7 +20,7 @@
 				<h2 *ngIf='items.length === 0' class="w-100 p-3 text-center">
 					<span class='emptytext'>The cart is empty</span>
 				</h2>
-                <div *ngFor='let post of items'
+                <div *ngFor='let post of items, let i = index'
                     class="d-sm-flex justify-content-between my-4 pb-4 border-bottom">
 					<div class="media d-block d-sm-flex text-center text-sm-left">
 						<a class="cart-item-thumb mx-auto mr-sm-4">
@@ -35,7 +35,7 @@
 								<button class="btn btn-outline-danger btn-sm btn-block mb-2"
 									type="submit">
 									<i-feather name="trash-2" style="width: 15px; height: 15px;"></i-feather>
-									<span class="pl-1">Remove</span>
+									<span class="pl-1" (click)=removeItem(i)>Remove</span>
 								</button>
 							</form>
 						</div>

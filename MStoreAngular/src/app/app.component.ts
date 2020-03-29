@@ -11,15 +11,13 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class AppComponent {
   title = 'MStoreAngular';
   total = 0;
-  Cartonline = false;
-  cart: Post[];
+  cart : Post[];
+  length: number;
+  src:string = "https://finofilipino.org/wp-content/uploads/2019/11/wesrgfwerthertyhj.jpg"
 
   constructor(private cartService: CartService, private authenticationService: AuthenticationService) {
-    if (this.Cartonline == false) {
-      this.initCart();
-      this.Cartonline = true;
-    }
-    this.getCart();
+    this.cart = this.cartService.getCart();
+    this.total =this.cartService.getTotal();
   }
 
   logOut() {
@@ -28,15 +26,6 @@ export class AppComponent {
 
   initCart() {
     this.cartService.postCart().subscribe(
-      error => console.log(error)
-    );
-  }
-
-  getCart() {
-    this.cartService.getCart().subscribe(
-      cart => {
-        this.cart = cart;
-      },
       error => console.log(error)
     );
   }

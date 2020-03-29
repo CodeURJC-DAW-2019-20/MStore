@@ -8,9 +8,9 @@ const CART_URL = "https://localhost:8443/api/carts/";
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
+	cart:Post[];
 
 	constructor(private httpClient: HttpClient) { }
-	
 	
 	headers = {
 		'Content-Type': 'application/json',
@@ -19,24 +19,52 @@ export class CartService {
 	  }
 	  
 	  requestOptions = {                                                                                                                                                                                 
-		headers: new Headers(this.headers), 
+		headers: new HttpHeaders(this.headers), 
 	  };
 	  
 
     getCart(){
-		return this.httpClient.get(CART_URL).pipe(			
-			catchError(error => this.handleError(error))
-		) as Observable<Post[]>;	
+		if (this.cart==null){
+			this.cart=[];
+		}
+		return this.cart;
+	}
+
+	getTotal(){
+		let total=0;
+		for (let index = 0; index < this.cart.length; index++) {
+			total=total+this.cart[index].price;
+		}
+		return total;
+	}
+
+	addToCart(post:Post){
+		if (this.cart==null){
+			this.cart=[];
+		}
+		this.cart.push(post);
+	}
+
+	contains(post:Post){
+		return this.cart.indexOf(post) > -1
+	}
+
+	removeFromCart(post:Post){
+		this.cart.splice(this.cart.indexOf(post),1);
+	}
+
+	removeFromCartIndex(i:number){
+		this.cart.splice(i,1);
 	}
 	
 	postCart() {
-		return this.httpClient.post(CART_URL, this.requestOptions).pipe(			
+		return this.httpClient.post(CART_URL, null).pipe(			
 			catchError(error => this.handleError(error))
 		);
 	}
 
 	putCart(id:number) {
-		return this.httpClient.put(CART_URL+id, this.requestOptions).pipe(			
+		return this.httpClient.put(CART_URL+id, null).pipe(			
 			catchError(error => this.handleError(error))
 		);
 	}

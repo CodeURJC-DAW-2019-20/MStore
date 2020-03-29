@@ -28,14 +28,18 @@ export class PostComponent implements OnInit {
   userID: number;
   medianrate=4;
   totalrates=0;
+  Contained=true;
   images = [62, 83, 466, 965].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig, private postService:PostsService, private cartService:CartService, private graphicsService:GraphicsService) { 
-    this.id = activatedRoute.snapshot.params.id;
+  ngOnInit(){
+    this.getPost(this.id);
+  }
+  
+  constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig, private postService:PostsService, private cartService:CartService, private graphicsService:GraphicsService) {
     config.showNavigationArrows = true;
     config.showNavigationIndicators = true;
-    config.interval=3000;
-    this.getPost(this.id);
+    config.interval=3000; 
+    this.id = activatedRoute.snapshot.params.id;
   }
 
   getPost(id:number){
@@ -73,12 +77,6 @@ export class PostComponent implements OnInit {
   }
 
   addToCart () {
-    this.cartService.putCart(this.id).subscribe(
-      error => console.log(error)
-    );
+    this.cartService.addToCart(this.post);
   }
-
-  ngOnInit(): void {
-  }
-
 }

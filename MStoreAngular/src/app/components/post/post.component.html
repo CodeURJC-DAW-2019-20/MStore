@@ -22,11 +22,11 @@
             <br>
             <span id="pricesection"> <b>${{post.price}} </b></span>
             <br>
-            <label class="btn-primary w-75" ngbButtonLabel><b>Add to cart</b></label>
+            <label  class="btn-primary w-75" ngbButtonLabel (click)="addToCart()"><b>Add to cart</b></label>
             <br>
             <br>
             <div class="featurebox"> 
-                    <li>{{post.features}} </li>
+                    <li> {{post.features}}</li>
                 </div>
             <br>
         </div>
@@ -43,7 +43,7 @@
                     </div>
             </div>
             <div class="col-sm">
-                <span id="fulldetails"><b> {{post.details}}</b> </span>
+                <span id="fulldetails"><b>{{post.details}} </b> </span>
                 <br>
                 <br>
             </div>
