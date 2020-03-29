@@ -6,14 +6,14 @@
 					<div class="card-body">
 						<h2 class="h4 mb-1">Sign in</h2>
 						<br>
-						<form>
+						<form (ngSubmit)="onSubmit(username.value, password.value)" #loginForm="ngForm">
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text pt-0">
 										<i-feather name="mail" style="width: 20px; height: 20px;"></i-feather>
 									</span>
 								</div>
-								<input class="form-control" type="email" placeholder="Email"
+								<input #username class="form-control" type="email" placeholder="Email"
 									name="username" required>
 							</div>
 							<div class="input-group form-group">
@@ -22,7 +22,7 @@
 										<i-feather name="unlock" style="width: 20px; height: 20px;"></i-feather>
 									</span>
 								</div>
-								<input class="form-control" type="password"
+								<input #password class="form-control" type="password"
 									placeholder="Password" name="password" required>
 							</div>
 							<br>
@@ -35,7 +35,7 @@
 							</div>
 							<hr class="mt-4">
 							<div class="text-right pt-4">
-								<button class="myButton" type="submit">Sign In</button>
+								<button class="myButton" type="submit" [disabled]="!loginForm.form.valid">Sign In</button>
 							</div>
 						</form>
 					</div>
@@ -45,47 +45,52 @@
 				<h2 class="h4 mb-3">No account? Sign up</h2>
 				<p class="text-muted mb-4">Registration takes less than a minute
 					but gives you full control over your orders.</p>
-				<form>
+				<form (ngSubmit)="onSignUp(confirmPassword.value)" #loginForm="ngForm">
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="reg-fn">First Name</label> <input
+								<label for="reg-fn">First Name</label> 
+								<input #firstName [(ngModel)]="user.firstName"
 									class="form-control" type="text" required id="reg-fn"
 									name="firstName">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="reg-ln">Last Name</label> <input
+								<label for="reg-ln">Last Name</label> 
+								<input #lastName [(ngModel)]="user.lastName"
 									class="form-control" type="text" required id="reg-ln"
 									name="lastName">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="reg-email">E-mail Address</label> <input
+								<label for="reg-email">E-mail Address</label> 
+								<input #email [(ngModel)]="user.email"
 									class="form-control" type="email" required id="reg-email"
 									name="email">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="reg-phone">Phone Number</label> <input
+								<label for="reg-phone">Phone Number</label> 
+								<input #phone [(ngModel)]="user.phone"
 									class="form-control" type="text" required id="reg-phone"
 									name="phone">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="reg-password">Password</label> <input
+								<label for="reg-password">Password</label> 
+								<input #password [(ngModel)]="user.password"
 									class="form-control" type="password" required id="reg-password"
 									name="password">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="reg-password-confirm">Confirm Password</label> <input
-									class="form-control" type="password" required
+								<label for="reg-password-confirm">Confirm Password</label> 
+									<input #confirmPassword class="form-control" type="password" required
 									id="reg-password-confirm" name="confirm_password">
 							</div>
 						</div>

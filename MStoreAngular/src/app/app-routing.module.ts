@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './helpers/auth.guard';
 import { ShopComponent } from './components/shop/shop.component';
 import { PostComponent } from './components/post/post.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -18,15 +19,15 @@ const routes: Routes = [
   { path: 'post/:id', component: PostComponent, },
   { path: 'shop', component: ShopComponent, },
   { path: 'cart', component: CartComponent, },
-  { path: 'public_profile/:id', component: ProfileComponent, },
-  { path: 'public_profile', component: MyProfileComponent, },
-  { path: 'edit_profile', component: EditProfileComponent, },
-  { path: 'sell_product', component: CreatePostComponent, },
+  { path: 'public_profile/:id', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'public_profile', component: MyProfileComponent },
+  { path: 'edit_profile', component: EditProfileComponent, canActivate: [AuthGuard] },
+  { path: 'sell_product', component: CreatePostComponent, canActivate: [AuthGuard] },
   { path: 'sign', component: LoginComponent},
   { path: '', component: IndexComponent, },
-  { path: 'stepper', component: StepperComponent},
-  { path: 'complete', component: CompleteComponent},
-  { path: 'admin', component: AdminComponent},
+  { path: 'stepper', component: StepperComponent, canActivate: [AuthGuard] },
+  { path: 'complete', component: CompleteComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '', pathMatch: 'full' },
   {path: 'error-404', component: ErrorComponentNF},
   {path: '**', redirectTo: '/error-404'}

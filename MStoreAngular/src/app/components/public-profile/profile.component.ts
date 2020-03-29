@@ -3,9 +3,8 @@ import * as CanvasJS from './canvasjs.min';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { GraphicsService } from 'src/app/services/graphics.service';
-import { LoggedUserService } from 'src/app/services/loggedUser.service';
 import {User} from 'src/app/models/user.model';
-import {LoggedUser} from 'src/app/models/loggedUser.model';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   templateUrl: './profile.component.html',
@@ -15,19 +14,17 @@ export class ProfileComponent {
 
   user:User;
   loggedUser:User;
-  loggedUserInfo:LoggedUser;
   id:number;
   src:string;
   chart:CanvasJS.Chart;
   chartData:number[] = [];
   canRate:boolean;
 
-  constructor(private activatedRoute:ActivatedRoute, private userService:UserService, private graphicsService:GraphicsService, private loggedUserService:LoggedUserService) {
+  constructor(private activatedRoute:ActivatedRoute, private userService:UserService, private graphicsService:GraphicsService, private loggedUserService: AuthenticationService) {
     this.id=activatedRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
-    this.loggedUserInfo=this.loggedUserService.getLogguedUserInfo();
     this.getUser(this.id);
     this.getGraph(this.id);   
   }
@@ -58,9 +55,9 @@ export class ProfileComponent {
   getUser(id:number){
     this.userService.getUser(id).subscribe(
       user => {
-        this.user=user;
+        this.user = user;
         if(this.loggedUserService.isUserLog())
-          this.getLoggedUser(this.loggedUserInfo.id);
+          this.getLoggedUser(this.loggedUserService.currentUserValue.id);
       },
       error => console.log(error)
     );
@@ -70,7 +67,7 @@ export class ProfileComponent {
   getLoggedUser(id:number){
     this.userService.getUser(id).subscribe(
       user => {
-        this.loggedUser=user;
+        this.loggedUser = user;
         this.canRate= this.canUserRate(this.loggedUser.sellers);
       },
       error => console.log(error)

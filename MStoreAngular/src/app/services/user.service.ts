@@ -23,6 +23,12 @@ export class UserService {
 		) as Observable<User>;	
 	}
 
+	addUser(user: User): Observable<User> {
+		return this.httpClient.post<User>(USERS_URL, user).pipe(			
+			catchError(error => this.handleError(error))
+		);
+	}
+
 	private handleError(error: any) {
 		console.error(error);
 		return Observable.throw("Server error (" + error.status + "): " + error.text())

@@ -1,5 +1,6 @@
 <div class="div">
 <span class="title"><a id="homeredirect" [routerLink]="['/']"> Mstore </a> </span>
+<button class="myButton" (click)="logOut()" name="logOut">Log Out</button>
     <ng-template #popContent>Not yet implemented <br> <br> <a [routerLink]="['/cart']"> go to cart </a></ng-template>
     <ng-template #popTitle><b>Cart content</b></ng-template>
 <button type="button" class="button btn-outline-secondary mr-2" [ngbPopover]="popContent" [popoverTitle]="popTitle" [autoClose]="false" >
