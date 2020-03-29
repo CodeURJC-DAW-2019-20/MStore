@@ -29,6 +29,12 @@ export class UserService {
 		);
 	}
 
+	updateUser(user: User,id:number): Observable<User> {
+		return this.httpClient.put<User>(USERS_URL+id, user).pipe(			
+			catchError(error => this.handleError(error))
+		);
+	}
+
 	private handleError(error: any) {
 		console.error(error);
 		return Observable.throw("Server error (" + error.status + "): " + error.text())

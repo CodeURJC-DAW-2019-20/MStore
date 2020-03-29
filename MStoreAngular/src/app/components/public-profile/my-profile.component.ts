@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import * as CanvasJS from './canvasjs.min';
 import { UserService } from 'src/app/services/user.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { GraphicsService } from 'src/app/services/graphics.service';
 import {User} from 'src/app/models/user.model';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+
 
 @Component({
   templateUrl: './profile.component.html',

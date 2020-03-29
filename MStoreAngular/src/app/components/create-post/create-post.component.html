@@ -23,13 +23,14 @@
             <div class="col-lg-8 mx-2">
                 <!-- Pickup address-->
                 <h4>1. Pickup address</h4>
-                <form>
+                <form (ngSubmit)="onSubmit()">
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="address">Address</label>
                             <input class="form-control" type="text" name="post.postAddress"
                                 [(ngModel)]="post.postAddress" placeholder="Plaza de los limones 12" id="address"
                                 required>
+                            <p style="color:red; font-size:small" *ngIf="submitted && post.postAddress == ''">Please enter an address!</p>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -42,6 +43,7 @@
                             <label for="component-name">Component Name</label>
                             <input class="form-control" type="text" name="post.name" [(ngModel)]="post.name"
                                 placeholder="MSI Printer" id="component-name" required>
+                            <p style="color:red; font-size:small" *ngIf="submitted && post.name == ''">Please enter the name of the component!</p>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -63,6 +65,7 @@
                                 <option value="3D Printer">3D Printer</option>
                                 <option value="Printer Supplies">Printer Supplies</option>
                             </select>
+                            <p style="color:red; font-size:small" *ngIf="submitted && post.component == ''">Please choose a category!</p>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -84,6 +87,7 @@
                                 <option value="HP">HP</option>
                                 <option value="Other">Other</option>
                             </select>
+                            <p style="color:red; font-size:small" *ngIf="submitted && post.brand.name == ''">Please choose a brand!</p>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -134,6 +138,7 @@
                             <textarea class="form-control" name="post.details" [(ngModel)]="post.details"
                                 id="textarea-input" placeholder="Tell us about the product" rows="7"
                                 required></textarea>
+                            <p style="color:red; font-size:small" *ngIf="submitted && post.details == ''">Please enter a brief summary of your product!</p>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -146,7 +151,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <button class="myButton" type="submit" (click)="onUpload()">Sell product</button>
+                        <button class="myButton" type="submit">Sell product</button>
                     </div>
                 </form>
             </div>

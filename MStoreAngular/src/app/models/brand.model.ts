@@ -1,7 +1,7 @@
 import { Post } from './post.model'
 
 export interface Brand {
-    id: number;
+    id?: number;
     name: string;
-    posts: Post[];
+    posts?: Post[];
 }

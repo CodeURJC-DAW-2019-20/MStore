@@ -16,8 +16,8 @@
             <div class="col-lg-8 mx-2">
                 <div class=row>
                     <div class="col-sm-8">
-                        <h2>{{user?.firstName}} {{user?.lastName}}</h2>
-                        <p style="color:rgb(255, 102, 0);">{{user?.email}}</p>
+                        <h2>{{userLog?.firstName}} {{userLog?.lastName}}</h2>
+                        <p style="color:rgb(255, 102, 0);">{{userLog?.email}}</p>
                     </div>
                     <div class="col-sm-4">
                         <br>
@@ -27,18 +27,20 @@
                 <br>
                 <h3>Profile Info</h3>
                 <br>
-                <form>
+                <form (ngSubmit)="onSubmit()"> 
                     <div class=row>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="account-fn">First Name</label> 
                                 <input class="form-control" type="text" id="account-fn" name="user.firstName" [(ngModel)]="user.firstName" required>
+                                <p style="color:red; font-size:small" *ngIf="submitted && user.firstName == ''">Please enter an address!</p>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="account-ln">Last Name</label>
                                 <input class="form-control" type="text" id="account-ln" name="user.lastName" [(ngModel)]="user.lastName" required>
+                                <p style="color:red; font-size:small" *ngIf="submitted && user.lastName == ''">Please enter an address!</p>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -47,14 +49,15 @@
                                 <input
 					    			class="form-control" type="email" id="account-email"
 						    		name="user.email" [(ngModel)]="user.email" disabled>
-    						</div>
+                                </div>
                         </div>
                         <div class="col-md-6">
 			    			<div class="form-group">
                                 <label for="account-phone">Phone Number</label> 
                                 <input
 						    		class="form-control" type="text" id="account-phone" name="user.phone"
-							    	[(ngModel)]="user.phone" required>
+                                    [(ngModel)]="user.phone" required>
+                                <p style="color:red; font-size:small" *ngIf="submitted && checkPhone()">Please enter an address!</p>
     						</div>
                         </div>
                         <div class="col-md-6">
@@ -95,7 +98,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-		    				<button type="submit" class="myButton" (click)="onUpload()">Update profile</button>
+		    				<button type="submit" class="myButton">Update profile</button>
 		    			</div>
                     </div>
                 </form>
