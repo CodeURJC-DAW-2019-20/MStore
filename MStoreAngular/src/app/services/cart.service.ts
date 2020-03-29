@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Post } from 'src/app/models/post.model';
+import { $ } from 'protractor';
 
 const CART_URL = "https://localhost:8443/api/carts/";
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
-	cart:Post[];
+	cart:Post[]=[];
 
 	constructor(private httpClient: HttpClient) { }
 	
@@ -24,37 +25,65 @@ export class CartService {
 	  
 
     getCart(){
-		if (this.cart==null){
-			this.cart=[];
+		let cart=JSON.parse(sessionStorage.getItem("cart"));
+		if (cart==null){
+			let cartaux:Post[]=[];
+			sessionStorage.setItem("cart", JSON.stringify(cartaux));
+			cart=cartaux;
 		}
-		return this.cart;
+		return cart;
 	}
 
+	getCartO(): Observable<Post[]>{
+		let cart=JSON.parse(sessionStorage.getItem("cart"));
+		if (cart==null){
+			let cartaux:Post[]=[];
+			sessionStorage.setItem("cart", JSON.stringify(cartaux));
+			cart=cartaux;
+		}
+		return of(cart);
+	}
+
+
 	getTotal(){
-		let total=0;
-		for (let index = 0; index < this.cart.length; index++) {
-			total=total+this.cart[index].price;
+		let total=JSON.parse(sessionStorage.getItem("total"));
+		if (total==null){
+			let totalaux=0;
+			sessionStorage.setItem("total",JSON.stringify(totalaux));
+			return total;
 		}
 		return total;
 	}
 
 	addToCart(post:Post){
-		if (this.cart==null){
-			this.cart=[];
+		let cart:Post[]=JSON.parse(sessionStorage.getItem("cart"));
+		let total=JSON.parse(sessionStorage.getItem("total"));
+		let totalaux=total+post.price;
+		cart.push(post);
+		sessionStorage.setItem("total",JSON.stringify(totalaux));
+		sessionStorage.setItem("cart", JSON.stringify(cart));
+	}
+
+	contains(id:number){
+		let cart:Post[]=JSON.parse(sessionStorage.getItem("cart"));
+		for (let index = 0; index < cart.length; index++) {
+			let postaux:Post;
+			postaux=cart[index];
+			if (postaux.id==id) {
+				return true;
+			}
 		}
-		this.cart.push(post);
+		return false;
 	}
-
-	contains(post:Post){
-		return this.cart.indexOf(post) > -1
-	}
-
-	removeFromCart(post:Post){
-		this.cart.splice(this.cart.indexOf(post),1);
-	}
-
+	
 	removeFromCartIndex(i:number){
-		this.cart.splice(i,1);
+		let cart:Post[]=JSON.parse(sessionStorage.getItem("cart"));
+		let total=JSON.parse(sessionStorage.getItem("total"));
+		let post:Post = cart[i];
+		let totalaux=total-post.price;
+		cart.splice(i,1);
+		sessionStorage.setItem("total",JSON.stringify(totalaux));
+		sessionStorage.setItem("cart", JSON.stringify(cart));
 	}
 	
 	postCart() {

@@ -27,6 +27,7 @@ import { CompleteComponent } from './components/complete/complete.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { SearchPipe } from './search.pipe';
 import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
+import { ErrorComponent500 } from './components/error/error500.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
     CreatePostComponent,
     IndexComponent,
     ErrorComponentNF,
+    ErrorComponent500,
     LoginComponent,
     ShowPostsComponent,
     PaymentComponent,

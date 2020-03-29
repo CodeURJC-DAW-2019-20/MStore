@@ -22,7 +22,7 @@
             <br>
             <span id="pricesection"> <b>${{post.price}} </b></span>
             <br>
-            <label  class="btn-primary w-75" ngbButtonLabel (click)="addToCart()"><b>Add to cart</b></label>
+            <label *ngIf='Contained === false' class="btn-primary w-75" ngbButtonLabel (click)="addToCart()"><b>Add to cart</b></label><label *ngIf='Contained === true' class="btn-primary w-75 disabled" ngbButtonLabel><b>Add to cart</b></label>
             <br>
             <br>
             <div class="featurebox"> 

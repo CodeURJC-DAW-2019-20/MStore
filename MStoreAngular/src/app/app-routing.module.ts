@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { CompleteComponent } from './components/complete/complete.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ErrorComponent500 } from './components/error/error500.component';
 
 const routes: Routes = [
   { path: 'post/:id', component: PostComponent, },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'complete', component: CompleteComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '', pathMatch: 'full' },
+  {path: 'error-500', component: ErrorComponent500},
   {path: 'error-404', component: ErrorComponentNF},
   {path: '**', redirectTo: '/error-404'}
 ];

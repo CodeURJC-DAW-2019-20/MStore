@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import { PostsService } from 'src/app/services/posts.service';
@@ -30,9 +30,14 @@ export class PostComponent implements OnInit {
   totalrates=0;
   Contained=true;
   images = [62, 83, 466, 965].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  @Output() 
+  onAdd: EventEmitter<Post> = new EventEmitter<Post>();
+
+
 
   ngOnInit(){
     this.getPost(this.id);
+    this.Contained=this.cartService.contains(this.id);
   }
   
   constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig, private postService:PostsService, private cartService:CartService, private graphicsService:GraphicsService) {
@@ -40,6 +45,7 @@ export class PostComponent implements OnInit {
     config.showNavigationIndicators = true;
     config.interval=3000; 
     this.id = activatedRoute.snapshot.params.id;
+
   }
 
   getPost(id:number){
@@ -61,6 +67,15 @@ export class PostComponent implements OnInit {
       },
       error => console.log(error)
     );
+
+  }
+
+  getError(id:number){
+    this.cartService.putCart(id).subscribe(
+      graph => {
+        this.convertRatings();
+      },
+    );
   }
 
   convertRatings(){
@@ -77,6 +92,9 @@ export class PostComponent implements OnInit {
   }
 
   addToCart () {
+    this.onAdd.emit(this.post);
     this.cartService.addToCart(this.post);
+    this.Contained=true;
+    window.location.reload();
   }
 }

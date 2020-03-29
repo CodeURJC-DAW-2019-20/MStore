@@ -3,22 +3,26 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-    constructor(private authenticationService: AuthenticationService) {}
+    constructor(private authenticationService: AuthenticationService, private router:Router) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(retry(1), catchError((error: HttpErrorResponse) => {
-                    if (error.status === 401) {
-                        // auto logout if 401 response returned from api
-                        this.authenticationService.logout();
-                        location.reload(true);
+                    if (error.status === 404) {
+                        this.router.navigate(['error-404']);
+                    }
+                    if (error.status === 500) {
+                        this.router.navigate(['error-500']);
                     }
                     let errorMessage = '';
                     let errorDescription = '';
                     if (error.error instanceof ErrorEvent) {
                         errorMessage = `Error: ${error.error.message}`;
+                       
+
                     } else {
                         errorMessage = 'Error:' + error.status;
                         errorDescription = error.message
