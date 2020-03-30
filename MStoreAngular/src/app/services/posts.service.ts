@@ -13,25 +13,49 @@ export class PostsService {
     constructor(private httpClient: HttpClient, cartService:CartService) { }
 
 	getPosts(): Observable<Post[]> {
-		return this.httpClient.get(POSTS_URL).pipe(			
+		return this.httpClient.get(POSTS_URL).pipe(
 			catchError(error => this.handleError(error))
-		) as Observable<Post[]>;	
+		) as Observable<Post[]>;
 	}
 
+	getPostsByPriceASC(): Observable<Post[]> {
+		return this.httpClient
+		  .get(POSTS_URL + "?sortBy=price&ord=asc&pageNo=0")
+		  .pipe(catchError(error => this.handleError(error))) as Observable<Post[]>;
+	  }
+	  getPostsByPriceDESC(): Observable<Post[]> {
+		return this.httpClient
+		  .get(POSTS_URL + "?sortBy=price&ord=desc&pageNo=0")
+		  .pipe(catchError(error => this.handleError(error))) as Observable<Post[]>;
+	  }
+
+	  getPostsByNameASC(): Observable<Post[]> {
+		return this.httpClient
+		  .get(POSTS_URL + "?sortBy=name&ord=asc&pageNo=0")
+		  .pipe(catchError(error => this.handleError(error))) as Observable<Post[]>;
+	  }
+
+	  getPostsByNameDESC(): Observable<Post[]> {
+		return this.httpClient
+		  .get(POSTS_URL + "?sortBy=name&ord=desc&pageNo=0")
+		  .pipe(catchError(error => this.handleError(error))) as Observable<Post[]>;
+	  }
+
+
 	getTopPosts(): Observable<Post[]> {
-		return this.httpClient.get(POSTS_URL+"top-posts").pipe(			
+		return this.httpClient.get(POSTS_URL+"top-posts").pipe(
 			catchError(error => this.handleError(error))
-		) as Observable<Post[]>;	
+		) as Observable<Post[]>;
 	}
 
 	getPost(id: number): Observable<Post> {
-		return this.httpClient.get(POSTS_URL+id).pipe(			
+		return this.httpClient.get(POSTS_URL+id).pipe(
 			catchError(error => this.handleError(error))
-		) as Observable<Post>;	
+		) as Observable<Post>;
 	}
 
 	removePost(post: Post) {
-		return this.httpClient.delete(POSTS_URL + post.id).pipe(			
+		return this.httpClient.delete(POSTS_URL + post.id).pipe(
 			catchError(error => this.handleError(error))
 		);
 	}

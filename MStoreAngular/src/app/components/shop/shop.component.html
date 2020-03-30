@@ -81,233 +81,52 @@
               <!-- Brand filter    -->
               <div class="widget widget-categories">
                 <h3 class="widget-title">Shop by brand</h3>
-                <ul id="shopCategories">
-                  <li>
-                    <a href="/shop/brand/Intel">
-                      <i-feather name="chevron-right" style="width: 20px; height: 20px;">
-                      </i-feather>
-                      <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                      Intel
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/shop/brand/AMD">
-                      <i-feather name="chevron-right" style="width: 20px; height: 20px;">
-                      </i-feather>
-                      <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                      AMD
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/shop/brand/NVIDIA">
-                      <i-feather name="chevron-right" style="width: 20px; height: 20px;">
-                      </i-feather>
-                      <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                      NVIDIA
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/shop/brand/ASUS">
-                      <i-feather name="chevron-right" style="width: 20px; height: 20px;">
-                      </i-feather>
-                      <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                      ASUS
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/shop/brand/Corsair">
-                      <i-feather name="chevron-right" style="width: 20px; height: 20px;">
-                      </i-feather>
-                      <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                      Corsair
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/shop/brand/Seagate">
-                      <i-feather name="chevron-right" style="width: 20px; height: 20px;">
-                      </i-feather>
-                      <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                      Seagate
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/shop/brand/Gigabyte">
-                      <i-feather name="chevron-right" style="width: 20px; height: 20px;">
-                      </i-feather>
-                      <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                      Gigabyte
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/shop/brand/Logitech">
-                      <i-feather name="chevron-right" style="width: 20px; height: 20px;">
-                      </i-feather>
-                      <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                      Logitech
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/shop/brand/Pioneer">
-                      <i-feather name="chevron-right" style="width: 20px; height: 20px;">
-                      </i-feather>
-                      <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                      Pioneer
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/shop/brand/WD">
-                      <i-feather name="chevron-right" style="width: 20px; height: 20px;">
-                      </i-feather>
-                      <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                      WD
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/shop/brand/HP">
-                      <i-feather name="chevron-right" style="width: 20px; height: 20px;">
-                      </i-feather>
-                      <i class="widget-categories-indicator" data-feather="chevron-right"></i>
-                      HP
-                    </a>
-                  </li>
-                </ul>
+                <button class="btn btn-primary" style="margin: .1rem;" type="submit" *ngFor="let brand of brands" (click)="setBrand(brand.id)">{{brand.name}}</button>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="col-lg-9">
-        <mat-form-field>
-          <mat-label>Sort by:</mat-label>
-          <mat-select [(value)]="selected">
-            <mat-option>None</mat-option>
-            <mat-option value="option1">Low - Hight Price</mat-option>
-            <mat-option value="option2">Hight - Low Price</mat-option>
-            <mat-option value="option3">A - Z Name Order</mat-option>
-            <mat-option value="option4">Z - A Name Order</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <h2> results</h2>
-        <h2>
-          No posts found&nbsp;
-          <small class="text-muted font-size-lg">Try again</small>
-        </h2>
-        <!-- Toolbar-->
-        <div class="d-flex flex-wrap justify-content-center justify-content-sm-between pb-3">
-          <div class="d-flex flex-wrap">
-
-
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Sort by: </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="searchByPriceASC()">Low - Hight Price</button>
+            <button ngbDropdownItem (click)="searchByPriceDESC()">Hight - Low Price</button>
+            <button ngbDropdownItem (click)="searchByNameASC()">A - Z Name Order</button>
+            <button ngbDropdownItem (click)="searchByNameDESC()">Z - A Name Order</button>
           </div>
+        </div>
+
+<br>
+        <div *ngIf="empty">
+          <h2>
+            No posts found&nbsp;
+            <small class="text-muted font-size-lg">Try again</small>
+          </h2>
         </div>
         <br>
         <!-- Products grid-->
         <div class="row no-gutters">
-          <div class="col-md-4 col-sm-6" style="padding-bottom: 1.1rem; padding-right: 0.99rem;">
+          <div class="col-md-4 col-sm-6" style="padding-bottom: 1.1rem; padding-right: 0.99rem;"
+            *ngFor="let post of posts">
             <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu">
-                <mat-card-header>
-                  <mat-card-title>Título</mat-card-title>
-                  <mat-card-subtitle>Categoría</mat-card-subtitle>
-                </mat-card-header>
+              <img mat-card-image src="https://localhost:8443/images/posts/image-{{post.id}}-0.jpg"
+                alt="Photo of a Shiba Inu" style="max-height: 125px;">
+              <mat-card-header>
+                <mat-card-title>{{post.name}}</mat-card-title>
+                <mat-card-subtitle>{{post.component}}</mat-card-subtitle>
+              </mat-card-header>
               <mat-card-content>
                 <p class="p-title">
-                  $111
+                  {{post.price}}$
                 </p>
               </mat-card-content>
             </mat-card>
-          </div>
-          <div class="col-md-4 col-sm-6" style="padding-bottom: 1.1rem; padding-right: 0.99rem;">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu">
-                <mat-card-header>
-                  <mat-card-title>Título</mat-card-title>
-                  <mat-card-subtitle>Categoría</mat-card-subtitle>
-                </mat-card-header>
-              <mat-card-content>
-                <p class="p-title">
-                  $111
-                </p>
-              </mat-card-content>
-            </mat-card>
-          </div>
-          <div class="col-md-4 col-sm-6" style="padding-bottom: 1.1rem; padding-right: 0.99rem;">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu">
-                <mat-card-header>
-                  <mat-card-title>Título</mat-card-title>
-                  <mat-card-subtitle>Categoría</mat-card-subtitle>
-                </mat-card-header>
-              <mat-card-content>
-                <p class="p-title">
-                  $111
-                </p>
-              </mat-card-content>
-            </mat-card>
-          </div>
-          <div class="col-md-4 col-sm-6" style="padding-bottom: 1.1rem; padding-right: 0.99rem;">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu">
-                <mat-card-header>
-                  <mat-card-title>Título</mat-card-title>
-                  <mat-card-subtitle>Categoría</mat-card-subtitle>
-                </mat-card-header>
-              <mat-card-content>
-                <p class="p-title">
-                  $111
-                </p>
-              </mat-card-content>
-            </mat-card>
-          </div>
-          <div class="col-md-4 col-sm-6" style="padding-bottom: 1.1rem; padding-right: 0.99rem;">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu">
-                <mat-card-header>
-                  <mat-card-title>Título</mat-card-title>
-                  <mat-card-subtitle>Categoría</mat-card-subtitle>
-                </mat-card-header>
-              <mat-card-content>
-                <p class="p-title">
-                  $111
-                </p>
-              </mat-card-content>
-            </mat-card>
-          </div>
-          <div class="col-md-4 col-sm-6" style="padding-bottom: 1.1rem; padding-right: 0.99rem;">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu">
-                <mat-card-header>
-                  <mat-card-title>Título</mat-card-title>
-                  <mat-card-subtitle>Categoría</mat-card-subtitle>
-                </mat-card-header>
-              <mat-card-content>
-                <p class="p-title">
-                  $111
-                </p>
-              </mat-card-content>
-            </mat-card>
+
           </div>
           <!-- Product-->
 
-        </div>
-        <div class="containerLure">
-
-        </div>
-        <div class="pb-4 mb-2"></div>
-        <div class="page-load-status">
-          <div class="loader-ellips infinite-scroll-request">
-            <span class="loader-ellips__dot"></span>
-            <span class="loader-ellips__dot"></span>
-            <span class="loader-ellips__dot"></span>
-            <span class="loader-ellips__dot"></span>
-          </div>
-          <p class="infinite-scroll-last">End of content</p>
-          <p class="infinite-scroll-error">No more pages to load</p>
         </div>
         <p>
           <button class="view-more-button">View more</button>

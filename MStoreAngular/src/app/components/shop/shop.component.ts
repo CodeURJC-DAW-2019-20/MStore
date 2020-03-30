@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
-interface post {
-  id:number;
-  name:string;
-  description:string;
-  }
+import { Post } from 'src/app/models/post.model';
+import { Router } from '@angular/router';
+import { PostsService } from 'src/app/services/posts.service';
+import { HttpClient } from '@angular/common/http';
+import { BrandService } from 'src/app/services/brand.service';
 
 @Component({
   selector: 'app-shop',
@@ -13,17 +12,86 @@ interface post {
 })
 export class ShopComponent implements OnInit {
   selected ="hola"
-  title = 'MStoreAngular';
-  Posts: Array<post> = [{id: 0, name: 'AMD card', description: 'new AMD card'},
-  {id: 3, name: 'AMD card 2', description: 'new AMD card'},
-  {id: 5, name: 'AMD card 3', description: 'new AMD card'},
-  {id: 12, name: 'AMD card 4', description: 'new AMD card'},
-  {id: 14, name: 'AMD card 5', description: 'new AMD card'},
-  {id: 16, name: 'AMD card 6', description: 'new AMD card'}];
+  currentBrand;
+  posts = []
+  brands = []
+  page;
+  empty = false
 
-  constructor() { }
+
+  searchByPriceASC() {
+    this.postService.getPostsByPriceASC().subscribe(
+      response => {
+        this.posts = response;
+        this.empty=this.posts.length==0;
+        this.page = 0;
+      },
+      error => console.log(error)
+    );
+  }
+
+  searchByPriceDESC() {
+    this.postService.getPostsByPriceDESC().subscribe(
+      response => {
+        this.posts = response;
+        this.empty=this.posts.length==0;
+        this.page = 0;
+      },
+      error => console.log(error)
+    );
+  }
+
+  searchByNameASC() {
+    this.postService.getPostsByNameASC().subscribe(
+      response => {
+        this.posts = response;
+        this.empty=this.posts.length==0;
+        this.page = 0;
+      },
+      error => console.log(error)
+    );
+  }
+
+  searchByNameDESC() {
+    this.postService.getPostsByNameDESC().subscribe(
+      response => {
+        this.posts = response;
+        this.empty=this.posts.length==0;
+        this.page = 0;
+      },
+      error => console.log(error)
+    );
+  }
+
+  setBrand(id:number) {
+    this.brandService.getBrand(id).subscribe(
+      response => {
+        this.currentBrand = response
+        this.posts = this.currentBrand.posts
+      },
+      error => console.log(error)
+    );
+  }
+
+  constructor(private router:Router,private postService:PostsService, private brandService:BrandService) { }
 
   ngOnInit(): void {
+    this.postService.getPosts().subscribe(
+      response => {
+        this.posts = response;
+        this.empty=this.posts.length==0;
+        this.page = 0;
+      },
+      error => console.log(error)
+    );
+
+    this.brandService.getBrands().subscribe(
+      response => {
+        this.brands = response;
+      },
+      error => console.log(error)
+    );
+
   }
 
 }
