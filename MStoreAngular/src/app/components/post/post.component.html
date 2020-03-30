@@ -53,4 +53,4 @@
 </div>
 
 <!-- Related products-->
-<app-posts [title]='title2' [posts]='recommendedPosts'></app-posts>
+<app-posts *ngIf="!empty" [title]='title2' [posts]='recommendedPosts'></app-posts>

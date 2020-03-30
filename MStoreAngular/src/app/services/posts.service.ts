@@ -18,6 +18,12 @@ export class PostsService {
 		) as Observable<Post[]>;	
 	}
 
+	getTopPosts(): Observable<Post[]> {
+		return this.httpClient.get(POSTS_URL+"top-posts").pipe(			
+			catchError(error => this.handleError(error))
+		) as Observable<Post[]>;	
+	}
+
 	getPost(id: number): Observable<Post> {
 		return this.httpClient.get(POSTS_URL+id).pipe(			
 			catchError(error => this.handleError(error))

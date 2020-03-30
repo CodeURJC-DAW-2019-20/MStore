@@ -1,6 +1,6 @@
 <section class="container px-3 pt-4 mt-3">
     <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
-        <h5 class="widget-title font-size-lg">{{title}}</h5>
+        <h2 class="widget-title font-size-lg">{{title}}</h2>
         <a class="btn btn-outline-primary btn-sm border-0 mb-2" [routerLink]="['/shop']">More
             products<i-feather name="chevron-right" style="width: 20px; height: 20px;"></i-feather>
         </a>
@@ -12,20 +12,20 @@
         <div *ngFor="let post of posts" class="col-lg-3 col-sm-4 col-6 border border-collapse">
             <div class="product-card">
                 <div class="product-thumb">
-                    <a class="product-thumb-link" [routerLink]="['/post',post.id]"></a> <img class="img-thumbnail" [src]="images[0]" alt="Random first slide">
+                    <a [routerLink]="['/post',post.id]" (click)="navigate(post.id)" ><img class="img-thumbnail" [src]="images[0]" alt="Random first slide"></a>
                 </div>
                 <div class="product-card-body">
                     <div class="d-flex flex-wrap justify-content-between pb-1">
                         <a class="text-muted" href="#">{{post.component}}</a>
                     </div>
                     <h5 class="text-dark">
-                        <a class="text-dark" [routerLink]="['/post',post.id]">{{post.name}}</a>
+                        <a class="text-dark" [routerLink]="['/post',post.id]" (click)="navigate(post.id)">{{post.name}}</a>
                     </h5>
                     <hr class="mt-4">
                     <span class="text-primary">${{post.price}}</span>
                 </div>
                 <div class="d-print-none">
-                    <button type="button" class="myButton" ngbTooltip="Shop" triggers="click:blur" [routerLink]="['/post',post.id]">Shop now
+                    <button [routerLink]="['/post',post.id]" (click)="navigate(post.id)" type="button" class="myButton" ngbTooltip="Shop" triggers="click:blur">Shop now
                         <i-feather name="arrow-right" style="width: 20px; height: 20px;"></i-feather></button>
                 </div>
             </div>

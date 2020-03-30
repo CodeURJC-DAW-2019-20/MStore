@@ -35,7 +35,10 @@ export class IndexComponent implements OnInit {
           this.topPost = this.carousel[0];
         }
       },
-      error => console.log(error)
+      error => {
+        this.empty=true;
+        console.log(error)
+        }
     );
   }
     

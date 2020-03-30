@@ -21,9 +21,8 @@ export class PostComponent implements OnInit {
   subModule=[{active:false},{active:false},{active:false},{active:false}];
   title2 = 'Related Products'
   post:Post;
-  recommendedPosts=[{id: 1, name: 'AMD card', price:55,  description: 'new AMD card'},
-  {id: 2, name: 'AMD card 2', price:220,  description: 'new AMD card'},
-  {id: 3, name: 'AMD card 3', price:6,  description: 'new AMD card'}];
+  recommendedPosts: Post[]=[];
+  empty:boolean;
   rates: number[]=[];
   userID: number;
   medianrate=4;
@@ -38,6 +37,7 @@ export class PostComponent implements OnInit {
   ngOnInit(){
     this.getPost(this.id);
     this.Contained=this.cartService.contains(this.id);
+    this.getTopPosts();
   }
   
   constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig, private postService:PostsService, private cartService:CartService, private graphicsService:GraphicsService) {
@@ -47,6 +47,7 @@ export class PostComponent implements OnInit {
     this.id = activatedRoute.snapshot.params.id;
 
   }
+  
 
   getPost(id:number){
     this.postService.getPost(id).subscribe(
@@ -55,6 +56,15 @@ export class PostComponent implements OnInit {
         this.userID=post.user.id;
         this.getRatings(this.userID);
       },
+      error => console.log(error)
+    );
+  }
+
+  getTopPosts(){
+    this.postService.getTopPosts().subscribe(
+      topPosts => {
+        this.recommendedPosts = topPosts
+        this.empty=this.recommendedPosts.length==0;},
       error => console.log(error)
     );
   }

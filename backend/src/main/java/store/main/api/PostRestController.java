@@ -230,7 +230,7 @@ public class PostRestController {
 		}
 	}
 	@JsonView(PostDetail.class)
-	@GetMapping("/top_products")
+	@GetMapping("/top-posts")
 	public Collection<Post> recommendPost(){
 		return postService.getFinalList();
 	}

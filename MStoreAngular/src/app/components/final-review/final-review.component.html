@@ -6,25 +6,27 @@
             <h2 class="h6 px-4 py-3 light-gray mb-4">Review your order</h2>
 
             <!-- Item-->
-            <div *ngFor="let post of cart" class="d-sm-flex justify-content-between my-4 pb-4 border-bottom">
-                <div class="media d-block d-sm-flex text-center text-sm-left">
-                    <a class="cart-item-thumb mx-auto mr-sm-4" href="shop-single-apparel.html"><img
-                            class="img-thumbnail" [src]="images[0]" alt="Random first slide"></a>
-                    <div class="media-body pt-3">
-                        <h3 class="product-card-title font-weight-semibold border-0 pb-0">
-                            <a href="shop-single-apparel.html">{{post.name}}</a>
-                        </h3>
+            <div *ngFor="let post of cart" class="d-sm-flex border-bottom">
+                <div class="d-sm-flex text-center text-sm-left">
+                        <img class="w-50 p-3" [src]="images[0]" alt="Random first slide">
+                    <div class="col-md-4">
+                        <br>
+                        <h2 class="product-card-title font-weight-semibold border-0 pb-0">
+                            <a class="text-dark" [routerLink]="['/post',post.id]">{{post.name}}</a>
+                        </h2>
                         <div class="font-size-sm">
-                            <span class="text-muted mr-2">Brand: </span>{{post.name}}
+                            <span class="text-muted">Brand: </span>{{post.brand.name}}
                         </div>
-                        <div class="font-size-sm">
-                            <span class="text-muted mr-2">Category: </span>Component
+                        <div>
+                            <span class="text-muted">Category: </span>{{post.component}}
                         </div>
-                        <div class="font-size-lg text-primary pt-2">${{post.price}}</div>
+                        <hr class="mt-4">
+                        <h3 class="text-primary">${{post.price}}</h3>
                     </div>
                 </div>
                 <div class="pt-2 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-left" style="max-width: 10rem;">
                     <div class="font-size-sm mb-3">
+                        <br>
                         <span class="text-muted mr-2">Quantity:</span><span class="font-weight-semibold">1</span>
                     </div>
                 </div>
