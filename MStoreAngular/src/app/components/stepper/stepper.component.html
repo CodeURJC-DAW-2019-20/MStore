@@ -37,10 +37,10 @@
                 <div id="test-l-1" class="content">
                 </div>
                 <div id="test-l-2" class="content">
-                    <app-payment (next1)="next()"></app-payment>
+                    <app-payment (next1)="next($event)"></app-payment>
                 </div>
                 <div id="test-l-3" class="content">
-                    <app-final-review (previous2)="previous()"></app-final-review>
+                    <app-final-review [user]="user" (previous2)="previous()"></app-final-review>
                 </div>
             </div>
         </div>

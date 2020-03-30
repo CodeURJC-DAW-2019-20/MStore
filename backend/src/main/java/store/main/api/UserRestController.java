@@ -2,6 +2,7 @@ package store.main.api;
 
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class UserRestController {
 	@Autowired
 	private UserComponent userComponent;
 	
-	interface CompleteUser extends User.BasicInfo, User.PostsInfo, User.ListInfo, Post.BasicInfo, Post.BrandInfo, Brand.BasicInfo {}
+	interface CompleteUser extends User.BasicInfo, User.PostsInfo, User.ListRolesInfo, User.ListInfo, Post.BasicInfo, Post.BrandInfo, Brand.BasicInfo {}
 	
 	interface FullUser extends CompleteUser, User.SellersInfo{};
 	
@@ -82,6 +83,16 @@ public class UserRestController {
 		} else {
 			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 		}
+	}
+	
+	@GetMapping("/")
+	@JsonView(User.BasicInfo.class)
+	public ResponseEntity<List<User>> getUsers() {
+		List<User> users = userRepository.findAll();
+		if (users.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} 
+		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 		
 	@GetMapping("/{id}")

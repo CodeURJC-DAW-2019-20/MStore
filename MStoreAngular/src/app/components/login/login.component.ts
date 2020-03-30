@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 import { User } from 'src/app/models/user.model';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,12 @@ import { User } from 'src/app/models/user.model';
 export class LoginComponent implements OnInit {
 
   user: User;
+  users: User[] = [];
   submittedFailed: boolean = false;
   notValidEmail: boolean = false;
   notValidPass: boolean = false;
   notFound: boolean = false;
-  notMatchPasswords: boolean = false;
+  userExists: boolean = false;
   returnUrl: string;
 
   constructor(
@@ -33,6 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getUsers();
     this.user = {
       id: 1, firstName: '', lastName: '',
       email: '', password: '', phone: null, roles: ['ROLE_USER']
@@ -54,7 +57,7 @@ export class LoginComponent implements OnInit {
     } else {
       this.notValidPass = false;
     }
-}
+  }
 
   onSubmit(username: string, password: string) {
     if (username === '' || password === '' || !(username.includes('@') && username.includes('.'))) {
@@ -81,11 +84,20 @@ export class LoginComponent implements OnInit {
       );
   }
 
-  changeConfirmPass(confirmPassword: string) {
-    if (this.user.password === confirmPassword || confirmPassword === '') {
-      this.notMatchPasswords = false;
+  getUsers() {
+    this.userService.getUsers().subscribe(
+      users => this.users = users,
+      error => console.log(error)
+    );
+  }
+
+  changeConfirmPass(formGroup: any,confirmPassword: string) {
+    if (this.user.password === confirmPassword && confirmPassword !== '') {
+      formGroup.controls['confirmPassword'].setErrors(null);     
+    } else if (confirmPassword === '') {
+        formGroup.controls['confirmPassword'].setErrors({ required: true });
     } else {
-      this.notMatchPasswords = true;
+      formGroup.controls['confirmPassword'].setErrors({ mustMatch: true });
     }
   }
 
@@ -94,11 +106,13 @@ export class LoginComponent implements OnInit {
       this.user.phone === null || this.user.password === '' || confirmPassword === '');
   }
 
-  onSignUp(confirmPassword: string) {
+  onSignUp(formGroup: any,confirmPassword: string) {
     if (this.notvalid(confirmPassword)) {
       return;
     } else if (this.user.password !== confirmPassword) {
-      return this.notMatchPasswords = true;
+      return formGroup.controls['confirmPassword'].setErrors({ mustMatch: true });
+    } else if (this.users.filter(user => user.email === this.user.email).length > 0) {
+      return this.userExists = true;
     }
     this.userService.addUser(this.user).subscribe(
         _ => this.user = undefined,

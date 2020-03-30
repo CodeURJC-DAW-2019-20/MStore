@@ -2,11 +2,21 @@
     <!-- Page Title-->
     <div class="page-title-wrapper" aria-label="Page title">
         <div class="container">
-            <h2 class="page-title">Sell your product</h2>
+            <nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="mt-n1 mr-1"></li>
+                    <li class="breadcrumb-item"><a style="text-decoration: none;" [routerLink]="['/']">
+                        <i-feather name="home" style="width: 13px; height: 13px;"></i-feather>
+                        <span class="pl-1">Home</span></a>
+                    </li>
+					<li class="breadcrumb-item">Sell Product</li>
+				</ol>
+			</nav>
+            <h1 class="mat-display-1 font-weight-bold mb-0 mt-2">Sell your product</h1>
             <span class="d-block mt-2 text-muted"></span>
         </div>
     </div>
-    <div class="container pb-5">
+    <div class="container pt-3 pb-5">
         <div class="row pt-1">
             <!-- Sidebar-->
             <div class="col-xl-3 col-lg-4">

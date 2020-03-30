@@ -39,7 +39,7 @@
 				<h2 class="h4 mb-3">No account? Sign up</h2>
 				<p class="text-muted mb-4">Registration takes less than a minute
 					but gives you full control over your orders.</p>
-				<form (ngSubmit)="onSignUp(confirmPassword.value)" #signUpForm="ngForm">
+				<form (ngSubmit)="email.valid && phone.valid && onSignUp(signUpForm, confirmPassword.value)" #signUpForm="ngForm">
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
@@ -59,7 +59,7 @@
 									class="form-control" type="text" required id="reg-ln"
 									name="lastName" [ngClass]="{ 'is-invalid' : signUpForm.submitted && lastName.invalid }">
 									<div *ngIf="signUpForm.submitted && lastName.invalid" class="text-danger small">
-										<div *ngIf="lastName.errors.required">Please enter a name!</div>
+										<div *ngIf="lastName.errors.required">Please enter a surname!</div>
 									</div>
 							</div>
 						</div>
@@ -93,7 +93,7 @@
 							<div class="form-group">
 								<label for="reg-password">Password</label> 
 								<input #password2="ngModel" [(ngModel)]="user.password"
-									class="form-control" type="password" required id="reg-password" 
+									class="form-control" type="password" required id="reg-password" (keyup)="changeConfirmPass(signUpForm, confirmPassword.value)"
 									name="password" [ngClass]="{ 'is-invalid' : signUpForm.submitted && password2.invalid }">
 									<div *ngIf="signUpForm.submitted && password2.invalid" class="text-danger small">
 										<div *ngIf="password2.errors.required">Please enter a password!</div>
@@ -103,15 +103,16 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="reg-password-confirm">Confirm Password</label> 
-									<input #confirmPassword="ngModel" class="form-control" type="password" required
-									id="reg-password-confirm" name="confirm_password" ngModel (keyup)="changeConfirmPass(confirmPassword.value)"
-									[ngClass]="{ 'is-invalid' : signUpForm.submitted && (confirmPassword.invalid || notMatchPasswords) }">
+									<input #confirmPassword="ngModel" class="form-control" type="password" required 
+									id="reg-password-confirm" name="confirmPassword" ngModel (keyup)="changeConfirmPass(signUpForm, confirmPassword.value)"
+									[ngClass]="{ 'is-invalid' : signUpForm.submitted && confirmPassword.invalid }">
 									<div *ngIf="signUpForm.submitted && confirmPassword.invalid" class="text-danger small">
 										<div *ngIf="confirmPassword.errors.required">Please enter the confirm password!</div>
+										<div *ngIf="confirmPassword.errors.mustMatch">Passwords do not match!</div>
 									</div>
-									<div class="text-danger small" *ngIf="notMatchPasswords && signUpForm.submitted">Passwords do not match!</div>
 							</div>
 						</div>
+						<div class="text-danger small mx-auto" *ngIf="userExists">Email already registered!</div>
 					</div>
 					<div class="text-right">
 						<br> 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 import Stepper from 'bs-stepper';
 
 @Component({
@@ -9,9 +10,11 @@ import Stepper from 'bs-stepper';
 export class StepperComponent implements OnInit {
 
   private stepper: Stepper;
+  user: User;
   step3: boolean; 
 
-  next() {
+  next(user: User) {
+    this.user = user;
     this.stepper.next();
     this.step3 = true;
   }

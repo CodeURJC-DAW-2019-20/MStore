@@ -15,13 +15,13 @@
                             <a class="text-dark" [routerLink]="['/post',post.id]">{{post.name}}</a>
                         </h2>
                         <div class="font-size-sm">
-                            <span class="text-muted">Brand: </span>{{post.brand.name}}
+                            <span class="text-muted">Brand: </span>{{post?.brand.name}}
                         </div>
                         <div>
-                            <span class="text-muted">Category: </span>{{post.component}}
+                            <span class="text-muted">Category: </span>{{post?.component}}
                         </div>
                         <hr class="mt-4">
-                        <h3 class="text-primary">${{post.price}}</h3>
+                        <h3 class="text-primary">${{post?.price}}</h3>
                     </div>
                 </div>
                 <div class="pt-2 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-left" style="max-width: 10rem;">
@@ -38,17 +38,17 @@
                     <div class="col-sm-6">
                         <h4 class="h6">Shipping to:</h4>
                         <ul class="list-unstyled">
-                            <li><span class="text-muted">Client:&nbsp;</span>{{user.firstName}}
-                                {{user.lastName}}
-                            <li><span class="text-muted">Email:&nbsp;</span>{{user.email}}</li>
-                            <li><span class="text-muted">Phone:&nbsp;</span>{{user.phone}}</li>
+                            <li><span class="text-muted">Client:&nbsp;</span>{{user?.firstName}}
+                                {{user?.lastName}}
+                            <li><span class="text-muted">Email:&nbsp;</span>{{user?.email}}</li>
+                            <li><span class="text-muted">Phone:&nbsp;</span>{{user?.phone}}</li>
                         </ul>
                     </div>
                     <div class="col-sm-6">
                         <h4 class="h6">Payment method:</h4>
                         <ul class="list-unstyled">
                             <li><span class="text-muted">Credit Card:&nbsp;</span>****
-                                **** **** {{user.creditCard}}</li>
+                                **** **** {{user?.creditCard}}</li>
                         </ul>
                     </div>
                 </div>
@@ -74,11 +74,11 @@
         <div class="col-xl-3 col-md-4 pt-4 mt-3 pt-md-0 mt-md-0">
             <h2 class="h6 px-4 py-3 light-gray text-center">Order summary</h2>
             <div class="font-size-sm border-bottom pt-2 pb-3">
-                <div *ngIf="cart.length === 0" class="d-flex justify-content-between mb-2">
+                <div *ngIf="cart.length === 0" class="text-center mb-2">
                     <span class='text-muted'>The cart is empty</span>
                 </div>
                 <div *ngFor="let post of cart" class="d-flex justify-content-between mb-2">
-                    <span>{{post.name}}:</span><span>${{post.price}}</span>
+                    <span>{{post?.name}}:</span><span>${{post?.price}}</span>
                 </div>
             </div>
             <div class="h3 font-weight-semibold text-center py-3">${{total}}</div>

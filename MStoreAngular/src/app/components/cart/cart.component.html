@@ -1,11 +1,23 @@
 <router-outlet>
+	<!-- Page Title-->
 	<div class="page-title-wrapper" aria-label="Page title">
-		<div class="container">
-			<h1 class="page-title mt-2 pb-4">Your cart</h1>
-			<span class="d-block mt-2 text-muted"></span>
-		</div>
+        <div class="container">
+            <nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="mt-n1 mr-1"></li>
+                    <li class="breadcrumb-item"><a style="text-decoration: none;" [routerLink]="['/']">
+                        <i-feather name="home" style="width: 13px; height: 13px;"></i-feather>
+                        <span class="pl-1">Home</span></a>
+                    </li>
+					<li class="breadcrumb-item"><a style="text-decoration: none;" [routerLink]="['/shop']">
+                        <span class="pl-1">Shop</span></a></li>
+				</ol>
+			</nav>
+            <h1 class="mat-display-1 font-weight-bold mb-0 mt-2">Your cart</h1>
+        </div>
 	</div>
-	<div class="container pb-5 mt-n2 mt-md-n3">
+	<!-- Page content -->
+	<div class="container pt-3 pb-5 mt-n2 mt-md-n3">
 		<div class="row mt-4">
 			<div class="w-100 p-3">
 				<h2 class="w-100 p-3 d-flex flex-wrap justify-content-between align-items-center light-gray">
@@ -48,7 +60,7 @@
 				<div class="h3 font-weight-semibold text-center py-3">${{total}}</div>
 				<hr>
 			</div>
-			<button [routerLink]="['/stepper']" class="myButton btn-block">
+			<button [routerLink]="['/complete_purchase']" class="myButton btn-block">
 				<i-feather name="credit-card" style="width: 15px; height: 15px;"></i-feather>
 				<span class="pl-1">Proceed to Checkout</span>
 			</button>

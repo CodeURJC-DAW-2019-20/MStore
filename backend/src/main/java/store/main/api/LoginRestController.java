@@ -22,9 +22,11 @@ public class LoginRestController {
 
 	@Autowired
 	private UserComponent userComponent;
+	
+	interface CompleteUser extends User.BasicInfo, User.ListRolesInfo {}
 
 	@RequestMapping("/api/logIn")
-	@JsonView(User.BasicInfo.class)
+	@JsonView(CompleteUser.class)
 	public ResponseEntity<User> logIn() {
 		
 		if (!userComponent.isLoggedUser()) {

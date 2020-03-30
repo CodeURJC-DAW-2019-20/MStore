@@ -27,6 +27,9 @@ public class User {
 	public interface ListInfo {
 	};
 
+	public interface ListRolesInfo {
+	};
+	
 	public interface PostsInfo {
 	};
 
@@ -65,7 +68,7 @@ public class User {
 
 
 	@ElementCollection(fetch = FetchType.EAGER)
-	@JsonView(ListInfo.class)
+	@JsonView(ListRolesInfo.class)
 	private List<String> roles;
 
 	@OneToMany

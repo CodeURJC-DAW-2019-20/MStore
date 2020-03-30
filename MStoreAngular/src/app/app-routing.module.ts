@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './helpers/auth.guard';
+import { RoleGuard } from './helpers/role.guard';
 import { ShopComponent } from './components/shop/shop.component';
 import { PostComponent } from './components/post/post.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -15,6 +16,7 @@ import { StepperComponent } from './components/stepper/stepper.component';
 import { CompleteComponent } from './components/complete/complete.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ErrorComponent500 } from './components/error/error500.component';
+import { ErrorComponent403 } from './components/error/error403.component';
 
 const routes: Routes = [
   { path: 'post/:id', component: PostComponent, },
@@ -26,12 +28,13 @@ const routes: Routes = [
   { path: 'sell_product', component: CreatePostComponent, canActivate: [AuthGuard] },
   { path: 'sign', component: LoginComponent},
   { path: '', component: IndexComponent, },
-  { path: 'stepper', component: StepperComponent, canActivate: [AuthGuard] },
+  { path: 'complete_purchase', component: StepperComponent, canActivate: [AuthGuard] },
   { path: 'complete', component: CompleteComponent, canActivate: [AuthGuard] },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [RoleGuard] },
   { path: '', redirectTo: '', pathMatch: 'full' },
   {path: 'error-500', component: ErrorComponent500},
   {path: 'error-404', component: ErrorComponentNF},
+  {path: 'error-403', component: ErrorComponent403},
   {path: '**', redirectTo: '/error-404'}
 ];
 

@@ -1,10 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { Post } from 'src/app/models/post.model';
 import { User } from 'src/app/models/user.model';
-import { UserService } from 'src/app/services/user.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -17,20 +16,19 @@ export class FinalReviewComponent implements OnInit {
   @Output()
   previous2 = new EventEmitter();
 
+  @Input()
+  user: User;
+
   cart: Post[] = [];
 
-  user: User;
-  id: number;
   index = 0;
   total = 0;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  constructor(private router: Router, private cartService: CartService, private postService: PostsService, private userService: UserService, private loggedUserService: AuthenticationService) { }
+  constructor(private router: Router, private cartService: CartService, private postService: PostsService) { }
 
   ngOnInit() {
     this.getCart();
-    this.id = this.loggedUserService.currentUserValue.id;
-    this.getUser(this.id);
   }
 
   getCart() {
@@ -43,14 +41,6 @@ export class FinalReviewComponent implements OnInit {
     this.total = this.cartService.getTotal();
   }
 
-  getUser(id: number) {
-    this.userService.getUser(id).subscribe(
-      user => {
-        this.user = user;
-      },
-      error => console.log(error)
-    );
-  }
   removePost(post:Post){
     this.postService.removePost(post).subscribe(
       postOut => {},
