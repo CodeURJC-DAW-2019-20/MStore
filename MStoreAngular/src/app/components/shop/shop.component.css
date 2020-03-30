@@ -1,0 +1,51 @@
+.widget-title {
+  display: block;
+  position: relative;
+  margin-bottom: 1.2rem;
+  padding-bottom: .75rem;
+  border-bottom: 1px solid #e7e7e7;
+  font-size: 1.1rem;
+  font-weight: 450;
+}
+.widget-title::after {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 5rem;
+  height: 2px;
+  background-color: #5c77fc;
+  content: '';
+}
+.widget-categories>ul>li.has-children>a, .widget-links>ul>li.has-children>a {
+  color: rgba(0,0,0,0.9);
+}
+.widget-categories ul>li>a, .widget-links ul>li>a {
+  display: block;
+  position: relative;
+  -webkit-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+  color: rgba(0,0,0,0.65);
+  font-size: .975rem;
+}
+.widget-categories>ul>li.has-children>a.collapsed, .widget-links>ul>li.has-children>a.collapsed {
+  color: rgba(0,0,0,0.65);
+}
+.widget-categories>ul>li>a, .widget-links>ul>li>a {
+  font-size: 1.1rem;
+  margin-bottom: .5rem;
+}
+.widget-categories ul>li>a:hover, .widget-links ul>li>a:hover {
+  color: rgba(0,0,0,0.9);
+  text-decoration: none;
+}
+.widget-categories ul, .widget-links ul {
+  margin: .5rem 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+.widget-categories .has-children ul>li, .widget-links .has-children ul>li {
+  margin-bottom: .5rem;
+}
+.p-title {
+  color: #5c77fc !important;
+}

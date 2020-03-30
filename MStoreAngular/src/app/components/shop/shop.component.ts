@@ -12,7 +12,7 @@ interface post {
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
-
+  selected ="hola"
   title = 'MStoreAngular';
   Posts: Array<post> = [{id: 0, name: 'AMD card', description: 'new AMD card'},
   {id: 3, name: 'AMD card 2', description: 'new AMD card'},

@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TagInputModule } from 'ngx-chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -58,9 +61,12 @@ import { ErrorComponent500 } from './components/error/error500.component';
     HttpClientModule,
     NgbModule,
     IconsModule,
-    TagInputModule
+    TagInputModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatCardModule,
   ],
-  providers: [      
+  providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true}
   ],
