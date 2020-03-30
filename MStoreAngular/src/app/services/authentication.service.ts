@@ -40,7 +40,7 @@ export class AuthenticationService {
             })
           };
 
-        return this.http.post<any>(LOGIN_URL, {username, password},httpOptions)
+        return this.http.post<any>(LOGIN_URL,{username,password},httpOptions)
             .pipe(map(user => {
                 // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
                 user.authdata = window.btoa(username + ':' + password);

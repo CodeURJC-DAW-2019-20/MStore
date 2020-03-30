@@ -14,7 +14,11 @@ import { User } from 'src/app/models/user.model';
 export class LoginComponent implements OnInit {
 
   user: User;
-  submitted: boolean = false;
+  submittedFailed: boolean = false;
+  notValidEmail: boolean = false;
+  notValidPass: boolean = false;
+  notFound: boolean = false;
+  notMatchPasswords: boolean = false;
   returnUrl: string;
 
   constructor(
@@ -31,13 +35,38 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.user = {
       id: 1, firstName: '', lastName: '',
-      email: '', password: '', roles: ['ROLE_USER']
+      email: '', password: '', phone: null, roles: ['ROLE_USER']
     };
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
+  changeEmail(email: string) {
+      if (email.includes('@') && email.includes('.')) {
+        this.notValidEmail = false;
+      } else {
+        this.notValidEmail = true;
+      }
+  }
+
+  changePass(password: string) {
+    if (password === '') {
+      this.notValidPass = true;
+    } else {
+      this.notValidPass = false;
+    }
+}
+
   onSubmit(username: string, password: string) {
-    this.submitted = true;
+    if (username === '' || password === '' || !(username.includes('@') && username.includes('.'))) {
+      if (username === '' || (!username.includes('@') && !username.includes('.'))) {
+        this.notValidEmail = true;
+      }
+      if (password === '') {
+        this.notValidPass = true;
+      }
+      this.submittedFailed = true;
+      return;
+    }
 
     this.authenticationService.login(username, password)
       .pipe(first())
@@ -45,21 +74,39 @@ export class LoginComponent implements OnInit {
         _ => {
           this.router.navigate([this.returnUrl]);
         },
-        error => console.log(error)
+        error => {
+          console.log(error)
+          this.notFound = true;
+        }
       );
   }
 
+  changeConfirmPass(confirmPassword: string) {
+    if (this.user.password === confirmPassword || confirmPassword === '') {
+      this.notMatchPasswords = false;
+    } else {
+      this.notMatchPasswords = true;
+    }
+  }
+
+  notvalid(confirmPassword: string){
+    return (this.user.firstName === '' || this.user.lastName === '' || this.user.email === '' || 
+      this.user.phone === null || this.user.password === '' || confirmPassword === '');
+  }
+
   onSignUp(confirmPassword: string) {
-    if (this.user.password === confirmPassword) {
-      this.userService.addUser(this.user).subscribe(
+    if (this.notvalid(confirmPassword)) {
+      return;
+    } else if (this.user.password !== confirmPassword) {
+      return this.notMatchPasswords = true;
+    }
+    this.userService.addUser(this.user).subscribe(
         _ => this.user = undefined,
         error => console.log(error)
       );
-    } else {
-      console.log('No es valido');
-    }
     if (confirm('Registration successful')) {
       this.onSubmit(this.user.email, this.user.password);
+      this.submittedFailed = false;
     }
   }
 

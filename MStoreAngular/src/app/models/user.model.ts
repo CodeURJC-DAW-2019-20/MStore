@@ -7,7 +7,7 @@ export interface User {
     email: string;
     userAddress?: string;
     password: string;
-    phone?: number;
+    phone: number;
     creditCard?: number;
     roles: Array<string>;
     sellers?: Array<User>;
