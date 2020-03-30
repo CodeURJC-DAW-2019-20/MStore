@@ -13,11 +13,25 @@ import { BrandService } from 'src/app/services/brand.service';
 export class ShopComponent implements OnInit {
   selected ="hola"
   currentBrand;
+  showHardware = false;
+  showAcc = true;
+  showPrint = true;
   posts = []
   brands = []
   page;
   empty = false
 
+  toggleNavbarHW() {
+    this.showHardware = !this.showHardware;
+  }
+
+  toggleNavbarAC() {
+    this.showAcc = !this.showAcc;
+  }
+
+  toggleNavbarPrint() {
+    this.showPrint = !this.showPrint;
+  }
 
   searchByPriceASC() {
     this.postService.getPostsByPriceASC().subscribe(

@@ -12,9 +12,9 @@
               <div class="widget widget-categories mb-4 py-1">
                 <h3 class="widget-title">Shop categories</h3>
                 <ul id="shopCategories">
-                  <li class="has-children"><a href="#hardware" data-toggle="collapse"><i
+                  <li class="has-children"><a style="cursor: pointer;" (click)="toggleNavbarHW()" data-toggle="collapse"><i
                         class="widget-categories-indicator" data-feather="chevron-down"></i>Computer Hardware</a>
-                    <ul class="collapse show" id="hardware" data-parent="#shopCategories">
+                    <ul [ngbCollapse]="showHardware" id="hardware" data-parent="#shopCategories">
                       <li>
                         <a href="/shop/0">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
@@ -34,9 +34,9 @@
                         </a></li>
                     </ul>
                   </li>
-                  <li class="has-children"><a href="#accessories" data-toggle="collapse"><i
+                  <li class="has-children"><a style="cursor: pointer;" (click)="toggleNavbarAC()" data-toggle="collapse"><i
                         class="widget-categories-indicator" data-feather="chevron-down"></i>Computer Accessories</a>
-                    <ul class="collapse" id="accessories" data-parent="#shopCategories">
+                    <ul [ngbCollapse]="showAcc"  id="accessories" data-parent="#shopCategories">
                       <li><a href="/shop/4">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                           </i-feather>Speakers
@@ -55,9 +55,9 @@
                         </a></li>
                     </ul>
                   </li>
-                  <li class="has-children"><a href="#printers" data-toggle="collapse"><i
+                  <li class="has-children"><a style="cursor: pointer;" (click)="toggleNavbarPrint()" data-toggle="collapse"><i
                         class="widget-categories-indicator" data-feather="chevron-down"></i>Printers</a>
-                    <ul class="collapse" id="printers" data-parent="#shopCategories">
+                    <ul [ngbCollapse]="showPrint" id="printers" data-parent="#shopCategories">
                       <li><a href="/shop/8">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                           </i-feather>Ink Printer
