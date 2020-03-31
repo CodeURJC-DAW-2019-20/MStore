@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ImageService } from 'src/app/services/image.service';
 import { UserService } from 'src/app/services/user.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/models/user.model';
@@ -17,11 +19,13 @@ export class EditProfileComponent {
   file:File;
   submitted: boolean = false;
 
-  constructor(private userService:UserService, private loggedUserService: AuthenticationService) {
+  constructor(private userService:UserService, private loggedUserService: AuthenticationService, 
+              private imageService:ImageService, private router: Router) {
     this.getUser(this.loggedUserService.currentUserValue.id);
     this.user={id:0,firstName:'', lastName:'',
       email:'',phone:undefined,password:'',roles:[],
       userAddress:'',creditCard:undefined}
+    this.file=undefined;
   }
 
   onFileChanged(event) {
@@ -55,9 +59,17 @@ export class EditProfileComponent {
       this.submitted = true;
     }else{
       this.userService.updateUser(this.user,this.user.id).subscribe(
-        post => console.log("hola"),
+        _ => this.router.navigate(['/']),
         error => console.log(error)
       );
+      if(this.file != undefined){
+        const data  = new FormData();
+        data.append("imagenFile",this.file);
+        this.imageService.updateUserImage(this.user.id,data).subscribe(
+          _ => console.log("hola"),
+          error => console.log(error)
+        );
+      }
     }
     
   }

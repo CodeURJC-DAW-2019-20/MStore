@@ -60,10 +60,10 @@ export class PostsService {
 		);
 	}
 
-	addPost(post: Post) {
+	addPost(post: Post): Observable<Post>{
 		return this.httpClient.post(POSTS_URL, post).pipe(
 			catchError(error => this.handleError(error))
-		);
+		)as Observable<Post>;
 	}
 
 	updatePost(post: Post) {

@@ -3,8 +3,8 @@ import * as CanvasJS from './canvasjs.min';
 import { UserService } from 'src/app/services/user.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { GraphicsService } from 'src/app/services/graphics.service';
-import {User} from 'src/app/models/user.model';
-
+import { User } from 'src/app/models/user.model';
+import { Image } from 'src/app/models/image.model';
 
 @Component({
   templateUrl: './profile.component.html',
@@ -25,6 +25,7 @@ export class MyProfileComponent {
 
   ngOnInit() {
     this.canRate=false;
+    this.src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
     this.id=this.loggedUserService.currentUserValue.id;
     this.getUser(this.id);
     this.getGraph(this.id);   
@@ -60,8 +61,7 @@ export class MyProfileComponent {
       },
       error => console.log(error)
     );
-    this.src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
-  }
+  }  
 
   canUserRate(){
     return false;

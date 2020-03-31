@@ -26,7 +26,7 @@ export class UserService {
 	addUser(user: User): Observable<User> {
 		return this.httpClient.post<User>(USERS_URL, user).pipe(			
 			catchError(error => this.handleError(error))
-		);
+		) as Observable<User>;
 	}
 
 	updateUser(user: User,id:number): Observable<User> {
