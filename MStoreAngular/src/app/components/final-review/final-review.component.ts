@@ -55,10 +55,10 @@ export class FinalReviewComponent implements OnInit {
           this.removePost(this.cart[i]);
           
       }
-      for (let i = 0; i < this.cart.length; i++) {
-        this.cartService.removeFromCartIndex(i);
-      }
-      this.router.navigate(['/complete']);
+      this.cartService.resetCart();
+      this.router.navigate(['/complete']).then(() => {
+        window.location.reload();
+      });
     }
   }
 

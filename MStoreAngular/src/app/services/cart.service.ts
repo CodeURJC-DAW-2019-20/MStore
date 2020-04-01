@@ -44,6 +44,13 @@ export class CartService {
 		return of(cart);
 	}
 
+	resetCart(){
+		let cart:Post[]=[];
+		let total=0;
+		sessionStorage.setItem("total",JSON.stringify(total));
+		sessionStorage.setItem("cart",JSON.stringify(cart));
+	}
+
 
 	getTotal(){
 		let total=JSON.parse(sessionStorage.getItem("total"));
