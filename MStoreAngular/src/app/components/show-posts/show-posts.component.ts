@@ -1,13 +1,6 @@
 import { Component,Input } from '@angular/core';
 import { Router } from '@angular/router'; 
-
-
-interface Post{
-    id:number;
-    name:string;
-    price:number;
-    description:string;
-}
+import { Post } from 'src/app/models/post.model';
 @Component({
   selector: 'app-posts',
   templateUrl: './show-posts.component.html',

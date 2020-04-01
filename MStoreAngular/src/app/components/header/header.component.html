@@ -1,0 +1,207 @@
+
+	<meta charset="utf-8">
+	<title>MStore | Online Computer & Technology Store</title>
+	<!-- SEO Meta Tags-->
+	<meta name="description" content="MStore - Online Computer & Technology Store">
+	<meta name="keywords"
+		content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
+	<meta name="author" content="Createx Studio">
+	<!-- Viewport-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Favicon and Touch Icons-->
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="mask-icon" color="#111" href="safari-pinned-tab.svg">
+	<meta name="msapplication-TileColor" content="#111">
+	<meta name="theme-color" content="#ffffff">
+	<!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+	<link rel="stylesheet" media="screen" href="/css/vendor.min.css">
+	<!-- Main Theme Styles + Bootstrap-->
+	<link rel="stylesheet" media="screen" id="main-styles" href="/css/theme.min.css">
+	<!-- Customizer styles and scripts-->
+<!-- Body-->
+
+	<!-- Off-canvas cart-->
+
+
+	<!-- Navbar Multilevel-->
+
+	
+	<!-- Second line-->
+	<header class="navbar navbar-expand-lg navbar-light bg-light px-0">
+		<div class="container flex-sm-nowrap px-3">
+			<!-- navbar brand-->
+			<a class="navbar-brand mr-0 mr-sm-4" style="min-width: 100px;" href="/"><img width="100"
+					src="/img/logo-dark.png" alt="MStore" /></a>
+			<!-- navbar buttons-->
+			<div class="navbar-btns d-flex position-relative order-sm-3">
+				<div class="navbar-toggler navbar-btn collapsed bg-0 border-left-0 my-3" data-toggle="collapse"
+					data-target="#menu">
+					<i class="mx-auto mb-2" data-feather="menu"></i>Menu
+				</div>
+
+				<div *ngIf="isLogged" class="row d-block text-center text-primary mx-auto mb-1 font-size-sm pr-3 my-auto">
+					<i data-feather="user"></i> Hello {{user?.firstName}}
+				</div>
+				<div *ngIf="isLogged" class="row d-block text-center text-primary mx-auto mb-1 font-size-sm pr-3 my-auto">
+					<a class="btn btn-outline-primary btn-sm" (click)="logOut()"><i-feather name="log-out" style="width: 20px; height: 20px;"></i-feather>Log out</a>
+				</div>
+				<a *ngIf="!isLogged" class="navbar-btn my-3" [routerLink]="['sign']" data-toggle="offcanvas"><span
+						class="d-block"> <i class="mx-auto" data-feather="log-in"></i> Sign In/Up
+					</span></a> &nbsp;		&nbsp;&nbsp; <div class="vl"></div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
+					<ng-template #popContent> <br>
+						<span id="empty" *ngIf='cart.length === 0'>The cart is empty</span>
+						<span *ngFor="let post of cart"  (onRemove)="Update($event)" (onAdd)="UpdateAdd($event)" ><br>
+						  <div class="row">
+							<div class="col-sm">
+							<img [src]="src" [alt]="src" height="50px" width="50px"> 
+							</div>
+							<div class="col-sm">
+							<div class="font-size-lg pt-2">{{post.name}}</div>
+							</div>
+							<div class="col-sm">
+								<div class="font-size-lg text-primary pt-2">${{post.price}}</div>
+							</div>
+							<br>
+						</div>
+						</span> 
+						<br> 
+				  
+						
+						<a [routerLink]="['/cart']" > go to cart </a></ng-template>
+					  <ng-template #popTitle><b>Your cart</b></ng-template>
+				  <button type="button" class="button btn-outline-secondary mr-2" [ngbPopover]="popContent" [popoverTitle]="popTitle" [autoClose]="false" >
+					<span id= "notification" class="badge bg-primary text-light position-absolute " *ngIf='cart.length !== 0'>{{cart.length}}</span>
+					<i-feather name="shopping-cart"></i-feather><br>
+					  ${{total}}
+				  </button>
+			</div>
+			<!-- search-box-->
+			<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
+				<form action="/finder" method="post">
+					<div class="input-group flex-nowrap">
+						<div class="input-group-prepend">
+							<span class="input-group-text rounded-left" id="search-icon"><i-feather name="search" style="width: 20px; height: 20px;"></i-feather></span>
+						</div>
+						<template id="myListTemplate">
+							<option>name</option>
+						</template>
+						<input class="form-control rounded-right" type="text" id="finder" name="search"
+							placeholder="Search site" aria-label="Search site" aria-describedby="search-icon"
+							list="myList" autocomplete="off">
+						<datalist id="myList"></datalist>
+					</div>
+				</form>
+			</div>
+			
+		</div>
+	</header>
+	<!-- Third line: Navigation-->
+	<div class="navbar navbar-expand-lg navbar-light bg-light px-0">
+		<div class="container px-3">
+			<!-- navbar collapse area-->
+			<div class="collapse navbar-collapse" id="menu">
+				<!-- Site menu-->
+				<div class="row">
+					<div class="col">
+					  <div ngbDropdown class="nav-item dropdown mega-dropdown dropdown-more">
+						<button class="btn btn-outline-secundary" ngbDropdownToggle>Categories<br><i-feather name="more-horizontal"></i-feather></button>
+						<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+							<div class="dropdown-inner">
+								<div class="dropdown-column">
+									<div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+										style="background-image: url(img/megamenu/computerHardware.jpg);">
+										<h3 class="h5 text-white text-shadow my-3">Computer
+											Hardware</h3>
+									</div>
+									<div class="widget widget-links">
+										<ul>
+											<li><a href="/shop/0"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Motherboards</span></a></li>
+											<li><a href="/shop/1"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Storage
+														Devices</span></a></li>
+											<li><a href="/shop/2"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span class="font-size-sm">CPU
+														/ Processors</span></a></li>
+											<li><a href="/shop/3"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Video
+														Cards &amp; Video Devices</span></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="dropdown-column">
+									<div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+										style="background-image: url(img/megamenu/comp-accessories.png);">
+										<h3 class="h5 text-white text-shadow my-3">Computer
+											Accessories</h3>
+									</div>
+									<div class="widget widget-links">
+										<ul>
+											<li><a href="/shop/4"><i class="text-dark"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Speakers
+													</span></a></li>
+											<li><a href="/shop/5"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Headphones
+													</span></a></li>
+											<li><a href="/shop/6"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Computer
+														Mice</span></a></li>
+											<li><a href="/shop/7"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Monitors</span></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="dropdown-column">
+									<div class="bg-position-center bg-no-repeat bg-size-cover text-center px-3 py-4 mb-3"
+										style="background-image: url(img/megamenu/printer.png);">
+										<h3 class="h5 text-white text-shadow my-3">Printers</h3>
+									</div>
+									<div class="widget widget-links">
+										<ul>
+											<li><a href="/shop/8"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span class="font-size-sm">Ink
+														Printer</span></a></li>
+											<li><a href="/shop/9"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Laser
+														Printer</span></a></li>
+											<li><a href="/shop/10"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span class="font-size-sm">3D
+														Printer</span></a></li>
+											<li><a href="/shop/11"><i class="widget-categories-indicator"
+														data-feather="chevron-right"></i><span
+														class="font-size-sm">Printer
+														Supplies</span></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					  </div>
+					</div>
+
+				<ul class="nav nav-pills">
+					
+					<li><a class="nav-item" [routerLink]="['']" class="nav-link rounded">Home</a></li>
+					<li><a class="nav-item" [routerLink]="['shop']" class="nav-link rounded">Shop</a></li>
+                    <li><a class="text-dark" [routerLink]="['sell_product']" class="nav-link rounded">Sell Product</a></li>
+                    <li><a *ngIf="isAdmin" class="nav-item" [routerLink]="['admin']" class="nav-link rounded">Admin Page</a></li>
+					<li><a class="nav-item" [routerLink]="['edit_profile']" class="nav-link rounded">User Account</a></li>
+				</ul>
+				<!-- Rounded nav pills -->
+			</div>
+		</div>
+
+		
+
+    </div>

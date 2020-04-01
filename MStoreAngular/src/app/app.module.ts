@@ -32,6 +32,8 @@ import { SearchPipe } from './search.pipe';
 import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 import { ErrorComponent500 } from './components/error/error500.component';
 import { ErrorComponent403 } from './components/error/error403.component';
+import { HeaderComponent } from './components/header/header.component'; 
+import { Menu } from 'angular-feather/icons';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { ErrorComponent403 } from './components/error/error403.component';
     FinalReviewComponent,
     CompleteComponent,
     AdminComponent,
-    SearchPipe
+    SearchPipe,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,33 +1,4 @@
-<div class="div mb-5">
-<span class="title" ><a id="homeredirect" [routerLink]="['/']"> Mstore </a> </span>
-<button class="myButton" (click)="logOut()" name="logOut">Log Out</button>
-    <ng-template #popContent> <br>
-      <span id="empty" *ngIf='cart.length === 0'>The cart is empty</span>
-      <span *ngFor="let post of cart"  (onRemove)="Update($event)" (onAdd)="UpdateAdd($event)" ><br>
-        <div class="row">
-          <div class="col-sm">
-          <img [src]="src" [alt]="src" height="50px" width="50px"> 
-          </div>
-          <div class="col-sm">
-          <div class="font-size-lg pt-2">{{post.name}}</div>
-          </div>
-          <div class="col-sm">
-          <div class="font-size-lg text-primary pt-2">${{post.price}}</div>
-          </div>
-          <br>
-      </div>
-      </span> 
-      <br> 
-
-      
-      <a [routerLink]="['/cart']" > go to cart </a></ng-template>
-    <ng-template #popTitle><b>Your cart</b></ng-template>
-<button type="button" class="button btn-outline-secondary mr-2" [ngbPopover]="popContent" [popoverTitle]="popTitle" [autoClose]="false" >
-  <span id= "notification" class="badge bg-primary text-light position-absolute " *ngIf='cart.length !== 0'>{{cart.length}}</span>
-  <i-feather name="shopping-cart"></i-feather><br>
-    ${{total}}
-</button>
-</div>
+<app-header></app-header>
 
 <router-outlet> </router-outlet>
 
