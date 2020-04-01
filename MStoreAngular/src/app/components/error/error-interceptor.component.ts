@@ -17,6 +17,9 @@ export class ErrorInterceptor implements HttpInterceptor {
                     if (error.status === 500) {
                         this.router.navigate(['error-500']);
                     }
+                    if (error.status === 403) {
+                        this.router.navigate(['error-403']);
+                    }
                     let errorMessage = '';
                     let errorDescription = '';
                     if (error.error instanceof ErrorEvent) {

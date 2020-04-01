@@ -33,6 +33,17 @@ export class ShopComponent implements OnInit {
     this.showPrint = !this.showPrint;
   }
 
+  getAllPosts(){
+    this.postService.getPosts().subscribe(
+      response => {
+        this.posts = response;
+        this.empty=this.posts.length==0;
+        this.page = 0;
+      },
+      error => console.log(error)
+    );
+  }
+
   searchByPriceASC() {
     this.postService.getPostsByPriceASC().subscribe(
       response => {
@@ -90,14 +101,7 @@ export class ShopComponent implements OnInit {
   constructor(private router:Router,private postService:PostsService, private brandService:BrandService) { }
 
   ngOnInit(): void {
-    this.postService.getPosts().subscribe(
-      response => {
-        this.posts = response;
-        this.empty=this.posts.length==0;
-        this.page = 0;
-      },
-      error => console.log(error)
-    );
+   
 
     this.brandService.getBrands().subscribe(
       response => {

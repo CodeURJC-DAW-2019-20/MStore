@@ -65,6 +65,12 @@
         color:darkgray;
     }
 
+    #links{
+        color:white;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
 
 
 

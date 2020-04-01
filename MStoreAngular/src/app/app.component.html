@@ -1,6 +1,7 @@
 <app-header></app-header>
 
-<router-outlet> </router-outlet>
+<router-outlet  (activate)='onActivate($event)' (deactivate)='onDeactivate($event)'> </router-outlet> 
+
 
  <!-- Footer-->
  <footer class="page-footer bg-dark">
@@ -27,21 +28,11 @@
               </ul>
             </div>
           </div>
-          <div class="col-md-3 col-sm-6">
+          <div id="links" class="col-md-3 col-sm-6">
             <div class="widget widget-links pb-4">
               <h3 class="widget-title text-white border-light">Our brands</h3>
               <ul>
-                <li><a class="nav-link-inline nav-link-light" href="/shop/brand/Intel"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Intel</span></a></li>
-                <li><a class="nav-link-inline nav-link-light" href="/shop/brand/AMD"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">AMD</span></a></li>
-                <li><a class="nav-link-inline nav-link-light" href="/shop/brand/NVIDIA"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">NVIDIA</span></a></li>
-                <li><a class="nav-link-inline nav-link-light" href="/shop/brand/ASUS"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">ASUS</span></a></li>
-                <li><a class="nav-link-inline nav-link-light" href="/shop/brand/Corsair"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Corsair</span></a></li>
-                <li><a class="nav-link-inline nav-link-light" href="/shop/brand/Seagate"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Seagate</span></a></li>
-                <li><a class="nav-link-inline nav-link-light" href="/shop/brand/Gigabyte"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Gigabyte</span></a></li>
-                <li><a class="nav-link-inline nav-link-light" href="/shop/brand/Logitech"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Logitech</span></a></li>
-                <li><a class="nav-link-inline nav-link-light" href="/shop/brand/Pioneer"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">Pioneer</span></a></li>
-                <li><a class="nav-link-inline nav-link-light" href="/shop/brand/WD"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">WD</span></a></li>
-                <li><a class="nav-link-inline nav-link-light" href="/shop/brand/HP"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">HP</span></a></li>
+                <li *ngFor="let brand of brands"><a id="links" class="nav-link-inline nav-link-light" (click)="changeItem(brand.id)"><i class="widget-categories-indicator" data-feather="chevron-right"></i><span class="font-size-sm">{{brand.name}}</span></a></li>
               </ul>
             </div>
           </div>
