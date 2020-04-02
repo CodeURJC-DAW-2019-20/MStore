@@ -93,7 +93,7 @@
       </div>
       <div class="col-lg-9">
         <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Sort by: </button>
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle *ngIf="showFilter">Sort by: </button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem (click)="changeCriteriaPost(currentTag, 'price', 'asc')">Low - Hight Price</button>
             <button ngbDropdownItem (click)="changeCriteriaPost(currentTag, 'price', 'desc')">Hight - Low Price</button>
@@ -132,9 +132,10 @@
           <!-- Product-->
 
         </div>
-        <p>
-          <button class="view-more-button">View more</button>
+        <p *ngIf="showMore">
+          <button (click)="morePosts()" class="btn btn-primary" style="margin: .1rem;" type="submit">View more</button>
         </p>
+        <app-loader></app-loader>
       </div>
     </div>
   </div>

@@ -16,6 +16,8 @@ export class ShopComponent implements OnInit {
   currentOrd;
   currentSortBy;
   showHardware = false;
+  showMore;
+  showFilter;
   showAcc = true;
   showPrint = true;
   posts = []
@@ -50,8 +52,10 @@ export class ShopComponent implements OnInit {
   changeCriteriaPost(tag: string, sortBy:string, ord:string) {
     this.postService.getPostByCriteria(ord, sortBy, 0, tag).subscribe(
       response => {
+        this.showFilter = true;
         this.posts = response;
         this.empty = this.posts.length == 0;
+        this.showMore = this.posts.length == 10;
         this.page = 0;
         this.currentTag = tag;
         this.currentOrd = ord;
@@ -62,11 +66,26 @@ export class ShopComponent implements OnInit {
 
   }
 
+  morePosts() {
+    this.page = this.page + 1;
+    this.postService.getPostByCriteria(this.currentOrd, this.currentSortBy, this.page, this.currentTag)
+    .subscribe(
+      response => {
+        this.posts = this.posts.concat(response);
+        this.showMore = response.length == 10;
+      },
+      error => console.log
+    );
+
+  }
+
   setBrand(id:number) {
     this.brandService.getBrand(id).subscribe(
       response => {
         this.currentBrand = response
         this.posts = this.currentBrand.posts
+        this.showMore = false;
+        this.showFilter = false;
       },
       error => console.log(error)
     );
@@ -76,6 +95,8 @@ export class ShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentTag = -1;
+    this.showFilter = true;
+    this.showMore = true;
     this.currentOrd = 'asc';
     this.currentSortBy = 'id';
     this.brandService.getBrands().subscribe(

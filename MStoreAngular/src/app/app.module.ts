@@ -7,6 +7,8 @@ import { TagInputModule } from 'ngx-chips';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,8 +33,13 @@ import { AdminComponent } from './components/admin/admin.component';
 import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 import { ErrorComponent500 } from './components/error/error500.component';
 import { ErrorComponent403 } from './components/error/error403.component';
-import { HeaderComponent } from './components/header/header.component'; 
+import { HeaderComponent } from './components/header/header.component';
 import { Menu } from 'angular-feather/icons';
+import { LoaderComponent } from './loader/loader.component';
+
+// loader
+import { LoaderService } from './services/loader.service';
+import { LoaderInterceptor } from './services/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -55,10 +62,13 @@ import { Menu } from 'angular-feather/icons';
     FinalReviewComponent,
     CompleteComponent,
     AdminComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -70,8 +80,10 @@ import { Menu } from 'angular-feather/icons';
     MatCardModule
   ],
   providers: [
+    LoaderService,
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
