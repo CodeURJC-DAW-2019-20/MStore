@@ -11,8 +11,10 @@ import { BrandService } from 'src/app/services/brand.service';
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
-  selected ="hola"
   currentBrand;
+  currentTag;
+  currentOrd;
+  currentSortBy;
   showHardware = false;
   showAcc = true;
   showPrint = true;
@@ -44,48 +46,20 @@ export class ShopComponent implements OnInit {
     );
   }
 
-  searchByPriceASC() {
-    this.postService.getPostsByPriceASC().subscribe(
-      response => {
-        this.posts = response;
-        this.empty=this.posts.length==0;
-        this.page = 0;
-      },
-      error => console.log(error)
-    );
-  }
 
-  searchByPriceDESC() {
-    this.postService.getPostsByPriceDESC().subscribe(
+  changeCriteriaPost(tag: string, sortBy:string, ord:string) {
+    this.postService.getPostByCriteria(ord, sortBy, 0, tag).subscribe(
       response => {
         this.posts = response;
-        this.empty=this.posts.length==0;
+        this.empty = this.posts.length == 0;
         this.page = 0;
+        this.currentTag = tag;
+        this.currentOrd = ord;
+        this.currentSortBy = sortBy;
       },
       error => console.log(error)
     );
-  }
 
-  searchByNameASC() {
-    this.postService.getPostsByNameASC().subscribe(
-      response => {
-        this.posts = response;
-        this.empty=this.posts.length==0;
-        this.page = 0;
-      },
-      error => console.log(error)
-    );
-  }
-
-  searchByNameDESC() {
-    this.postService.getPostsByNameDESC().subscribe(
-      response => {
-        this.posts = response;
-        this.empty=this.posts.length==0;
-        this.page = 0;
-      },
-      error => console.log(error)
-    );
   }
 
   setBrand(id:number) {
@@ -101,8 +75,9 @@ export class ShopComponent implements OnInit {
   constructor(private router:Router,private postService:PostsService, private brandService:BrandService) { }
 
   ngOnInit(): void {
-   
-
+    this.currentTag = -1;
+    this.currentOrd = 'asc';
+    this.currentSortBy = 'id';
     this.brandService.getBrands().subscribe(
       response => {
         this.brands = response;

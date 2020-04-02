@@ -21,7 +21,12 @@ export class PostsService {
 	getPostsByName(name: string): Observable<Post[]> {
 		return this.httpClient.get(POSTS_URL + "?name=" + name)
 		.pipe(catchError(error => this.handleError(error))) as Observable<Post[]>
-	}
+  }
+
+  getPostByCriteria(ord, sortBy, pageNumber, tag): Observable<Post[]> {
+    return this.httpClient.get(POSTS_URL + "?sortBy=" + sortBy + "&ord=" + ord + "&pageNo=" + pageNumber + "&tag=" + tag)
+    .pipe(catchError(error => this.handleError(error))) as Observable<Post[]>;
+  }
 
 	getPostsByPriceASC(): Observable<Post[]> {
 		return this.httpClient

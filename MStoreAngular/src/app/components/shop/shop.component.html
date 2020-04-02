@@ -12,65 +12,68 @@
               <div class="widget widget-categories mb-4 py-1">
                 <h3 class="widget-title">Shop categories</h3>
                 <ul id="shopCategories">
-                  <li class="has-children"><a style="cursor: pointer;" (click)="toggleNavbarHW()" data-toggle="collapse"><i
-                        class="widget-categories-indicator" data-feather="chevron-down"></i>Computer Hardware</a>
+                  <li class="has-children"><a style="cursor: pointer;" (click)="toggleNavbarHW()"
+                      data-toggle="collapse"><i class="widget-categories-indicator"
+                        data-feather="chevron-down"></i>Computer Hardware</a>
                     <ul [ngbCollapse]="showHardware" id="hardware" data-parent="#shopCategories">
                       <li>
-                        <a href="/shop/0">
+                        <a (click)="changeCriteriaPost('0', 'id', 'asc')" style="cursor: pointer;">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
-                          </i-feather>Motherboards
-                        </a></li>
-                      <li><a href="/shop/1">
+                          </i-feather>Motherboards</a>
+                      </li>
+                      <li><a (click)="changeCriteriaPost('1', 'id', 'asc')" style="cursor: pointer;">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                           </i-feather>Storage Devices
                         </a></li>
-                      <li><a href="/shop/2">
+                      <li><a (click)="changeCriteriaPost('2', 'id', 'asc')" style="cursor: pointer;">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                           </i-feather>CPU / Processors
                         </a></li>
-                      <li><a href="/shop/3">
+                      <li><a (click)="changeCriteriaPost('3', 'id', 'asc')" style="cursor: pointer;">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                           </i-feather>Video Cards &amp; Video Devices
                         </a></li>
                     </ul>
                   </li>
-                  <li class="has-children"><a style="cursor: pointer;" (click)="toggleNavbarAC()" data-toggle="collapse"><i
-                        class="widget-categories-indicator" data-feather="chevron-down"></i>Computer Accessories</a>
-                    <ul [ngbCollapse]="showAcc"  id="accessories" data-parent="#shopCategories">
-                      <li><a href="/shop/4">
+                  <li class="has-children"><a style="cursor: pointer;" (click)="toggleNavbarAC()"
+                      data-toggle="collapse"><i class="widget-categories-indicator"
+                        data-feather="chevron-down"></i>Computer Accessories</a>
+                    <ul [ngbCollapse]="showAcc" id="accessories" data-parent="#shopCategories">
+                      <li><a (click)="changeCriteriaPost('4', 'id', 'asc')" style="cursor: pointer;">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                           </i-feather>Speakers
                         </a></li>
-                      <li><a href="/shop/5">
+                      <li><a (click)="changeCriteriaPost('5', 'id', 'asc')" style="cursor: pointer;">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                           </i-feather>Headphones
                         </a></li>
-                      <li><a href="/shop/6">
+                      <li><a (click)="changeCriteriaPost('6', 'id', 'asc')" style="cursor: pointer;">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                           </i-feather>Computer Mice
                         </a></li>
-                      <li><a href="/shop/7">
+                      <li><a (click)="changeCriteriaPost('7', 'id', 'asc')" style="cursor: pointer;">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                           </i-feather>Monitors
                         </a></li>
                     </ul>
                   </li>
-                  <li class="has-children"><a style="cursor: pointer;" (click)="toggleNavbarPrint()" data-toggle="collapse"><i
-                        class="widget-categories-indicator" data-feather="chevron-down"></i>Printers</a>
+                  <li class="has-children"><a style="cursor: pointer;" (click)="toggleNavbarPrint()"
+                      data-toggle="collapse"><i class="widget-categories-indicator"
+                        data-feather="chevron-down"></i>Printers</a>
                     <ul [ngbCollapse]="showPrint" id="printers" data-parent="#shopCategories">
-                      <li><a href="/shop/8">
+                      <li><a (click)="changeCriteriaPost('8', 'id', 'asc')" style="cursor: pointer;">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                           </i-feather>Ink Printer
                         </a></li>
-                      <li><a href="/shop/9">
+                      <li><a (click)="changeCriteriaPost('9', 'id', 'asc')" style="cursor: pointer;">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                           </i-feather>Laser Printer
                         </a></li>
-                      <li><a href="/shop/10">
+                      <li><a (click)="changeCriteriaPost('10', 'id', 'asc')" style="cursor: pointer;">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                           </i-feather>3D Printer
                         </a></li>
-                      <li><a href="/shop/11">
+                      <li><a (click)="changeCriteriaPost('11', 'id', 'asc')" style="cursor: pointer;">
                           <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                           </i-feather>Printer Supplies
                         </a></li>
@@ -81,7 +84,8 @@
               <!-- Brand filter    -->
               <div class="widget widget-categories">
                 <h3 class="widget-title">Shop by brand</h3>
-                <button class="btn btn-primary" style="margin: .1rem;" type="submit" *ngFor="let brand of brands" (click)="setBrand(brand.id)">{{brand.name}}</button>
+                <button class="btn btn-primary" style="margin: .1rem;" type="submit" *ngFor="let brand of brands"
+                  (click)="setBrand(brand.id)">{{brand.name}}</button>
               </div>
             </div>
           </div>
@@ -91,14 +95,14 @@
         <div ngbDropdown class="d-inline-block">
           <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Sort by: </button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem (click)="searchByPriceASC()">Low - Hight Price</button>
-            <button ngbDropdownItem (click)="searchByPriceDESC()">Hight - Low Price</button>
-            <button ngbDropdownItem (click)="searchByNameASC()">A - Z Name Order</button>
-            <button ngbDropdownItem (click)="searchByNameDESC()">Z - A Name Order</button>
+            <button ngbDropdownItem (click)="changeCriteriaPost(currentTag, 'price', 'asc')">Low - Hight Price</button>
+            <button ngbDropdownItem (click)="changeCriteriaPost(currentTag, 'price', 'desc')">Hight - Low Price</button>
+            <button ngbDropdownItem (click)="changeCriteriaPost(currentTag, 'name', 'asc')">A - Z Name Order</button>
+            <button ngbDropdownItem (click)="changeCriteriaPost(currentTag, 'name', 'desc')">Z - A Name Order</button>
           </div>
         </div>
 
-<br>
+        <br>
         <div *ngIf="empty">
           <h2>
             No posts found&nbsp;
