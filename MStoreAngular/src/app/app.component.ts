@@ -62,15 +62,18 @@ export class AppComponent {
     error => console.log(error)
   );
   }
-  onActivate(ShopComponent) {
-    this.component=ShopComponent;
+
+  onActivate(Component) {
+    this.component=Component;
+    if (this.component instanceof ShopComponent){
     if (this.idbrand!==-1){
-    ShopComponent.setBrand(this.idbrand);
+    Component.setBrand(this.idbrand);
 
   }
   else {
-    ShopComponent.getAllPosts();
+    Component.getAllPosts();
   }
+}
   }
 
   onDeactivate(ShopComponent) {
@@ -81,8 +84,8 @@ export class AppComponent {
     this.idbrand=id;
     if (this.component instanceof ShopComponent){
     this.component.setBrand(id);
-  }
-  else {
+    }
+    else {
     this.Router.navigate(['/shop']);
   }
   }

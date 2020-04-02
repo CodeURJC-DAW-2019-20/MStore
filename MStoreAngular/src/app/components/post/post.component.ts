@@ -28,6 +28,7 @@ export class PostComponent implements OnInit {
   medianrate=4;
   totalrates=0;
   Contained=true;
+  imagesaux:number[]=[];
   images = [62, 83, 466, 965].map((n) => `https://picsum.photos/id/${n}/900/500`);
   @Output() 
   onAdd: EventEmitter<Post> = new EventEmitter<Post>();
@@ -38,6 +39,10 @@ export class PostComponent implements OnInit {
     this.getPost(this.id);
     this.Contained=this.cartService.contains(this.id);
     this.getTopPosts();
+    for (let index = 0; index < this.post.nImg; index++) {
+      this.imagesaux.push(index);
+    }
+    
   }
   
   constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig, private postService:PostsService, private cartService:CartService, private graphicsService:GraphicsService) {
