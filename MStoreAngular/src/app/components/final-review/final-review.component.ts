@@ -42,8 +42,8 @@ export class FinalReviewComponent implements OnInit {
   }
 
   removePost(post:Post){
-    this.postService.removePost(post).subscribe(
-      postOut => {},
+    this.postService.removePost(post.id).subscribe(
+      _ => {},
       error => console.error(error)
     )
   }

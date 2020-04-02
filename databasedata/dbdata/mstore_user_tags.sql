@@ -36,7 +36,7 @@ CREATE TABLE `user_tags` (
 
 LOCK TABLES `user_tags` WRITE;
 /*!40000 ALTER TABLE `user_tags` DISABLE KEYS */;
-INSERT INTO `user_tags` VALUES (1,'gaming'),(1,';overclocked'),(1,';overclocked'),(12,';Radeon'),(12,''),(12,''),(17,'gaming'),(17,''),(17,';graphics'),(55,'gaming'),(55,';Graphics'),(55,'gaming'),(59,'sound'),(59,'sound'),(59,'sound'),(57,'sound'),(57,'sound'),(57,'sound'),(58,'HP'),(58,'HP'),(58,'printer'),(62,'speakers'),(62,'speakers'),(62,'speakers');
+INSERT INTO `user_tags` VALUES (1,'gaming'),(1,'overclocked'),(1,'overclocked'),(12,'Radeon'),(12,''),(12,''),(17,'gaming'),(17,''),(17,'graphics'),(55,'gaming'),(55,'graphics'),(55,'gaming'),(59,'sound'),(59,'sound'),(59,'sound'),(57,'sound'),(57,'sound'),(57,'sound'),(62,'speakers'),(62,'speakers'),(62,'speakers'),(58,'HP'),(58,'monitor'),(58,'HP');
 /*!40000 ALTER TABLE `user_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-24 18:56:10
+-- Dump completed on 2020-04-02  1:32:41

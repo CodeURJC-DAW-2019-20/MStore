@@ -10,7 +10,7 @@ const POSTS_URL = "https://localhost:8443/api/posts/";
 @Injectable({ providedIn: 'root' })
 export class PostsService {
 
-    constructor(private httpClient: HttpClient, cartService:CartService) { }
+	constructor(private httpClient: HttpClient, cartService: CartService) { }
 
 	getPosts(): Observable<Post[]> {
 		return this.httpClient.get(POSTS_URL).pipe(
@@ -18,58 +18,64 @@ export class PostsService {
 		) as Observable<Post[]>;
 	}
 
+	getPostsByName(name: string): Observable<Post[]> {
+		return this.httpClient.get(POSTS_URL + "?name=" + name)
+		.pipe(catchError(error => this.handleError(error))) as Observable<Post[]>
+	}
+
 	getPostsByPriceASC(): Observable<Post[]> {
 		return this.httpClient
-		  .get(POSTS_URL + "?sortBy=price&ord=asc&pageNo=0")
-		  .pipe(catchError(error => this.handleError(error))) as Observable<Post[]>;
-	  }
-	  getPostsByPriceDESC(): Observable<Post[]> {
-		return this.httpClient
-		  .get(POSTS_URL + "?sortBy=price&ord=desc&pageNo=0")
-		  .pipe(catchError(error => this.handleError(error))) as Observable<Post[]>;
-	  }
+			.get(POSTS_URL + "?sortBy=price&ord=asc&pageNo=0")
+			.pipe(catchError(error => this.handleError(error))) as Observable<Post[]>;
+	}
 
-	  getPostsByNameASC(): Observable<Post[]> {
+	getPostsByPriceDESC(): Observable<Post[]> {
 		return this.httpClient
-		  .get(POSTS_URL + "?sortBy=name&ord=asc&pageNo=0")
-		  .pipe(catchError(error => this.handleError(error))) as Observable<Post[]>;
-	  }
+			.get(POSTS_URL + "?sortBy=price&ord=desc&pageNo=0")
+			.pipe(catchError(error => this.handleError(error))) as Observable<Post[]>;
+	}
 
-	  getPostsByNameDESC(): Observable<Post[]> {
+	getPostsByNameASC(): Observable<Post[]> {
 		return this.httpClient
-		  .get(POSTS_URL + "?sortBy=name&ord=desc&pageNo=0")
-		  .pipe(catchError(error => this.handleError(error))) as Observable<Post[]>;
-	  }
+			.get(POSTS_URL + "?sortBy=name&ord=asc&pageNo=0")
+			.pipe(catchError(error => this.handleError(error))) as Observable<Post[]>;
+	}
+
+	getPostsByNameDESC(): Observable<Post[]> {
+		return this.httpClient
+			.get(POSTS_URL + "?sortBy=name&ord=desc&pageNo=0")
+			.pipe(catchError(error => this.handleError(error))) as Observable<Post[]>;
+	}
 
 
 	getTopPosts(): Observable<Post[]> {
-		return this.httpClient.get(POSTS_URL+"top-posts").pipe(
+		return this.httpClient.get(POSTS_URL + "top-posts").pipe(
 			catchError(error => this.handleError(error))
 		) as Observable<Post[]>;
 	}
 
-	getPost(id: number): Observable<Post> {
-		return this.httpClient.get(POSTS_URL+id).pipe(
+	getPost(id: string): Observable<Post> {
+		return this.httpClient.get(POSTS_URL + id).pipe(
 			catchError(error => this.handleError(error))
 		) as Observable<Post>;
 	}
 
-	removePost(post: Post) {
-		return this.httpClient.delete(POSTS_URL + post.id).pipe(
+	removePost(id: number) {
+		return this.httpClient.delete(POSTS_URL + id).pipe(
 			catchError(error => this.handleError(error))
 		);
 	}
 
-	addPost(post: Post): Observable<Post>{
+	addPost(post: Post): Observable<Post> {
 		return this.httpClient.post(POSTS_URL, post).pipe(
 			catchError(error => this.handleError(error))
-		)as Observable<Post>;
+		) as Observable<Post>;
 	}
 
 	updatePost(post: Post) {
 		return this.httpClient.put(POSTS_URL + post.id, post).pipe(
 			catchError(error => this.handleError(error))
-		);
+		) as Observable<Post>;
 	}
 
 	private handleError(error: any) {

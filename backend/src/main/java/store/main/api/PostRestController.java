@@ -74,7 +74,7 @@ public class PostRestController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Post> getPost(@PathVariable("id") String input,HttpSession session) {
 		long id;
-		Post post ;
+		Post post;
 		if(isNumber(input)) {
 			id = Integer.parseInt(input);
 			Optional<Post> paux = postRepository.findById(id);
@@ -175,13 +175,21 @@ public class PostRestController {
 	@GetMapping("/")
 	public ResponseEntity<List<Post>> getPost(Model model, @RequestParam(defaultValue = "-1") Integer tag,
 			@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize,
-			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord) {
+			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String ord, 
+			@RequestParam(defaultValue = "") String name) {
+		
+		List<Post> p = new LinkedList<>();
+		
+		//Para poder hacer la busqueda de los posts por su nombre
+		if ((!name.isEmpty()) || (!name.equals(""))) {
+			p = postRepository.findByNameContainingIgnoreCase(name);
+			return new ResponseEntity<>(p,HttpStatus.OK);
+		}
 
 		if (tag == -1) {
 			return aux(model, pageNo, pageSize, sortBy, ord);
 		}
-		List<Post> p = new LinkedList<>();
-
+		
 		if (sortBy.equalsIgnoreCase("price")) {
 			if (ord.equalsIgnoreCase("asc")) {
 				p = postRepository.findByComponentTagOrderByPriceAsc(tag);

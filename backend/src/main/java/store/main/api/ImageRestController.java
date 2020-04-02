@@ -92,7 +92,8 @@ public class ImageRestController {
 			throws IOException {
 		Optional<Post> post = postRepository.findById(id);
 		if (post.isPresent()) {
-			if (userComponent.getLoggedUser().getEmail().equals(post.get().getUser().getEmail())) {
+			if (userComponent.getLoggedUser().getEmail().equals(post.get().getUser().getEmail()) 
+					|| userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN")) {
 				if (post.get().getnImg() < 4) {
 					if (imagenFile.getOriginalFilename().equals("")) {
 						return new ResponseEntity<Post>(HttpStatus.BAD_REQUEST);

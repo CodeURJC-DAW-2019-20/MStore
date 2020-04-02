@@ -5,7 +5,6 @@ import { UserService } from 'src/app/services/user.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 import { User } from 'src/app/models/user.model';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -75,6 +74,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         _ => {
+          window.location.reload();
           this.router.navigate([this.returnUrl]);
         },
         error => {
@@ -123,5 +123,4 @@ export class LoginComponent implements OnInit {
       this.submittedFailed = false;
     }
   }
-
 }

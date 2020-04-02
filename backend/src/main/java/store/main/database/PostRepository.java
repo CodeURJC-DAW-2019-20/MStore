@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface PostRepository extends JpaRepository<Post, Long> {
 
 	Post findByName(String name);
+	
+	List<Post> findByNameContainingIgnoreCase(String name);
 
 	List<Post> findByComponentTag(Integer cTag);
 

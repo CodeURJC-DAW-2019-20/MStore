@@ -188,9 +188,9 @@ public class Post {
 		case 7:
 			return "Monitors";
 		case 8:
-			return "Ink Printers";
+			return "Ink Printer";
 		case 9:
-			return "Laser Priter";
+			return "Laser Printer";
 		case 10:
 			return "3D Printer";
 		case 11:

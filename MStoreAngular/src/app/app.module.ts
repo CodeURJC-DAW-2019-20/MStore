@@ -28,7 +28,6 @@ import { StepperComponent } from './components/stepper/stepper.component';
 import { FinalReviewComponent } from './components/final-review/final-review.component';
 import { CompleteComponent } from './components/complete/complete.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { SearchPipe } from './search.pipe';
 import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 import { ErrorComponent500 } from './components/error/error500.component';
 import { ErrorComponent403 } from './components/error/error403.component';
@@ -56,8 +55,7 @@ import { Menu } from 'angular-feather/icons';
     FinalReviewComponent,
     CompleteComponent,
     AdminComponent,
-    SearchPipe,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +67,7 @@ import { Menu } from 'angular-feather/icons';
     TagInputModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatCardModule,
+    MatCardModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

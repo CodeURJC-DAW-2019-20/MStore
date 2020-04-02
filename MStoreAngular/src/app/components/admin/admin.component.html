@@ -22,7 +22,7 @@
         <h2 class="font-weight-light pt-3 mb-1">Search the product:</h2>
         <div class="row">
             <div class="flex-grow-1 pb-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
-                <form>
+                <form (ngSubmit)="onSubmit(searchText.value)">
                     <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
                             <span class="input-group-text rounded-left pt-0" id="search-icon">
@@ -30,11 +30,11 @@
                             </span>
                         </div>
                         <input #searchText class="form-control rounded-right" type="text" id="findProduct" 
-                            (keyup)="showSearchResults($event)"
+                            (keyup)="showSearchResults($event,searchText.value)"
                             placeholder="Search site" aria-label="Search site" aria-describedby="search-icon"
                             autocomplete="off" list="listShow">
                         <datalist id="listShow" *ngIf="searching">
-                            <option *ngFor="let name of posts | search : searchText.value">
+                            <option *ngFor="let name of posts">
                                 {{name}}
                             </option>
                         </datalist>
@@ -46,18 +46,21 @@
 			<div class="w-100 p-3">
 				<h1 class="w-100 d-flex flex-wrap justify-content-between align-items-center p-3 light-gray">
 					<span class="font-weight-bold">Product</span>
-				</h1>
+                </h1>
                 <!-- Item-->
-                <h2 *ngIf="!found" class="w-100 p-3 text-center">
+                <h2 *ngIf="!found && !remove && !edit" class="w-100 p-3 text-center">
                     <span class='text-muted'>No product to show</span>
+                </h2>
+                <h2 *ngIf="remove" class="w-100 p-3 text-center">
+                    <span class='text-muted'>Product deleted successfully</span>
                 </h2>
 				 <div *ngIf="found" class="row py-3" id="product-info">
 					<!-- Photo carousel-->
 					<div class="col-3">
-                        <ngb-carousel *ngIf="images" class="carousel slide">
-                            <ng-template ngbSlide *ngFor="let img of images; index as i">
+                        <ngb-carousel *ngIf="imgsUrl" class="carousel slide">
+                            <ng-template ngbSlide *ngFor="let img of imgsUrl; index as i">
                                 <div class="picsum-img-wrapper">
-                                    <img [src]="img" alt="Picture {{i}} of component {{post.name}}">
+                                    <img class="w-75" [src]="img" alt="Picture {{i}} of {{post.name}}">
                                 </div>
                             </ng-template>
                         </ngb-carousel>
@@ -82,7 +85,7 @@
                                 Remove
 							</button>
 						</form>
-						<form (ngSubmit)="onEdit(post.id)">
+						<form (ngSubmit)="onEdit()">
 							<button class="btn btn-outline-success btn-sm px-5 btn-block rounded"
 								type="submit">
                                 <i-feather name="edit" style="width: 15px; height: 15px;"></i-feather>
@@ -91,22 +94,24 @@
 						</form>
 					</div> 
                  </div>
+                 <h2 *ngIf="edited" class="w-100 p-3 text-center">
+                    <span class='text-muted'>Product updated successfully</span>
+                </h2>
                  <!-- Edit-->
                  <hr>
                  <div *ngIf="edit" class="col-8 mx-auto">
                     <!-- Pickup address-->
                       <h2 class="my-4 font-weight-bold">Edit the product</h2>
-                      <form>
+                      <form (ngSubmit)="onEditProduct()">
                           <div class="form-group">
                               <label for="component-name">Component Name</label> 
                               <input class="form-control" type="text" name="name"
-                                  placeholder="MSI Printer" value="{{post.name}}" id="component-name" required>
+                                  placeholder="MSI Printer" [(ngModel)]="post.name" id="component-name" required>
                           </div>
                           <div class="form-group">
                               <label for="select-input">Select the product to sell</label> <select
                                   class="form-control custom-select" name="component"
-                                  id="select-input" required>
-                                  <option value="">Choose a component</option>
+                                  id="select-input" [(ngModel)]="post.component" required>
                                   <option value="Motherboards">Motherboards</option>
                                   <option value="Storage Devices">Storage Devices</option>
                                   <option value="CPU / Processors">CPU / Processors</option>
@@ -124,8 +129,7 @@
                           <div class="form-group">
                               <label for="select-input">Select the brand</label> <select
                                   class="form-control custom-select" name="bname" id="select-input"
-                                  required>
-                                  <option value="">Choose a brand</option>
+                                  [(ngModel)]="post.brand.name" required>
                                   <option value="Intel">Intel</option>
                                   <option value="AMD">AMD</option>
                                   <option value="NVIDIA">NVIDIA</option>
@@ -148,25 +152,25 @@
                               <label for="file-input">Upload you photos (Max 4)</label>
                               <div class="file-upload-wrapper">
                                   <br>
-                                  <input type="file" name="imagenFile" lang="en"
-                                      id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
+                                  <input type="file" name="imagenFile" lang="en" [(ngModel)]="images[0]"
+                                      id="input-file-now" class="file-upload" (change)="onFileChanged($event,0)" />
                                   <small class="form-text text-muted">Picture 1</small><br>
                                   <input type="file" name="imagenFile" lang="en"
-                                      id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
+                                      id="input-file-now" class="file-upload" (change)="onFileChanged($event,1)" />
                                   <small class="form-text text-muted">Picture 2</small><br>
                                   <input type="file" name="imagenFile" lang="en"
-                                      id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
+                                      id="input-file-now" class="file-upload" (change)="onFileChanged($event,2)" />
                                   <small class="form-text text-muted">Picture 3</small><br>
                                   <input type="file" name="imagenFile" lang="en"
-                                      id="input-file-now" class="file-upload" accept=".jpg, .jpeg" />
+                                      id="input-file-now" class="file-upload" (change)="onFileChanged($event,3)" />
                                   <small class="form-text text-muted">Picture 4</small>
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="number-input">Price to sell ($)</label>
                               <div class="input-group">
-                                  <input class="form-control" name="price" placeholder="Amount" value="{{post.price}}"
-                                      type="number" min="0" id="number-input" required>
+                                  <input class="form-control" name="price" placeholder="Amount"
+                                      type="number" min="0" id="number-input" [(ngModel)]="post.price" required>
                                   <div class="input-group-append">
                                       <span class="input-group-text">$</span>
                                   </div>
@@ -174,18 +178,17 @@
                           </div>
                           <div class="form-group">
                               <label for="textarea-input">Details</label>
-                              <textarea class="form-control" name="details" id="textarea-input"
-                                  placeholder="Tell us about the product" rows="7" required>{{post.details}}</textarea>
+                              <textarea class="form-control" name="details" id="textarea-input" [(ngModel)]="post.details"
+                                  placeholder="Tell us about the product" rows="7" required></textarea>
                           </div>
                           <div class="form-group">
                               <label for="textarea-input">Features (Optional)</label>
-                              <textarea class="form-control" name="features" id="textarea-input"
+                              <textarea class="form-control" name="features" id="textarea-input" [(ngModel)]="post.features"
                                   placeholder="e.g. Play a great variety of newly released games at 1080p 60fps"
-                                  rows="7">{{post.features}}</textarea>
+                                  rows="7"></textarea>
                           </div>
                           <div class="text-sm-right">
-                              <button class="myButton" type="submit">Sell
-                                  product</button>
+                              <button class="myButton" type="submit">Edit</button>
                           </div>
                   </form>
                 </div>

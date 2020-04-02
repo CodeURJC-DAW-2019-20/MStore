@@ -50,7 +50,7 @@ export class PostComponent implements OnInit {
   
 
   getPost(id:number){
-    this.postService.getPost(id).subscribe(
+    this.postService.getPost(id.toString()).subscribe(
       post => {
         this.post=post;
         this.userID=post.user.id;
