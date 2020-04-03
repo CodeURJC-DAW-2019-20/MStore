@@ -72,7 +72,14 @@ export class EditProfileComponent {
         _ => {
           if (this.user.password !== '' && this.loggedUserService.logout()) {
             this.loggedUserService.login(this.user.email, this.user.password).subscribe(
-              _ => this.user = undefined,
+              _ => { 
+                this.user = undefined;
+                if (confirm("User updated successfully")) {
+                  this.router.navigate(['']).then(_ =>
+                    window.location.reload()
+                  );
+                }
+              },
               error => console.log(error)
             );
           }
@@ -83,13 +90,10 @@ export class EditProfileComponent {
         const data = new FormData();
         data.append("imagenFile", this.file);
         this.imageService.updateUserImage(this.user.id, data).subscribe(
-          _ => console.log("hola"),
+          _ => this.file = undefined,
           error => console.log(error)
         );
       }
-      this.router.navigate(['']).then(_ =>
-        window.location.reload()
-      );
     }
   }
 }
