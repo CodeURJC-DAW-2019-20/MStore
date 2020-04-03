@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-complete',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompleteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthenticationService) { }
+
+  name: string;
 
   ngOnInit(): void {
+    if (this.authService.isUserLog()) {
+      this.name = this.authService.currentUserValue.firstName;
+    }
   }
 
 }

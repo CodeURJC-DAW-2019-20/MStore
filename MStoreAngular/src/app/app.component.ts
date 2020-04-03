@@ -56,12 +56,16 @@ export class AppComponent {
     this.router.navigate(['/cart']);
   }
 
-  onDelete(id: number) {
+  onDelete(i: number) {
     //Este metodo aun falla cuando se llama al remove de cartService
     //cuando se coge el post es undefined pero el cart tiene el post
-    this.cartService.removeFromCartIndex(id);
+    this.cartService.removeFromCartIndex(i);
     this.cart = this.cartService.getCart();
     this.total = this.cartService.getTotal();
+    //Para recargar cart en caso de que se este en la misma pagina
+    if (this.router.url === '/cart') {
+      location.reload();
+    }
   }
 
   getBrand() {

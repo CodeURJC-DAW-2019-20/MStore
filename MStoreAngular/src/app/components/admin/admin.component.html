@@ -22,7 +22,7 @@
         <h2 class="font-weight-light pt-3 mb-1">Search the product:</h2>
         <div class="row">
             <div class="flex-grow-1 pb-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
-                <form (ngSubmit)="onSubmit(searchText.value)">
+                <form>
                     <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
                             <span class="input-group-text rounded-left pt-0" id="search-icon">
@@ -31,7 +31,7 @@
                         </div>
                         <input #searchText class="form-control rounded-right" type="text" id="findProduct" 
                             (keyup)="showSearchResults($event,searchText.value)"
-                            placeholder="Search site" aria-label="Search site" aria-describedby="search-icon"
+                            placeholder="Search product" aria-label="Search site" aria-describedby="search-icon"
                             autocomplete="off" list="listShow">
                         <datalist id="listShow" *ngIf="searching">
                             <option *ngFor="let name of posts">
@@ -60,22 +60,22 @@
                         <ngb-carousel *ngIf="imgsUrl" class="carousel slide">
                             <ng-template ngbSlide *ngFor="let img of imgsUrl; index as i">
                                 <div class="picsum-img-wrapper">
-                                    <img class="w-75" [src]="img" alt="Picture {{i}} of {{post.name}}">
+                                    <img class="w-75" [src]="img" alt="Picture {{i}} of {{post?.name}}">
                                 </div>
                             </ng-template>
                         </ngb-carousel>
 					</div>
 					<div class="my-auto pl-3">
 						<h3 class="product-card-title font-weight-semibold border-0 pb-0">
-							{{post.name}}
+							{{post?.name}}
 						</h3>
 						<span class="product-card-title border-0 font-weight-light">
-							Component: <span class="text-muted">{{post.component}}</span>
+							Component: <span class="text-muted">{{post?.component}}</span>
                         </span><br>
 						<span class="product-card-title border-0 font-weight-light">
-							Brand: <span class="text-muted">{{post.brand.name}}</span>
+							Brand: <span class="text-muted">{{post?.brand.name}}</span>
                         </span>
-						<div class="font-size-lg text-primary pt-2">${{post.price}}</div>
+						<div class="font-size-lg text-primary pt-2">${{post?.price}}</div>
 					</div>
 					<div class="my-auto pl-5">
 						<form (ngSubmit)="onRemove(post.id)">
@@ -146,13 +146,14 @@
                           </div>
                           <div class="form-group">
                               <label for="tags-input">Tags</label><br> 
-                              <tag-input [(ngModel)]='post.tags' name="tags" id="tags-input"></tag-input>
+                              <tag-input [(ngModel)]='post.tags' [ripple]="false" [modelAsStrings]="true"
+                                 name="tags" id="tags-input"></tag-input>
                           </div>
                           <div class="form-group">
                               <label for="file-input">Upload you photos (Max 4)</label>
                               <div class="file-upload-wrapper">
                                   <br>
-                                  <input type="file" name="imagenFile" lang="en" [(ngModel)]="images[0]"
+                                  <input type="file" name="imagenFile" lang="en"
                                       id="input-file-now" class="file-upload" (change)="onFileChanged($event,0)" />
                                   <small class="form-text text-muted">Picture 1</small><br>
                                   <input type="file" name="imagenFile" lang="en"

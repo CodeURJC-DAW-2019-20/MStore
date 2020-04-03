@@ -49,14 +49,18 @@ export class AdminComponent implements OnInit {
           this.posts = posts.map(post => post.name);
           if (this.posts.filter(namePost => namePost === name).length > 0) {
             this.searching = false;
+            this.onSubmit(name);
+            this.found = true;
           } else {
             this.searching = true;
+            this.found = false;
           }
         },
         error => console.log(error)
       );
     } else {
       this.searching = false;
+      this.found = false;
     }
   }
 
@@ -78,24 +82,22 @@ export class AdminComponent implements OnInit {
     this.edited = false;
     this.edit = false;
     if (name === '') {
-      this.router.navigate(['/admin']).then(() => {
-        this.found = false;
-        alert("Product not found");
-      });
+      this.router.navigate(['/admin']);
+      this.found = false;
+      return;
+    } else if ((typeof this.post !== 'undefined') && (this.post.name === name)) {
       return;
     }
     this.postService.getPost(name).subscribe(
       post => {
         this.post = post;
-        this.found = true;
         this.loadImages(post.id);
+        this.found = true;
       },
       error => { 
         console.log(error)
         this.found = false;
-        this.router.navigate(['/admin']).then(() => {
-          alert("Product not found");
-        });
+        this.router.navigate(['/admin']);
       }
     );
   }

@@ -12,84 +12,84 @@ import { User } from 'src/app/models/user.model';
 })
 export class EditProfileComponent {
 
-  user:User;
-  userLog:User;
-  confirmPass:string;
-  src:string;
-  file:File;
+  user: User;
+  userLog: User;
+  confirmPass: string;
+  src: string;
+  file: File;
   submitted: boolean = false;
 
-  constructor(private userService:UserService, private loggedUserService: AuthenticationService, 
-              private imageService:ImageService, private router: Router) {
+  constructor(private userService: UserService, private loggedUserService: AuthenticationService,
+    private imageService: ImageService, private router: Router) {
     this.getUser(this.loggedUserService.currentUserValue.id);
-    this.user={id:0,firstName:'', lastName:'',
-      email:'',phone:undefined,password:'',roles:[],
-      userAddress:'',creditCard:undefined}
-    this.confirmPass='';
-    this.file=undefined;
+    this.user = {
+      id: 0, firstName: '', lastName: '',
+      email: '', phone: undefined, password: '', roles: [],
+      userAddress: '', creditCard: undefined
+    }
+    this.confirmPass = '';
+    this.file = undefined;
   }
 
   onFileChanged(event) {
     this.file = event.target.files[0];
   }
 
-  getUser(id:number){
+  getUser(id: number) {
     this.userService.getUser(id).subscribe(
       user => {
         this.userLog = user;
-        this.user=this.userLog;
-        this.user.password="";
+        this.user = this.userLog;
+        this.user.password = "";
       },
       error => console.log(error)
     );
-    this.src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
+    this.src = "https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
   }
 
-  notvalid(){
-    return (this.user.firstName == '' || this.user.lastName == '' || this.checkPhone() ||this.user.password!=this.confirmPass);
+  notvalid() {
+    return (this.user.firstName == '' || this.user.lastName == '' || this.checkPhone() || this.user.password != this.confirmPass);
   }
 
-  checkPhone(){
+  checkPhone() {
     return <any>this.user.phone == '';
   }
 
-  checkPass(){
-    return this.user.password!=this.confirmPass;
+  checkPass() {
+    return this.user.password != this.confirmPass;
+  }
+
+  logOut() {
+    this.loggedUserService.logout();
   }
 
   onSubmit() {
     // upload code goes here
-    if (this.notvalid()){
+    if (this.notvalid()) {
       this.submitted = true;
-    }else{
-      this.userService.updateUser(this.user,this.user.id).subscribe(
-        user => {
-          this.user=user;
-          if(this.confirmPass!=''){
-            this.loggedUserService.logout().subscribe(
-              _ => this.loggedUserService.login(this.user.email,this.confirmPass),
+    } else {
+      this.userService.updateUser(this.user, this.user.id).subscribe(
+        _ => {
+          if (this.user.password !== '' && this.loggedUserService.logout()) {
+            this.loggedUserService.login(this.user.email, this.user.password).subscribe(
+              _ => this.user = undefined,
               error => console.log(error)
             );
-          }else{
-            this.router.navigate(['/']);
           }
         },
         error => console.log(error)
       );
-      if(this.file != undefined){
-        const data  = new FormData();
-        data.append("imagenFile",this.file);
-        this.imageService.updateUserImage(this.user.id,data).subscribe(
+      if (this.file != undefined) {
+        const data = new FormData();
+        data.append("imagenFile", this.file);
+        this.imageService.updateUserImage(this.user.id, data).subscribe(
           _ => console.log("hola"),
           error => console.log(error)
         );
       }
+      this.router.navigate(['']).then(_ =>
+        window.location.reload()
+      );
     }
-    
-  }
-
-  logOut(){
-    this.loggedUserService.logout();
-    this.router.navigate(['/']);
   }
 }

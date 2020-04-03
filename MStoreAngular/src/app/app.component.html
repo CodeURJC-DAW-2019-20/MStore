@@ -10,12 +10,12 @@
     <hr>
     <div class="pt-3 text-center">
       <span *ngIf='cart.length === 0' class="text-muted">The cart is empty</span>
-      <div class="row mx-auto" *ngFor="let post of cart">
+      <div class="row mx-auto" *ngFor="let post of cart; let i = index">
         <div class="col-6">
           <a (click)="onSubmit()">
             <img src="https://localhost:8443/images/posts/image-{{post?.id}}-0.jpg" class="w-75">
           </a>
-          <a (click)="onDelete(post.id)">
+          <a (click)="onDelete(i)">
             <i-feather class="text-danger align-top" name="x-circle"></i-feather>
           </a>
         </div>
@@ -44,14 +44,14 @@
     <router-outlet (activate)='onActivate($event)' (deactivate)='onDeactivate($event)'> </router-outlet>
 
     <!-- Footer-->
-    <footer class="page-footer bg-dark">
+    <footer class="page-footer" style="background-color: #222222;">
       <!-- first row-->
       <div class="pt-5 pb-0 pb-md-4">
         <div class="container">
           <div class="row">
             <div class="col-md-4 col-sm-6">
               <div class="widget widget-links pb-4">
-                <h3 class="widget-title text-white border-light">Shop departments</h3>
+                <h2 class="widget-title text-white border-light">Shop departments</h2>
                 <ul>
                   <li><a class="nav-link-inline nav-link-light" href="/shop/0"><i class="widget-categories-indicator"
                         data-feather="chevron-right"></i><span class="font-size-sm">Motherboards</span></a></li>
@@ -83,18 +83,19 @@
             </div>
             <div id="links" class="col-md-3 col-sm-6">
               <div class="widget widget-links pb-4">
-                <h3 class="widget-title text-white border-light">Our brands</h3>
-                <ul>
-                  <li *ngFor="let brand of brands"><a id="links" class="nav-link-inline nav-link-light"
-                      (click)="changeItem(brand.id)"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">{{brand?.name}}</span></a></li>
+                <h2 class="widget-title text-white border-light">Our brands</h2>
+                <ul class="list-unstyled">
+                  <li *ngFor="let brand of brands"><a id="links"
+                      (click)="changeItem(brand.id)" class="text-muted">
+                      <i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+                      <span class="font-size-sm">{{brand?.name}}</span></a></li>
                 </ul>
               </div>
             </div>
             <div class="col-xl-4 offset-xl-1 col-md-5">
               <div class="widget">
                 <!-- Subscription form (MailChimp)-->
-                <h3 class="widget-title text-white border-light">Stay informed</h3>
+                <h2 class="widget-title text-white border-light">Stay informed</h2>
                 <form
                   action="https://urjc.us4.list-manage.com/subscribe/post?u=7816e91fc0e80c209c0a7750e&amp;id=a3e1cc1eb7"
                   method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"

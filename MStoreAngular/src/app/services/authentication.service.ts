@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { User } from '../models/user.model';
+import { Router } from '@angular/router';
 
 const LOGIN_URL = "https://localhost:8443/api/logIn";
 const LOGOUT_URL = "https://localhost:8443/api/logOut/";
@@ -14,7 +15,7 @@ export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,private router: Router) {
         //Inicializamos con el valor currentUser que tenemos almacenado
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
@@ -55,11 +56,6 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
-		return this.http.get(LOGOUT_URL);
+        return this.http.get(LOGOUT_URL);
     }
-
-    private handleError(error: any) {
-		console.error(error);
-		return Observable.throw("Server error (" + error.status + "): " + error.text())
-	}
 }

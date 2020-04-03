@@ -32,7 +32,7 @@
 		</div>
 		<!-- search-box-->
 		<div class="flex-grow-1 pb-3 pt-sm-3 my-1 px-sm-2 pr-lg-4 order-sm-2">
-			<form>
+			<form (ngSubmit)="onSubmit(searchText.value)">
 				<div class="input-group flex-nowrap">
 					<div class="input-group-prepend">
 						<span class="input-group-text rounded-left pt-0" id="search-icon">
@@ -42,10 +42,14 @@
 					<template id="myListTemplate">
 						<option>name</option>
 					</template>
-					<input class="form-control rounded-right" type="text" id="finder" name="search"
-						placeholder="Search site" aria-label="Search site" aria-describedby="search-icon" list="myList"
-						autocomplete="off">
-					<datalist id="myList"></datalist>
+					<input #searchText class="form-control rounded-right" type="text" id="searchText" name="searchText"
+						placeholder="Search product" aria-label="Search site" aria-describedby="search-icon" list="myList"
+						autocomplete="off" (keyup)="showSearchResults($event,searchText.value)">
+                        <datalist id="myList" *ngIf="searching">
+                            <option *ngFor="let name of posts">
+                                {{name}}
+                            </option>
+                        </datalist>
 				</div>
 			</form>
 		</div>
@@ -71,17 +75,16 @@
 								</div>
 								<div class="widget widget-links">
 									<ul>
-										<li><a href="/shop/0"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span
-													class="font-size-sm">Motherboards</span></a></li>
-										<li><a href="/shop/1"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Storage
+										<li><a href="/shop/0"><i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Motherboards</span></a></li>
+										<li><a href="/shop/1"><i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Storage
 													Devices</span></a></li>
-										<li><a href="/shop/2"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">CPU
+										<li><a href="/shop/2"><i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">CPU
 													/ Processors</span></a></li>
-										<li><a href="/shop/3"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Video
+										<li><a href="/shop/3"><i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Video
 													Cards &amp; Video Devices</span></a></li>
 									</ul>
 								</div>
@@ -94,19 +97,17 @@
 								</div>
 								<div class="widget widget-links">
 									<ul>
-										<li><a href="/shop/4"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Speakers
+										<li><a href="/shop/4"><i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Speakers
 												</span></a></li>
-										<li><a href="/shop/5"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span
-													class="font-size-sm">Headphones
+										<li><a href="/shop/5"><i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Headphones
 												</span></a></li>
-										<li><a href="/shop/6"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Computer
+										<li><a href="/shop/6"><i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Computer
 													Mice</span></a></li>
-										<li><a href="/shop/7"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span
-													class="font-size-sm">Monitors</span></a></li>
+										<li><a href="/shop/7"><i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Monitors</span></a></li>
 									</ul>
 								</div>
 							</div>
@@ -117,17 +118,17 @@
 								</div>
 								<div class="widget widget-links">
 									<ul>
-										<li><a href="/shop/8"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Ink
+										<li><a href="/shop/8"><i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Ink
 													Printer</span></a></li>
-										<li><a href="/shop/9"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Laser
+										<li><a href="/shop/9"><i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Laser
 													Printer</span></a></li>
-										<li><a href="/shop/10"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">3D
+										<li><a href="/shop/10"><i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">3D
 													Printer</span></a></li>
-										<li><a href="/shop/11"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Printer
+										<li><a href="/shop/11"><i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Printer
 													Supplies</span></a></li>
 									</ul>
 								</div>
