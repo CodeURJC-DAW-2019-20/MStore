@@ -1,0 +1,33 @@
+.p-title {
+    color: #5c77fc !important;
+  }
+
+.abs-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.widget-title {
+    display: block;
+    position: relative;
+    margin-bottom: 1.2rem;
+    padding-bottom: .75rem;
+    border-bottom: 1px solid #e7e7e7;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .widget-title::after {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 5rem;
+    height: 2px;
+    background-color: #5c77fc;
+    content: '';
+  }
+  .font-size-lg {
+    font-size: 1.125rem !important;
+  }
+  

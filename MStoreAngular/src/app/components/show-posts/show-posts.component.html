@@ -8,29 +8,31 @@
 
     <div class="row no-gutters">
         
-        <!-- Product-->
-        <div *ngFor="let post of posts" class="col-lg-3 col-sm-4 col-6 border border-collapse">
-            <div class="product-card">
-                <div class="product-thumb">
-                    <a [routerLink]="['/post',post.id]" (click)="navigate(post.id)" ><img class="img-thumbnail" [src]="images[0]" alt="Random first slide"></a>
-                </div>
-                <div class="product-card-body">
-                    <div class="d-flex flex-wrap justify-content-between pb-1">
-                        <a class="text-muted" href="">{{post.component}}</a>
-                    </div>
-                    <h5 class="text-dark">
-                        <a class="text-dark" [routerLink]="['/post',post.id]" (click)="navigate(post.id)">{{post.name}}</a>
-                    </h5>
-                    <hr class="mt-4">
-                    <span class="text-primary">${{post.price}}</span>
-                </div>
-                <div class="d-print-none">
-                    <button [routerLink]="['/post',post.id]" (click)="navigate(post.id)" type="button" class="myButton" ngbTooltip="Shop" triggers="click:blur">Shop now
-                        <i-feather name="arrow-right" style="width: 20px; height: 20px;"></i-feather></button>
-                </div>
-            </div>
+      <!-- Products grid-->
+      <div class="row no-gutters">
+            <div class="col-md-4 col-sm-6" *ngFor="let post of posts">
+            <mat-card class="example-card" >
+              <a [routerLink]="['/post',post?.id]" (click)="navigate(post?.id)" ><img mat-card-image src="https://localhost:8443/images/posts/image-{{post?.id}}-0.jpg"
+                  alt="image-post?.id" style="max-height: 125px;"></a> 
+              <mat-card-header>
+                <mat-card-title >{{post?.name}}</mat-card-title>
+                <mat-card-subtitle>{{post?.component}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p class="p-title">
+                  &nbsp;&nbsp;&nbsp;&nbsp;{{post?.price}}$
+                </p>
+                <div class="abs-center">
+                  <button [routerLink]="['/post',post?.id]" (click)="navigate(post?.id)" type="button" class="myButton" ngbTooltip="Shop" triggers="click:blur">Shop now
+                      <i-feather name="arrow-right" style="width: 20px; height: 20px;"></i-feather></button>
+              </div>
+              </mat-card-content>
+            </mat-card>
+
+          </div>
+          <!-- Product-->
+
         </div>
-        <!-- Product-->
-    </div>
+  </div>
     <hr class="mt-4">
 </section>

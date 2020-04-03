@@ -13,9 +13,9 @@
                                         <i-feather class="text-primary opacity-100" name="hard-drive"
                                             style="width: 20px; height: 20px;"></i-feather>
                                     </div>
-                                    <div class="p-2 bd-highlight"><a
-                                            class="text-secondary d-flex align-items-center nav-link-inline py-1"
-                                            href="/shop/7">CPU/Processors<div class="py-0 bd-highlight">
+                                    <div class="p-2 bd-highlight"><a [routerLink]="['/shop']"
+                                            class="text-secondary d-flex align-items-center nav-link-inline py-1">CPU/Processors<div class="py-0 bd-highlight">
+                                                
                                                 <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                                                 </i-feather>
                                             </div></a></div>
@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="p-2 bd-highlight"><a
                                             class="text-secondary d-flex align-items-center nav-link-inline py-1"
-                                            href="/shop/7">Speakers & Home Music<div class="py-0 bd-highlight">
+                                            [routerLink]="['/shop']">Speakers & Home Music<div class="py-0 bd-highlight">
                                                 <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                                                 </i-feather>
                                             </div></a></div>
@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="p-2 bd-highlight"><a
                                             class="text-secondary d-flex align-items-center nav-link-inline py-1"
-                                            href="/shop/7">Monitors<div class="py-0 bd-highlight">
+                                            [routerLink]="['/shop']">Monitors<div class="py-0 bd-highlight">
                                                 <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                                                 </i-feather>
                                             </div></a></div>
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="p-2 bd-highlight"><a
                                             class="text-secondary d-flex align-items-center nav-link-inline py-1"
-                                            href="/shop/7">VideoCards & Video Devices<div class="py-0 bd-highlight">
+                                            [routerLink]="['/shop']">VideoCards & Video Devices<div class="py-0 bd-highlight">
                                                 <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                                                 </i-feather>
                                             </div></a></div>
@@ -75,7 +75,7 @@
                                     </div>
                                     <div class="p-2 bd-highlight"><a
                                             class="text-secondary d-flex align-items-center nav-link-inline py-1"
-                                            href="/shop/7">Headphones<div class="py-0 bd-highlight">
+                                            [routerLink]="['/shop']">Headphones<div class="py-0 bd-highlight">
                                                 <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                                                 </i-feather>
                                             </div></a></div>
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="p-2 bd-highlight"><a
                                             class="text-secondary d-flex align-items-center nav-link-inline py-1"
-                                            href="/shop/7">Printers & Ink<div class="py-0 bd-highlight">
+                                            [routerLink]="['/shop']">Printers & Ink<div class="py-0 bd-highlight">
                                                 <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                                                 </i-feather>
                                             </div></a></div>
@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="p-2 bd-highlight"><a
                                             class="text-secondary d-flex align-items-center nav-link-inline py-1"
-                                            href="/shop/7">HDD /SSD Data Storage<div class="py-0 bd-highlight">
+                                            [routerLink]="['/shop']">HDD /SSD Data Storage<div class="py-0 bd-highlight">
                                                 <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                                                 </i-feather>
                                             </div></a></div>
@@ -126,16 +126,16 @@
 							<div class="row align-items-center py-5">
 								<div class="col-md-5">
 									<div class="pl-3 px-8 pr-3 pl-md-5 pr-md-0 pt-4 pt-lg-5 pb-5 text-center text-md-left">
-										<h3 class="mb-1">{{post.name}}</h3>
-										<h4 class="font-weight-light opacity-70 pb-3">starting at
-											${{post.price}}</h4>
-                                            <button type="button" class="myButton" ngbTooltip="Shop" triggers="click:blur" [routerLink]="['/post',post.id]">Shop now
+										<h3 class="mb-1">{{post?.name}}</h3>
+										<h4 class="font-weight-light opacity-70 pb-3">Starting at
+											${{post?.price}}</h4>
+                                            <button type="button" class="myButton" ngbTooltip="Shop" triggers="click:blur" [routerLink]="['/post',post?.id]">Shop now
                                                 <i-feather name="arrow-right" style="width: 20px; height: 20px;"></i-feather></button>
 									</div>
 								</div>
 								<div class="col-md-7">
-									<img class="d-block mx-auto" [src]="images[0]"
-										alt="image">
+                                    <img class="d-block mx-auto" src="https://localhost:8443/images/posts/image-{{post?.id}}-0.jpg"
+                                        alt="image-post?.id" style="max-height: 350px;">
 								</div>
 							</div>
                             </ng-template>
@@ -190,7 +190,8 @@
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <img class="img-thumbnail" [src]="images[2]" alt="Random first slide">
+                    <img class="mx-auto" src="https://localhost:8443/images/posts/image-{{topPost?.id}}-0.jpg"
+                        alt="image-topPost?.id" style="max-height: 450px;">
                 </div>
             </div>
         </div>
@@ -203,12 +204,10 @@
         <div class="col-sm-4 col-sm-offset-5 mx-auto">
             <ngb-carousel [interval]="1200">
                 <ng-template ngbSlide *ngFor="let img of images; index as i">
-                    <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank"
-                        rel="nofollow noopener noreferrer">
                         <div class="picsum-img-wrapper">
-                            <img class="img-thumbnail" [src]="img" alt="My image {{i + 1}} description">
+                            <img class="img-thumbnail" [src]="img" alt="image {{i + 1}} brand">
                         </div>
-                    </a>
+                    
                 </ng-template>
             </ngb-carousel>
             <hr>

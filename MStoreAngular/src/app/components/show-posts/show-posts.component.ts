@@ -4,7 +4,7 @@ import { Post } from 'src/app/models/post.model';
 @Component({
   selector: 'app-posts',
   templateUrl: './show-posts.component.html',
-  styleUrls: []
+  styleUrls: ['./show-posts.component.css']
 })
 export class ShowPostsComponent {
 
@@ -14,7 +14,6 @@ export class ShowPostsComponent {
 
     @Input() posts:Array<Post>;
     @Input() title?:string;
-    images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
     refresh(){
       window.location.reload();

@@ -1,14 +1,15 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { PostsService } from 'src/app/services/posts.service';
 import {Post} from 'src/app/models/post.model';
+import { ShopComponent } from '../shop/shop.component';
+
 @Component({
   templateUrl: './index.component.html',
   styleUrls: []
 })
 export class IndexComponent implements OnInit {
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  images = [0,1,2,3,4,5,6,7,8,9].map((n) => `assets/img/brands/${n}.jpg`);
   title1 = 'Featured Products';
   title2 = 'New Arrivals';
   empty: boolean;
@@ -56,14 +57,14 @@ export class IndexComponent implements OnInit {
   }
 
   loadNewArrivals(){
-    this.newArrivals = this.posts.sort((e1, e2) => { if (e1.id > e2.id) { return -1 } else if (e1.id < e2.id) { return 1 } else { return 0; } }).slice(0,8);
+    this.newArrivals = this.posts.sort((e1, e2) => { if (e1.id > e2.id) { return -1 } else if (e1.id < e2.id) { return 1 } else { return 0; } }).slice(0,9);
   }
 
   loadFeaturedPosts(){
     this.postService.getPostsByPriceASC().subscribe(
       response => {
         this.featuredPosts = response;
-        this.featuredPosts = this.featuredPosts.slice(0,8);
+        this.featuredPosts = this.featuredPosts.slice(0,9);
       },
       error =>{
         console.log(error)
