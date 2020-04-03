@@ -1,72 +1,3 @@
-.div {
-    background-color: black;
-    height: 50px;
-    position:sticky;
-    position:relative;
-    margin: 0px;
-}
-.title{
-    text-align: left;
-    color:white;
-    font-size: 30px;
-    font-family: Arial;
-}
-.cart {
-    text-align: right;
-    right: 20px;
-    position: absolute;
-    font-size: 30px;
-    color:white;
-    font-family: Arial;
-}
-
-.button {
-    background-color: white;
-    cursor: pointer;
-    padding-left: 13px;
-    padding-right: 13px;
-    padding-top: 10px;
-    padding-bottom: 1px;
-    width: 3%;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-    position: absolute;
-    right:2px;
-    font-family: Arial;
-    color:darkgrey;
-    font-size: 10px;
-    text-align: center;
-  }
-  
-  .active, .button:hover {
-    background-color: #ccc;
-  }
-  
-  .card {
-      position:absolute;
-      font-family: Arial;
-      background-color: azure;
-  }
-
-  #homeredirect {
-      text-decoration: none;
-      color:white;
-    }
-    .vl {
-        border-left: thick solid grey;
-        width: 1px;
-      }
-
-
-    #notification{
-        right: 12px;
-    }
-
-    #empty{
-        font-family: Arial;
-        color:darkgray;
-    }
 /*
  * MStore | Modern Bootstrap E-Commerce Template
  * Copyright 2019 Createx Studio
@@ -2934,7 +2865,7 @@ fieldset:disabled a.btn {
 
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #5c77fc;
+  background-color: #5c9cfc50;
   border-color: #5c77fc;
 }
 

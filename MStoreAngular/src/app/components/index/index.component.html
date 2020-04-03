@@ -1,6 +1,6 @@
 <router-outlet>
     <section class="container px-3">
-        <div class="mt-4 pt-lg-2 mb-4 mb-md-5">
+        <div class="pt-lg-2 mb-4 mb-md-5">
             <div class="row">
                 <!-- Categories-->
                 <div class="col-lg-4 d-none d-lg-block">
@@ -183,7 +183,7 @@
                     <span class="badge badge-danger ml-5">Newest offer</span>
                     <div class="pt-4 pl-4 pl-sm-5">
                         <h3 class="font-family-body font-weight-light mb-2">All new</h3>
-                        <h2 class="mb-2 pb-1">{{topPost.name}}</h2>
+                        <h2 class="mb-2 pb-1">{{topPost?.name}}</h2>
                         <h5 class="font-family-body font-weight-light mb-3">at
                             discounted price. Hurry up!</h5>                    <button type="button" class="myButton" ngbTooltip="Shop" triggers="click:blur" [routerLink]="['/post',topPost.id]">Shop now
                                 <i-feather name="arrow-right" style="width: 20px; height: 20px;"></i-feather></button>

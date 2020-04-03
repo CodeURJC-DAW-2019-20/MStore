@@ -1,75 +1,31 @@
-.div {
-    background-color: black;
-    height: 50px;
-    position:sticky;
-    position:relative;
-    margin: 0px;
-}
-.title{
-    text-align: left;
-    color:white;
-    font-size: 30px;
-    font-family: Arial;
-}
-.cart {
-    text-align: right;
-    right: 20px;
-    position: absolute;
-    font-size: 30px;
-    color:white;
-    font-family: Arial;
-}
+mat-sidenav {
+    width: 350px;
+  }
 
-.button {
-    background-color: white;
+a {
     cursor: pointer;
-    padding-left: 13px;
-    padding-right: 13px;
-    padding-top: 10px;
-    padding-bottom: 1px;
-    width: 3%;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-    position: absolute;
-    right:2px;
+}
+
+#homeredirect {
+    text-decoration: none;
+    color:white;
+ }
+
+#notification{
+    right: 12px;
+ }
+
+#empty{
     font-family: Arial;
-    color:darkgrey;
-    font-size: 10px;
     text-align: center;
-  }
-  
-  .active, .button:hover {
-    background-color: #ccc;
-  }
-  
-  .card {
-      position:absolute;
-      font-family: Arial;
-      background-color: azure;
-  }
+    color:darkgray;
+ }
 
-  #homeredirect {
-      text-decoration: none;
-      color:white;
-    }
-
-
-    #notification{
-        right: 12px;
-    }
-
-    #empty{
-        font-family: Arial;
-        text-align: center;
-        color:darkgray;
-    }
-
-    #links{
-        color:white;
-        text-decoration: none;
-        cursor: pointer;
-    }
+#links{
+    color:white;
+    text-decoration: none;
+    cursor: pointer;
+ }
 
 
 

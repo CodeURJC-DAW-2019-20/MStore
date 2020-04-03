@@ -7,7 +7,9 @@ import { TagInputModule } from 'ngx-chips';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,7 +36,6 @@ import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 import { ErrorComponent500 } from './components/error/error500.component';
 import { ErrorComponent403 } from './components/error/error403.component';
 import { HeaderComponent } from './components/header/header.component';
-import { Menu } from 'angular-feather/icons';
 import { LoaderComponent } from './loader/loader.component';
 
 // loader
@@ -77,7 +78,9 @@ import { LoaderInterceptor } from './services/loader.interceptor';
     TagInputModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatCardModule
+    MatSidenavModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [
     LoaderService,
