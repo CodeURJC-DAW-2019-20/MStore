@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { GraphicsService } from 'src/app/services/graphics.service';
 import { User } from 'src/app/models/user.model';
 import { Rating } from 'src/app/models/rating.model';
+import { Post } from 'src/app/models/post.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { RatingService } from 'src/app/services/rating.service';
 
@@ -22,6 +23,9 @@ export class ProfileComponent {
   chartData:number[] = [];
   canRate:boolean;
   stars:string;
+  title:string;
+  userPosts:Array<Post>;
+  empty:boolean;
 
   constructor(private activatedRoute:ActivatedRoute, private userService:UserService, 
     private graphicsService:GraphicsService, private loggedUserService: AuthenticationService,
@@ -32,6 +36,7 @@ export class ProfileComponent {
   ngOnInit() {
     this.stars="0";
     this.src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
+    this.title="Sellers products";
     this.getUser(this.id);
     this.getGraph(this.id);   
   }
@@ -63,6 +68,8 @@ export class ProfileComponent {
     this.userService.getUser(id).subscribe(
       user => {
         this.user = user;
+        this.empty = this.user.posts.length==0;
+        this.userPosts = this.user.posts.slice(0,9);
         if(this.loggedUserService.isUserLog())
           this.getLoggedUser(this.loggedUserService.currentUserValue.id);
       },

@@ -13,7 +13,7 @@
       <div class="row mx-auto" *ngFor="let post of cart">
         <div class="col-6">
           <a (click)="onSubmit()">
-            <img src="https://localhost:8443/images/posts/image-{{post.id}}-0.jpg" class="w-75">
+            <img src="https://localhost:8443/images/posts/image-{{post?.id}}-0.jpg" class="w-75">
           </a>
           <a (click)="onDelete(post.id)">
             <i-feather class="text-danger align-top" name="x-circle"></i-feather>
@@ -21,9 +21,9 @@
         </div>
         <div class="col-6 text-left my-auto">
           <h3 class="mb-0">
-            <a (click)="onSubmit()">{{post.name}}</a>
+            <a (click)="onSubmit()">{{post?.name}}</a>
           </h3>
-          <p class="text-secondary">${{post.price}}</p>
+          <p class="text-secondary">${{post?.price}}</p>
         </div>
       </div>
       <hr>
@@ -87,7 +87,7 @@
                 <ul>
                   <li *ngFor="let brand of brands"><a id="links" class="nav-link-inline nav-link-light"
                       (click)="changeItem(brand.id)"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">{{brand.name}}</span></a></li>
+                        data-feather="chevron-right"></i><span class="font-size-sm">{{brand?.name}}</span></a></li>
                 </ul>
               </div>
             </div>

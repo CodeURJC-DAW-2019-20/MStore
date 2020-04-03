@@ -25,6 +25,7 @@ export class EditProfileComponent {
     this.user={id:0,firstName:'', lastName:'',
       email:'',phone:undefined,password:'',roles:[],
       userAddress:'',creditCard:undefined}
+    this.confirmPass='';
     this.file=undefined;
   }
 
@@ -36,9 +37,8 @@ export class EditProfileComponent {
     this.userService.getUser(id).subscribe(
       user => {
         this.userLog = user;
-        this.user={id:this.userLog.id,firstName:this.userLog.firstName, lastName:this.userLog.lastName,
-              email:this.userLog.email,phone:this.userLog.phone,password:'',roles:this.userLog.roles,
-              userAddress:this.userLog.userAddress,creditCard:this.userLog.creditCard};
+        this.user=this.userLog;
+        this.user.password="";
       },
       error => console.log(error)
     );
@@ -46,11 +46,15 @@ export class EditProfileComponent {
   }
 
   notvalid(){
-    return (this.user.firstName == '' || this.user.lastName == '' || this.checkPhone());
+    return (this.user.firstName == '' || this.user.lastName == '' || this.checkPhone() ||this.user.password!=this.confirmPass);
   }
 
   checkPhone(){
     return <any>this.user.phone == '';
+  }
+
+  checkPass(){
+    return this.user.password!=this.confirmPass;
   }
 
   onSubmit() {
@@ -59,7 +63,17 @@ export class EditProfileComponent {
       this.submitted = true;
     }else{
       this.userService.updateUser(this.user,this.user.id).subscribe(
-        _ => this.router.navigate(['/']),
+        user => {
+          this.user=user;
+          if(this.confirmPass!=''){
+            this.loggedUserService.logout().subscribe(
+              _ => this.loggedUserService.login(this.user.email,this.confirmPass),
+              error => console.log(error)
+            );
+          }else{
+            this.router.navigate(['/']);
+          }
+        },
         error => console.log(error)
       );
       if(this.file != undefined){
@@ -72,5 +86,10 @@ export class EditProfileComponent {
       }
     }
     
+  }
+
+  logOut(){
+    this.loggedUserService.logout();
+    this.router.navigate(['/']);
   }
 }

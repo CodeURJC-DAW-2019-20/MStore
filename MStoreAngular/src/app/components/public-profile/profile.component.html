@@ -2,7 +2,7 @@
     <!-- Page Title-->
     <div class="page-title-wrapper" aria-label="Page title">
         <div class="container">
-            <h2 class="page-title">Public profile</h2>
+            <h1 class="mat-display-1 font-weight-bold mb-0 mt-2">Public profile</h1>
             <span class="d-block mt-2 text-muted"></span>
         </div>
     </div>
@@ -14,7 +14,7 @@
             </div>
             <!-- Main content-->
             <div class="col-lg-8 mx-2">
-                <h2>{{user?.firstName}} {{user?.lastName}}</h2>
+                <h1 class="mat-display-0 font-weight-bold mb-0 mt-2">{{user?.firstName}} {{user?.lastName}}</h1>
                 <p style="color:rgb(255, 102, 0);">{{user?.email}}</p>
                 <div class="card">
                 <div class="card-body">
@@ -46,5 +46,7 @@
             </div>
         </div>
     </div>
-    Componente de mostrar 8 elementos
+    <br>
+    <app-posts *ngIf="!empty" [title]='title' [posts]='userPosts'></app-posts>
+    <br>
 </router-outlet>

@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { GraphicsService } from 'src/app/services/graphics.service';
 import { User } from 'src/app/models/user.model';
+import { Post } from 'src/app/models/post.model';
 import { Image } from 'src/app/models/image.model';
 
 @Component({
@@ -19,6 +20,9 @@ export class MyProfileComponent {
   chartData:number[] = [];
   canRate:boolean;
   stars:number;
+  title:string;
+  userPosts:Array<Post>;
+  empty:boolean;
 
   constructor(private userService:UserService, private graphicsService:GraphicsService, private loggedUserService: AuthenticationService) {
   }
@@ -27,6 +31,7 @@ export class MyProfileComponent {
     this.canRate=false;
     this.src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
     this.id=this.loggedUserService.currentUserValue.id;
+    this.title="Sellers products";
     this.getUser(this.id);
     this.getGraph(this.id);   
   }
@@ -58,6 +63,8 @@ export class MyProfileComponent {
     this.userService.getUser(id).subscribe(
       user => {
         this.user = user;
+        this.empty = this.user.posts.length==0;
+        this.userPosts = this.user.posts.slice(0,9);
       },
       error => console.log(error)
     );

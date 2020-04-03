@@ -30,6 +30,7 @@ export class HeaderComponent implements OnInit {
     this.isLogged = this.authenticationService.isUserLog();
     if (this.isLogged) {
       this.user = this.authenticationService.currentUserValue;
+      if(this.user!=undefined)
       this.isAdmin = this.user.roles.includes("ROLE_ADMIN");
     }
   }

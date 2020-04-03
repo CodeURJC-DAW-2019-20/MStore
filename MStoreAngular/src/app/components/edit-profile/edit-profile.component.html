@@ -2,7 +2,17 @@
     <!-- Page Title-->
     <div class="page-title-wrapper" aria-label="Page title">
         <div class="container">
-            <h2 class="page-title">Edit your profile</h2>
+            <nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="mt-n1 mr-1"></li>
+                    <li class="breadcrumb-item"><a style="text-decoration: none;" [routerLink]="['/']">
+                        <i-feather name="home" style="width: 13px; height: 13px;"></i-feather>
+                        <span class="pl-1">Home</span></a>
+                    </li>
+					<li class="breadcrumb-item">Profile settings</li>
+				</ol>
+			</nav>
+            <h1 class="mat-display-1 font-weight-bold mb-0 mt-2">Edit your profile</h1>
             <span class="d-block mt-2 text-muted"></span>
         </div>
     </div>
@@ -16,16 +26,16 @@
             <div class="col-lg-8 mx-2">
                 <div class=row>
                     <div class="col-sm-8">
-                        <h2>{{userLog?.firstName}} {{userLog?.lastName}}</h2>
+                        <h1 class="mat-display-0 font-weight-bold mb-0 mt-2">{{userLog?.firstName}} {{userLog?.lastName}}</h1>
                         <p style="color:rgb(255, 102, 0);">{{userLog?.email}}</p>
                     </div>
                     <div class="col-sm-4">
                         <br>
-                        <button class="myButton">Log out</button>
+                        <button class="myButton" (click)="logOut()">Log out</button>
                     </div>
                 </div>
                 <br>
-                <h3>Profile Info</h3>
+                <h2 class="mat-display-0 font-weight-bold mb-0 mt-2">Profile Info</h2>
                 <br>
                 <form (ngSubmit)="onSubmit()"> 
                     <div class=row>
@@ -33,14 +43,14 @@
                             <div class="form-group">
                                 <label for="account-fn">First Name</label> 
                                 <input class="form-control" type="text" id="account-fn" name="user.firstName" [(ngModel)]="user.firstName" required>
-                                <p style="color:red; font-size:small" *ngIf="submitted && user.firstName == ''">Please enter an address!</p>
+                                <p style="color:red; font-size:small" *ngIf="submitted && user.firstName == ''">Please enter your name!</p>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="account-ln">Last Name</label>
                                 <input class="form-control" type="text" id="account-ln" name="user.lastName" [(ngModel)]="user.lastName" required>
-                                <p style="color:red; font-size:small" *ngIf="submitted && user.lastName == ''">Please enter an address!</p>
+                                <p style="color:red; font-size:small" *ngIf="submitted && user.lastName == ''">Please enter your surname!</p>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -57,7 +67,7 @@
                                 <input
 						    		class="form-control" type="text" id="account-phone" name="user.phone"
                                     [(ngModel)]="user.phone" required>
-                                <p style="color:red; font-size:small" *ngIf="submitted && checkPhone()">Please enter an address!</p>
+                                <p style="color:red; font-size:small" *ngIf="submitted && checkPhone()">Please enter your phone!</p>
     						</div>
                         </div>
                         <div class="col-md-6">
@@ -65,14 +75,15 @@
                                 <label for="account-pass">New Password</label> 
                                 <input
 						    		class="form-control" type="password" id="account-pass" name="user.password"
-							    	[(ngModel)]="user.password">
+                                    [(ngModel)]="user.password">
     						</div>
 	    				</div>
 		    			<div class="col-md-6">
 			    			<div class="form-group">
                                 <label for="account-confirm-pass">Confirm Password</label> 
                                 <input class="form-control" type="password" name="confirmPass" id="account-confirm-pass" [(ngModel)]="confirmPass">
-						    </div>
+                                <p style="color:red; font-size:small" *ngIf="submitted && checkPass()">Passwords do not match!</p>
+                            </div>
     					</div>
 	    				<div class="col-md-6">
 		    				<div class="form-group">

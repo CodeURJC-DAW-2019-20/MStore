@@ -103,7 +103,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="tags-input">Tags</label><br> 
-                            <tag-input [(ngModel)]='post.tags' name="tags" id="tags-input"></tag-input>
+                            <tag-input [(ngModel)]='post.tags' name="tags" id="tags-input"[ripple]="false" [modelAsStrings]="true"></tag-input>
                         </div>
                     </div>
                     <div class="col-6">

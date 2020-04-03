@@ -38,11 +38,7 @@ export class PostComponent implements OnInit {
   ngOnInit(){
     this.getPost(this.id);
     this.Contained=this.cartService.contains(this.id);
-    this.getTopPosts();
-    for (let index = 0; index < this.post.nImg; index++) {
-      this.imagesaux.push(index);
-    }
-    
+    this.getTopPosts();    
   }
   
   constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig, private postService:PostsService, private cartService:CartService, private graphicsService:GraphicsService) {
@@ -60,6 +56,9 @@ export class PostComponent implements OnInit {
         this.post=post;
         this.userID=post.user.id;
         this.getRatings(this.userID);
+        for (let index = 0; index < this.post.nImg; index++) {
+          this.imagesaux.push(index);
+        }
       },
       error => console.log(error)
     );

@@ -14,19 +14,19 @@
             </div>
         </div>
         <div class="col-sm">
-            <span id="postname"><b> {{post.name}}</b> </span>
+            <span id="postname"><b> {{post?.name}}</b> </span>
             <br>
             <br>
             <ngb-rating id="rating" [rate]="medianrate" [readonly]="true" [max]="5"></ngb-rating> <span id="totalrating"> from {{totalrates}} ratings</span>
             <br>
             <br>
-            <span id="pricesection"> <b>${{post.price}} </b></span>
+            <span id="pricesection"> <b>${{post?.price}} </b></span>
             <br>
             <label *ngIf='Contained === false' class="btn-primary w-75" ngbButtonLabel (click)="addToCart()"><b>Add to cart</b></label><label *ngIf='Contained === true' class="btn-primary w-75 disabled" ngbButtonLabel><b>Add to cart</b></label>
             <br>
             <br>
             <div class="featurebox"> 
-                    <li> {{post.features}}</li>
+                    <li> {{post?.features}}</li>
                 </div>
             <br>
         </div>
@@ -39,11 +39,11 @@
 
             <div class="col-sm">
                 <div> 
-                        <li><b>{{post.features}} </b></li>
+                        <li><b>{{post?.features}} </b></li>
                     </div>
             </div>
             <div class="col-sm">
-                <span id="fulldetails"><b>{{post.details}} </b> </span>
+                <span id="fulldetails"><b>{{post?.details}} </b> </span>
                 <br>
                 <br>
             </div>

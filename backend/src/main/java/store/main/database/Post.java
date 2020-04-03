@@ -254,11 +254,11 @@ public class Post {
 			this.componentTag = 7;
 			break;
 		}
-		case "Ink Printers": {
+		case "Ink Printer": {
 			this.componentTag = 8;
 			break;
 		}
-		case "Laser Priter": {
+		case "Laser Printer": {
 			this.componentTag = 9;
 			break;
 		}
