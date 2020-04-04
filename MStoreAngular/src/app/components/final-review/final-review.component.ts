@@ -5,6 +5,7 @@ import { PostsService } from 'src/app/services/posts.service';
 import { Post } from 'src/app/models/post.model';
 import { User } from 'src/app/models/user.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-final-review',
@@ -25,7 +26,7 @@ export class FinalReviewComponent implements OnInit {
   total = 0;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  constructor(private router: Router, private cartService: CartService, private postService: PostsService) { }
+  constructor(private router: Router, private cartService: CartService, private postService: PostsService, private userService: UserService) { }
 
   ngOnInit() {
     this.getCart();
@@ -41,19 +42,19 @@ export class FinalReviewComponent implements OnInit {
     this.total = this.cartService.getTotal();
   }
 
-  removePost(post:Post){
+  removePost(post: Post) {
     this.postService.removePost(post.id).subscribe(
-      _ => {},
+      _ => { },
       error => console.error(error)
     )
   }
 
-  removeCart() {
+  buy() {
     let okResponse = window.confirm("Do you want to continue?");
     if (okResponse) {
       for (let i in this.cart) {
-          this.removePost(this.cart[i]);
-          
+        this.removePost(this.cart[i]);
+
       }
       this.cartService.resetCart();
       this.router.navigate(['/complete']).then(() => {

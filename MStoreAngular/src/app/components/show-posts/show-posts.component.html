@@ -1,38 +1,40 @@
 <section class="container px-3 pt-4 mt-3">
-    <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
-        <h2 class="widget-title font-size-lg">{{title}}</h2>
-        <a class="btn btn-outline-primary btn-sm border-0 mb-2" [routerLink]="['/shop']">More
-            products<i-feather name="chevron-right" style="width: 20px; height: 20px;"></i-feather>
-        </a>
-    </div>
-
-    <div class="row no-gutters">
-        
-      <!-- Products grid-->
-      <div class="row no-gutters">
-            <div class="col-md-4 col-sm-6" *ngFor="let post of posts">
-            <mat-card class="example-card" >
-              <a [routerLink]="['/post',post?.id]" (click)="navigate(post?.id)" ><img mat-card-image src="https://localhost:8443/images/posts/image-{{post?.id}}-0.jpg"
-                  alt="image-post?.id" style="max-height: 125px;"></a> 
-              <mat-card-header>
-                <mat-card-title >{{post?.name}}</mat-card-title>
-                <mat-card-subtitle>{{post?.component}}</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <p class="p-title">
-                  &nbsp;&nbsp;&nbsp;&nbsp;{{post?.price}}$
-                </p>
-                <div class="abs-center">
-                  <button [routerLink]="['/post',post?.id]" (click)="navigate(post?.id)" type="button" class="myButton" ngbTooltip="Shop" triggers="click:blur">Shop now
-                      <i-feather name="arrow-right" style="width: 20px; height: 20px;"></i-feather></button>
-              </div>
-              </mat-card-content>
-            </mat-card>
-
-          </div>
-          <!-- Product-->
-
-        </div>
+  <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
+    <h2 class="widget-title font-size-lg">{{title}}</h2>
+    <a class="btn btn-outline-primary btn-sm border-0 mb-2" [routerLink]="['/shop']">More
+      products<i-feather name="chevron-right" style="width: 20px; height: 20px;"></i-feather>
+    </a>
   </div>
-    <hr class="mt-4">
+
+  <div class="row no-gutters">
+
+    <!-- Products grid-->
+    <div class="row no-gutters">
+      <div class="col-md-4 col-sm-6" *ngFor="let post of posts">
+        <mat-card class="example-card">
+          <a [routerLink]="['/post',post?.id]" (click)="navigate(post?.id)"><img mat-card-image
+              src="https://localhost:8443/images/posts/image-{{post?.id}}-0.jpg" alt="image-post?.id"
+              style="max-height: 250px;"></a>
+          <mat-card-header>
+            <mat-card-title>{{post?.name}}</mat-card-title>
+            <mat-card-subtitle>{{post?.component}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p class="p-title">
+              &nbsp;&nbsp;&nbsp;&nbsp;{{post?.price}}$
+            </p>
+            <div class="abs-center">
+              <button [routerLink]="['/post',post?.id]" (click)="navigate(post?.id)" type="button" class="myButton"
+                ngbTooltip="Shop" triggers="click:blur">Shop now
+                <i-feather name="arrow-right" style="width: 20px; height: 20px;"></i-feather></button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+      <!-- Product-->
+
+    </div>
+  </div>
+  <hr class="mt-4">
 </section>

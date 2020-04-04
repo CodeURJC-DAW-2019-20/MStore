@@ -8,7 +8,7 @@
             <!-- Item-->
             <div *ngFor="let post of cart" class="d-sm-flex border-bottom">
                 <div class="d-sm-flex text-center text-sm-left">
-                        <img class="w-50 p-3" [src]="images[0]" alt="Random first slide">
+                    <img class="w-50 p-3" [src]="images[0]" alt="Random first slide">
                     <div class="col-md-4">
                         <br>
                         <h2 class="product-card-title font-weight-semibold border-0 pb-0">
@@ -57,14 +57,14 @@
             <div class="d-flex pt-4">
                 <div class="w-50 pr-3">
                     <button class="btn btn-outline-secondary btn-block" (click)="previous()"><i class="mr-1"
-                        data-feather="chevron-left"></i>
-                        <i-feather name="chevrons-left" style="width: 15px; height: 15px;"></i-feather>                
+                            data-feather="chevron-left"></i>
+                        <i-feather name="chevrons-left" style="width: 15px; height: 15px;"></i-feather>
                         Back
                     </button>
                 </div>
                 <div class="w-50 pl-2">
-                    <button class="btn btn-primary btn-block" (click)="removeCart()"><span class="d-none d-sm-inline">Complete
-                        order</span><span class="d-inline d-sm-none pr-1">Complete</span>
+                    <button class="btn btn-primary btn-block" (click)="buy()"><span class="d-none d-sm-inline">Complete
+                            order</span><span class="d-inline d-sm-none pr-1">Complete</span>
                         <i-feather name="chevrons-right" style="width: 15px; height: 15px;"></i-feather>
                     </button>
                 </div>

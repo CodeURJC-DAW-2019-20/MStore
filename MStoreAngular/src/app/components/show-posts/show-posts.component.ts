@@ -1,5 +1,5 @@
-import { Component,Input } from '@angular/core';
-import { Router } from '@angular/router'; 
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
 @Component({
   selector: 'app-posts',
@@ -8,20 +8,20 @@ import { Post } from 'src/app/models/post.model';
 })
 export class ShowPostsComponent {
 
-  
-  constructor(private router:Router){
+
+  constructor(private router: Router) {
   }
 
-    @Input() posts:Array<Post>;
-    @Input() title?:string;
+  @Input() posts: Array<Post>;
+  @Input() title?: string;
 
-    refresh(){
+  refresh() {
+    window.location.reload();
+  }
+  navigate(id: number) {
+    this.router.navigate(['/post/' + id]).then(() => {
       window.location.reload();
-    }
-    navigate(id:number){
-      this.router.navigate(['/post/'+id]).then(() => {
-        window.location.reload();
-      });
-    }
+    });
+  }
 
 }

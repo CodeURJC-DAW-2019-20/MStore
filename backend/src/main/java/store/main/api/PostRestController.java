@@ -50,6 +50,7 @@ public class PostRestController {
 	
 	@Autowired
 	private UserComponent userComponent;
+	
 
 	interface PostDetail extends Post.BasicInfo, Post.BrandInfo, Brand.BasicInfo {
 	}
@@ -232,6 +233,7 @@ public class PostRestController {
 		Optional<Post> post = postRepository.findById(id);
 		if (post.isPresent()) {
 			postService.deletePostFromBD(post.get());
+			postService.updateSellers(this.userComponent.getLoggedUser(), post.get().getUser());
 			return new ResponseEntity<Post>(post.get(), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);

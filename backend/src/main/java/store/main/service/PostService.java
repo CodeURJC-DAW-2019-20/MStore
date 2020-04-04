@@ -215,6 +215,25 @@ public class PostService {
 	public List<Post> getFinalList(){
 		return this.comp.getFinalList();
 	}
+
+	public void updateSellers(User loggedUser, User user) {
+		if(!this.containSeller(loggedUser, user)) {
+			loggedUser.getSellers().add(user);
+			
+		}
+		userRepository.save(loggedUser);
+		
+	}
+	
+	private boolean containSeller(User loggedUser,User user) {
+		for(User u:loggedUser.getSellers()) {
+			if(u.getEmail().equals(user.getEmail())) {
+				return true;
+			}
+		}
+		return false;
+		
+	}
 	
 	
 
