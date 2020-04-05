@@ -82,6 +82,8 @@ export class EditProfileComponent {
               },
               error => console.log(error)
             );
+          }else{
+            this.router.navigate(['']);
           }
         },
         error => console.log(error)
