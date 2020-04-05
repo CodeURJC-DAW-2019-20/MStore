@@ -36,6 +36,7 @@ import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 import { ErrorComponent500 } from './components/error/error500.component';
 import { ErrorComponent403 } from './components/error/error403.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { LoaderComponent } from './loader/loader.component';
 
 // loader
@@ -64,7 +65,8 @@ import { LoaderInterceptor } from './services/loader.interceptor';
     CompleteComponent,
     AdminComponent,
     HeaderComponent,
-    LoaderComponent
+    LoaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

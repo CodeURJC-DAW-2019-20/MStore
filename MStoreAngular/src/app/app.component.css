@@ -2,30 +2,6 @@ mat-sidenav {
     width: 350px;
   }
 
-a {
-    cursor: pointer;
-}
-
-#homeredirect {
-    text-decoration: none;
-    color:white;
- }
-
-#notification{
-    right: 12px;
- }
-
-#empty{
-    font-family: Arial;
-    text-align: center;
-    color:darkgray;
- }
-
-#links{
-    color:white;
-    text-decoration: none;
-    cursor: pointer;
- }
 
 
 

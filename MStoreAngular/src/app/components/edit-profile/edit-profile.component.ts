@@ -74,16 +74,9 @@ export class EditProfileComponent {
             this.loggedUserService.login(this.user.email, this.user.password).subscribe(
               _ => { 
                 this.user = undefined;
-                if (confirm("User updated successfully")) {
-                  this.router.navigate(['']).then(_ =>
-                    window.location.reload()
-                  );
-                }
               },
               error => console.log(error)
             );
-          }else{
-            this.router.navigate(['']);
           }
         },
         error => console.log(error)
@@ -96,6 +89,7 @@ export class EditProfileComponent {
           error => console.log(error)
         );
       }
+      this.router.navigate(['']);
     }
   }
 }

@@ -15,6 +15,9 @@ export class HeaderComponent implements OnInit {
   @Output()
   show = new EventEmitter();
 
+  @Output()
+  filterTags = new EventEmitter<{id: number, search: string}>();
+
   @Input()
   length: number;
 
@@ -85,6 +88,10 @@ export class HeaderComponent implements OnInit {
         alert("Product not found");
       }
     );
+  }
+
+  changePosts(idPost: number, searchPost: string) {
+    this.filterTags.emit({id: idPost, search: searchPost});
   }
 
 }

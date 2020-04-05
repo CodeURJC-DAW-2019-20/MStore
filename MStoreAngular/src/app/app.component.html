@@ -39,100 +39,12 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-header [total]="total" [length]="cart.length" (show)="showCart()"></app-header>
 
-    <router-outlet (activate)='onActivate($event)' (deactivate)='onDeactivate($event)'> </router-outlet>
+    <app-header [total]="total" [length]="cart.length" (show)="showCart()" (filterTags)="changePosts($event)"></app-header>
 
-    <!-- Footer-->
-    <footer class="page-footer" style="background-color: #222222;">
-      <!-- first row-->
-      <div class="pt-5 pb-0 pb-md-4">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4 col-sm-6">
-              <div class="widget widget-links pb-4">
-                <h2 class="widget-title text-white border-light">Shop departments</h2>
-                <ul>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/0"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">Motherboards</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/1"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">Storage Devices</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/2"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">CPU / Processors</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/3"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">Video Cards &amp; Video
-                        Devices</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/4"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">Speakers</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/5"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">Monitors</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/6"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">Computer Mice</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/7"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">Headphones</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/8"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">Ink Printer</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/9"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">Laser Printer</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/10"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">3D Printers</span></a></li>
-                  <li><a class="nav-link-inline nav-link-light" href="/shop/11"><i class="widget-categories-indicator"
-                        data-feather="chevron-right"></i><span class="font-size-sm">Printer Supplies</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div id="links" class="col-md-3 col-sm-6">
-              <div class="widget widget-links pb-4">
-                <h2 class="widget-title text-white border-light">Our brands</h2>
-                <ul class="list-unstyled">
-                  <li *ngFor="let brand of brands"><a id="links"
-                      (click)="changeItem(brand.id)" class="text-muted">
-                      <i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
-                      <span class="font-size-sm">{{brand?.name}}</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xl-4 offset-xl-1 col-md-5">
-              <div class="widget">
-                <!-- Subscription form (MailChimp)-->
-                <h2 class="widget-title text-white border-light">Stay informed</h2>
-                <form
-                  action="https://urjc.us4.list-manage.com/subscribe/post?u=7816e91fc0e80c209c0a7750e&amp;id=a3e1cc1eb7"
-                  method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
-                  target="_blank" novalidate>
-                  <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text noBorderRadius pt-0" style="background-color: #e8e8e8;">
-                        <i-feather name="mail" style="width: 20px; height: 20px;"></i-feather>
-                      </span>
-                    </div>
-                    <input class="form-control noBorderRadius border-0 box-shadow-0" type="email" name="EMAIL"
-                      id="mce-EMAIL" value="" placeholder="Your email" required>
-                  </div>
-                  <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                    <input type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
-                  </div>
-                  <button class="myButton btn-block" type="submit" name="subscribe"
-                    id="mc-embedded-subscribe">Subscribe*</button>
-                  <p class="font-size-xs text-white opacity-60 pt-2 mb-2" id="mc-helper">*Subscribe to our newsletter to
-                    receive early discount offers, updates and new products info.</p>
-                  <!-- Subscription status-->
-                  <div class="subscribe-status"></div>
-                </form>
-              </div>
-            </div>
+    <router-outlet (activate)='onActivate($event)' (deactivate)='onDeactivate($event)'></router-outlet>
 
-            <!--End mc_embed_signup-->
-          </div>
-        </div>
-      </div>
-      <div class="py-3" style="background-color: #1a1a1a;">
-        <div class="container font-size-xs text-center" aria-label="Copyright"><span
-            class="text-white opacity-60 mr-1">©
-            All rights reserved. Made by</span><a class="nav-link-inline nav-link-light" href="https://createx.studio/"
-            target="_blank">Createx Studio</a></div>
-      </div>
-    </footer>
+    <app-footer (filterPosts)="changePosts($event)"></app-footer>
+
   </mat-sidenav-content>
 </mat-sidenav-container>

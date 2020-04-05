@@ -31,8 +31,10 @@
     font-size: 1.125rem !important;
   }
   
-  mat-card img{
+  mat-card {
+    border-radius: 0;
+    object-fit: cover;
     width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
-    height: 70%;
+    height: 100%;
   }
   

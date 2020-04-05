@@ -75,17 +75,20 @@
 								</div>
 								<div class="widget widget-links">
 									<ul>
-										<li><a [routerLink]="['/shop']"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span
-													class="font-size-sm">Motherboards</span></a></li>
-										<li><a [routerLink]="['/shop']"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Storage
+										<li><a (click)="changePosts(0,'tag')">
+											<i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Motherboards</span></a></li>
+										<li><a (click)="changePosts(1,'tag')">
+											<i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Storage
 													Devices</span></a></li>
-										<li><a [routerLink]="['/shop']"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">CPU
+										<li><a (click)="changePosts(2,'tag')">
+											<i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">CPU
 													/ Processors</span></a></li>
-										<li><a [routerLink]="['/shop']"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Video
+										<li><a (click)="changePosts(3,'tag')">
+											<i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Video
 													Cards &amp; Video Devices</span></a></li>
 									</ul>
 								</div>
@@ -98,19 +101,21 @@
 								</div>
 								<div class="widget widget-links">
 									<ul>
-										<li><a [routerLink]="['/shop']"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Speakers
+										<li><a (click)="changePosts(4,'tag')">
+											<i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Speakers
 												</span></a></li>
-										<li><a [routerLink]="['/shop']"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span
-													class="font-size-sm">Headphones
+										<li><a (click)="changePosts(5,'tag')">
+											<i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Headphones
 												</span></a></li>
-										<li><a [routerLink]="['/shop']"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Computer
+										<li><a (click)="changePosts(6,'tag')">
+											<i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Computer
 													Mice</span></a></li>
-										<li><a [routerLink]="['/shop']"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span
-													class="font-size-sm">Monitors</span></a></li>
+										<li><a (click)="changePosts(7,'tag')">
+											<i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Monitors</span></a></li>
 									</ul>
 								</div>
 							</div>
@@ -121,17 +126,21 @@
 								</div>
 								<div class="widget widget-links">
 									<ul>
-										<li><a [routerLink]="['/shop']"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Ink
+										<li><a (click)="changePosts(8,'tag')">
+											<i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Ink
 													Printer</span></a></li>
-										<li><a [routerLink]="['/shop']"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Laser
+										<li><a (click)="changePosts(9,'tag')">
+											<i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Laser
 													Printer</span></a></li>
-										<li><a [routerLink]="['/shop']"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">3D
+										<li><a (click)="changePosts(10,'tag')">
+											<i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">3D
 													Printer</span></a></li>
-										<li><a [routerLink]="['/shop']"><i class="widget-categories-indicator"
-													data-feather="chevron-right"></i><span class="font-size-sm">Printer
+										<li><a (click)="changePosts(11,'tag')">
+											<i-feather name="chevron-right" style="width: 15px; height: 15px;"></i-feather>
+											<span class="font-size-sm">Printer
 													Supplies</span></a></li>
 									</ul>
 								</div>

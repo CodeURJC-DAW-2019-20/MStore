@@ -4,7 +4,6 @@ import { Post } from './models/post.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ShopComponent } from './components/shop/shop.component';
 import { BrandService } from './services/brand.service';
-import { Brand } from './models/brand.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,14 +12,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MStoreAngular';
   total = 0;
   cart: Post[] = [];
-  @ViewChild(ShopComponent)
-  child: ShopComponent;
-  brands: Brand[];
-  idbrand: number = -1;
-  inShop: boolean;
+  idBrand: number = -1;
+  idTag: number = -1;
   component: ShopComponent;
 
   //Despliegue del carrito
@@ -38,7 +33,6 @@ export class AppComponent {
       error => console.log(error),
     );
     this.total = this.cartService.getTotal();
-    this.getBrand();
   }
 
   showCart() {
@@ -68,39 +62,42 @@ export class AppComponent {
     }
   }
 
-  getBrand() {
-    this.brandService.getBrands().subscribe(
-      response => {
-        this.brands = response;
-      },
-      error => console.log(error)
-    );
-  }
-
-  onActivate(Component) {
-    this.component = Component;
+  onActivate(component: any) {
+    this.component = component;
     if (this.component instanceof ShopComponent) {
-      if (this.idbrand !== -1) {
-        Component.setBrand(this.idbrand);
-
-      }
-      else {
-        Component.getAllPosts();
+      if (this.idTag !== -1) {
+        component.changeCriteriaPost(this.idTag, 'id', 'asc');
+      } else if (this.idBrand !== -1) {
+        component.setBrand(this.idBrand);
+      } else {
+        component.getAllPosts();
       }
     }
   }
 
-  onDeactivate(ShopComponent) {
+  onDeactivate(component: any) {
     this.component = null;
+    if (component instanceof ShopComponent) {
+      this.idTag = -1;
+      this.idBrand = -1;
+    }
   }
 
-  changeItem(id: number) {
-    this.idbrand = id;
-    if (this.component instanceof ShopComponent) {
-      this.component.setBrand(id);
-    }
-    else {
-      this.router.navigate(['/shop']);
+  changePosts(searchPosts: any) {
+    if (searchPosts.search === 'brand') {
+      this.idBrand = searchPosts.id;
+      if (this.component instanceof ShopComponent) {
+        this.component.setBrand(searchPosts.id)
+      } else {
+        this.router.navigate(['/shop']);
+      }
+    } else if (searchPosts.search === 'tag') {
+      this.idTag = searchPosts.id;
+      if (this.component instanceof ShopComponent) {
+        this.component.changeCriteriaPost(searchPosts.id, 'id', 'asc');
+      } else {
+        this.router.navigate(['/shop']);
+      }
     }
   }
 
