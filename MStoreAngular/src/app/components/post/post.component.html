@@ -17,12 +17,12 @@
             <span id="postname"><b> {{post?.name}}</b> </span>
             <br>
             <br>
-            <ngb-rating id="rating" [rate]="medianrate" [readonly]="true" [max]="5"></ngb-rating> <span id="totalrating"> from {{totalrates}} ratings</span>
+            <ngb-rating  [routerLink]= "['public_profile/:id']" id="rating" [rate]="medianrate" [readonly]="true" [max]="5"></ngb-rating> <span id="totalrating"> from {{totalrates}} ratings</span>
             <br>
             <br>
             <span id="pricesection"> <b>${{post?.price}} </b></span>
             <br>
-            <label *ngIf='Contained === false' class="btn-primary w-75" ngbButtonLabel (click)="addToCart()"><b>Add to cart</b></label><label *ngIf='Contained === true' class="btn-primary w-75 disabled" ngbButtonLabel><b>Add to cart</b></label>
+            <label *ngIf='Contained === false && currentUser!==userID' class="btn-primary w-75" ngbButtonLabel (click)="addToCart()"><b>Add to cart</b></label><label *ngIf='Contained === true && currentUser===userID' class="btn-primary w-75 disabled" ngbButtonLabel><b>Add to cart</b></label>
             <br>
             <br>
             <div class="featurebox"> 

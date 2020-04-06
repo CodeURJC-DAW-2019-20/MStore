@@ -7,6 +7,7 @@ import { Post } from 'src/app/models/post.model';
 import { CartService } from 'src/app/services/cart.service';
 import { GraphicsService } from 'src/app/services/graphics.service';
 import { User } from 'src/app/models/user.model';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-post',
@@ -27,11 +28,13 @@ export class PostComponent implements OnInit {
   userID: number;
   medianrate=4;
   totalrates=0;
+  sameuser:boolean;
   Contained=true;
   imagesaux:number[]=[];
   images = [62, 83, 466, 965].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  @Output() 
-  onAdd: EventEmitter<Post> = new EventEmitter<Post>();
+  currentUser: number;
+  
+
 
 
 
@@ -41,15 +44,25 @@ export class PostComponent implements OnInit {
     this.getTopPosts();    
   }
   
-  constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig, private postService:PostsService, private cartService:CartService, private graphicsService:GraphicsService) {
+  constructor(activatedRoute:ActivatedRoute, config:NgbCarouselConfig, private postService:PostsService, private cartService:CartService, private graphicsService:GraphicsService, private authenticationService:AuthenticationService) {
     config.showNavigationArrows = true;
     config.showNavigationIndicators = true;
     config.interval=3000; 
+    this.getLoggedUser();
     this.id = activatedRoute.snapshot.params.id;
 
   }
   
+  getLoggedUser(){
+    this.authenticationService.currentUser.subscribe(
+      user => {
+        this.currentUser= user.id;
+        },
+      error => console.log(error)
+    );
+  }
 
+  
   getPost(id:number){
     this.postService.getPost(id.toString()).subscribe(
       post => {
@@ -106,7 +119,6 @@ export class PostComponent implements OnInit {
   }
 
   addToCart () {
-    this.onAdd.emit(this.post);
     this.cartService.addToCart(this.post);
     this.Contained=true;
     window.location.reload();
