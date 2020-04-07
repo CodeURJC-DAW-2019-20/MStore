@@ -1,10 +1,10 @@
-import { Component, NgZone, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { CartService } from './services/cart.service';
 import { Post } from './models/post.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ShopComponent } from './components/shop/shop.component';
-import { BrandService } from './services/brand.service';
 import { Router } from '@angular/router';
+import { CommunicationService } from './services/communication.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +22,15 @@ export class AppComponent {
   opened = false;
   fixed = true;
 
-  constructor(private cartService: CartService, private authenticationService: AuthenticationService, private brandService: BrandService, private router: Router) {
+  constructor(private cartService: CartService, 
+    private authenticationService: AuthenticationService, 
+    private communicationService: CommunicationService, 
+    private router: Router) {
+
+      communicationService.changeEmitted$.subscribe(
+        filterPosts => this.changePosts(filterPosts)
+      );
+
   }
 
   ngOnInit() {

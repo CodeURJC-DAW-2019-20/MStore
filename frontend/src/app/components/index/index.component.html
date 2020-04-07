@@ -13,12 +13,14 @@
                                         <i-feather class="text-primary opacity-100" name="hard-drive"
                                             style="width: 20px; height: 20px;"></i-feather>
                                     </div>
-                                    <div class="p-2 bd-highlight"><a [routerLink]="['/shop']"
-                                            class="text-secondary d-flex align-items-center nav-link-inline py-1">CPU/Processors<div class="py-0 bd-highlight">
-                                                
-                                                <i-feather name="chevron-right" style="width: 20px; height: 20px;">
-                                                </i-feather>
-                                            </div></a></div>
+                                    <div class="p-2 bd-highlight">
+                                        <a (click)="changePosts(2,'tag')" class="text-secondary d-flex align-items-center nav-link-inline py-1">
+                                            CPU/Processors
+                                        <div class="py-0 bd-highlight">
+                                            <i-feather name="chevron-right" style="width: 20px; height: 20px;"></i-feather>
+                                        </div>
+                                        </a>
+                                    </div>
                                 </div>
 
                             </li>
@@ -30,7 +32,7 @@
                                     </div>
                                     <div class="p-2 bd-highlight"><a
                                             class="text-secondary d-flex align-items-center nav-link-inline py-1"
-                                            [routerLink]="['/shop']">Speakers & Home Music<div class="py-0 bd-highlight">
+                                            (click)="changePosts(4,'tag')">Speakers & Home Music<div class="py-0 bd-highlight">
                                                 <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                                                 </i-feather>
                                             </div></a></div>
@@ -45,7 +47,7 @@
                                     </div>
                                     <div class="p-2 bd-highlight"><a
                                             class="text-secondary d-flex align-items-center nav-link-inline py-1"
-                                            [routerLink]="['/shop']">Monitors<div class="py-0 bd-highlight">
+                                            (click)="changePosts(7,'tag')">Monitors<div class="py-0 bd-highlight">
                                                 <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                                                 </i-feather>
                                             </div></a></div>
@@ -60,7 +62,7 @@
                                     </div>
                                     <div class="p-2 bd-highlight"><a
                                             class="text-secondary d-flex align-items-center nav-link-inline py-1"
-                                            [routerLink]="['/shop']">VideoCards & Video Devices<div class="py-0 bd-highlight">
+                                            (click)="changePosts(3,'tag')">VideoCards & Video Devices<div class="py-0 bd-highlight">
                                                 <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                                                 </i-feather>
                                             </div></a></div>
@@ -75,7 +77,7 @@
                                     </div>
                                     <div class="p-2 bd-highlight"><a
                                             class="text-secondary d-flex align-items-center nav-link-inline py-1"
-                                            [routerLink]="['/shop']">Headphones<div class="py-0 bd-highlight">
+                                            (click)="changePosts(5,'tag')">Headphones<div class="py-0 bd-highlight">
                                                 <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                                                 </i-feather>
                                             </div></a></div>
@@ -90,7 +92,7 @@
                                     </div>
                                     <div class="p-2 bd-highlight"><a
                                             class="text-secondary d-flex align-items-center nav-link-inline py-1"
-                                            [routerLink]="['/shop']">Printers & Ink<div class="py-0 bd-highlight">
+                                            (click)="changePosts(8,'tag')">Ink Printers<div class="py-0 bd-highlight">
                                                 <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                                                 </i-feather>
                                             </div></a></div>
@@ -105,7 +107,7 @@
                                     </div>
                                     <div class="p-2 bd-highlight"><a
                                             class="text-secondary d-flex align-items-center nav-link-inline py-1"
-                                            [routerLink]="['/shop']">HDD /SSD Data Storage<div class="py-0 bd-highlight">
+                                            (click)="changePosts(1,'tag')">HDD /SSD Data Storage<div class="py-0 bd-highlight">
                                                 <i-feather name="chevron-right" style="width: 20px; height: 20px;">
                                                 </i-feather>
                                             </div></a></div>

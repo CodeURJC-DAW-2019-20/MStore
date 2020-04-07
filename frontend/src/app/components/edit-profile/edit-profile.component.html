@@ -1,6 +1,6 @@
 <router-outlet>
     <!-- Page Title-->
-    <div class="page-title-wrapper" aria-label="Page title">
+    <div class="page-title-wrapper py-4" aria-label="Page title">
         <div class="container">
             <nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
@@ -98,11 +98,9 @@
 					    		<div class="invalid-feedback">Please enter a valid card number (13-16 digits)!</div>
     						</div>
                         </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <p>Upload your profile photo</p>
-                                <input type="file" (change)="onFileChanged($event)">
-                            </div>
+                        <div class="form-group mx-auto">
+                            <p>Upload your profile photo</p>
+                            <input type="file" (change)="onFileChanged($event)">
                         </div>
                         <div class="col-12">
 		    				<button type="submit" class="myButton">Update profile</button>

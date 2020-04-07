@@ -10,7 +10,7 @@
     <hr>
     <div class="pt-3 text-center">
       <span *ngIf='cart.length === 0' class="text-muted">The cart is empty</span>
-      <div class="row mx-auto" *ngFor="let post of cart; let i = index">
+      <div class="row mx-auto py-2" *ngFor="let post of cart; let i = index">
         <div class="col-6">
           <a (click)="onSubmit()">
             <img src="https://localhost:8443/images/posts/image-{{post?.id}}-0.jpg" class="w-75">

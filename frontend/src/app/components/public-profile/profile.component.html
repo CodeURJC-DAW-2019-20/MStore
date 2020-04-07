@@ -1,7 +1,7 @@
 <router-outlet>
     <!-- Page Title-->
-    <div class="page-title-wrapper" aria-label="Page title">
-        <div class="container">
+    <div class="page-title-wrapper my-4" aria-label="Page title">
+        <div class="container pt-3">
             <h1 class="mat-display-1 font-weight-bold mb-0 mt-2">Public profile</h1>
             <span class="d-block mt-2 text-muted"></span>
         </div>
@@ -46,7 +46,6 @@
             </div>
         </div>
     </div>
-    <br>
     <app-posts *ngIf="!empty" [title]='title' [posts]='userPosts'></app-posts>
-    <br>
+    <div class="mb-5 pb-2"></div>
 </router-outlet>
