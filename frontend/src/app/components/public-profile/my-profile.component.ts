@@ -1,40 +1,34 @@
 import { Component } from '@angular/core';
 import * as CanvasJS from './canvasjs.min';
-import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { GraphicsService } from 'src/app/services/graphics.service';
 import { User } from 'src/app/models/user.model';
-import { Rating } from 'src/app/models/rating.model';
 import { Post } from 'src/app/models/post.model';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { RatingService } from 'src/app/services/rating.service';
 
 @Component({
   templateUrl: './profile.component.html',
   styleUrls: []
 })
-export class ProfileComponent {
+export class MyProfileComponent {
 
   user:User;
-  loggedUser:User;
   id:number;
   src:string;
   chart:CanvasJS.Chart;
   chartData:number[] = [];
   canRate:boolean;
-  stars:string;
+  stars:number;
   title:string;
   userPosts:Array<Post>;
   empty:boolean;
 
-  constructor(private activatedRoute:ActivatedRoute, private userService:UserService, 
-    private graphicsService:GraphicsService, private loggedUserService: AuthenticationService,
-    private ratingService:RatingService) {
-    this.id=activatedRoute.snapshot.params['id'];
+  constructor(private userService:UserService, private graphicsService:GraphicsService, private loggedUserService: AuthenticationService) {
   }
 
   ngOnInit() {
-    this.stars="0";
+    this.canRate=false;
+    this.id=this.loggedUserService.currentUserValue.id;
     this.title="Sellers products";
     this.getUser(this.id);
     this.getGraph(this.id);   
@@ -67,31 +61,15 @@ export class ProfileComponent {
     this.userService.getUser(id).subscribe(
       user => {
         this.user = user;
+        this.src="https://localhost:8443/images/users/image-" + user?.id + ".jpg";
         this.empty = this.user.posts.length==0;
         this.userPosts = this.user.posts.slice(0,9);
-        if(this.loggedUserService.isUserLog())
-          this.getLoggedUser(this.loggedUserService.currentUserValue.id);
       },
       error => console.log(error)
     );
-    this.src = "https://localhost:8443/images/users/image-" + this.user.id + ".jpg";
-  }
+  }  
 
-  getLoggedUser(id:number){
-    this.userService.getUser(id).subscribe(
-      user => {
-        this.loggedUser = user;
-        this.canRate= this.canUserRate(this.loggedUser.sellers);
-      },
-      error => console.log(error)
-    );
-  }
-
-  canUserRate(sellers:Array<User>){
-    for(let i=0; i<sellers.length;i++){
-      if(sellers[i].id==this.user.id)
-        return true;
-    }
+  canUserRate(){
     return false;
   }
 
@@ -106,14 +84,6 @@ export class ProfileComponent {
   }
 
   updateRate(){
-    let rating:Rating;
-    rating={stars:parseInt(this.stars),buyer:this.loggedUser,seller:this.user}
-    this.ratingService.addRating(rating).subscribe(
-        rating =>{  
-                    this.getGraph(this.id);
-                    this.canRate=false;
-        },
-        error => console.log(error)
-    );
   }
+
 }

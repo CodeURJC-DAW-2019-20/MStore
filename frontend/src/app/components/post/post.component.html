@@ -17,7 +17,10 @@
             <span id="postname"><b> {{post?.name}}</b> </span>
             <br>
             <br>
-            <ngb-rating  [routerLink]= "['public_profile/:id']" id="rating" [rate]="medianrate" [readonly]="true" [max]="5"></ngb-rating> <span id="totalrating"> from {{totalrates}} ratings</span>
+            <ngb-rating id="rating" [rate]="medianrate" [readonly]="true" [max]="5"></ngb-rating> <span id="totalrating"> from {{totalrates}} ratings</span>
+            <br>
+            <a style="color:rgb(255, 102, 0);" [routerLink]= "['/public_profile/',seller?.id]">sold by {{seller?.firstName}} {{seller?.lastName}}</a>
+            <br>
             <br>
             <br>
             <span id="pricesection"> <b>${{post?.price}} </b></span>

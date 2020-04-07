@@ -20,7 +20,7 @@
         <div class="row pt-1">
             <!-- Sidebar-->
             <div class="col-xl-3 col-lg-4">
-                <img src="{{src}}" alt="thumbnail" class="img-thumbnail rounded d-block">
+                <img src="{{src}}" alt="thumbnail" class="img-thumbnail rounded d-block" onerror="this.src='https://localhost:8443/images/users/default.jpg'">
                 <br>
                 <div class="mx-2">
                     <h2>{{user?.firstName}}</h2>

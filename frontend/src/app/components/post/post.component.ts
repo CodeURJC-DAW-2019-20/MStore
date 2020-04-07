@@ -26,6 +26,7 @@ export class PostComponent implements OnInit {
   empty:boolean;
   rates: number[]=[];
   userID: number;
+  seller:User;
   medianrate=4;
   totalrates=0;
   sameuser:boolean;
@@ -63,6 +64,7 @@ export class PostComponent implements OnInit {
     this.postService.getPost(id.toString()).subscribe(
       post => {
         this.post=post;
+        this.seller=post.user;
         this.userID=post.user.id;
         this.getRatings(this.userID);
         for (let i = 0; i < this.post.nImg; i++) {
