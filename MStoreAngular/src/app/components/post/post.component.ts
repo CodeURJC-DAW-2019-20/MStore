@@ -30,15 +30,11 @@ export class PostComponent implements OnInit {
   totalrates=0;
   sameuser:boolean;
   Contained=true;
-  imagesaux:number[]=[];
-  images = [62, 83, 466, 965].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  imgsUrl: string[];
   currentUser: number;
   
-
-
-
-
   ngOnInit(){
+    this.imgsUrl = [];
     this.getPost(this.id);
     this.Contained=this.cartService.contains(this.id);
     this.getTopPosts();    
@@ -69,8 +65,8 @@ export class PostComponent implements OnInit {
         this.post=post;
         this.userID=post.user.id;
         this.getRatings(this.userID);
-        for (let index = 0; index < this.post.nImg; index++) {
-          this.imagesaux.push(index);
+        for (let i = 0; i < this.post.nImg; i++) {
+          this.imgsUrl[i] = 'https://localhost:8443/images/posts/image-' + id + '-' + i + '.jpg';
         }
       },
       error => console.log(error)

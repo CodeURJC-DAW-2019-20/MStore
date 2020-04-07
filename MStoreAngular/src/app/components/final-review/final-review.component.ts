@@ -24,7 +24,6 @@ export class FinalReviewComponent implements OnInit {
 
   index = 0;
   total = 0;
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
   constructor(private router: Router, private cartService: CartService, private postService: PostsService, private userService: UserService) { }
 

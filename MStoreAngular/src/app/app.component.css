@@ -1,8 +1,7 @@
+mat-sidenav-container {
+  background-color: white;
+}
+
 mat-sidenav {
     width: 350px;
   }
-
-
-
-
-

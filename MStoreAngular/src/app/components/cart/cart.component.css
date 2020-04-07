@@ -1,6 +1,16 @@
 
 /* cart */
 
+  .cart-item-thumb {
+    display: block;
+    width: 12rem;
+  }
+
+  .cart-item-thumb > img {
+    display: block;
+    width: 100%;
+  }
+
   .cartitle{
     background-color:lightgrey;
     text-align: center;

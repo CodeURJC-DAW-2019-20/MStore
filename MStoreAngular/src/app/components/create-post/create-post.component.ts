@@ -33,7 +33,7 @@ export class CreatePostComponent {
       },
       error => console.log(error)
     );
-    this.src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
+    this.src = "https://localhost:8443/images/users/image-" + id + ".jpg";
   }
 
   onFileChanged(event) {

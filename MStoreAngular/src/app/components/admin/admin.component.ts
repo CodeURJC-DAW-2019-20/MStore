@@ -65,16 +65,10 @@ export class AdminComponent implements OnInit {
   }
 
   loadImages(id: number) {
-    this.imageService.getPostImages(id).subscribe(
-      images => {
-        let i = 0;
-        images.forEach(img => {
-          this.imgsUrl[i] = 'https://localhost:8443/images/posts/image-' + id + '-' + i + '.jpg';
-          i++;
-        });
-      },
-      error => console.log(error)
-    );
+    this.imgsUrl = [];
+    for (let i = 0; i < this.post.nImg; i++) {
+      this.imgsUrl[i] = 'https://localhost:8443/images/posts/image-' + id + '-' + i + '.jpg';
+    }
   }
 
   onSubmit(name: string) {

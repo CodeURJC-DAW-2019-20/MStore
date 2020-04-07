@@ -8,7 +8,7 @@
             <!-- Item-->
             <div *ngFor="let post of cart" class="d-sm-flex border-bottom">
                 <div class="d-sm-flex text-center text-sm-left">
-                    <img class="w-50 p-3" [src]="images[0]" alt="Random first slide">
+                    <img class="w-50 p-3" src="https://localhost:8443/images/posts/image-{{post.id}}-0.jpg" alt="Random first slide">
                     <div class="col-md-4">
                         <br>
                         <h2 class="product-card-title font-weight-semibold border-0 pb-0">
@@ -31,9 +31,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- Client details-->
-            <div class="light-gray px-4 pt-4 pb-2">
+            <div class="light-gray px-4 mt-4 pt-4 pb-2">
                 <div class="row">
                     <div class="col-sm-6">
                         <h4 class="h6">Shipping to:</h4>
@@ -77,8 +76,13 @@
                 <div *ngIf="cart.length === 0" class="text-center mb-2">
                     <span class='text-muted'>The cart is empty</span>
                 </div>
-                <div *ngFor="let post of cart" class="d-flex justify-content-between mb-2">
-                    <span>{{post?.name}}:</span><span>${{post?.price}}</span>
+                <div *ngFor="let post of cart" class="row d-flex justify-content-between mb-2">
+                    <div class="col-md-8">
+                        {{post.name}}
+                    </div>
+                    <div class="col-md-3">
+                        ${{post.price}}
+                    </div>
                 </div>
             </div>
             <div class="h3 font-weight-semibold text-center py-3">${{total}}</div>

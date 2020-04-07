@@ -29,7 +29,6 @@ export class MyProfileComponent {
 
   ngOnInit() {
     this.canRate=false;
-    this.src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
     this.id=this.loggedUserService.currentUserValue.id;
     this.title="Sellers products";
     this.getUser(this.id);
@@ -68,6 +67,7 @@ export class MyProfileComponent {
       },
       error => console.log(error)
     );
+    this.src = "https://localhost:8443/images/users/image-" + id + ".jpg";
   }  
 
   canUserRate(){

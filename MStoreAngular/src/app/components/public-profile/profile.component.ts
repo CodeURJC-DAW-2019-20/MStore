@@ -35,7 +35,6 @@ export class ProfileComponent {
 
   ngOnInit() {
     this.stars="0";
-    this.src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg";
     this.title="Sellers products";
     this.getUser(this.id);
     this.getGraph(this.id);   
@@ -75,6 +74,7 @@ export class ProfileComponent {
       },
       error => console.log(error)
     );
+    this.src = "https://localhost:8443/images/users/image-" + this.user.id + ".jpg";
   }
 
   getLoggedUser(id:number){

@@ -5,9 +5,9 @@
         <div class="col-sm">
             <div id="imgcontainer" class="container">
                 <ngb-carousel #carousel>
-                    <ng-template ngbSlide *ngFor="let img of images; index as i">
+                    <ng-template ngbSlide *ngFor="let img of imgsUrl; index as i">
                         <div class="picsum-img-wrapper">
-                            <img [src]="img" alt="image {{i + 1}}">
+                            <img class="w-75" [src]="img" alt="image {{i + 1}}">
                         </div>
                     </ng-template>
                 </ngb-carousel>

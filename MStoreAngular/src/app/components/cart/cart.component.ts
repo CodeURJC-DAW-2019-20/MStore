@@ -1,7 +1,4 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { typeWithParameters } from '@angular/compiler/src/render3/util';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CartService } from 'src/app/services/cart.service';
 import { Post } from 'src/app/models/post.model';
 
@@ -14,12 +11,12 @@ export class CartComponent implements OnInit {
   items:Post[]=[];
   id=0;
   total=0;
-  src:string = "./assets/img/sanchis.png"
+  src:string;
+  
   @Output() 
   onRemove: EventEmitter<Post[]> = new EventEmitter<Post[]>();
 
   constructor(private cartService:CartService) {
-
   }
 
   ngOnInit(){
