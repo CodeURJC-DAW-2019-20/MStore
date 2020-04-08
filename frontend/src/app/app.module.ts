@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TagInputModule } from 'ngx-chips';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -75,6 +75,7 @@ import { LoaderInterceptor } from './services/loader.interceptor';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     NgbModule,
     IconsModule,
     TagInputModule,

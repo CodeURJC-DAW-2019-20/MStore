@@ -64,10 +64,12 @@
                     <div class="widget">
                         <!-- Subscription form (MailChimp)-->
                         <h2 class="widget-title text-white border-light">Stay informed</h2>
-                        <form
-                            action="https://urjc.us4.list-manage.com/subscribe/post?u=7816e91fc0e80c209c0a7750e&amp;id=a3e1cc1eb7"
-                            method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-                            class="validate" target="_blank" novalidate>
+                        <form #f="ngForm" (ngSubmit)="email.valid && onSubmit(email.value)" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                            target="_blank">
+                            <div *ngIf="f.submitted && email.invalid" class="text-danger small">
+                                <div *ngIf="email.errors.required">Please enter an email!</div>
+                                <div *ngIf="email.errors.pattern">Email must be a valid email address!</div>
+                            </div>
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text noBorderRadius pt-0"
@@ -75,8 +77,10 @@
                                         <i-feather name="mail" style="width: 20px; height: 20px;"></i-feather>
                                     </span>
                                 </div>
-                                <input class="form-control noBorderRadius border-0 box-shadow-0" type="email"
-                                    name="EMAIL" id="mce-EMAIL" value="" placeholder="Your email" required>
+                                <input #email="ngModel" class="form-control noBorderRadius border-0 box-shadow-0" type="email"
+                                    name="email" id="email" value="" placeholder="Your email" 
+                                    [ngClass]="{ 'is-invalid' : f.submitted && email.invalid }"
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" ngModel required>
                             </div>
                             <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                             <div style="position: absolute; left: -5000px;" aria-hidden="true">
