@@ -1,25 +1,27 @@
 /* post */
-#imgcontainer {
-    width: 500px;
+ngb-carousel {
+    width: 100%;
     height: 500px;
 }
 
-.featurebox {
+ngb-carousel img {
     width: 100%;
-    background-color: darkgray;
-    padding: 15px 32px;
-    font-family: Arial;
-}
-#postname {
-    font-family: Arial;
-    font-size: 50px;
-    line-height: 100%;
+    height: 100%;
 }
 
-#pricesection{
-    font-family: Arial;
-    color:blue;
-    font-size: 40px;
+ngb-accordion {
+    font-size: 1rem;
+}
+
+.circle {
+    height: 40px;
+    width: 45px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
 }
 
 #rating {
@@ -27,7 +29,6 @@
     color:orange;
     font-size: 20px;
 }
-
 
 #totalrating {
     color:darkgray;

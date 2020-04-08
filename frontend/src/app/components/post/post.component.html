@@ -1,61 +1,78 @@
-<br>
-<br>
-<div class="container">
-    <div class="row">
+<div class="container pt-4">
+    <div class="row mt-2">
         <div class="col-sm">
-            <div id="imgcontainer" class="container">
-                <ngb-carousel #carousel>
-                    <ng-template ngbSlide *ngFor="let img of imgsUrl; index as i">
-                        <div class="picsum-img-wrapper">
-                            <img class="w-75" [src]="img" alt="image {{i + 1}}">
+            <ngb-carousel>
+                <ng-template ngbSlide *ngFor="let img of imgsUrl; index as i">
+                    <div class="picsum-img-wrapper">
+                        <img class="w-75" [src]="img" alt="image {{i + 1}}">
+                    </div>
+                </ng-template>
+            </ngb-carousel>
+        </div>
+        <div class="col-sm">
+            <h1 class="mat-display-1 font-weight-bold mb-3">{{post?.name}}</h1>
+            <ngb-rating id="rating" [rate]="medianrate" [readonly]="true" [max]="5"></ngb-rating> <span
+                id="totalrating"> from {{totalrates}} ratings</span>
+            <br>
+            <a class="small font-weight-light" style="color:rgb(255, 102, 0);"
+                [routerLink]="['/public_profile/',seller?.id]">sold by {{seller?.firstName}} {{seller?.lastName}}</a>
+            <h1 class="mat-display-2 text-primary font-weight-light mt-5 mb-1">${{post?.price}}</h1>
+            <div class="pt-3">
+                <button [disabled]="Contained || currentUser === userID" class="myButton" (click)="addToCart()">
+                    <i-feather class="pr-1" name="shopping-cart" style="width: 20px; height: 20px;"></i-feather> Add to
+                    cart
+                </button>
+            </div>
+            <br>
+            <br>
+            <ngb-accordion activeIds="custom-panel-1">
+                <ngb-panel id="custom-panel-1">
+                    <ng-template ngbPanelHeader let-opened="opened">
+                        <div class="font-weight-bold d-flex align-items-center justify-content-between">
+                            <i-feather class="pr-1" name="info" style="width: 25px; height: 25px;"></i-feather>
+                            <button ngbPanelToggle style="text-decoration: none; font-weight: bold;"
+                                class="btn btn-link text-dark container-fluid text-left pl-0">Product
+                                information</button>
+                            <span class="d-flex align-items-center circle">
+                                <i-feather class="mx-auto" *ngIf="!opened" name="chevron-down"
+                                    style="width: 20px; height: 20px;"></i-feather>
+                                <i-feather class="mx-auto" *ngIf="opened" name="chevron-up"
+                                    style="width: 20px; height: 20px;"></i-feather>
+                            </span>
                         </div>
                     </ng-template>
-                </ngb-carousel>
-            </div>
-        </div>
-        <div class="col-sm">
-            <span id="postname"><b> {{post?.name}}</b> </span>
-            <br>
-            <br>
-            <ngb-rating id="rating" [rate]="medianrate" [readonly]="true" [max]="5"></ngb-rating> <span id="totalrating"> from {{totalrates}} ratings</span>
-            <br>
-            <a style="color:rgb(255, 102, 0);" [routerLink]= "['/public_profile/',seller?.id]">sold by {{seller?.firstName}} {{seller?.lastName}}</a>
-            <br>
-            <br>
-            <br>
-            <span id="pricesection"> <b>${{post?.price}} </b></span>
-            <br>
-            <br>
-            <label *ngIf='Contained === false && currentUser!==userID' class="btn-primary w-75" ngbButtonLabel (click)="addToCart()"><b>Add to cart</b></label><label *ngIf='Contained === true && currentUser===userID' class="btn-primary w-75 disabled" ngbButtonLabel><b>Add to cart</b></label>
-            <br>
-            <br>
-            <div class="featurebox"> 
-                    <li> {{post?.features}}</li>
-                </div>
+                    <ng-template ngbPanelContent>
+                        <ul class="mb-0">
+                            <li>Brand: {{post?.brand?.name}}</li>
+                            <li>{{post?.details}}</li>
+                        </ul>
+                    </ng-template>
+                </ngb-panel>
+            </ngb-accordion>
             <br>
         </div>
     </div>
-    <br>
-    <br>
-    <div class="featurebox">
-
+</div>
+<div class="mt-5 pt-5 pb-4" style="background-color: #EEF4FF;">
+    <div class="container pt-sm-3 pb-sm-3">
         <div class="row">
-
-            <div class="col-sm">
-                <div> 
-                        <li><b>{{post?.features}} </b></li>
-                    </div>
+            <div class="col-md-6 text-center">
+                <h2 class="mat-h3 mb-3 font-weight-bold">Features</h2>
+                <ul class="ml-n3 mb-4 pb-2 text-center" style="font-size: 1rem;">
+                    <span *ngIf="post.features">{{post.features}}</span>
+                    <span *ngIf="!post.features">The user did not specify any features</span>
+                </ul>
             </div>
-            <div class="col-sm">
-                <span id="fulldetails"><b>{{post?.details}} </b> </span>
-                <br>
-                <br>
+            <div class="col-md-6 text-center">
+                <h2 class="mat-h3 mb-3 font-weight-bold">Details</h2>
+                <ul class="list-unstyled mb-4 pb-2 text-center" style="font-size: 1rem;">
+                    <li class="d-block pb-2">{{post?.details}}</li>
+                </ul>
             </div>
         </div>
     </div>
-    <hr class="mt-4">
 </div>
 
 <!-- Related products-->
 <app-posts *ngIf="!empty" [title]='title2' [posts]='recommendedPosts'></app-posts>
-<div class="mb-4"></div>
+<div class="mb-5"></div>

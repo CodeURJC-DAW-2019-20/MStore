@@ -65,7 +65,7 @@ export class AppComponent {
     this.cart = this.cartService.getCart();
     this.total = this.cartService.getTotal();
     //Para recargar cart en caso de que se este en la misma pagina
-    if (this.router.url === '/cart') {
+    if (this.router.url === '/cart' || this.router.url.includes('/post/')) {
       location.reload();
     }
   }

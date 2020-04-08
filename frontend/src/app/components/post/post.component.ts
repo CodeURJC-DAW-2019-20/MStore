@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import { PostsService } from 'src/app/services/posts.service';
-import { getHeapCodeStatistics } from 'v8';
 import { Post } from 'src/app/models/post.model';
 import { CartService } from 'src/app/services/cart.service';
 import { GraphicsService } from 'src/app/services/graphics.service';
