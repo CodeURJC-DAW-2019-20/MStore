@@ -25,6 +25,7 @@
             <br>
             <span id="pricesection"> <b>${{post?.price}} </b></span>
             <br>
+            <br>
             <label *ngIf='Contained === false && currentUser!==userID' class="btn-primary w-75" ngbButtonLabel (click)="addToCart()"><b>Add to cart</b></label><label *ngIf='Contained === true && currentUser===userID' class="btn-primary w-75 disabled" ngbButtonLabel><b>Add to cart</b></label>
             <br>
             <br>

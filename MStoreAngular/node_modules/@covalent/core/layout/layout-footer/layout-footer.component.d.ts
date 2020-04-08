@@ -1,0 +1,14 @@
+import { Renderer2, ElementRef } from '@angular/core';
+export declare class TdLayoutFooterComponent {
+    private _renderer;
+    private _elementRef;
+    private _color;
+    /**
+     * color?: 'accent' | 'primary' | 'warn'
+     *
+     * Optional color option: primary | accent | warn.
+     */
+    set color(color: 'primary' | 'accent' | 'warn');
+    get color(): 'primary' | 'accent' | 'warn';
+    constructor(_renderer: Renderer2, _elementRef: ElementRef);
+}

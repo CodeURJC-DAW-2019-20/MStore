@@ -1,0 +1,34 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { PortalModule } from '@angular/cdk/portal';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { TdFileSelectDirective } from './directives/file-select.directive';
+import { TdFileDropDirective } from './directives/file-drop.directive';
+import { TdFileUploadComponent } from './file-upload/file-upload.component';
+import { TdFileInputComponent, TdFileInputLabelDirective } from './file-input/file-input.component';
+import { TdFileService } from './services/file.service';
+/** @type {?} */
+const TD_FILE = [
+    TdFileSelectDirective,
+    TdFileDropDirective,
+    TdFileUploadComponent,
+    TdFileInputComponent,
+    TdFileInputLabelDirective,
+];
+export class CovalentFileModule {
+}
+CovalentFileModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [FormsModule, CommonModule, MatIconModule, MatButtonModule, PortalModule],
+                declarations: [TD_FILE],
+                exports: [TD_FILE],
+                providers: [TdFileService],
+            },] }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZmlsZS5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AY292YWxlbnQvY29yZS9maWxlLyIsInNvdXJjZXMiOlsiZmlsZS5tb2R1bGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUNBLE9BQU8sRUFBRSxRQUFRLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFFekMsT0FBTyxFQUFFLFlBQVksRUFBRSxNQUFNLGlCQUFpQixDQUFDO0FBQy9DLE9BQU8sRUFBRSxXQUFXLEVBQUUsTUFBTSxnQkFBZ0IsQ0FBQztBQUU3QyxPQUFPLEVBQUUsWUFBWSxFQUFFLE1BQU0scUJBQXFCLENBQUM7QUFDbkQsT0FBTyxFQUFFLGFBQWEsRUFBRSxNQUFNLHdCQUF3QixDQUFDO0FBQ3ZELE9BQU8sRUFBRSxlQUFlLEVBQUUsTUFBTSwwQkFBMEIsQ0FBQztBQUUzRCxPQUFPLEVBQUUscUJBQXFCLEVBQUUsTUFBTSxvQ0FBb0MsQ0FBQztBQUMzRSxPQUFPLEVBQUUsbUJBQW1CLEVBQUUsTUFBTSxrQ0FBa0MsQ0FBQztBQUN2RSxPQUFPLEVBQUUscUJBQXFCLEVBQUUsTUFBTSxxQ0FBcUMsQ0FBQztBQUM1RSxPQUFPLEVBQUUsb0JBQW9CLEVBQUUseUJBQXlCLEVBQUUsTUFBTSxtQ0FBbUMsQ0FBQztBQUNwRyxPQUFPLEVBQUUsYUFBYSxFQUFFLE1BQU0seUJBQXlCLENBQUM7O01BRWxELE9BQU8sR0FBZ0I7SUFDM0IscUJBQXFCO0lBQ3JCLG1CQUFtQjtJQUNuQixxQkFBcUI7SUFDckIsb0JBQW9CO0lBQ3BCLHlCQUF5QjtDQUMxQjtBQVFELE1BQU0sT0FBTyxrQkFBa0I7OztZQU45QixRQUFRLFNBQUM7Z0JBQ1IsT0FBTyxFQUFFLENBQUMsV0FBVyxFQUFFLFlBQVksRUFBRSxhQUFhLEVBQUUsZUFBZSxFQUFFLFlBQVksQ0FBQztnQkFDbEYsWUFBWSxFQUFFLENBQUMsT0FBTyxDQUFDO2dCQUN2QixPQUFPLEVBQUUsQ0FBQyxPQUFPLENBQUM7Z0JBQ2xCLFNBQVMsRUFBRSxDQUFDLGFBQWEsQ0FBQzthQUMzQiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFR5cGUgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5cbmltcG9ydCB7IENvbW1vbk1vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvbW1vbic7XG5pbXBvcnQgeyBGb3Jtc01vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2Zvcm1zJztcblxuaW1wb3J0IHsgUG9ydGFsTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY2RrL3BvcnRhbCc7XG5pbXBvcnQgeyBNYXRJY29uTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvbWF0ZXJpYWwvaWNvbic7XG5pbXBvcnQgeyBNYXRCdXR0b25Nb2R1bGUgfSBmcm9tICdAYW5ndWxhci9tYXRlcmlhbC9idXR0b24nO1xuXG5pbXBvcnQgeyBUZEZpbGVTZWxlY3REaXJlY3RpdmUgfSBmcm9tICcuL2RpcmVjdGl2ZXMvZmlsZS1zZWxlY3QuZGlyZWN0aXZlJztcbmltcG9ydCB7IFRkRmlsZURyb3BEaXJlY3RpdmUgfSBmcm9tICcuL2RpcmVjdGl2ZXMvZmlsZS1kcm9wLmRpcmVjdGl2ZSc7XG5pbXBvcnQgeyBUZEZpbGVVcGxvYWRDb21wb25lbnQgfSBmcm9tICcuL2ZpbGUtdXBsb2FkL2ZpbGUtdXBsb2FkLmNvbXBvbmVudCc7XG5pbXBvcnQgeyBUZEZpbGVJbnB1dENvbXBvbmVudCwgVGRGaWxlSW5wdXRMYWJlbERpcmVjdGl2ZSB9IGZyb20gJy4vZmlsZS1pbnB1dC9maWxlLWlucHV0LmNvbXBvbmVudCc7XG5pbXBvcnQgeyBUZEZpbGVTZXJ2aWNlIH0gZnJvbSAnLi9zZXJ2aWNlcy9maWxlLnNlcnZpY2UnO1xuXG5jb25zdCBURF9GSUxFOiBUeXBlPGFueT5bXSA9IFtcbiAgVGRGaWxlU2VsZWN0RGlyZWN0aXZlLFxuICBUZEZpbGVEcm9wRGlyZWN0aXZlLFxuICBUZEZpbGVVcGxvYWRDb21wb25lbnQsXG4gIFRkRmlsZUlucHV0Q29tcG9uZW50LFxuICBUZEZpbGVJbnB1dExhYmVsRGlyZWN0aXZlLFxuXTtcblxuQE5nTW9kdWxlKHtcbiAgaW1wb3J0czogW0Zvcm1zTW9kdWxlLCBDb21tb25Nb2R1bGUsIE1hdEljb25Nb2R1bGUsIE1hdEJ1dHRvbk1vZHVsZSwgUG9ydGFsTW9kdWxlXSxcbiAgZGVjbGFyYXRpb25zOiBbVERfRklMRV0sXG4gIGV4cG9ydHM6IFtURF9GSUxFXSxcbiAgcHJvdmlkZXJzOiBbVGRGaWxlU2VydmljZV0sXG59KVxuZXhwb3J0IGNsYXNzIENvdmFsZW50RmlsZU1vZHVsZSB7fVxuIl19
