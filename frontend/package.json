@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --base-href /new/ --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -27,6 +27,7 @@
     "angular-feather": "^6.0.8",
     "bootstrap": "^4.4.1",
     "bs-stepper": "^1.7.0",
+    "lite-server": "^2.5.4",
     "ngx-chips": "^2.1.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

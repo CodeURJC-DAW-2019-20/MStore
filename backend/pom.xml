@@ -9,7 +9,7 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>store.main</groupId>
 	<artifactId>MStore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>MStore</name>
@@ -76,6 +76,26 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin> 
+        		<artifactId>maven-resources-plugin</artifactId>     
+    			<executions>  
+               		<execution>   
+                    	<id>copy-resources</id>    
+                    	<phase>validate</phase> 
+                        <goals>
+                        	<goal>copy-resources</goal>
+                        </goals>             
+             			<configuration>                                 
+  							<outputDirectory>${build.directory}/classes/static/new</outputDirectory >      
+                            <resources>    
+                            	<resource>       
+                                	<directory>../frontend/dist/webappv9</directory> 
+                                </resource>   
+                            </resources>   
+                        </configuration>        
+          			</execution>   
+       			</executions> 
+       		</plugin>
 		</plugins>
 	</build>
 
