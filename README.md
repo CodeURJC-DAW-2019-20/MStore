@@ -350,8 +350,8 @@ First of all we have to install node.js (download it <a href="https://nodejs.org
 	<li>To download the modules use "npm install"</li>
 	<li>Use "npm start"</li>
 </ol>
----------------------
 
+---------------------
 
 ### UML Class Diagram 📂📘
 
