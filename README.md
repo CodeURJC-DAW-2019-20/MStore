@@ -343,7 +343,13 @@ docker-compose up
 ## **Phase 4: Web with SPA Architecture..**
 
 ### Preparation of the development environment ⚙️
-
+First of all we have to install node.js (download it <a href="https://nodejs.org/es/download/">here</a>). One you have installed it, go to the terminal and execute the following commands:
+<ol>
+	<li>Install the Angular CLI globally with the command: nmp install -g angular -cli</li>
+	<li>Go to the workspace folder "frontend" (cd ../MStore/frontend)</li>
+	<li>To download the modules use "npm install"</li>
+	<li>Use "npm start"</li>
+</ol>
 ---------------------
 
 
